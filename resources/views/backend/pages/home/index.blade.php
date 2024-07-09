@@ -6,7 +6,16 @@
 
 @php
     $details = DB::table('pages')->where('page_name', 'home')->first();
+    $banners = [];
+
+    if ($details && $details->banner_section) {
+        $decoded = json_decode($details->banner_section, true);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            $banners = $decoded;
+        }
+    }
 @endphp
+
 
 <div class="col-12">
     <div class="card widget-inline">
@@ -20,16 +29,59 @@
                         <h4 class="header-title"><b>Banner Section</b></h4>
                         <hr>
                     </div>
+
                     <form id="home_banner_form" action="{{ url(route('home.banner')) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-
                         <input type="hidden" name="page" value="home">
 
                         <div class="col-sm-12">
-
                             <div class="form-group mb-3">
                                 <div id="home_banner_key_add_more">
+                                    @if(!empty($banners))
+                                    @foreach($banners as $index => $banner)
+                                    <div class="form-group" id="form-group-{{ $index }}">
+                                        <div class="row">
+                                            <div class="col-md-11">
+                                                <div class="row">
+                                                    <div class="col col-sm-6">
+                                                        <label>Banner Text <span class="red">*</span></label>
+                                                        <input class="form-control" name="banner_text[]"
+                                                            value="{{ $banner['text'] ?? '' }}"
+                                                            placeholder="Enter Icon Name here..." required>
+                                                    </div>
+                                                    <div class="col col-sm-4">
+                                                        <label>Banner <span class="red">*</span> <span
+                                                                class="font-size11">(Max file size 80kb -
+                                                                1125*196)</span></label>
+                                                        <input class="form-control" type="file" id="image-{{ $index }}"
+                                                            name="banner[]" @if(empty($banner['image'])) required
+                                                            @endif>                                                       
+                                                    </div>
+                                                    <div class="col col-sm-2">
+                                                        @if(!empty($banner['image']))
+                                                        <img width="100" src="{{ asset('storage/' . $banner['image']) }}"
+                                                            alt="Banner Image" class="img-thumbnail mt-2">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                @if($loop->first)
+                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                                    class="ri-add-circle-fill add-btn"></i>
+                                                @else
+                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                                    class="ri-add-circle-fill add-btn"></i>
+                                                <i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;"
+                                                    class="ri-delete-bin-5-fill remove-btn"></i>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        </br>
+                                    </div>
+                                    @endforeach
+                                    @else
                                     <div class="form-group" id="form-group-0">
                                         <div class="row">
                                             <div class="col-md-11">
@@ -55,6 +107,7 @@
                                         </div>
                                         </br>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -64,8 +117,8 @@
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>
-
                     </form>
+
 
                 </div>
             </div>
@@ -601,6 +654,7 @@
         $('#home_banner_key_add_more').on('click', '.add-btn', function () {
             let clonedFormGroup = $(this).closest('.form-group').clone();
             clonedFormGroup.attr('id', 'form-group-' + formFieldIndex);
+            clonedFormGroup.find('img').remove();
             clonedFormGroup.find('input').each(function () {
                 $(this).val('');
             });
