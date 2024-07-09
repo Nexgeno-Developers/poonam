@@ -15,10 +15,12 @@ class HomeController extends Controller
         return view('backend.pages.home.index');
     }
 
-    public function home_banner(Request $request){
-
+    public function home_banner(Request $request)
+    {
+        // Validate request inputs
         $validator = Validator::make($request->all(), [
-            'Banner' => 'required',
+            'banner_text.*' => 'required',
+            'banner.*' => 'required|file|max:80000|mimes:jpeg,png,jpg',
         ]);
 
         if ($validator->fails()) {
@@ -26,51 +28,53 @@ class HomeController extends Controller
                 'status' => false,
                 'notification' => $validator->errors()->all()
             ], 200);
-        }   
-
-        foreach ($request->file('Banner') as $index => $file) {
-            $bannerPath = $file->store('assets/banner/', 'public');
-            $newBanners[$index] = $bannerPath; // Assigning element at the specific index
         }
-        
+
+        // Store new banner files
+        $newBanners = [];
+        foreach ($request->file('banner') as $index => $file) {
+            $bannerPath = $file->store('assets/banner/', 'public');
+            $newBanners[] = [
+                'text' => $request->banner_text[$index],
+                'image' => $bannerPath,
+            ];
+        }
+
         // Retrieve existing banners from the database
-        $existingBanners = DB::table('pages')->where('page_name', 'home')->value('banners');
+        $existingBanners = DB::table('pages')->where('page_name', 'home')->value('banner_section');
 
-        if($existingBanners !== null && !empty($existingBanners) && count(json_decode($existingBanners)) != 0 ){
+        if ($existingBanners !== null && !empty($existingBanners)) {
             $existingBanners = json_decode($existingBanners, true);
-            
-            // Loop through new banners
-            foreach ($newBanners as $key => $value) {
-                // Check if the key exists in the existing banners array
-                if (isset($existingBanners[$key])) {
-                    // If the key exists, replace the value in the existing banners array
-                    $existingBanners[$key] = $value;
-                }
-            }
-            $banners = $existingBanners;
 
+            // Merge new banners into existing banners
+            foreach ($newBanners as $banner) {
+                $existingBanners[] = $banner;
+            }
+
+            $banners = $existingBanners;
         } else {
             $banners = $newBanners;
         }
 
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'banners' => json_encode($banners),
-        ]);
+        // Update or insert banners into the database
+        $result = DB::table('pages')->updateOrInsert(
+            ['page_name' => $request->page],
+            ['banner_section' => json_encode($banners)]
+        );
 
-        if($result){
+        if ($result) {
             $response = [
                 'status' => true,
-                'notification' => 'Home Banners Save successfully!',
+                'notification' => 'Home Banners saved successfully!',
             ];
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Somthing Went Wrong!',
+                'notification' => 'Something went wrong!',
             ];
         }
 
         return response()->json($response);
-
     }
 
     public function home_intro(Request $request){

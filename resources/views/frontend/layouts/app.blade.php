@@ -11,28 +11,38 @@
 
 </head>
 
-<body>
-
-
-
+<body class="scroll-container">
+<div id="unique-element-id"></div>
+    <div data-barba="wrapper">
     <!---========Header======----->
 
         @include('frontend.partials.header')
 
     <!---========end Header======----->
+      
+      <!-- - PAGE HEADER -->
+      <div class="scroll-content js-smooth-scroll smooth-scroll" id="page-wrapper" data-scrollbar="true" data-barba="container">
+          <style>
+              .home_section_container{
+                  overflow:hidden;
+              }
+          </style>
+        <main class="page-wrapper__content">
 
-    <!---======== page content ====-------->
+            <!---======== page content ====-------->
 
-        @yield('page.content')
+            @yield('page.content')
 
-    <!---======== page content ===== -------->
+            <!---======== page content ===== -------->
 
-    <!-----------------------Footer Start------------------------------------------->
+        </main>
+            <!-----------------------Footer Start---------->
+            @include('frontend.partials.footer')
+            <!--Footer Ends-->
 
-        @include('frontend.partials.footer')
-
-    <!--Footer Ends-->
-
+      </div>
+      <!-- - PAGE MAIN -->
+    </div>
 
     <!--javascript-->
     @include('frontend.partials.js')
@@ -42,19 +52,3 @@
 </body>
 
 </html>
-
-
-<!-- Bootstrap Modal -->
-<div class="modal_popup1 modal fade" id="popupModalourbuisness" aria-hidden="true" aria-labelledby="popupModalourbuisnessLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="popupModalourbuisnessLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="popupModalourbuisnessBody">
-                    
-                </div>
-            </div>
-        </div>
-    </div>

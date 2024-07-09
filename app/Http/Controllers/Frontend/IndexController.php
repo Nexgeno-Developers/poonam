@@ -30,10 +30,19 @@ class IndexController extends Controller
 
     public function contact_Us(){
 
-        $contactDetails = DB::table('pages')->where('page_name', 'contact')->first();
-        $contacts = json_decode($contactDetails->contacts, true);
+        return view('frontend.pages.contactus.contactus');
+    }
+    public function services(){
 
-        return view('frontend.pages.contactus.contact-us', compact('contactDetails', 'contacts'));
+        return view('frontend.pages.services.services');
+    }
+    public function news_media(){
+
+        return view('frontend.pages.newsandmedia.news-and-media');
+    }
+    public function gallery(){
+
+        return view('frontend.pages.gallery.gallery');
     }
     public function projects() {
 
@@ -72,14 +81,9 @@ class IndexController extends Controller
 
     public function about_Us(){
 
-        $aboutDetails = DB::table('pages')->where('page_name', 'about')->first();
-        $introduction = json_decode($aboutDetails->introduction, true);
-        $steps = json_decode($aboutDetails->steps, true);
-        $teams = json_decode($aboutDetails->teams, true);
-        $missionVision = json_decode($aboutDetails->mission_vision, true);
-        $ourvalues = json_decode($aboutDetails->our_values, true);
+
     
-        return view('frontend.pages.about.about-us', compact('aboutDetails','introduction', 'steps', 'teams', 'missionVision', 'ourvalues'));
+        return view('frontend.pages.about.about');
     }
     
 

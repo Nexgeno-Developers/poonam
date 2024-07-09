@@ -1,19 +1,16 @@
-
-
-<!------------------- adonia ---------------->
-
-<link rel="shortcut icon" href="{{ asset('/assets/frontend/images/favicon.png') }}">
-
-<!------------------- adonia ---------------->
-
-
-<link rel="stylesheet" href="/assets/frontend/css/style.css">
-<link rel="stylesheet" href="/assets/frontend/css/responsive.css">
-<link href="/assets/frontend/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-<link href="/assets/frontend/css/font-styles.css" rel="stylesheet">
-<link href="https://db.onlinewebfonts.com/c/fd18e391776fea6256be11db6ed387f8?family=HeliosExtBlack" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Cinzel:400,700%7CRaleway:500,500i,600,700%7CMaterial+Icons&amp;display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Template Vendor's Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/vendor.css" />
+  <!-- Template Fancy Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/jquery.fancybox.min.css" />
+  <!-- Template Main Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/font-style.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/responsive.css" />
+  <!-- Include Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
