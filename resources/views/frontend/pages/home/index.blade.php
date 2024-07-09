@@ -815,7 +815,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[0]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/Ports.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/Ports.png"> -->
                                             </div>
                                             <p>{!! $businessData[0]['name'] !!}</p>
                                         </div>
@@ -826,7 +826,7 @@
                                     <div class="buisness_box">
                                         <div class="buis_img hvr-bounce-in1">
                                             {!! $businessData[1]['icon'] !!}
-                                            <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/VESSEL-OWNERS.png"> -->
+                                            <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/VESSEL-OWNERS.png"> -->
                                         </div>
                                         <p>{!! $businessData[1]['name'] !!}</p>
                                     </div>
@@ -837,7 +837,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[2]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/SHIP-YARDS.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/SHIP-YARDS.png"> -->
                                             </div>
                                             <p>{!! $businessData[2]['name'] !!}</p>
                                         </div>
@@ -848,7 +848,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[3]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/LOGISTICS-HEAVY-LIFT.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/LOGISTICS-HEAVY-LIFT.png"> -->
                                             </div>
                                             <p>{!! $businessData[3]['name'] !!}</p>
                                         </div>
@@ -859,7 +859,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[4]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/OIL-AND-GAS.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/OIL-AND-GAS.png"> -->
                                             </div>
                                             <p>{!! $businessData[4]['name'] !!}</p>
                                         </div>
@@ -870,7 +870,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[5]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/BANKS.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/BANKS.png"> -->
                                             </div>
                                             <p>{!! $businessData[5]['name'] !!}</p>
                                         </div>
@@ -881,7 +881,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[6]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/SHIP-RECYCLING.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/SHIP-RECYCLING.png"> -->
                                             </div>
                                             <p>{!! $businessData[6]['name'] !!}</p>
                                         </div>
@@ -892,7 +892,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[7]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/SUBSEA.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/SUBSEA.png"> -->
                                             </div>
                                             <p>{!! $businessData[7]['name'] !!}</p>
                                         </div>
@@ -903,7 +903,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[8]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/INSURANCE.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/INSURANCE.png"> -->
                                             </div>
                                             <p>{!! $businessData[8]['name'] !!}</p>
                                         </div>
@@ -914,7 +914,7 @@
                                         <div class="buisness_box">
                                             <div class="buis_img hvr-bounce-in1">
                                                 {!! $businessData[9]['icon'] !!}
-                                                <!-- <img src="http://adonia.webtesting.pw/wp-content/uploads/2024/03/SALVAGE.png"> -->
+                                                <!-- <img src="http://poonam.webtesting.pw/wp-content/uploads/2024/03/SALVAGE.png"> -->
                                             </div>
                                             <p>{!! $businessData[9]['name'] !!}</p>
                                         </div>

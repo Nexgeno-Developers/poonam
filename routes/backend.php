@@ -14,6 +14,8 @@ use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\BusinessController;
 use App\Http\Controllers\backend\ProductsController;
 
+use App\Http\Controllers\backend\ServiceController;
+
 use App\Http\Controllers\backend\TrumbowygController;
 
 /*
@@ -90,7 +92,16 @@ Route::post('/update-products-radio-n-comm', [ProductsController::class, 'produc
 Route::post('/update-products-oil-n-spill', [ProductsController::class, 'products_oil'])->name('products.oil-n-spill');
 Route::post('/update-products-aids-to-nav', [ProductsController::class, 'products_aids'])->name('products.aids-to-nav');
 
-
+//Service
+Route::group(['prefix' => 'service'], function () {
+    Route::get('/index', [ServiceController::class, 'index'])->name('backend.service.index');
+    Route::get('/add', [ServiceController::class, 'add'])->name('service.add');
+    Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+    Route::post('/create', [ServiceController::class, 'create'])->name('service.create');
+    Route::post('/update', [ServiceController::class, 'update'])->name('service.update');
+    Route::post('/delete/{id}', [ServiceController::class, 'delete'])->name('service.delete');
+    Route::get('/status/{id}/{status}', [ServiceController::class, 'status'])->name('service.status');
+});
 
 
 //User

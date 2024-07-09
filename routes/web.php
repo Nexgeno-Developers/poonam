@@ -30,6 +30,11 @@ Route::get('/our-business', [IndexController::class, 'our_Business'])->name('our
 Route::get('/products', [IndexController::class, 'products'])->name('products');
 Route::get('/projects', [IndexController::class, 'projects'])->name('projects');
 
+$slug = DB::table('services')->pluck('slug')->toArray();
+Route::get('/service/{slug}', [IndexController::class, 'service_detail'])
+    ->where('slug', implode('|', $slug ))
+    ->name('service.detail');
+
 Route::get('/404', [IndexController::class, 'not_found'])->name('error_page');
 Route::get('/thank-you', [IndexController::class, 'thank_you'])->name('thank_you');
 Route::get('/cookie-policy', [IndexController::class, 'cookie_policy'])->name('cookie-policy');

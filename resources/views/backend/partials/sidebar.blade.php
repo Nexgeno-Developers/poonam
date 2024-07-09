@@ -73,9 +73,9 @@
 
 
                         <li class="side-nav-item">
-                            <a href="{{ route('backend.project.page') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                            <a href="{{ route('backend.service.index') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="ri-bar-chart-2-line"></i> 
-                                <span> Project Page </span>
+                                <span> Service Page </span>
                             </a>
                         </li>
 

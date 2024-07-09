@@ -86,6 +86,10 @@ class IndexController extends Controller
         return view('frontend.pages.about.about');
     }
     
+    public function service_detail($slug){
+        var_dump($slug);
+        return view('frontend.pages.services.services');
+    }
 
 //--------------=============================== Pages ================================------------------------------
 

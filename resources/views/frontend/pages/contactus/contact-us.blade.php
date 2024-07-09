@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row">
         <div class="text-center font-28 mb-22 main_about_heading">
-            <h3 class="js-split-words2">ADONIA OFFSHORE CONSULTANTS PVT. LTD.</h3>
+            <h3 class="js-split-words2">poonam OFFSHORE CONSULTANTS PVT. LTD.</h3>
         </div>
         <div class="rightlinks">
             <ul>
