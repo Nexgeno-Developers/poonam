@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('backend.pages.home.index');
     }
 
@@ -20,7 +21,7 @@ class HomeController extends Controller
         // Validate request inputs
         $validator = Validator::make($request->all(), [
             'banner_text.*' => 'required',
-            'banner.*' => 'required|file|max:80000|mimes:jpeg,png,jpg',
+            'banner.*' => 'nullable|file|max:80000|mimes:jpeg,png,jpg',
         ]);
 
         if ($validator->fails()) {
@@ -30,33 +31,43 @@ class HomeController extends Controller
             ], 200);
         }
 
-        // Store new banner files
-        $newBanners = [];
-        foreach ($request->file('banner') as $index => $file) {
-            $bannerPath = $file->store('assets/banner/', 'public');
-            $newBanners[] = [
-                'text' => $request->banner_text[$index],
-                'image' => $bannerPath,
-            ];
-        }
+        // Initialize banners array
+        $banners = [];
 
         // Retrieve existing banners from the database
         $existingBanners = DB::table('pages')->where('page_name', 'home')->value('banner_section');
-
         if ($existingBanners !== null && !empty($existingBanners)) {
             $existingBanners = json_decode($existingBanners, true);
-
-            // Merge new banners into existing banners
-            foreach ($newBanners as $banner) {
-                $existingBanners[] = $banner;
-            }
-
-            $banners = $existingBanners;
         } else {
-            $banners = $newBanners;
+            $existingBanners = [];
         }
 
-        // Update or insert banners into the database
+        // Process banner texts and files
+        foreach ($request->banner_text as $index => $text) {
+            $fileUploaded = $request->hasFile('banner.' . $index);
+            $existingImage = isset($existingBanners[$index]['image']) ? $existingBanners[$index]['image'] : null;
+
+            // Skip the row if text is empty or if both new and existing images are not available
+            if (empty($text) || (!$fileUploaded && empty($existingImage))) {
+                continue;
+            }
+
+            $banner = [
+                'text' => $text,
+                'image' => $existingImage,
+            ];
+
+            // Check if a new file is uploaded for the current index
+            if ($fileUploaded) {
+                $file = $request->file('banner.' . $index);
+                $bannerPath = $file->store('assets/banner/', 'public');
+                $banner['image'] = $bannerPath;
+            }
+
+            $banners[] = $banner;
+        }
+
+        // Update the banners in the database
         $result = DB::table('pages')->updateOrInsert(
             ['page_name' => $request->page],
             ['banner_section' => json_encode($banners)]
@@ -77,7 +88,9 @@ class HomeController extends Controller
         return response()->json($response);
     }
 
-    public function home_intro(Request $request){
+
+    public function home_intro(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'intro' => 'required',
@@ -88,15 +101,20 @@ class HomeController extends Controller
                 'status' => false,
                 'notification' => $validator->errors()->all()
             ], 200);
-        }   
+        }
 
+        $title = $request->title;
+        $subtitle = $request->subtitle;
         $intro = $request->intro;
 
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'introduction' => $intro,
-        ]);
+        // Update the introduction in JSON format
+        $result = DB::table('pages')
+            ->where('page_name', $request->page)
+            ->update([
+                'introduction' => json_encode(['title' => $title, 'subtitle' => $subtitle, 'content' => $intro])
+            ]);
 
-        if($result){
+        if ($result) {
             $response = [
                 'status' => true,
                 'notification' => 'Home Intro Save successfully!',
@@ -109,13 +127,73 @@ class HomeController extends Controller
         }
 
         return response()->json($response);
-        
+
     }
 
-    public function home_marque(Request $request){
 
+
+    public function storeGallerySection1(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'gallery_title.*' => 'required',
+        'gallery_description.*' => 'required',
+        'gallery_image.*' => 'required|image|max:8000', // Adjust max file size as needed
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => false,
+            'notification' => $validator->errors()->all()
+        ], 200);
+    }
+
+    $gallerySection1 = [];
+    $galleryImages = $request->file('gallery_image');
+
+    for ($i = 0; $i < count($request->gallery_title); $i++) {
+        $imagePath = null;
+
+        // Check if the file exists at this index
+        if (isset($galleryImages[$i])) {
+            $imagePath = $galleryImages[$i]->store('gallery_images', 'public');
+        }
+
+        $gallerySection1[] = [
+            'title' => $request->gallery_title[$i],
+            'description' => $request->gallery_description[$i],
+            'image' => $imagePath,
+        ];
+    }
+
+    // Update the introduction in JSON format
+    $result = DB::table('pages')
+        ->where('page_name', $request->page)
+        ->update([
+            'gallery_section' => json_encode($gallerySection1)
+        ]);
+
+    if ($result) {
+        $response = [
+            'status' => true,
+            'notification' => 'Gallery Section 1 saved successfully!',
+        ];
+    } else {
+        $response = [
+            'status' => false,
+            'notification' => 'Something went wrong!',
+        ];
+    }
+
+    return response()->json($response);
+}
+
+
+    public function storeGallerySection2(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-            'marque' => 'required',
+            'gallery2_title.*' => 'required',
+            'gallery2_description.*' => 'required',
+            'gallery2_image.*' => 'required|image|max:8000', // Adjust max file size as needed
         ]);
 
         if ($validator->fails()) {
@@ -124,100 +202,42 @@ class HomeController extends Controller
                 'notification' => $validator->errors()->all()
             ], 200);
         }
-        
-        $marque = $request->marque;
 
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'marque' => json_encode($marque),
-        ]);
-        
-        if($result){
+        $gallerySection2 = [];
+        for ($i = 0; $i < count($request->gallery2_title); $i++) {
+            $imagePath = $request->file('gallery2_image')[$i]->store('gallery_images', 'public');
+            $gallerySection2[] = [
+                'title' => $request->gallery2_title[$i],
+                'description' => $request->gallery2_description[$i],
+                'image' => $imagePath,
+            ];
+        }
+
+        // Update `gallery_section2` in database as JSON
+        $result = DB::table('pages')
+            ->where('page_name', $request->page)
+            ->update([
+                'gallery_section2' => json_encode($gallerySection2)
+            ]);
+
+        if ($result) {
             $response = [
                 'status' => true,
-                'notification' => 'Home Marque Save successfully!',
+                'notification' => 'Gallery Section 2 saved successfully!',
             ];
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Somthing Went Wrong!',
+                'notification' => 'Something Went Wrong!',
             ];
         }
 
         return response()->json($response);
-        
     }
 
-    public function home_business(Request $request){
 
-        $validator = Validator::make($request->all(), [
-            'icon' => 'required',
-            'icon_name' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'notification' => $validator->errors()->all()
-            ], 200);
-        }
-
-        // // Storing new icons
-        // $newIcons = [];
-        // if($request->has('icon')){
-        //     foreach ($request->file('icon') as $index => $file) {
-        //         $iconsPath = $file->store('assets/icons/', 'public');
-        //         $newIcons[$index] = $iconsPath;
-        //     }
-        // }
-
-
-        // $icon_name = $request->icon_name;
-        // $icon = [];
-
-        // // Assigning new or old icons
-        // foreach ($icon_name as $key => $name) {
-        //     if (isset($newIcons[$key])) {
-        //         $icon[$key] = $newIcons[$key];
-        //     } else {
-        //         $old = "old_icon$key";
-        //         $icon[$key] = $request->$old ?? null;
-        //     }
-        // }
-
-        $icon_name = $request->icon_name;
-        $icon = $request->icon;
-
-        $business = [];
-
-        // Creating the business array
-        for ($i = 0; $i < count($icon_name); $i++) {
-            $business[$i] = [
-                'icon' => $icon[$i],
-                'name' => $icon_name[$i]
-            ];
-        }
-
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'business' => json_encode($business),
-        ]);
-        
-        if($result){
-            $response = [
-                'status' => true,
-                'notification' => 'Home Business Save successfully!',
-            ];
-        } else {
-            $response = [
-                'status' => false,
-                'notification' => 'Somthing Went Wrong!',
-            ];
-        }
-
-        return response()->json($response);
-
-    }
-
-    public function home_counter(Request $request){
+    public function home_counter(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'number' => 'required',
@@ -246,8 +266,8 @@ class HomeController extends Controller
         $result = DB::table('pages')->where('page_name', $request->page)->update([
             'counters' => json_encode($counter),
         ]);
-        
-        if($result){
+
+        if ($result) {
             $response = [
                 'status' => true,
                 'notification' => 'Home Counters Save successfully!',
@@ -263,7 +283,8 @@ class HomeController extends Controller
 
     }
 
-    public function home_project(Request $request){
+    public function home_project(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -284,7 +305,7 @@ class HomeController extends Controller
 
         // Storing new image
         $newImage = [];
-        if($request->has('image')){
+        if ($request->has('image')) {
             foreach ($request->file('image') as $index => $file) {
                 $ImagePath = $file->store('assets/project/', 'public');
                 $newImage[$index] = $ImagePath;
@@ -309,15 +330,15 @@ class HomeController extends Controller
                 'title' => $title[$i],
                 'date' => $date[$i],
                 'image' => $Image[$i],
-                'description' => $description[$i] 
+                'description' => $description[$i]
             ];
         }
 
         $result = DB::table('pages')->where('page_name', $request->page)->update([
             'projects' => json_encode($project),
         ]);
-        
-        if($result){
+
+        if ($result) {
             $response = [
                 'status' => true,
                 'notification' => 'Home Project Save successfully!',

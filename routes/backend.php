@@ -62,8 +62,8 @@ Route::get('/products-page', [ProductsController::class, 'index'])->name('backen
 
 Route::post('/update-home-banner', [HomeController::class, 'home_banner'])->name('home.banner');
 Route::post('/update-home-intro', [HomeController::class, 'home_intro'])->name('home.intro');
-Route::post('/update-home-marque', [HomeController::class, 'home_marque'])->name('home.marque');
-Route::post('/update-home-business', [HomeController::class, 'home_business'])->name('home.business');
+Route::post('/update-gallery-section', [HomeController::class, 'storeGallerySection1'])->name('home.gallery_section1');
+Route::post('/update-gallery-section2', [HomeController::class, 'storeGallerySection2'])->name('home.gallery_section2');
 Route::post('/update-home-counter', [HomeController::class, 'home_counter'])->name('home.counter');
 Route::post('/update-home-project', [HomeController::class, 'home_project'])->name('home.project');
 

@@ -14,6 +14,10 @@
             $banners = $decoded;
         }
     }
+
+    $gallery_section1 = json_decode($details->gallery_section);
+    $gallery_section2 = json_decode($details->gallery_section2);
+
 @endphp
 
 
@@ -56,11 +60,12 @@
                                                                 1125*196)</span></label>
                                                         <input class="form-control" type="file" id="image-{{ $index }}"
                                                             name="banner[]" @if(empty($banner['image'])) required
-                                                            @endif>                                                       
+                                                            @endif>
                                                     </div>
                                                     <div class="col col-sm-2">
                                                         @if(!empty($banner['image']))
-                                                        <img width="100" src="{{ asset('storage/' . $banner['image']) }}"
+                                                        <img width="100"
+                                                            src="{{ asset('storage/' . $banner['image']) }}"
                                                             alt="Banner Image" class="img-thumbnail mt-2">
                                                         @endif
                                                     </div>
@@ -138,11 +143,25 @@
                     <form id="home_intro_form" action="{{ url(route('home.intro')) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-
+                        <div class="row mb-3">
+                            <div class="col col-sm-6">
+                                <label for="intro">Intro Title<span class="red">*</span></label>
+                                <input type="text" class="form-control" name="title" placeholder="title"
+                                    value="{{ isset($details->introduction) ? json_decode($details->introduction)->title : '' }}"
+                                    required>
+                            </div>
+                            <div class="col col-sm-6">
+                                <label for="intro">Intro Sub Title<span class="red">*</span></label>
+                                <input type="text" class="form-control" name="subtitle" placeholder="sub title"
+                                    value="{{ isset($details->introduction) ? json_decode($details->introduction)->subtitle : '' }}"
+                                    required>
+                            </div>
+                        </div>
                         <input type="hidden" name="page" value="home">
+
                         <label for="intro">Intro Description<span class="red">*</span></label>
                         <textarea class="trumbowyg form-control" name="intro" rows="5"
-                            required>{{ $details->introduction }}</textarea>
+                            required>{{ isset($details->introduction) ? json_decode($details->introduction)->content : '' }}</textarea>
 
                         <div class="col-sm-1 mt-2" style="float: right;">
                             <div class="form-group d-grid mb-3 text-end">
@@ -155,476 +174,448 @@
                 </div>
             </div>
 
-            <!-----==================== home banner ==========----------------------->
-
-            <!-----==================== home Marque ==========----------------------->
-
-            <div class="card m-3">
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <h4 class="header-title"><b>Marque Section</b></h4>
-                        <hr>
-                    </div>
-
-                    <form id="home_marque_form" action="{{ url(route('home.marque')) }}" method="post"
-                        enctype="multipart/form-data">
-                        @csrf
-
-                        @php
-                        $marque = json_decode($details->marque);
-                        @endphp
-
-                        <input type="hidden" name="page" value="home">
-
-                        <div class="form-group mb-3">
-                            <input type="text" placeholder="Enter Text" class="form-control" name="marque[]"
-                                value="{{ isset($marque[0]) ? $marque[0] : '' }}" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <input type="text" placeholder="Enter Text" class="form-control" name="marque[]"
-                                value="{{ isset($marque[1]) ? $marque[1] : '' }}" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <input type="text" placeholder="Enter Text" class="form-control" name="marque[]"
-                                value="{{ isset($marque[2]) ? $marque[2] : '' }}" required>
-                        </div>
-
-
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
-                            </div>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-
-            <!-----==================== home Marque ==========----------------------->
+            <!-----==================== home intro ==========----------------------->
 
             <!-----==================== home Business ==========----------------------->
 
             <div class="card m-3">
                 <div class="card-body">
                     <div class="col-md-12">
-                        <h4 class="header-title"><b>Business Section</b></h4>
+                        <h4 class="header-title"><b>Gallery Section 1</b></h4>
                         <hr>
                     </div>
 
-                    <form id="home_business_form" action="{{ url(route('home.business')) }}" method="post"
+                    <form id="gallery_section1" action="{{ url(route('home.gallery_section1')) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-
-                        @php
-                        $Business = json_decode($details->business);
-                        @endphp
-
                         <input type="hidden" name="page" value="home">
 
-                        <div class="col-sm-12">
-
-                            <div class="form-group mb-3">
-                                <div id="home_banner_key_add_more" style=""> @php $i = 1;
-                                    if(!empty($Business)) { foreach ($Business as $row) { @endphp
-                                    <div class="replace_key">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-11">
-
-                                                    <div class="row">
-                                                        <div class="col col-sm-6">
-
-                                                            <input class="form-control" name="icon_name[]"
-                                                                placeholder="Enter Icon Name here..."
-                                                                value="{{ $row->name }}" required>
-
-                                                        </div>
-                                                        <div class="d-flex col col-sm-6">
-                                                            {{--
-                                                            // <input class="form-control" style="margin-bottom: 5px;"
-                                                                // type="file" id="image" name="icon[]" @if
-                                                                (empty($row->icon)) required @endif>
-
-                                                            // <div style="width: 100px;">
-                                                                // <img src="{{ asset('storage/' . $row->icon) }}"
-                                                                    class="img-thumbnail">
-                                                                // </div>
-
-
-                                                            // <input type="hidden" name="old_icon{{ $i - 1 }}"
-                                                                value="{{ $row->icon }}"> --}}
-                                                            <textarea class="form-control"
-                                                                placeholder="Enter SVG Code Here" name="icon[]" rows="5"
-                                                                required>{{ $row->icon }}</textarea>
-
-                                                            <div style="width: 100px;">
-                                                                {!! $row->icon !!}
-                                                            </div>
-
-                                                        </div>
-
-
-
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-1"> @if($i == 1) <i
-                                                        style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                        class="ri-add-circle-fill" id="add_replace_key"></i> @else <i
-                                                        style="font-size: 25px; color: red; cursor: pointer; margin-left: 10px;"
-                                                        class="ri-delete-bin-2-fill"
-                                                        onclick="remove_replace_key($(this));"></i> @endif </div>
-                                            </div>
-                                        </div>
-                                        </br>
-                                    </div> @php $i++; } @endphp @php } else { @endphp
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-11">
-                                                <div class="row">
-
-                                                    {{--
-                                                    // <div class="col col-sm-6">
-                                                        // <input class="form-control" style="margin-bottom: 5px;" //
-                                                            type="file" id="image" name="icon[]" required>
-                                                        // </div>
-                                                    --}}
-                                                    <div class="col col-sm-6">
-                                                        <input class="form-control" name="icon_name[]"
-                                                            placeholder="Enter Icon Name here..." required>
-                                                    </div>
-                                                    <div class="col col-sm-6">
-                                                        <textarea class="form-control" placeholder="Enter SVG Code"
-                                                            name="icon[]" rows="5" required></textarea>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1"><i
-                                                    style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-add-circle-fill" id="add_replace_key"></i></div>
-                                        </div>
-                                        </br>
-                                    </div> @php } @endphp
-                                </div>
-                            </div>
-
-
+                        <div class="row mb-3">
+                            @if (empty($gallery_section1))
+                            @for ($i = 0; $i < 7; $i++) <div class="col col-sm-4">
+                                <label for="gallery_title{{$i+1}}">Gallery Title {{$i+1}} <span
+                                        class="red">*</span></label>
+                                <input type="text" class="form-control" name="gallery_title[]"
+                                    placeholder="Gallery Title {{$i+1}}" required>
                         </div>
-
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
-                            </div>
+                        <div class="col col-sm-4">
+                            <label for="gallery_description{{$i+1}}">Gallery Description {{$i+1}} <span
+                                    class="red">*</span></label>
+                            <textarea class="form-control" name="gallery_description[]" rows="3"
+                                placeholder="Gallery Description {{$i+1}}" required></textarea>
                         </div>
-
-                    </form>
-
+                        <div class="col col-sm-4">
+                            @if ($i < 4) <label for="gallery_image{{$i+1}}">Gallery Image {{$i+1}} <span
+                                    class="red">*</span></label>
+                                <input type="file" class="form-control" id="gallery_image{{$i+1}}"
+                                    name="gallery_image[]" required>
+                                @endif
+                        </div>
+                        @endfor
+                        @else
+                        @foreach ($gallery_section1 as $key => $section)
+                        <div class="col col-sm-6">
+                            <label for="gallery_title{{$key + 1}}">Gallery Title {{$key + 1}} <span
+                                    class="red">*</span></label>
+                            <input type="text" class="form-control" name="gallery_title[]"
+                                placeholder="Gallery Title {{$key + 1}}" value="{{ $section->title }}" required>
+                        </div>
+                        <div class="col col-sm-6">
+                            <label for="gallery_description{{$key + 1}}">Gallery Description {{$key + 1}} <span
+                                    class="red">*</span></label>
+                            <textarea class="form-control" name="gallery_description[]" rows="3"
+                                placeholder="Gallery Description {{$key + 1}}"
+                                required>{{ $section->description }}</textarea>
+                        </div>
+                        <div class="col col-sm-6">
+                            @if ($key < 4) <label for="gallery_image{{$key + 1}}">Gallery Image {{$key + 1}} <span
+                                    class="red">*</span></label>
+                                <input type="file" class="form-control" id="gallery_image{{$key + 1}}"
+                                    name="gallery_image[]" @if(empty($section->image)) required @endif>
+                                @endif
+                        </div>
+                        <div class="col col-sm-6">
+                            @if(!empty($section->image))
+                            <img width="100"
+                                src="{{ asset('storage/' . $section->image) }}"
+                                alt="Banner Image" class="img-thumbnail mt-2">
+                            @endif
+                        </div>
+                        @endforeach
+                        @endif
                 </div>
-            </div>
-
-            <!-----==================== home Business ==========----------------------->
-
-
-            <!-----==================== home Counter ==========----------------------->
-
-            <div class="card m-3">
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <h4 class="header-title"><b>Counter Section</b></h4>
-                        <hr>
+                <div class="col-sm-1 mt-2" style="float: right;">
+                    <div class="form-group d-grid mb-3 text-end">
+                        <button type="submit" class="btn btn-block btn-primary">Save</button>
                     </div>
+                </div>
+                </form>
 
-                    <form id="home_counter_form" action="{{ url(route('home.counter')) }}" method="post"
-                        enctype="multipart/form-data">
-                        @csrf
+            </div>
+        </div>
 
-                        @php
-                        $Counter = json_decode($details->counters);
-                        @endphp
 
-                        <input type="hidden" name="page" value="home">
 
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Number" class="form-control"
-                                    name="number[]" value="{{ isset($Counter[0]) ? $Counter[0]->number : '' }}"
-                                    required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
-                                    value="{{ isset($Counter[0]) ? $Counter[0]->name : '' }}" required>
-                            </div>
+        <div class="card m-3">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <h4 class="header-title"><b>Gallery Section 2</b></h4>
+                    <hr>
+                </div>
+
+                <form id="gallery_section2" action="{{ url(route('home.gallery_section2')) }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="page" value="home">
+
+                    @if (empty($gallery_section2))
+                    @for ($i = 1; $i <= 2; $i++) <div class="row mb-3">
+                        <div class="col col-sm-6">
+                            <label for="gallery2_title_{{$i}}">Gallery Title {{$i}} <span class="red">*</span></label>
+                            <input type="text" class="form-control" name="gallery2_title[]"
+                                placeholder="Gallery Title {{$i}}" required>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Number" class="form-control"
-                                    name="number[]" value="{{ isset($Counter[1]) ? $Counter[1]->number : '' }}"
-                                    required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
-                                    value="{{ isset($Counter[1]) ? $Counter[1]->name : '' }}" required>
-                            </div>
+                        <div class="col col-sm-6">
+                            <label for="gallery2_description_{{$i}}">Gallery Description {{$i}} <span
+                                    class="red">*</span></label>
+                            <textarea class="form-control" name="gallery2_description[]" rows="3"
+                                placeholder="Gallery Description {{$i}}" required></textarea>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Number" class="form-control"
-                                    name="number[]" value="{{ isset($Counter[2]) ? $Counter[2]->number : '' }}"
-                                    required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
-                                    value="{{ isset($Counter[2]) ? $Counter[2]->name : '' }}" required>
-                            </div>
+                        <div class="col col-sm-6">
+                            <label for="gallery2_image_{{$i}}">Gallery Image {{$i}} <span class="red">*</span></label>
+                            <input type="file" class="form-control" name="gallery2_image[]" required>
                         </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Number" class="form-control"
-                                    name="number[]" value="{{ isset($Counter[3]) ? $Counter[3]->number : '' }}"
-                                    required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-5">
-                                <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
-                                    value="{{ isset($Counter[3]) ? $Counter[3]->name : '' }}" required>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
-                            </div>
-                        </div>
-
-                    </form>
-
+            </div>
+            @endfor
+            @else
+            @foreach ($gallery_section2 as $key => $section)
+            <div class="row mb-3">
+                <div class="col col-sm-6">
+                    <label for="gallery2_title_{{$key + 1}}">Gallery Title {{$key + 1}} <span
+                            class="red">*</span></label>
+                    <input type="text" class="form-control" name="gallery2_title[]"
+                        placeholder="Gallery Title {{$key + 1}}" value="{{ $section->title }}" required>
+                </div>
+                <div class="col col-sm-6">
+                    <label for="gallery2_description_{{$key + 1}}">Gallery Description {{$key + 1}} <span
+                            class="red">*</span></label>
+                    <textarea class="form-control" name="gallery2_description[]" rows="3"
+                        placeholder="Gallery Description {{$key + 1}}" required>{{ $section->description }}</textarea>
+                </div>
+                <div class="col col-sm-6">
+                    <label for="gallery2_image_{{$key + 1}}">Gallery Image {{$key + 1}} <span
+                            class="red">*</span></label>
+                    <input type="file" class="form-control" name="gallery2_image[]" required>
                 </div>
             </div>
+            @endforeach
+            @endif
 
-            <!-----==================== home Marque ==========----------------------->
-
-            <!-----==================== home project ==========----------------------->
-
-            <div class="card m-3">
-                <div class="card-body">
-                    <div class="col-md-12">
-                        <h4 class="header-title"><b>Project Section</b></h4>
-                        <hr>
-                    </div>
-
-                    <form id="home_project_form" action="{{ url(route('home.project')) }}" method="post"
-                        enctype="multipart/form-data">
-                        @csrf
-
-                        @php
-                        $project = json_decode($details->projects);
-                        $j = 0;
-                        @endphp
-
-                        <input type="hidden" name="page" value="home">
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[0]) ? $project[0]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select Date" class="form-control" name="date[]"
-                                    value="{{ isset($project[0]) ? $project[0]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select file" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[0]->image)) required @endif>
-                            </div>
-                            @if (isset($project[0]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[0]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[0]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <label for="description">Description<span class="red">*</span></label>
-                                <textarea class="trumbowyg form-control" name="description[]" rows="5" required>
-                                        {{ isset($project[0]) ? $project[0]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[1]) ? $project[1]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select Date" class="form-control" name="date[]"
-                                    value="{{ isset($project[1]) ? $project[1]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select file" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[1]->image)) required @endif>
-                            </div>
-                            @if (isset($project[1]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[1]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[1]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <label for="description">Description<span class="red">*</span></label>
-                                <textarea class="trumbowyg form-control" placeholder="Enter Description"
-                                    name="description[]" rows="5" required>
-                                        {{ isset($project[1]) ? $project[1]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[2]) ? $project[2]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select date" class="form-control" name="date[]"
-                                    value="{{ isset($project[2]) ? $project[2]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select Image file" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[2]->image)) required @endif>
-                            </div>
-                            @if (isset($project[2]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[2]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[2]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <label for="description">Description<span class="red">*</span></label>
-                                <textarea class="trumbowyg form-control" placeholder="Enter Description"
-                                    name="description[]" rows="5" required>
-                                        {{ isset($project[2]) ? $project[2]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[3]) ? $project[3]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select Date" class="form-control" name="date[]"
-                                    value="{{ isset($project[3]) ? $project[3]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select image file" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[3]->image)) required @endif>
-                            </div>
-                            @if (isset($project[3]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[3]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[3]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <label for="description">Description<span class="red">*</span></label>
-                                <textarea class="trumbowyg form-control" placeholder="Enter Description"
-                                    name="description[]" rows="5" required>
-                                        {{ isset($project[3]) ? $project[3]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[4]) ? $project[4]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select date" class="form-control" name="date[]"
-                                    value="{{ isset($project[4]) ? $project[4]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select image file" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[4]->image)) required @endif>
-                            </div>
-                            @if (isset($project[4]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[4]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[4]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <label for="description">Description<span class="red">*</span></label>
-                                <textarea class="trumbowyg form-control" name="description[]" rows="5" required>
-                                        {{ isset($project[4]) ? $project[4]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
-                                    value="{{ isset($project[5]) ? $project[5]->title : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="date" placeholder="Select date" class="form-control" name="date[]"
-                                    value="{{ isset($project[5]) ? $project[5]->date : '' }}" required>
-                            </div>
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <input type="file" placeholder="Select image" class="form-control" name="image[]"
-                                    value="" @if(!isset($project[5]->image)) required @endif>
-                            </div>
-                            @if (isset($project[5]->image))
-                            <div class="form-group mb-3 mx-2 col-md-3">
-                                <div style="width: 100px;">
-                                    <img src="{{ asset('storage/' . $project[5]->image) }}" class="img-thumbnail">
-                                </div>
-                                <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[5]->image }}">
-                            </div>
-                            @endif
-                            <div class="form-group mb-3 mx-2 col-md-12">
-                                <textarea class="trumbowyg form-control" placeholder="Enter Description"
-                                    name="description[]" rows="5" required>
-                                        {{ isset($project[5]) ? $project[5]->description : '' }}
-                                    </textarea>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
-                            </div>
-                        </div>
-
-                    </form>
-
+            <div class="col-sm-1 mt-2" style="float: right;">
+                <div class="form-group d-grid mb-3 text-end">
+                    <button type="submit" class="btn btn-block btn-primary">Save</button>
                 </div>
             </div>
-
-            <!-----==================== home project ==========----------------------->
+            </form>
 
         </div>
     </div>
-    <!-- end card-box-->
+
+
+    <!-----==================== home Business ==========----------------------->
+
+
+    <!-----==================== home Counter ==========----------------------->
+
+    <div class="card m-3">
+        <div class="card-body">
+            <div class="col-md-12">
+                <h4 class="header-title"><b>Counter Section</b></h4>
+                <hr>
+            </div>
+
+            <form id="home_counter_form" action="{{ url(route('home.counter')) }}" method="post"
+                enctype="multipart/form-data">
+                @csrf
+
+                @php
+                $Counter = json_decode($details->counters);
+                @endphp
+
+                <input type="hidden" name="page" value="home">
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Number" class="form-control" name="number[]"
+                            value="{{ isset($Counter[0]) ? $Counter[0]->number : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
+                            value="{{ isset($Counter[0]) ? $Counter[0]->name : '' }}" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Number" class="form-control" name="number[]"
+                            value="{{ isset($Counter[1]) ? $Counter[1]->number : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
+                            value="{{ isset($Counter[1]) ? $Counter[1]->name : '' }}" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Number" class="form-control" name="number[]"
+                            value="{{ isset($Counter[2]) ? $Counter[2]->number : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
+                            value="{{ isset($Counter[2]) ? $Counter[2]->name : '' }}" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Number" class="form-control" name="number[]"
+                            value="{{ isset($Counter[3]) ? $Counter[3]->number : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-5">
+                        <input type="text" placeholder="Enter Counter Text" class="form-control" name="name[]"
+                            value="{{ isset($Counter[3]) ? $Counter[3]->name : '' }}" required>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-1 mt-2" style="float: right;">
+                    <div class="form-group d-grid mb-3 text-end">
+                        <button type="submit" class="btn btn-block btn-primary">Save</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-----==================== home Marque ==========----------------------->
+
+    <!-----==================== home project ==========----------------------->
+
+    <div class="card m-3">
+        <div class="card-body">
+            <div class="col-md-12">
+                <h4 class="header-title"><b>Project Section</b></h4>
+                <hr>
+            </div>
+
+            <form id="home_project_form" action="{{ url(route('home.project')) }}" method="post"
+                enctype="multipart/form-data">
+                @csrf
+
+                @php
+                $project = json_decode($details->projects);
+                $j = 0;
+                @endphp
+
+                <input type="hidden" name="page" value="home">
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[0]) ? $project[0]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select Date" class="form-control" name="date[]"
+                            value="{{ isset($project[0]) ? $project[0]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select file" class="form-control" name="image[]" value=""
+                            @if(!isset($project[0]->image)) required @endif>
+                    </div>
+                    @if (isset($project[0]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[0]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[0]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <label for="description">Description<span class="red">*</span></label>
+                        <textarea class="trumbowyg form-control" name="description[]" rows="5" required>
+                                        {{ isset($project[0]) ? $project[0]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[1]) ? $project[1]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select Date" class="form-control" name="date[]"
+                            value="{{ isset($project[1]) ? $project[1]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select file" class="form-control" name="image[]" value=""
+                            @if(!isset($project[1]->image)) required @endif>
+                    </div>
+                    @if (isset($project[1]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[1]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[1]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <label for="description">Description<span class="red">*</span></label>
+                        <textarea class="trumbowyg form-control" placeholder="Enter Description" name="description[]"
+                            rows="5" required>
+                                        {{ isset($project[1]) ? $project[1]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[2]) ? $project[2]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select date" class="form-control" name="date[]"
+                            value="{{ isset($project[2]) ? $project[2]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select Image file" class="form-control" name="image[]" value=""
+                            @if(!isset($project[2]->image)) required @endif>
+                    </div>
+                    @if (isset($project[2]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[2]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[2]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <label for="description">Description<span class="red">*</span></label>
+                        <textarea class="trumbowyg form-control" placeholder="Enter Description" name="description[]"
+                            rows="5" required>
+                                        {{ isset($project[2]) ? $project[2]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[3]) ? $project[3]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select Date" class="form-control" name="date[]"
+                            value="{{ isset($project[3]) ? $project[3]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select image file" class="form-control" name="image[]" value=""
+                            @if(!isset($project[3]->image)) required @endif>
+                    </div>
+                    @if (isset($project[3]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[3]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[3]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <label for="description">Description<span class="red">*</span></label>
+                        <textarea class="trumbowyg form-control" placeholder="Enter Description" name="description[]"
+                            rows="5" required>
+                                        {{ isset($project[3]) ? $project[3]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[4]) ? $project[4]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select date" class="form-control" name="date[]"
+                            value="{{ isset($project[4]) ? $project[4]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select image file" class="form-control" name="image[]" value=""
+                            @if(!isset($project[4]->image)) required @endif>
+                    </div>
+                    @if (isset($project[4]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[4]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[4]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <label for="description">Description<span class="red">*</span></label>
+                        <textarea class="trumbowyg form-control" name="description[]" rows="5" required>
+                                        {{ isset($project[4]) ? $project[4]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="text" placeholder="Enter Title Text" class="form-control" name="title[]"
+                            value="{{ isset($project[5]) ? $project[5]->title : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="date" placeholder="Select date" class="form-control" name="date[]"
+                            value="{{ isset($project[5]) ? $project[5]->date : '' }}" required>
+                    </div>
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <input type="file" placeholder="Select image" class="form-control" name="image[]" value=""
+                            @if(!isset($project[5]->image)) required @endif>
+                    </div>
+                    @if (isset($project[5]->image))
+                    <div class="form-group mb-3 mx-2 col-md-3">
+                        <div style="width: 100px;">
+                            <img src="{{ asset('storage/' . $project[5]->image) }}" class="img-thumbnail">
+                        </div>
+                        <input type="hidden" name="old_image{{ $j++ }}" value="{{ $project[5]->image }}">
+                    </div>
+                    @endif
+                    <div class="form-group mb-3 mx-2 col-md-12">
+                        <textarea class="trumbowyg form-control" placeholder="Enter Description" name="description[]"
+                            rows="5" required>
+                                        {{ isset($project[5]) ? $project[5]->description : '' }}
+                                    </textarea>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-1 mt-2" style="float: right;">
+                    <div class="form-group d-grid mb-3 text-end">
+                        <button type="submit" class="btn btn-block btn-primary">Save</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-----==================== home project ==========----------------------->
+
+</div>
+</div>
+<!-- end card-box-->
 </div>
 @endsection
 
@@ -681,7 +672,8 @@
     $(document).ready(function () {
         initValidate('#home_project_form');
         initValidate('#home_counter_form');
-        initValidate('#home_business_form');
+        initValidate('#gallery_section1');
+        initValidate('#gallery_section2');
         initValidate('#home_marque_form');
         initValidate('#home_intro_form');
         initValidate('#home_banner_form');
@@ -699,7 +691,12 @@
         ajaxSubmit(e, form, responseHandler);
     });
 
-    $("#home_business_form").submit(function (e) {
+    $("#gallery_section1").submit(function (e) {
+        var form = $(this);
+        ajaxSubmit(e, form, responseHandler);
+    });
+
+    $("#gallery_section2").submit(function (e) {
         var form = $(this);
         ajaxSubmit(e, form, responseHandler);
     });
