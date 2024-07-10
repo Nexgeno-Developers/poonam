@@ -24,7 +24,6 @@
                 <th>Page Name</th>
                 <th>Title</th>
                 <th>URL</th>
-                <th>Status</th>
                 <th>Date</th>
                 <th>Action</th>
             </tr>
@@ -39,23 +38,8 @@
                 <td>
                     <a target="_blank" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}">{{$row->slug}}</a>
                 </td> 
-                <td>
-                    @if($row->status)
-                    <span class="badge bg-success">Active</span>
-                    @else
-                    <span class="badge bg-danger">Inctive</span>
-                    @endif
-                </td>
                 <td>{{datetimeFormatter($row->created_at)}}</td>
                 <td>
-                    <a href="{{ url(route('service.status', ['id' => $row->id, 'status' => ($row->status == '1') ? '0' : '1'])) }}" class="action-icon">
-                        @if ($row->status == '1')
-                            <i class="ri-eye-off-fill" title="Inactive"></i>
-                        @else
-                            <i class="ri-eye-fill" title="Active"></i>
-                        @endif
-                    </a>
-
                     <a href="javascript:void(0);" class="action-icon" onclick="largeModal('{{ url(route('service.edit',['id' => $row->id])) }}', 'Edit Service')"> <i class="mdi mdi-square-edit-outline" title="Edit"></i></a>
 
                     <a href="javascript:void(0);" class="action-icon" onclick="confirmModal('{{ url(route('service.delete', $row->id)) }}', responseHandler)"><i class="mdi mdi-delete" title="Delete"></i></a>

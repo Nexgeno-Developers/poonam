@@ -16,7 +16,7 @@
         <div class="col-sm-12">
             <div class="form-group mb-3">
                 <label>Banner Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                <input class="form-control" type="file" id="banner" name="banner" required>
+                <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp" required>
             </div>
         </div>
         <div class="col-sm-12">
@@ -35,7 +35,7 @@
         <div class="col-sm-12 gallery-image-row">
             <div class="form-group mb-3 ">
                 <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" required>
+                <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" required>
             </div>
             <div class="col-md-12">
                 <button type="button" class="btn btn-success add-row my-2">Add More +</button>

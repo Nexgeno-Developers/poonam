@@ -100,7 +100,7 @@ Route::group(['prefix' => 'service'], function () {
     Route::post('/create', [ServiceController::class, 'create'])->name('service.create');
     Route::post('/update', [ServiceController::class, 'update'])->name('service.update');
     Route::post('/delete/{id}', [ServiceController::class, 'delete'])->name('service.delete');
-    Route::get('/status/{id}/{status}', [ServiceController::class, 'status'])->name('service.status');
+    // Route::get('/status/{id}/{status}', [ServiceController::class, 'status'])->name('service.status');
 });
 
 

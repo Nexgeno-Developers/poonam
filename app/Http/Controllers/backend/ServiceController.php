@@ -89,6 +89,158 @@ class ServiceController extends Controller
         return response()->json($response);
     }
 
+    public function edit($id) {
+        $service = DB::table('services')->where('id',$id)->get()->first();
+        $galleryImages_data = json_decode($service->gallery_image);
+        return view('backend.pages.service.edit', compact('service','galleryImages_data'));
+    }  
+    
+    public function delete($id) {
+        
+        $service = DB::table('services')->where('id', $id);
+        if (!$service) {
+            $response = [
+                'status' => false,
+                'notification' => 'Record not found.!',
+            ];
+            return response()->json($response);
+        }
+        $service->delete();
+
+        $response = [
+            'status' => true,
+            'notification' => 'Service Deleted successfully!',
+        ];
+
+        return response()->json($response);
+    } 
+    
+    
+    public function update(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'banner' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'slug' => 'required',
+            'title' => 'required',
+            'page_name' => 'required',
+            'short_description' => 'required',
+            'gallery_image.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+        ], [
+            'banner.image' => 'The banner must be an image.',
+            'banner.mimes' => 'The banner must be a file of type: jpeg, png, jpg, webp.',
+            'banner.max' => 'The banner may not be greater than 2 MB.',
+            
+            'slug.required' => 'The slug is required.',
+            'slug.unique' => 'The slug must be unique.',
+    
+            'title.required' => 'The title is required.',
+    
+            'page_name.required' => 'The page name is required.',
+    
+            'short_description.required' => 'The short description is required.',
+    
+            'gallery_image.*.image' => 'Each gallery image must be an image.',
+            'gallery_image.*.mimes' => 'Each gallery image must be a file of type: jpeg, png, jpg, webp.',
+            'gallery_image.*.max' => 'Each gallery image may not be greater than 2 MB.',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
+        }
+
+        $id = $request->input('id');
+        $old_data = DB::table('services')->where('id', $id)->get()->first();
+
+        $slug = customSlug($request->input('slug'));
+
+        if($old_data !== null && !empty($old_data)){
+            $old_data_galleryImages = json_decode($old_data->gallery_image, true);
+            $next = true;
+        }
+    
+        if ($request->hasFile('banner')) {
+            $bannerPath = $request->file('banner')->store('assets/image/banner', 'public');
+        } else {
+            $bannerPath = $old_data->banner;
+        }
+
+        if($request->has('gallery_image')){
+
+            $galleryImages = [];
+
+            $newImage = [];
+            foreach ($request->file('gallery_image') as $index => $file) {
+                $ImagePath = $file->store('assets/image/gallery_image', 'public');
+                $newImage[$index] = $ImagePath;
+            }
+
+            $number_img = $request->input('number_img');
+            foreach ($number_img as $key => $row) {
+
+                if (isset($newImage[$key])) {
+                    $galleryImages[$key] = $newImage[$key];
+                } else {
+
+                    $old = "old_image$key";
+                    if($request->has($old)){
+    
+                        if($next == true){
+                            $galleryImages[$key] = $old_data_galleryImages[$key] ?? null;
+                        } else {
+                            $privous = $key + 1;
+                            $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
+                        }
+                        
+                    } else {
+                        $next = false;
+                        $privous = $key + 1;
+                        $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
+                    }
+                }
+
+
+            }
+
+        } else {
+            $galleryImages = $old_data->gallery_image;
+        }
+    
+        $result = DB::table('services')->where('id', $id)->update([
+            'banner' => $bannerPath,
+            'slug' => $slug,
+            'page_name' => $request->input('page_name'),
+            'title' => $request->input('title'),
+            'short_description' => $request->input('short_description'),
+            'gallery_image' => json_encode($galleryImages), 
+        ]);
+        
+        if($result){
+            $response = [
+                'status' => true,
+                'notification' => 'Service Update successfully!',
+            ];
+        } else {
+            $response = [
+                'status' => false,
+                'notification' => 'Somthing Went Wrong!',
+            ];
+        }
+
+        return response()->json($response);
+    }
+
+
+
+
+
+
+
+
+
+
     public function project_banner(Request $request){
 
         $validator = Validator::make($request->all(), [
@@ -348,30 +500,7 @@ class ServiceController extends Controller
 
    
 
-    // public function edit($id) {
-    //     $award = Award::find($id);
-    //     return view('backend.pages.award.edit', compact('award'));
-    // }  
-    
-    // public function delete($id) {
-        
-    //     $award = Award::find($id);
-    //     if (!$award) {
-    //         $response = [
-    //             'status' => false,
-    //             'notification' => 'Record not found.!',
-    //         ];
-    //         return response()->json($response);
-    //     }
-    //     $award->delete();
 
-    //     $response = [
-    //         'status' => true,
-    //         'notification' => 'Award Deleted successfully!',
-    //     ];
-
-    //     return response()->json($response);
-    // }  
     
     // public function status($id, $status) { 
     //     $award = Award::find($id);
@@ -381,28 +510,7 @@ class ServiceController extends Controller
     //     return redirect(route('award.index'))->with('success', 'Status Change successfully!');
     // }  
     
-    // public function update(Request $request) {
-    //     $id = $request->input('id');
-    //     $award = Award::find($id);
-    
-    //     if ($request->hasFile('image')) {
-    //         // Update the image if a new one is uploaded
-    //         $imagePath = $request->file('image')->store('assets/image/award', 'public');
-    //         $award->image = $imagePath;
-    //     }
-    
-    //     $award->title = $request->input('title');
-    //     $award->series = $request->input('series');
-    
-    //     $award->save();
 
-    //     $response = [
-    //         'status' => true,
-    //         'notification' => 'Award Update successfully!',
-    //     ];
-
-    //     return response()->json($response);
-    // }
 
 
 
