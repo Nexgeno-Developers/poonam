@@ -210,6 +210,11 @@
                     <!--<li menuname="Services-menu" ><a  class="h2" href="services.php" data-pjax-link="overlayMenu">-->
                     <!--    <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Services</div></a>-->
                     <!--</li>-->
+
+                    @php
+                      $services = DB::table('services')->where('status', 1)->get();
+                      
+                    @endphp
                     <li menuname="Services-menu" class="menu-item-has-children">
                         
                         <a class="h2 hover-right-arrow" href="#" data-pjax-link="overlayMenu">
@@ -219,11 +224,13 @@
                         </div>
                         </a>
                         <ul class="sub-menu">
-                            <li menuname="Vases"><a class="h3" href="{{ route('services') }}" data-pjax-link="overlayMenu">
-                              <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Vases</div></a>
-                            </li>
-                            
+                          @foreach($services as $row)
+                          <li menuname="Vases"><a class="h3" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}" data-pjax-link="overlayMenu">
+                            <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">{{$row->title}}</div></a>
+                          </li>
+                          @endforeach                            
                         </ul>
+
                     </li>
                     <li menuname="Gallery-menu" ><a  class="h2" href="{{ route('gallery') }}" data-pjax-link="overlayMenu">
                         <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Gallery</div></a>

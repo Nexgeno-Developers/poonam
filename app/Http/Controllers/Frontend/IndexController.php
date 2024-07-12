@@ -97,8 +97,17 @@ class IndexController extends Controller
 
     
     public function service_detail($slug){
-        var_dump($slug);
-        return view('frontend.pages.services.services');
+        // var_dump($slug);
+        $service_detail = DB::table('services')->where('slug', $slug)->where('status', 1)->get()->first();
+        $page_name = $service_detail->page_name;
+        $banner = $service_detail->banner;
+        $service_image = $service_detail->service_image;
+        $title = $service_detail->title;
+        $short_description = $service_detail->short_description;
+
+        $gallery_image = json_decode($service_detail->gallery_image, true);
+
+        return view('frontend.pages.services.services_detail', compact('service_detail','service_image','gallery_image','slug','page_name','banner','title','short_description'));
     }
 
 //--------------=============================== Pages ================================------------------------------

@@ -19,6 +19,12 @@
                 <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp" required>
             </div>
         </div>
+        <div class="col-sm-8">
+            <div class="form-group mb-3">
+                <label>Service Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp">
+            </div>
+        </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
                 <label>Title <span class="red">*</span></label>
@@ -32,14 +38,18 @@
             </div>
         </div>
 
-        <div class="col-sm-12 gallery-image-row">
-            <div class="form-group mb-3 ">
-                <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" required>
+        <div class="row gallery-image-row">
+            
+            <div class="col-md-9">
+                <div class="form-group mb-3 ">
+                    <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                    <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" required>
+                </div>
             </div>
-            <div class="col-md-12">
+            <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
                 <button type="button" class="btn btn-success add-row my-2">Add More +</button>
             </div>
+
         </div>
 
         <div class="col-sm-12">
@@ -63,8 +73,9 @@ $(document).ready(function () {
     $(document).on('click', '.add-row', function () {
         var newRow = $('.gallery-image-row').first().clone();
         newRow.find('input').val('');
+        newRow.find('.add-row-col-3-div').remove(); 
         newRow.find('.add-row').remove(); 
-        newRow.append('<div class="col-md-12 d-flex gap-3 mb-2"><button type="button" class="btn btn-success add-row my-2">Add More +</button><button type="button" class="btn btn-danger remove-row my-2">Remove</button></div>');
+        newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-success add-row my-2">Add More +</button><button type="button" class="btn btn-danger remove-row my-2">Remove</button></div>');
         $('.gallery-image-row').last().after(newRow);
     });
 

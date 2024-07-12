@@ -21,12 +21,27 @@
                 <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp">
             </div>
         </div>
-
+        
         <div class="form-group mb-3 mx-2 col-md-2">
             <div style="width: 100px;">
                 <img src="{{ asset('storage/' . $service->banner) }}" class="img-thumbnail">
             </div> 
         </div>
+
+        <div class="col-sm-8">
+            <div class="form-group mb-3">
+                <label>Service Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp">
+            </div>
+        </div>
+
+        @if (!empty($service->service_image))
+        <div class="form-group mb-3 mx-2 col-md-2">
+            <div style="width: 100px;">
+                <img src="{{ asset('storage/' . $service->service_image) }}" class="img-thumbnail">
+            </div> 
+        </div>
+        @endif
 
         <div class="col-sm-12">
             <div class="form-group mb-3">
