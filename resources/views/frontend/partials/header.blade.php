@@ -225,7 +225,7 @@
                         </a>
                         <ul class="sub-menu">
                           @foreach($services as $row)
-                          <li menuname="Vases"><a class="h3" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}" data-pjax-link="overlayMenu">
+                          <li><a class="h3" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}" data-pjax-link="overlayMenu">
                             <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">{{$row->title}}</div></a>
                           </li>
                           @endforeach                            
@@ -252,7 +252,6 @@
                 <img loading="lazy" id="Gallery-menu" src="{{ asset('/assets/frontend/image/menu/gallery.png')}}" alt="gallery">
                 <img loading="lazy" id="NewsMedia-menu" src="{{ asset('/assets/frontend/image/menu/newsandmedia.png')}}" alt="newsandmedia">
                 <img loading="lazy" id="Contactus-menu" src="{{ asset('/assets/frontend/image/menu/contact.png')}}" alt="contact">
-                <img loading="lazy" id="Vases" src="{{ asset('/assets/frontend/image/menu/contact.png')}}" alt="contact">
             </div>
         </div>
         <!-- - fullscreen overlay container -->

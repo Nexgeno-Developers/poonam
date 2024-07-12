@@ -39,9 +39,14 @@ class IndexController extends Controller
 //--------------=============================== Pages ================================------------------------------
 
     public function contact_Us(){
+        $contactDetails = DB::table('pages')->where('page_name', 'contact')->first();
 
-        return view('frontend.pages.contactus.contactus');
+        $banner = $contactDetails->banner_section;
+        $contactS = json_decode($contactDetails->contact_section);
+
+        return view('frontend.pages.contactus.contactus', compact('contactDetails','banner','contactS'));
     }
+
     public function services(){
 
         return view('frontend.pages.services.services');

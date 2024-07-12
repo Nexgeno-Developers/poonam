@@ -25,7 +25,7 @@
                         @csrf
 
                         @php
-                            $banner = $details->banners;
+                            $banner = $details->banner_section;
                         @endphp
 
                         <input type="hidden" name="page" value="contact">
@@ -35,7 +35,8 @@
                                 <div class="form-group mb-3">
                                     <label>Banner <span class="red">*</span> <span class="font-size11">(Max file
                                             size 80kb - 1125*196)</span></label>
-                                    <input class="form-control" type="file" id="image" name="Banner" required>
+                                    <input class="form-control" type="file" id="image" name="banner" @if(empty($banner))
+                                    required @endif>
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -75,26 +76,18 @@
                         @csrf
 
                         @php
-                            $Contacts = json_decode($details->contacts);
+                            $Contacts = json_decode($details->contact_section);
                         @endphp
                         
                         <input type="hidden" name="page" value="contact">
+                        
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>Address 1<span class="red">*</span></label>
-                                    <textarea class="trumbowyg form-control" name="address_1" rows="5" required>
-                                        {{ isset($Contacts->address_1) ? $Contacts->address_1 : '' }}
-                                    </textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group mb-3">
-                                    <label>Address 2<span class="red">*</span></label>
-                                    <textarea class="trumbowyg form-control" name="address_2" rows="5" required>
-                                        {{ isset($Contacts->address_2) ? $Contacts->address_2 : '' }}
-                                    </textarea>
+                                    <input type="text" class="form-control" placeholder="Insert Whatsapp URL" name="address_1"
+                                        value="{{ isset($Contacts->address_1) ? $Contacts->address_1 : '' }}" required>                            
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -103,14 +96,7 @@
                                     <input type="email" class="form-control" placeholder="Insert Email" name="email"
                                         value="{{ isset($Contacts->email) ? $Contacts->email : '' }}" required>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group mb-3">
-                                    <label>Website URL<span class="red">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Insert Website URL" name="url"
-                                        value="{{ isset($Contacts->url) ? $Contacts->url : '' }}" required>
-                                </div>
-                            </div>
+                            </div> 
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>Phone 1<span class="red">*</span></label>
@@ -120,9 +106,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
-                                    <label>Phone 2<span class="red">*</span></label>
-                                    <input type="number" class="form-control" placeholder="Insert Phone 2" name="phone_2"
-                                        value="{{ isset($Contacts->phone_2) ? $Contacts->phone_2 : '' }}" required>
+                                    <label>Whatsapp URL<span class="red">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Insert Whatsapp URL" name="wa_url"
+                                        value="{{ isset($Contacts->wa_url) ? $Contacts->wa_url : '' }}" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -153,6 +139,31 @@
                                         value="{{ isset($Contacts->inst_url) ? $Contacts->inst_url : '' }}" required>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>Map URL<span class="red">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Insert Map URL" name="map_url"
+                                        value="{{ isset($Contacts->map_url) ? $Contacts->map_url : '' }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="form-group mb-3">
+                                        <label>Center Image <span class="red">*</span> <span class="font-size11">(Max file
+                                                size 80kb - 1125*196)</span></label>
+                                        <input class="form-control" type="file" id="image" name="center_image" @if(empty($banner))
+                                        required @endif>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    @if (!empty($Contacts->center_image))
+                                        <div style="width: 150px;">
+                                            <img src="{{ asset('storage/' . $Contacts->center_image) }}" class="img-thumbnail">
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-sm-1" style="float: right;">
