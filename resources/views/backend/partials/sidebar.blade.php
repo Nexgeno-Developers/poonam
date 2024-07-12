@@ -5,7 +5,7 @@
                 <!-- Brand Logo Light -->
                 <a href="#" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="/assets/images/logo.png" alt="logo">
+                        <img src="/assets/image/footer_logo.png" alt="logo">
                     </span>
                     <span class="logo-sm">
                         <img src="/assets/images/logo-sm.png" alt="small logo">
@@ -37,7 +37,7 @@
                     <!-- Leftbar User -->
                     <div class="leftbar-user">
                         <a href="#">
-                            <img src="/assets/images/Logo1.png" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                            <img src="/assets/image/footer_logo.png" alt="user-image" height="42" class="rounded-circle shadow-sm">
                             <span class="leftbar-user-name mt-2">{{ auth()->user()->name }}</span>
                         </a>
                     </div>
