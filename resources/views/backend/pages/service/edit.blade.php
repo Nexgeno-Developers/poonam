@@ -115,6 +115,10 @@ $(document).ready(function() {
     initValidate('#edit_service_form');
 });
 
+function remove_replace_key(_this) {
+    _this.closest(".replace_key").remove();
+}
+
 /*--------------------- duplicate forms inputs ------------------*/
 
 $("#add_replace_key").on("click", function() {

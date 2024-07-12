@@ -166,48 +166,45 @@ class ServiceController extends Controller
         } else {
             $bannerPath = $old_data->banner;
         }
+ 
 
+        $galleryImages = [];
+
+        $newImage = [];
         if($request->has('gallery_image')){
-
-            $galleryImages = [];
-
-            $newImage = [];
             foreach ($request->file('gallery_image') as $index => $file) {
                 $ImagePath = $file->store('assets/image/gallery_image', 'public');
                 $newImage[$index] = $ImagePath;
             }
+        }
 
-            $number_img = $request->input('number_img');
-            foreach ($number_img as $key => $row) {
+        $number_img = $request->input('number_img');
+        foreach ($number_img as $key => $row) {
 
-                if (isset($newImage[$key])) {
-                    $galleryImages[$key] = $newImage[$key];
-                } else {
+            if (isset($newImage[$key])) {
+                $galleryImages[$key] = $newImage[$key];
+            } else {
 
-                    $old = "old_image$key";
-                    if($request->has($old)){
-    
-                        if($next == true){
-                            $galleryImages[$key] = $old_data_galleryImages[$key] ?? null;
-                        } else {
-                            $privous = $key + 1;
-                            $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
-                        }
-                        
+                $old = "old_image$key";
+                if($request->has($old)){
+
+                    if($next == true){
+                        $galleryImages[$key] = $old_data_galleryImages[$key] ?? null;
                     } else {
-                        $next = false;
                         $privous = $key + 1;
                         $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
                     }
+                    
+                } else {
+                    $next = false;
+                    $privous = $key + 1;
+                    $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
                 }
-
-
             }
 
-        } else {
-            $galleryImages = $old_data->gallery_image;
+
         }
-    
+
         $result = DB::table('services')->where('id', $id)->update([
             'banner' => $bannerPath,
             'slug' => $slug,
