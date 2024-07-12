@@ -15,17 +15,27 @@ class IndexController extends Controller
 {
     public function index() {
         
-    $homeDetails = DB::table('pages')->where('page_name', 'home')->first();
+        $homeDetails = DB::table('pages')->where('page_name', 'home')->first();
+        $banners = json_decode($homeDetails->banner_section, true);
+        $introduction = json_decode($homeDetails->introduction);
+        $gallery_section1 = json_decode($homeDetails->gallery_section);
+        $gallery_section2 = json_decode($homeDetails->gallery_section2);
+        
+        return view('frontend.pages.home.index', compact('homeDetails','introduction', 'banners', 'gallery_section1', 'gallery_section2'));
+    }
+    public function about_Us() {
+        
+        $aboutDetails = DB::table('pages')->where('page_name', 'about')->first();
 
-    $banners = json_decode($homeDetails->banners, true);
-    $marques = json_decode($homeDetails->marque, true);
-    $businessData = json_decode($homeDetails->business, true);
-    $counter = json_decode($homeDetails->counters, true);
-    $project = json_decode($homeDetails->projects, true);
-    return view('frontend.pages.home.index', compact('homeDetails', 'banners', 'marques', 'businessData', 'counter', 'project'));
+        $banner = $aboutDetails->banner_section;
+        $journey_section = json_decode($aboutDetails->journey_section);
+        $about_section = json_decode($aboutDetails->about_section);
+        $vision_section = json_decode($aboutDetails->vision_section);
+        $design_section = json_decode($aboutDetails->design_section);
+        
+        return view('frontend.pages.about.about', compact('aboutDetails','journey_section', 'banner', 'about_section', 'vision_section', 'design_section'));
     }
     
-
 //--------------=============================== Pages ================================------------------------------
 
     public function contact_Us(){
@@ -36,10 +46,15 @@ class IndexController extends Controller
 
         return view('frontend.pages.services.services');
     }
-    public function news_media(){
-
-        return view('frontend.pages.newsandmedia.news-and-media');
+    public function news_media() {
+        
+        $news_mediaDetails = DB::table('pages')->where('page_name', 'newsandmedia')->first();
+        $banner = $news_mediaDetails->banner_section;
+        $image_section = json_decode($news_mediaDetails->image_section);
+        
+        return view('frontend.pages.newsandmedia.news-and-media', compact('news_mediaDetails','image_section', 'banner'));
     }
+
     public function gallery(){
 
         return view('frontend.pages.gallery.gallery');
@@ -79,12 +94,7 @@ class IndexController extends Controller
         return view('frontend.pages.career.careers', compact('careerDetails','introduction'));
     }
 
-    public function about_Us(){
 
-
-    
-        return view('frontend.pages.about.about');
-    }
     
     public function service_detail($slug){
         var_dump($slug);

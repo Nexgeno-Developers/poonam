@@ -8,198 +8,60 @@
 
 @section('page.content')
 
-
-<!-- section MASTHEAD -->
-<!--<div class="">-->
 <section class="section section-masthead d-none" data-arts-os-animation="animated"
     data-background-color="var(--color-dark-1)"></section>
-<!-- - section MASTHEAD -->
-<!-- section PROJECTS SLIDER FULLSCREEN -->
+
 <section class="section section-fullheight section-projects section-projects-slider bg-dark-1 overflow"
     data-arts-theme-text="light" data-arts-os-animation="animated">
     <div class="section-fullheight__inner section-fullheight__inner_mobile text-center">
         <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
-            <!-- slider CONTENT -->
+
             <div class="slider-fullscreen-projects__content swiper-container pointer-events-none js-slider-fullscreen-projects__content"
                 style="height:325px;">
                 <div class="swiper-wrapper">
+                @foreach($banners as $banner1)
+                    @php
+                        $bannerHeading = $banner1['text'];
+                        $bannerTextParts = explode('|', $bannerHeading);
+                        
+                        $bannerFirstText = $bannerTextParts[0] ?? '';
+                        $bannerSecondText = $bannerTextParts[1] ?? '';
+                        $bannerThirdText = $bannerTextParts[2] ?? '';
+                        $bannerFourthText = $bannerTextParts[3] ?? '';
+                    @endphp
                     <div class="swiper-slide">
                         <div class="h1 text-start slider__heading js-split-text d-flex justify-content-center"
                             data-split-text-type="lines, words, chars">
                             <div class="destined_to_desing">
-                                <span class="fontsize_middle peachy_flightoe_font font_70">DESTINED <p
-                                        class="fontsize_middle peachy_flightoe_font font_30"> TO </p> </span> <span
-                                    class="fontsize_middle peachy_flightoe_font font_100">DESIGN </span>
+                                <span class="fontsize_middle peachy_flightoe_font font_70"> {{ $bannerFirstText }} <p
+                                        class="fontsize_middle peachy_flightoe_font font_30"> {{ $bannerSecondText }} </p> </span> <span
+                                    class="fontsize_middle peachy_flightoe_font font_100">{{ $bannerThirdText }} </span>
                             </div>
                             <div class="art">
-                                <span class="amsterdam_font font-size100 art_100">Art</span>
+                                <span class="amsterdam_font font-size100 art_100">{{ $bannerFourthText }}</span>
                             </div>
-                            <!--DESTINED TO DESIGN-->
-                            <!--<span class="amsterdam_font">Art</span>-->
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="h1 text-start slider__heading js-split-text d-flex justify-content-center"
-                            data-split-text-type="lines, words, chars">
-                            <div class="destined_to_desing">
-                                <span class="fontsize_middle peachy_flightoe_font font_70">DESTINED <p
-                                        class="fontsize_middle peachy_flightoe_font font_30"> TO </p> </span> <span
-                                    class="fontsize_middle peachy_flightoe_font font_100">DESIGN </span>
-                            </div>
-                            <div class="art">
-                                <span class="amsterdam_font font-size100 art_100">Art</span>
-                            </div>
-                            <!--DESTINED TO DESIGN-->
-                            <!--<span class="amsterdam_font">Art</span>-->
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="h1 text-start slider__heading js-split-text d-flex justify-content-center"
-                            data-split-text-type="lines, words, chars">
-                            <div class="destined_to_desing">
-                                <span class="fontsize_middle peachy_flightoe_font font_70">DESTINED <p
-                                        class="fontsize_middle peachy_flightoe_font font_30"> TO </p> </span> <span
-                                    class="fontsize_middle peachy_flightoe_font font_100">DESIGN </span>
-                            </div>
-                            <div class="art">
-                                <span class="amsterdam_font font-size100 art_100">Art</span>
-                            </div>
-                            <!--DESTINED TO DESIGN-->
-                            <!--<span class="amsterdam_font">Art</span>-->
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="h1 text-start slider__heading js-split-text d-flex justify-content-center"
-                            data-split-text-type="lines, words, chars">
-                            <div class="destined_to_desing">
-                                <span class="fontsize_middle peachy_flightoe_font font_70">DESTINED <p
-                                        class="fontsize_middle peachy_flightoe_font font_30"> TO </p> </span> <span
-                                    class="fontsize_middle peachy_flightoe_font font_100">DESIGN </span>
-                            </div>
-                            <div class="art">
-                                <span class="amsterdam_font font-size100 art_100">Art</span>
-                            </div>
-                            <!--DESTINED TO DESIGN-->
-                            <!--<span class="amsterdam_font">Art</span>-->
-                        </div>
-                    </div>
+                    @endforeach                   
                 </div>
             </div>
-            <!-- - slider CONTENT -->
-            <!-- slider IMAGES -->
-            <!--data-mousewheel-enabled="data-mousewheel-enabled"  data-counter-style="roman"-->
             <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
                 data-transition-effect="distortion" data-aspect-ratio="1.5"
                 data-transition-displacement-img="{{ asset('/assets/frontend/image/bg-displacement-7.jpg') }}" data-speed="1200"
                 data-autoplay-enabled="true" data-autoplay-delay="6000">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide overflow">
-                        <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
-                            <div class="slider__bg lazy-bg js-transition-img__transformed-el"
-                                data-texture-src="{{ asset('/assets/frontend/image/Banner_main.jpg') }}"></div>
+                    @foreach($banners as $banner)
+                        <div class="swiper-slide overflow">
+                            <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
+                                <div class="slider__bg lazy-bg js-transition-img__transformed-el"
+                                    data-texture-src="{{ asset('storage/'.$banner['image']) }}"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide overflow">
-                        <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
-                            <div class="slider__bg lazy-bg js-transition-img__transformed-el"
-                                data-texture-src="{{ asset('/assets/frontend/image/Banner_main.jpg') }}"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide overflow">
-                        <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
-                            <div class="slider__bg lazy-bg js-transition-img__transformed-el"
-                                data-texture-src="{{ asset('/assets/frontend/image/Banner_main.jpg') }}"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide overflow">
-                        <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
-                            <div class="slider__bg lazy-bg js-transition-img__transformed-el"
-                                data-texture-src="{{ asset('/assets/frontend/image/Banner_main.jpg') }}"></div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <!-- overlay -->
-                <div class="slider__overlay overlay overlay_circle-dark overlay_deither"></div>
-                <!--<div class="slider__circle"></div>-->
-                <!-- - overlay -->
+                <div class="slider__overlay overlay overlay_circle-dark overlay_deither"></div>                
             </div>
-            <!-- PAGE scroll down 
-                <div class="section-masthead__wrapper-scroll-down section-masthead__wrapper-scroll-down_center"
-                  style="translate: none; rotate: none; scale: none; opacity: 1; visibility: inherit; transform: translate(0px, 0px);">
-                  <div class="circle-button js-circle-button js-circle-button_curved" data-arts-os-animation="animated">
-                     curved label 
-                    <div class="circle-button__outer">
-                      <div class="circle-button__wrapper-label"
-                        style="translate: none; rotate: none; scale: none; transform-origin: 50% 50%;">
-                        <div class="circle-button__label small-caps">
-                          <div aria-label="SCROLL DOWN" style="position: relative; height: 3.18415em;"><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.350849em) rotate(-51.062deg); transform-origin: center 5.61359em;">S</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.387168em) rotate(-41.2592deg); transform-origin: center 5.61359em;">C</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.376889em) rotate(-31.1105deg); transform-origin: center 5.61359em;">R</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.422116em) rotate(-20.4976deg); transform-origin: center 5.61359em;">O</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.336459em) rotate(-10.4217deg); transform-origin: center 5.61359em;">L</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.336459em) rotate(-1.48362deg); transform-origin: center 5.61359em;">L</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.164461em) rotate(5.16991deg); transform-origin: center 5.61359em;">&nbsp;</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.402243em) rotate(12.6972deg); transform-origin: center 5.61359em;">D</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.422116em) rotate(23.6469deg); transform-origin: center 5.61359em;">O</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.570816em) rotate(36.8356deg); transform-origin: center 5.61359em;">W</span><span
-                              style="position: absolute; bottom: auto; left: 50%; transform: translateX(-0.425542em) rotate(50.0699deg); transform-origin: center 5.61359em;">N</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="circle-button__inner">
-                      <div class="circle-button__circle" data-arts-scroll-down="data-arts-scroll-down"
-                        data-arts-cursor="data-arts-cursor" data-arts-cursor-hide-native="true"
-                        data-arts-cursor-scale="0">
-                        <svg class="svg-circle" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <circle class="circle" cx="30" cy="30" r="29" fill="none"></circle>
-                        </svg>
-                      </div>
-                       browsers with touch support 
-                      <div class="circle-button__icon circle-button__icon-touch">
-                        <svg enable-background="new 0 0 64 64" height="512" viewBox="0 0 64 64" width="512"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="m32 8c-1.104 0-2 .896-2 2v39.899l-14.552-15.278c-.761-.799-2.026-.832-2.828-.069-.8.762-.831 2.027-.069 2.827l16.62 17.449c.756.756 1.76 1.172 2.829 1.172 1.068 0 2.073-.416 2.862-1.207l16.586-17.414c.762-.8.73-2.065-.069-2.827-.799-.763-2.065-.731-2.827.069l-14.552 15.342v-39.963c0-1.104-.896-2-2-2z">
-                          </path>
-                        </svg>
-                      </div>
-                       - browsers with touch support 
-                       - browsers without touch support 
-                      <div class="circle-button__icon circle-button__icon-mouse">
-                        <svg class="svg-mouse" width="23px" height="35px" viewBox="0 0 23 35" version="1.1"
-                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                           border 
-                          <path class="svg-mouse__border"
-                            d="M11.5,0 C5.15875132,0 0,5.23135343 0,11.6610111 L0,23.3396542 C0,29.7691456 5.15875132,35 11.5,35 C17.8412487,35 23,29.7693119 23,23.3396542 L23,11.6610111 C23,5.23135343 17.8410847,0 11.5,0 Z M21.7222404,23.3396542 C21.7222404,29.0545544 17.136538,33.7037222 11.5,33.7037222 C5.86346203,33.7037222 1.27775956,29.0545544 1.27775956,23.3396542 L1.27775956,11.6610111 C1.27775956,5.946111 5.86346203,1.29627781 11.5,1.29627781 C17.136538,1.29627781 21.7222404,5.94594466 21.7222404,11.6610111 L21.7222404,23.3396542 Z">
-                          </path>
-                           - border 
-                           wheel 
-                          <path class="svg-mouse__wheel"
-                            d="M11.5,4 C11.2238902,4 11,4.28321727 11,4.63321727 L11,10.3667827 C11,10.7167827 11.2238902,11 11.5,11 C11.7761098,11 12,10.7167827 12,10.3667827 L12,4.63321727 C11.9998717,4.28321727 11.7761098,4 11.5,4 Z">
-                          </path>
-                           - wheel 
-                        </svg>
-                      </div>
-                       - browsers without touch support 
-                    </div>
-                  </div>
-                </div>
-                PAGE scroll down -->
-
-            <!-- slider COUNTER -->
-            <!--<div class="slider__wrapper-counter slider-fullscreen-projects__counter">-->
-            <!--  <div class="slider__counter slider__counter_current">-->
-            <!--    <div class="js-slider-fullscreen-projects__counter-current swiper-container">-->
-            <!--      <div class="swiper-wrapper"></div>-->
-            <!--    </div>-->
-            <!--  </div>-->
-            <!--  <div class="slider__counter-divider slider-fullscreen__counter-divider"></div>-->
-            <!--  <div class="slider__counter slider__counter_total js-slider-fullscreen-projects__counter-total"></div>-->
-            <!--</div>-->
-            <!-- - slider COUNTER -->
+            
 
             <!-- slider ARROWS -->
             <div class="slider__arrow slider__arrow_left slider__arrow_absolute js-slider__arrow-prev">
@@ -249,34 +111,17 @@
                         <div class="w-100"></div>
                         <div class="w-100"></div>
                         <div class="animheadertext-2">
-                            <h2 class="js-split-words2 trajanPro_regular font50">INTRODUCTION</h2>
-                            <h5 class="js-split-words2 pb-2 trajanPro_regular font26">DESIGN & STRATEGIC DEVELOPMENT
-                            </h5>
+                            <h2 class="js-split-words2 trajanPro_regular font50">{{ $introduction->title }}</h2>
+                            <h5 class="js-split-words2 pb-2 trajanPro_regular font26">{{ $introduction->subtitle }}</h5>
                         </div>
                         <div class="w-100"></div>
                         <div class="anim-para-text">
                             <div class="fw-container fw-container-floattext">
                                 <div class="js-split-p-letter anim-text__desc">
-                                    Resin has no bounds—be it size, color, proportion, or dynamics.
-                                    At Poonam Shah Arts, we challenge ourselves to meet our clients’
-                                    needs while pushing the envelope to allow resin to meet its true
-                                    potential in a home, office, or personalized gifting space.
-                                    From wardrobes to wall art, our pieces add vibrancy and versatility
-                                    to their surroundings, and provide our clients with a bespoke
-                                    product that will be the talk of the town.
+                                    {!! $introduction->content !!}
                                 </div>
                             </div>
                         </div>
-
-                        <!--<div class="section-content__text split-text js-split-text mt-1" data-split-text-type="lines"-->
-                        <!--  data-split-text-set="lines">-->
-                        <!--  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
-                        <!--    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and-->
-                        <!--    scrambled it to make a type specimen book.</p>-->
-                        <!--  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
-                        <!--    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and-->
-                        <!--    scrambled it to make a type specimen book.</p>-->
-                        <!--</div>-->
                     </div>
                 </section>
             </div>
@@ -284,6 +129,41 @@
     </div>
 </section>
 <!--</div>-->
+
+@php
+    $galleryItems = []; // Initialize an empty array to store processed gallery items
+
+    $galleryCount = count($gallery_section1); // Get the total count of gallery items
+@endphp
+
+@if($galleryCount > 0)
+    @for($i = 0; $i < min($galleryCount, 7); $i++) <!-- Loop up to 7 items or the total number of items if less -->
+        @php
+            $gallery = $gallery_section1[$i]; // Access each item in the array
+
+            // Access object properties correctly
+            $titleParts = explode('|', $gallery->title);
+            $firstPart = $titleParts[0] ?? '';
+            $secondPart = isset($titleParts[1]) ? $titleParts[1] : null;
+
+            // Construct the item to store
+            $item = [
+                'firstPart' => $firstPart,
+                'secondPart' => $secondPart,
+                'description' => $gallery->description,
+                'image' => $gallery->image ? asset($gallery->image) : null,
+                'alt' => $gallery->title
+            ];
+
+            // Add the item to the array
+            $galleryItems[] = $item;
+        @endphp
+    @endfor
+@endif
+
+
+{{-- Now you have $galleryItems array containing processed gallery items --}}
+
 
 <section class="section services_section border_2 section-grid" data-arts-os-animation="data-arts-os-animation">
     <div class="container">
@@ -293,14 +173,10 @@
                     <div class="col-md-12 padd0">
                         <div class="homeboxanimate services_box services_bg">
                             <div class="mb-3 mb-xxl-4">
-                                <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">RASIN <span
-                                        class="amsterdam_font">Bar</span></h3>
+                                <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[0]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[0]['secondPart'] }}</span></h3>
                             </div>
                             <div class="mb-3">
-                                <p class="homeboxanimate-para color_white">
-                                    As global interest in and demand for resin creations grows, so does the need
-                                    for experimentation and exploration.
-                                </p>
+                                <p class="homeboxanimate-para color_white"> {{$gallery_section1[0]->description}} </p>
                             </div>
                             <div class="homeboxanimate-btn-bracket the-button white">
                                 <a href="#" class="homeboxanimate-btn-text color_white">Read More</a>
@@ -310,14 +186,11 @@
                     <div class="col-md-12 padd0">
                         <div class="homeboxanimate services_box services_bg_gray">
                             <div class="animheadertext-2 mb-3 mb-xxl-4">
-                                <h3 class="homeboxanimate-heading peachy_flightoe_font font50">THE <span
-                                        class="amsterdam_font">Vogue</span></h3>
+                                <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[1]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[1]['secondPart'] }}</span></h3>
                             </div>
                             <div class="anim-para-text mb-3">
                                 <p class="homeboxanimate-para">
-                                    Whether the pieces are exclusive one-of-a-kind show stoppers,
-                                    or high-volume gifts and presentations, the quality and
-                                    uniqueness of the product shines through.
+                                    {{$gallery_section1[1]->description}}
                                 </p>
                             </div>
                             <div class="homeboxanimate-btn-bracket the-button">
@@ -331,8 +204,8 @@
             <div class="col-md-4 padd0">
                 <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
-                        <div class="figure-member__avatar home_section_img">
-                            <img class="img_height1 w-100" src="{{ asset('/assets/frontend/image/services_img_middle.jpg')}}" alt="" />
+                        <div class="figure-member__avatar home_section_img">                  
+                            <img class="img_height1 w-100" src="{{ asset('storage/' .$gallery_section1[0]->image) }}" alt="" />
                         </div>
                     </div>
                 </div>
@@ -343,14 +216,11 @@
                     <div class="col-md-12 padd0">
                         <div class="homeboxanimate services_box services_bg_gray">
                             <div class="animheadertext-2 mb-3 mb-xxl-4">
-                                <h3 class="homeboxanimate-heading peachy_flightoe_font font50 pour_to_product"> <span
-                                        class="amsterdam_font">From</span> Pour to Productivity </h3>
+                                <h3 class="homeboxanimate-heading peachy_flightoe_font font50 pour_to_product"> <span class="amsterdam_font">{{ $galleryItems[2]['firstPart'] }}</span> {{ $galleryItems[2]['secondPart'] }} </h3>
                             </div>
                             <div class="anim-para-text mb-3">
                                 <p class="homeboxanimate-para">
-                                    The unique features of resin allow it to be used in multiple ways and alongside
-                                    various other materials. There is no limit to what resin can do and what it can
-                                    become.
+                                    {{$gallery_section1[2]->description}}
                                 </p>
                             </div>
                             <div class="homeboxanimate-btn-bracket the-button">
@@ -361,15 +231,11 @@
                     <div class="col-md-12 padd0">
                         <div class="homeboxanimate services_box services_bg">
                             <div class="animheadertext-2 mb-3 mb-xxl-4">
-                                <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">HOME <span
-                                        class="amsterdam_font">Interiors</span></h3>
+                                <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[3]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[3]['secondPart'] }}</span></h3>
                             </div>
                             <div class="anim-para-text mb-3">
                                 <p class="homeboxanimate-para color_white">
-                                    Whether you are looking to add delicate floral elements to your
-                                    space or represent the larger world of water bodies and geological enigmas,
-                                    our tabletops combine ingenuity with imagination to create a show
-                                    stopping centerpiece for your home.
+                                    {{$gallery_section1[3]->description}}
                                 </p>
                             </div>
                             <div class="homeboxanimate-btn-bracket the-button white">
@@ -384,7 +250,7 @@
                 <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                         <div class="figure-member__avatar home_section_img">
-                            <img class="img_height w-100" src="{{ asset('/assets/frontend/image/services_lft.jpg')}}" />
+                            <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[1]->image) }}" />
                         </div>
                     </div>
                 </div>
@@ -394,15 +260,12 @@
             <div class="col-md-4 padd0">
                 <div class="homeboxanimate services_box services_bg">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                        <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">CANVAS <span
-                                class="amsterdam_font">Art</span>
+                        <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[4]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[4]['secondPart'] }}</span>
                         </h3>
                     </div>
                     <div class="anim-para-text mb-3">
                         <p class="homeboxanimate-para color_white">
-                            A blank canvas is an artist’s playground. Poonam’s expressions through pigments,
-                            glitter, stones, crystals, and other materials add unique textures and complexity
-                            to her pieces, along with a glass-like finish that adds brightness and radiance.
+                            {{$gallery_section1[3]->description}}
                         </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button white">
@@ -415,7 +278,7 @@
                 <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                         <div class="figure-member__avatar home_section_img">
-                            <img class="img_height w-100" src="{{ asset('/assets/frontend/image/services_rght.jpg')}}" />
+                            <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[2]->image) }}" />
                         </div>
                     </div>
                 </div>
@@ -425,14 +288,11 @@
             <div class="col-md-4 padd0">
                 <div class="homeboxanimate services_box services_bg_gray">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50"> <span
-                                class="amsterdam_font">Sculptures </span></h3>
+                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50"> <span class="amsterdam_font">{{ $galleryItems[5]['firstPart'] }} </span>{{ $galleryItems[5]['secondPart'] }}</h3>
                     </div>
                     <div class="anim-para-text mb-3">
                         <p class="homeboxanimate-para">
-                            Poured resin has a charm of its own—it takes the shape of the object
-                            while highlighting the dips and bends and individual features of the structure,
-                            giving a sense of unity while embellishing the sculpture.
+                            {{$gallery_section1[4]->description}}
                         </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
@@ -445,7 +305,7 @@
                 <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                         <div class="figure-member__avatar home_section_img">
-                            <img class="img_height w-100" src="{{ asset('/assets/frontend/image/services_middle.jpg')}}" />
+                            <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[3]->image) }}" />
                         </div>
                     </div>
                 </div>
@@ -454,14 +314,11 @@
             <div class="col-md-4 padd0">
                 <div class="homeboxanimate services_box services_bg_gray">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">VANITY <span
-                                class="amsterdam_font">Mirror </span></h3>
+                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[6]['firstPart'] }} <span class="amsterdam_font"> {{ $galleryItems[6]['secondPart'] }} </span></h3>
                     </div>
                     <div class="anim-para-text mb-3">
                         <p class="homeboxanimate-para">
-                            A crucial component of any designed space, mirrors can be embellished and
-                            emphasized with the use of resin techniques, giving a final look that
-                            is a balance of glass and gloss.
+                            {{$gallery_section1[5]->description}}
                         </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
@@ -477,19 +334,39 @@
 <section class="bottom_services border_3">
     <div class="container">
         <div class="row">
+        
+            @foreach($gallery_section2 as $gallery_section_data)
+            @php
+                $bannerHeading = $gallery_section_data->title;
+                $bannerDescription = $gallery_section_data->description;
+                $bannerImage = $gallery_section_data->image;
+                $bannerTextParts = explode('|', $bannerHeading);
+                
+                $bannerFirstText = $bannerTextParts[0] ?? '';
+                $bannerSecondText = $bannerTextParts[1] ?? '';
+            @endphp
+            <div class="col-md-6 col-sm-6 padd0">
+                <div class="box homeboxanimate">
+                    <img src="{{ asset('storage/'.$bannerImage)}}">
+                    <div class="box-content">
+                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{$bannerFirstText}}<span class="amsterdam_font">{{$bannerSecondText}}</span>
+                        </h3>
+                        <p class="homeboxanimate-para">
+                            {{$bannerDescription}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach  
+            {{-- 
             <div class="col-md-6 col-sm-6 padd0">
                 <div class="box homeboxanimate">
                     <img src="{{ asset('/assets/frontend/image/serv_hover1.jpg')}}">
                     <div class="box-content">
-                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">FOR THE<span
-                                class="amsterdam_font">Little Ones</span>
+                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">FOR THE<span class="amsterdam_font">Little Ones</span>
                         </h3>
                         <p class="homeboxanimate-para">
-                            Brighten up your child’s room with ethereal and imaginative pieces that
-                            bring together resin, light, colour, and fun! Choose themes and materials
-                            that your child will love and allow us to embed those interests and passions
-                            into their physical surroundings.
-
+                            {{$gallery_section2[0]->description}}
                         </p>
                     </div>
                 </div>
@@ -498,17 +375,14 @@
                 <div class="box homeboxanimate">
                     <img src="{{ asset('/assets/frontend/image/serv_hover2.jpg')}}">
                     <div class="box-content">
-                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">Wardrobe<span
-                                class="amsterdam_font"> Panels</span> </h3>
+                        <h3 class="homeboxanimate-heading peachy_flightoe_font font50">Wardrobe<span class="amsterdam_font"> Panels</span> </h3>
                         <p class="homeboxanimate-para">
-                            Don’t get stuck with the standard veneers and closet doors—upgrade your
-                            space with wardrobe panels that not only complement the colors and
-                            textures of your room, but are also highly functional, with camouflaged
-                            handles that create a seamless backdrop to your space.
+                            {{$gallery_section2[1]->description}}
                         </p>
                     </div>
                 </div>
             </div>
+            --}}
         </div>
     </div>
 </section>

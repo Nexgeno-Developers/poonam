@@ -81,9 +81,9 @@
 
 
                         <li class="side-nav-item">
-                            <a href="{{ route('backend.career.page') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                            <a href="{{ route('backend.newsandmedia.page') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="ri-bar-chart-2-line"></i> 
-                                <span> Career Page </span>
+                                <span> News And Media Page </span>
                             </a>
                         </li>
 
@@ -95,7 +95,7 @@
                             </a>
                         </li>
 
-
+ {{--
                         <li class="side-nav-item">
                             <a href="{{ route('backend.business.page') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="ri-bar-chart-2-line"></i> 
@@ -110,7 +110,7 @@
                             </a>
                         </li>
 
-                        {{--
+                       
 
                         <li class="side-nav-item">
                             <a href="{{ route('practicearea.index') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">

@@ -20,7 +20,7 @@ class AboutController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'Banner' => 'required',
+            'banner' => 'nullable|image',
         ]);
 
         if ($validator->fails()) {
@@ -30,11 +30,20 @@ class AboutController extends Controller
             ], 200);
         }
 
-        $file = $request->file('Banner');
-        $bannerPath = $file->store('assets/banner/', 'public');
+        // Get the existing banner path from the database
+        $existingBanner = DB::table('pages')->where('page_name', $request->page)->value('banner_section');
 
+        // Check if a new banner is uploaded
+        if ($request->hasFile('banner')) {
+            $file = $request->file('banner');
+            $bannerPath = $file->store('assets/banner/', 'public');
+        } else {
+            $bannerPath = $existingBanner;
+        }
+
+        // Update the database with the new or existing banner path
         $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'banners' => $bannerPath,
+            'banner_section' => $bannerPath,
         ]);
 
         if ($result) {
@@ -52,12 +61,14 @@ class AboutController extends Controller
         return response()->json($response);
     }
 
-    public function about_intro(Request $request)
+    public function about_journey(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'intro' => 'required',
-            'partner' => 'required',
+            'journey_heading' => 'required',
+            'journey_text' => 'required',
+            'journey_description' => 'required',
+            'journey_image' => 'nullable|image',
         ]);
 
         if ($validator->fails()) {
@@ -67,22 +78,33 @@ class AboutController extends Controller
             ], 200);
         }
 
-        $intro_data = $request->intro;
-        $partner_data = $request->partner;
+        // Get the existing journey section from the database
+        $existingJourneySection = DB::table('pages')->where('page_name', $request->page)->value('journey_section');
+        $existingJourney = json_decode($existingJourneySection, true);
 
-        $intro = [
-            'intro' => $intro_data,
-            'partner' => $partner_data
+        // Check if a new journey image is uploaded
+        if ($request->hasFile('journey_image')) {
+            $file = $request->file('journey_image');
+            $journeyPath = $file->store('assets/about/', 'public');
+        } else {
+            $journeyPath = $existingJourney['journey_image'] ?? null; // Retain existing image if available
+        }
+
+        $journey = [
+            'journey_text' => $request->journey_text,
+            'journey_description' => $request->journey_description,
+            'journey_image' => $journeyPath,
+            'journey_heading' => $request->journey_heading,
         ];
 
         $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'introduction' => json_encode($intro),
+            'journey_section' => json_encode($journey),
         ]);
 
         if ($result) {
             $response = [
                 'status' => true,
-                'notification' => 'About Intro Save successfully!',
+                'notification' => 'Journey Save successfully!',
             ];
         } else {
             $response = [
@@ -94,12 +116,13 @@ class AboutController extends Controller
         return response()->json($response);
     }
 
-    public function about_steps(Request $request)
+    public function about_midsection(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'description' => 'required',
+            'about_heading' => 'required',
+            'about_description' => 'required',
+            'about_image' => 'nullable|image',
         ]);
 
         if ($validator->fails()) {
@@ -109,214 +132,32 @@ class AboutController extends Controller
             ], 200);
         }
 
-        $title = $request->title;
-        $description = $request->description;
+        // Get the existing about section from the database
+        $existingaboutSection = DB::table('pages')->where('page_name', $request->page)->value('about_section');
+        $existingabout = json_decode($existingaboutSection, true);
 
-        $old_data = DB::table('pages')->where('page_name', $request->page)->value('steps');
-
-        if($old_data !== null && !empty($old_data) && count(json_decode($old_data)) != 0 ){
-            $old_data = json_decode($old_data, true);
-            $next = true;
-            $next2 = true;
-        }
-
-        // Storing new image
-        $newImage = [];
-        if ($request->has('image')) {
-            foreach ($request->file('image') as $index => $file) {
-                $ImagePath = $file->store('assets/project/', 'public');
-                $newImage[$index] = $ImagePath;
-            }
-        }
-
-        $Image = [];
-        foreach ($title as $key => $name) {
-            if (isset($newImage[$key])) {
-                $Image[$key] = $newImage[$key];
-            } else {
-                $old = "old_image$key";
-                if($request->has($old)){
-
-                    if($next == true){
-                        $Image[$key] = $old_data[$key]['image'] ?? null;
-                    } else {
-                        $privous = $key + 1;
-                        $Image[$key] = $old_data[$privous]['image'] ?? null;
-                    }
-                    
-                } else {
-                    $next = false;
-                    $privous = $key + 1;
-                    $Image[$key] = $old_data[$privous]['image'] ?? null;
-                }
-            }
-        }
-
-        // Storing new image
-        $newImageMobile = [];
-        if ($request->has('image_mobile')) {
-            foreach ($request->file('image_mobile') as $index => $file) {
-                $ImagePath2 = $file->store('assets/project/', 'public');
-                $newImageMobile[$index] = $ImagePath2;
-            }
-        }
-
-        $Image2 = [];
-        foreach ($title as $key => $name) {
-            if (isset($newImageMobile[$key])) {
-                $Image2[$key] = $newImageMobile[$key];
-            } else {
-                // $old2 = "old_image_mobile$key";
-                // $Image2[$key] = $request->$old2 ?? null;
-
-                $old2 = "old_image_mobile$key";
-                if($request->has($old2)){
-
-                    if($next2 == true){
-                        $Image2[$key] = $old_data[$key]['mobile_image'] ?? null;
-                    } else {
-                        $privous = $key + 1;
-                        $Image2[$key] = $old_data[$privous]['mobile_image'] ?? null;
-                    }
-                    
-                } else {
-                    $next2 = false;
-                    $privous = $key + 1;
-                    $Image2[$key] = $old_data[$privous]['mobile_image'] ?? null;
-                }
-
-            }
-        }
-
-
-        $steps = [];
-
-        // Creating the business array
-        for ($i = 0; $i < count($title); $i++) {
-            $steps[$i] = [
-                'title' => $title[$i],
-                'image' => $Image[$i],
-                'mobile_image' => $Image2[$i],
-                'description' => $description[$i]
-            ];
-        }
-
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'steps' => json_encode($steps),
-        ]);
-
-        if ($result) {
-            $response = [
-                'status' => true,
-                'notification' => 'About Steps Save successfully!',
-            ];
+        // Check if a new about image is uploaded
+        if ($request->hasFile('about_image')) {
+            $file = $request->file('about_image');
+            $aboutPath = $file->store('assets/about/', 'public');
         } else {
-            $response = [
-                'status' => false,
-                'notification' => 'Somthing Went Wrong!',
-            ];
+            $aboutPath = $existingabout['about_image'] ?? null; // Retain existing image if available
         }
 
-        return response()->json($response);
-    }
-
-    public function about_teamwork(Request $request)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'expert' => 'required',
-            'designers' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'notification' => $validator->errors()->all()
-            ], 200);
-        }
-
-        $expert = $request->expert;
-        $designers = $request->designers;
-
-        if ($request->has('img')) {
-            $file = $request->file('img');
-            $ImagePath = $file->store('assets/banner/', 'public');
-        } else {
-            $ImagePath = $request->old_img;
-        }
-
-
-        // $teamwork = [];
-
-        // for ($i = 0; $i < count($name); $i++) {
-        //     $teamwork[$i] = [
-        //         'expert' => $expert[$i],
-        //         'designers' => $designers[$i]
-        //     ];
-        // }
-
-        $teamwork = [
-            'expert' => $expert,
-            'designers' => $designers
-        ];
-
-
-        $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'teams' => json_encode($teamwork),
-            'team_img' => $ImagePath,
-        ]);
-
-        if ($result) {
-            $response = [
-                'status' => true,
-                'notification' => 'About Team Work Save successfully!',
-            ];
-        } else {
-            $response = [
-                'status' => false,
-                'notification' => 'Somthing Went Wrong!',
-            ];
-        }
-
-        return response()->json($response);
-    }
-
-    public function about_mnv_section(Request $request)
-    {
-
-        $validator = Validator::make($request->all(), [
-            'mission' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'notification' => $validator->errors()->all()
-            ], 200);
-        }
-
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $ImagePath = $file->store('assets/banner/', 'public');
-        } else {
-            $ImagePath = $request->old_img;
-        }
-
-        $mission = $request->mission;
-
-        $mission = [
-            'mission' => $mission,
-            'img' => $ImagePath
+        $about = [
+            'about_description' => $request->about_description,
+            'about_image' => $aboutPath,
+            'about_heading' => $request->about_heading,
         ];
 
         $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'mission_vision' => json_encode($mission),
+            'about_section' => json_encode($about),
         ]);
 
         if ($result) {
             $response = [
                 'status' => true,
-                'notification' => 'About Mission Save successfully!',
+                'notification' => 'About Save successfully!',
             ];
         } else {
             $response = [
@@ -328,11 +169,13 @@ class AboutController extends Controller
         return response()->json($response);
     }
 
-    public function about_our_values(Request $request)
+    public function about_vision(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'values' => 'required',
+            'vision_heading' => 'required',
+            'vision_description' => 'required',
+            'vision_image' => 'nullable|image',
         ]);
 
         if ($validator->fails()) {
@@ -342,32 +185,32 @@ class AboutController extends Controller
             ], 200);
         }
 
-        if ($request->has('image')) {
-            $file = $request->file('image');
-            $ImagePath = $file->store('assets/banner/', 'public');
+        // Get the existing vision section from the database
+        $existingvisionSection = DB::table('pages')->where('page_name', $request->page)->value('vision_section');
+        $existingvision = json_decode($existingvisionSection, true);
+
+        // Check if a new vision image is uploaded
+        if ($request->hasFile('vision_image')) {
+            $file = $request->file('vision_image');
+            $visionPath = $file->store('assets/about/', 'public');
         } else {
-            $ImagePath = $request->old_img;
+            $visionPath = $existingvision['vision_image'] ?? null; // Retain existing image if available
         }
 
-        $values = $request->values;
-        $values2 = $request->values2;
-
-        $values = [
-            'values' => $values,
-            'values2' => $values2,
-            'img' => $ImagePath
+        $vision = [
+            'vision_description' => $request->vision_description,
+            'vision_image' => $visionPath,
+            'vision_heading' => $request->vision_heading,
         ];
 
-
-
         $result = DB::table('pages')->where('page_name', $request->page)->update([
-            'our_values' => json_encode($values),
+            'vision_section' => json_encode($vision),
         ]);
 
         if ($result) {
             $response = [
                 'status' => true,
-                'notification' => 'About Our Values Save successfully!',
+                'notification' => 'vision Save successfully!',
             ];
         } else {
             $response = [
@@ -378,4 +221,59 @@ class AboutController extends Controller
 
         return response()->json($response);
     }
+
+    public function about_design(Request $request)
+    {
+
+        
+        $validator = Validator::make($request->all(), [
+            'design_heading' => 'required',
+            'design_description' => 'required',
+            'design_image' => 'nullable|image',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
+        }
+
+        // Get the existing design section from the database
+        $existingdesignSection = DB::table('pages')->where('page_name', $request->page)->value('design_section');
+        $existingdesign = json_decode($existingdesignSection, true);
+
+        // Check if a new design image is uploaded
+        if ($request->hasFile('design_image')) {
+            $file = $request->file('design_image');
+            $designPath = $file->store('assets/about/', 'public');
+        } else {
+            $designPath = $existingdesign['design_image'] ?? null; // Retain existing image if available
+        }
+
+        $design = [
+            'design_description' => $request->design_description,
+            'design_image' => $designPath,
+            'design_heading' => $request->design_heading,
+        ];
+
+        $result = DB::table('pages')->where('page_name', $request->page)->update([
+            'design_section' => json_encode($design),
+        ]);
+
+        if ($result) {
+            $response = [
+                'status' => true,
+                'notification' => 'Design Save successfully!',
+            ];
+        } else {
+            $response = [
+                'status' => false,
+                'notification' => 'Somthing Went Wrong!',
+            ];
+        }
+
+        return response()->json($response);
+    }
+
 }

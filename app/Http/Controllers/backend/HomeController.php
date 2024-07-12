@@ -133,67 +133,69 @@ class HomeController extends Controller
 
 
     public function storeGallerySection1(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'gallery_title.*' => 'required',
-        'gallery_description.*' => 'required',
-        'gallery_image.*' => 'required|image|max:8000', // Adjust max file size as needed
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'status' => false,
-            'notification' => $validator->errors()->all()
-        ], 200);
-    }
-
-    $gallerySection1 = [];
-    $galleryImages = $request->file('gallery_image');
-
-    for ($i = 0; $i < count($request->gallery_title); $i++) {
-        $imagePath = null;
-
-        // Check if the file exists at this index
-        if (isset($galleryImages[$i])) {
-            $imagePath = $galleryImages[$i]->store('gallery_images', 'public');
-        }
-
-        $gallerySection1[] = [
-            'title' => $request->gallery_title[$i],
-            'description' => $request->gallery_description[$i],
-            'image' => $imagePath,
-        ];
-    }
-
-    // Update the introduction in JSON format
-    $result = DB::table('pages')
-        ->where('page_name', $request->page)
-        ->update([
-            'gallery_section' => json_encode($gallerySection1)
+    {
+        $validator = Validator::make($request->all(), [
+            'gallery_title.*' => 'required',
+            'gallery_description.*' => 'required',
+            'gallery_image.*' => 'image|max:8000', // Adjust max file size as needed
         ]);
-
-    if ($result) {
-        $response = [
-            'status' => true,
-            'notification' => 'Gallery Section 1 saved successfully!',
-        ];
-    } else {
-        $response = [
-            'status' => false,
-            'notification' => 'Something went wrong!',
-        ];
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
+        }
+    
+        $existingGallerySection1 = DB::table('pages')->where('page_name', $request->page)->value('gallery_section');
+        $existingGallerySection1 = json_decode($existingGallerySection1, true) ?? [];
+    
+        $gallerySection1 = [];
+        $galleryImages = $request->file('gallery_image');
+    
+        for ($i = 0; $i < count($request->gallery_title); $i++) {
+            $imagePath = null;
+    
+            if (isset($galleryImages[$i])) {
+                $imagePath = $galleryImages[$i]->store('gallery_images', 'public');
+            } elseif (isset($existingGallerySection1[$i])) {
+                $imagePath = $existingGallerySection1[$i]['image'];
+            }
+    
+            $gallerySection1[] = [
+                'title' => $request->gallery_title[$i],
+                'description' => $request->gallery_description[$i],
+                'image' => $imagePath,
+            ];
+        }
+    
+        $result = DB::table('pages')
+            ->where('page_name', $request->page)
+            ->update([
+                'gallery_section' => json_encode($gallerySection1)
+            ]);
+    
+        if ($result) {
+            $response = [
+                'status' => true,
+                'notification' => 'Gallery Section 1 saved successfully!',
+            ];
+        } else {
+            $response = [
+                'status' => false,
+                'notification' => 'Something went wrong!',
+            ];
+        }
+    
+        return response()->json($response);
     }
-
-    return response()->json($response);
-}
-
 
     public function storeGallerySection2(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'gallery2_title.*' => 'required',
             'gallery2_description.*' => 'required',
-            'gallery2_image.*' => 'required|image|max:8000', // Adjust max file size as needed
+            'gallery2_image.*' => 'image|max:8000', // Adjust max file size as needed
         ]);
 
         if ($validator->fails()) {
@@ -203,9 +205,21 @@ class HomeController extends Controller
             ], 200);
         }
 
+        $existingGallerySection2 = DB::table('pages')->where('page_name', $request->page)->value('gallery_section2');
+        $existingGallerySection2 = json_decode($existingGallerySection2, true) ?? [];
+
         $gallerySection2 = [];
+        $galleryImages = $request->file('gallery2_image');
+
         for ($i = 0; $i < count($request->gallery2_title); $i++) {
-            $imagePath = $request->file('gallery2_image')[$i]->store('gallery_images', 'public');
+            $imagePath = null;
+
+            if (isset($galleryImages[$i])) {
+                $imagePath = $galleryImages[$i]->store('gallery_images', 'public');
+            } elseif (isset($existingGallerySection2[$i])) {
+                $imagePath = $existingGallerySection2[$i]['image'];
+            }
+
             $gallerySection2[] = [
                 'title' => $request->gallery2_title[$i],
                 'description' => $request->gallery2_description[$i],
@@ -213,7 +227,6 @@ class HomeController extends Controller
             ];
         }
 
-        // Update `gallery_section2` in database as JSON
         $result = DB::table('pages')
             ->where('page_name', $request->page)
             ->update([
@@ -228,12 +241,13 @@ class HomeController extends Controller
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Something Went Wrong!',
+                'notification' => 'Something went wrong!',
             ];
         }
 
         return response()->json($response);
     }
+
 
 
     public function home_counter(Request $request)

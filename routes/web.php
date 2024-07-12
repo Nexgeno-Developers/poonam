@@ -25,7 +25,6 @@ Route::get('/contact-us', [IndexController::class, 'contact_Us'])->name('contact
 Route::get('/services', [IndexController::class, 'services'])->name('services');
 Route::get('/gallery', [IndexController::class, 'gallery'])->name('gallery');
 Route::get('/news-media', [IndexController::class, 'news_media'])->name('news-media');
-Route::get('/career', [IndexController::class, 'career'])->name('career');
 Route::get('/our-business', [IndexController::class, 'our_Business'])->name('our-business');
 Route::get('/products', [IndexController::class, 'products'])->name('products');
 Route::get('/projects', [IndexController::class, 'projects'])->name('projects');

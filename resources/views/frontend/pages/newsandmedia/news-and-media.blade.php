@@ -9,7 +9,7 @@
 @section('page.content')
 
 <section class="inner_header">
-    <img src="{{ asset('/assets/frontend/image/new_media_banner.jpg')}}" class="w-100" />
+    <img src="{{ asset('storage/'.$banner) }}" class="w-100" />
     <div class="container">
         <div class="header_title">
             <h3 class="heading_inner_text peachy_flightoe_font font50">NEWS & MEDIA</h3>
@@ -24,136 +24,151 @@
         </p>
         <div class="row justify-content-center mb-md-4">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6">
+            <div class="row">
+                @foreach ($image_section as $index => $image)
+                    <div class="{{ $index < 2 ? 'col-md-6' : 'col-md-4' }}">
                         <div class="gallery_dt_inner">
                             <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/the_rasin_start.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/the_rasin_start.jpg')}}" /></a>
+                                <a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image">
+                                    <img src="{{ asset('storage/' . $image) }}" />
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/lbb.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/lbb.jpg')}}" /></a>
+                @endforeach
+            </div>
+                {{--
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/the_rasin_start.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/the_rasin_start.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/get_the_look_resign.jpg')}}" data-fancybox="images"
-                                    data-caption="Image 1"><img src="{{ asset('/assets/frontend/image/get_the_look_resign.jpg')}}" /></a>
+                        <div class="col-md-6">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/lbb.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/lbb.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/insta_post.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/insta_post.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/get_the_look_resign.jpg')}}" data-fancybox="images"
+                                        data-caption="Image 1"><img src="{{ asset('/assets/frontend/image/get_the_look_resign.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/pages_artists_look.jpg')}}" data-fancybox="images"
-                                    data-caption="Image 1"><img src="{{ asset('/assets/frontend/image/pages_artists_look.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/insta_post.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/insta_post.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/mumbai_artists.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/mumbai_artists.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/pages_artists_look.jpg')}}" data-fancybox="images"
+                                        data-caption="Image 1"><img src="{{ asset('/assets/frontend/image/pages_artists_look.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/be_it_biking.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/be_it_biking.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/mumbai_artists.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/mumbai_artists.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/pink_flower.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/pink_flower.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/be_it_biking.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/be_it_biking.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/take_a_glimpse.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/take_a_glimpse.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/pink_flower.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/pink_flower.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/brown_frog_lady.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/brown_frog_lady.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/take_a_glimpse.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/take_a_glimpse.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/of_ghitz_glamour.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/of_ghitz_glamour.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/brown_frog_lady.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/brown_frog_lady.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/pink_dress_lady.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/pink_dress_lady.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/of_ghitz_glamour.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/of_ghitz_glamour.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/galley_13.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/galley_13.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/pink_dress_lady.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/pink_dress_lady.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="gallery_dt_inner">
-                            <div class="gallery_dt_img">
-                                <a href="{{ asset('/assets/frontend/image/galley_14.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
-                                        src="{{ asset('/assets/frontend/image/galley_14.jpg')}}" /></a>
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/galley_13.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/galley_13.jpg')}}" /></a>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="gallery_dt_inner">
+                                <div class="gallery_dt_img">
+                                    <a href="{{ asset('/assets/frontend/image/galley_14.jpg')}}" data-fancybox="images" data-caption="Image 1"><img
+                                            src="{{ asset('/assets/frontend/image/galley_14.jpg')}}" /></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
-
-
-
-                </div>
+                --}}
             </div>
         </div>
     </div>

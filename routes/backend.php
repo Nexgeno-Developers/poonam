@@ -9,7 +9,7 @@ use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\HomeController;
 use App\Http\Controllers\backend\AboutController;
 use App\Http\Controllers\backend\ProjectController;
-use App\Http\Controllers\backend\CareerController;
+use App\Http\Controllers\backend\NewsmediaController;
 use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\BusinessController;
 use App\Http\Controllers\backend\ProductsController;
@@ -50,7 +50,7 @@ Route::get('/about-page', [AboutController::class, 'index'])->name('backend.abou
 
 Route::get('/project-page', [ProjectController::class, 'index'])->name('backend.project.page');
 
-Route::get('/career-page', [CareerController::class, 'index'])->name('backend.career.page');
+Route::get('/newsmedia-page', [NewsmediaController::class, 'index'])->name('backend.newsandmedia.page');
 
 Route::get('/contact-page', [ContactController::class, 'index'])->name('backend.contact.page');
 
@@ -68,18 +68,17 @@ Route::post('/update-home-counter', [HomeController::class, 'home_counter'])->na
 Route::post('/update-home-project', [HomeController::class, 'home_project'])->name('home.project');
 
 Route::post('/update-about-banner', [AboutController::class, 'about_banner'])->name('about.banner');
-Route::post('/update-about-intro', [AboutController::class, 'about_intro'])->name('about.intro');
-Route::post('/update-about-steps', [AboutController::class, 'about_steps'])->name('about.steps');
-Route::post('/update-about-teamwork', [AboutController::class, 'about_teamwork'])->name('about.teamwork');
-Route::post('/update-about-mnv-section', [AboutController::class, 'about_mnv_section'])->name('about.mnv_section');
-Route::post('/update-about-our-values', [AboutController::class, 'about_our_values'])->name('about.our_values');
+Route::post('/update-about-journey', [AboutController::class, 'about_journey'])->name('about.journey');
+Route::post('/update-about-midsection', [AboutController::class, 'about_midsection'])->name('about.midsection');
+Route::post('/update-about-vision', [AboutController::class, 'about_vision'])->name('about.vision');
+Route::post('/update-about-design', [AboutController::class, 'about_design'])->name('about.design');
 
 Route::post('/update-project-banner', [ProjectController::class, 'project_banner'])->name('project.banner');
 Route::post('/update-project-complete', [ProjectController::class, 'project_complete'])->name('project.complete');
 Route::post('/update-project-certificate', [ProjectController::class, 'project_certificate'])->name('project.certificate');
 
-Route::post('/update-career-banner', [CareerController::class, 'career_banner'])->name('career.banner');
-Route::post('/update-career-intro', [CareerController::class, 'career_intro'])->name('career.intro');
+Route::post('/update-newsandmedia-banner', [NewsmediaController::class, 'newsandmedia_banner'])->name('newsandmedia.banner');
+Route::post('/update-newsandmedia-image', [NewsmediaController::class, 'newsandmedia_image'])->name('newsandmedia.image');
 
 Route::post('/update-contact-banner', [ContactController::class, 'contact_banner'])->name('contact.banner');
 Route::post('/update-contact-all-contacts', [ContactController::class, 'contact_all_contacts'])->name('contact.all_contacts');

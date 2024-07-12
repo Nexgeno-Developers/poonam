@@ -8,8 +8,18 @@
 
 @section('page.content')
 
+@php
+$designHeading = $design_section->design_heading;
+    $designTextParts = explode('|', $designHeading);
+    
+        $designfirstText = $designTextParts[0] ?? '';
+        $designsecondText = $designTextParts[1] ?? '';
+        $designthirdText = $designTextParts[2] ?? '';
+@endphp
+
+
 <section class="about_us_banner inner_header border_1">
-    <img src="{{ asset('/assets/frontend/image/about-banner.jpg') }}" class="w-100" />
+    <img src="{{ asset('storage/'.$banner) }}" class="w-100" />
     <div class="container">
         <div class="heading_inner header_title">
             <h3 class="heading_inner_text peachy_flightoe_font font50">ABOUT US</h3>
@@ -23,7 +33,9 @@
             <div class="col-md-6">
                 <div class="about_content pe-md-4 pe-0 anim-para-text animheadertext-2">
 
-                    <h3 class="js-split-words2 peachy_flightoe_font font50">MY JOURNEY</h3>
+                    <h3 class="js-split-words2 peachy_flightoe_font font50">{{$journey_section->journey_text}}</h3>
+                        {!! $journey_section->journey_description !!}
+                    {{--
                     <p class="text-justify js-split-p-letter">
                         Being born to a mother who was a gifted mural artist meant discovering
                         first toys and first tales in radiant colours and looming canvases.
@@ -37,15 +49,15 @@
                         fulfillment as an artist and creator. From wardrobe panels to wall art,
                         my creations are known for their embellished real crystals and stones,
                         which lend a compelling energy and aura to the spaces they adorn.
-                    </p>
+                    </p>--}}
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="image-wrapper-profile">
                     <div class="overlay"></div>
-                    <img class="parallax-layer3 profile_img img w-100" src="{{ asset('/assets/frontend/image/profile_image.png') }}" data-speed="-3"
-                        alt="Profile Image" />
+                    <img class="parallax-layer3 profile_img img w-100" src="{{ asset('storage/'.$journey_section->journey_image) }}" data-speed="-3" alt="Profile Image" />
+                    <!-- <img class="parallax-layer3 profile_img img w-100" src="{{ asset('/assets/frontend/image/profile_image.png') }}" data-speed="-3" alt="Profile Image" /> -->
                 </div>
             </div>
 
@@ -58,9 +70,11 @@
 
             <div class="col-md-12">
                 <div class="animheadertext-2 about_between">
+                    <h4 class="js-split-words2 trajanPro_regular"><b> {{$journey_section->journey_heading}} </b> </h4>
+                    {{--
                     <h4 class="js-split-words2 trajanPro_regular"><b>Lorem Ipsum is simply dummy text of
                             the printing and typesetting industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s,</b> </h4>
+                            standard dummy text ever since the 1500s,</b> </h4>--}}
                 </div>
             </div>
 
@@ -76,8 +90,8 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="about_img">
-                    <img src="{{ asset('/assets/frontend/image/profile_image2.png') }}" class="parallax-layer2 w-100 float-end" alt="Parallax Image"
-                        data-speed="-2">
+                    <!-- <img src="{{ asset('/assets/frontend/image/profile_image2.png') }}" class="parallax-layer2 w-100 float-end" alt="Parallax Image" data-speed="-2"> -->
+                    <img src="{{ asset('storage/'.$about_section->about_image) }}" class="parallax-layer2 w-100 float-end" alt="Parallax Image" data-speed="-2">
                 </div>
             </div>
 
@@ -85,7 +99,8 @@
                 <div class="about_content pt-5">
 
                     <div class="anim-para-text">
-                        <p class="js-split-p-letter text-justify">
+                        {!! $about_section->about_description !!}
+                        {{-- <p class="js-split-p-letter text-justify">
                             My life’s design hadn’t always included this immersion in art.
                             In fact, as a commerce graduate from NMIMS Narsee Monjee College
                             of Commerce & Economics, who further pursed a CA degree from ICAI,
@@ -118,14 +133,16 @@
                             From uploading pieces online, to bagging my first order,
                             to working on larger-than-life installations, art has been
                             an exciting and empowering journey.
-                        </p>
+                        </p>--}}
                     </div>
 
                     <div class="animheadertext-2">
-                        <h4 class="js-split-words2 font30 trajanPro_regular"><b> Lorem Ipsum is simply
+                        <h4 class="js-split-words2 font30 trajanPro_regular"><b>{{$about_section->about_heading}}</b></h4>
+                        {{--
+                                <h4 class="js-split-words2 font30 trajanPro_regular"><b> Lorem Ipsum is simply
                                 dummy text of the printing and typesetting industry. Lorem Ipsum has
                                 been the industry's
-                                standard dummy</b></h4>
+                                standard dummy</b></h4> --}}
                     </div>
 
 
@@ -143,6 +160,9 @@
                 <div class="anim-para-text about_content pt-5">
 
                     <div class="anim-para-text">
+
+                        {!! $vision_section->vision_description !!}
+                    {{--
                         <p class="js-split-p-letter color_white text-justify pe-5">
                             Every resin art piece is potentially a resin art product.
                             From cutting boards to cutting edge furniture, resin can be what you want it to be.
@@ -151,15 +171,21 @@
                             I challenge myself to raise the resin bar by transforming the regular
                             and routine with the glitz, gloss, and glamour of resin.
                         </p>
+                    --}}
                     </div>
 
                     <div class="animheadertext-2">
+                        <h4 class="js-split-words2 color_white font30  pe-5 peachy_flightoe_font ">
+                            {{ $vision_section->vision_heading }}
+                        </h4>
+                        {{--
                         <h4 class="js-split-words2 color_white font30  pe-5 peachy_flightoe_font ">
                             An incredibly fluid and highly versatile medium of art like
                             resin cannot be confined to a canvas. It has both the power
                             and the potential to pose as something that adds meaning
                             and impact to our surrounds.
                         </h4>
+                        --}}
                     </div>
 
                 </div>
@@ -168,7 +194,8 @@
             <div class="col-md-5">
                 <div class="about_img_vission position-relative parallax-container" onmousemove="parallaxEffect(event)"
                     onmouseleave="resetTilt()">
-                    <img class="parallax-image" src="{{ asset('/assets/frontend/image/about_vertical_img.png') }}" />
+                    <img class="parallax-image" src="{{ asset('storage/'.$vision_section->vision_image) }}" />
+                    <!-- <img class="parallax-image" src="{{ asset('/assets/frontend/image/about_vertical_img.png') }}" /> -->
                     <h4 class="amsterdam_font vission_title">Vission</h4>
                 </div>
             </div>
@@ -184,8 +211,8 @@
                 <div class="about_circle">
                     <img src="{{ asset('/assets/frontend/image/border_about_img.png') }}" />
                     <h4 class="peachy_flightoe_font design_heading">
-                        <div class="first_text">THE <span class="color_white">DESIGN</span></div>
-                        <span class="second_text color_white float_right">DEN</span>
+                        <div class="first_text">{{$designfirstText}} <span class="color_white">{{$designsecondText}}</span></div>
+                        <span class="second_text color_white float_right">{{$designthirdText}}</span>
                     </h4>
 
                 </div>
@@ -194,6 +221,11 @@
             <div class="col-md-5">
                 <div class="about_content pt-5">
 
+                    <div class="anim-para-text">
+                        {!! $design_section->design_description !!}
+                    </div>
+
+{{--
                     <div class="anim-para-text">
                         <p class="js-split-p-letter text-justify ps-4 js-split-words">
                             My second home, my design den, is a spacious art studio-cum-work
@@ -218,7 +250,7 @@
                             essentially, resin can soar.
                         </p>
                     </div>
-
+--}}
 
                 </div>
             </div>
