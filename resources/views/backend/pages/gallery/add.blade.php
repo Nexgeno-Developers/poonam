@@ -46,7 +46,7 @@
                     <div class="col-6 form-group mb-3">
                         <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
                                 190*64)</span></label>
-                        <input class="form-control" type="file" id="image_description[]" name="image_description"
+                        <input class="form-control" type="file" id="image_description[]" name="image_description[]"
                             accept=".jpg,.jpeg,.png,.webp">
                     </div>
 

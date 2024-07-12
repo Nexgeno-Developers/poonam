@@ -36,7 +36,7 @@
                 <td>{{$row->page_name}}</td>
                 <td>{{$row->title}}</td>
                 <td>
-                    <a target="_blank" href="{{ url(route('gallery.detail', ['slug' => $row->slug] )) }}">{{$row->slug}}</a>
+                    <a target="_blank" href="{{ url(route('gallery.detail', ['gallery_slug' => $row->slug] )) }}">{{$row->slug}}</a>
                 </td> 
                 <td>{{datetimeFormatter($row->created_at)}}</td>
                 <td>

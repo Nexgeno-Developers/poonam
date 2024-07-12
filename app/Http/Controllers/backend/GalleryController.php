@@ -76,60 +76,36 @@ class GalleryController extends Controller
         $slug = customSlug($request->input('slug'));
     
 
-        // Get the existing banner path from the database
-        $existingBanner = DB::table('pages')->where('page_name', $request->page)->value('banner');
-        // Check if a new banner is uploaded
+
         if ($request->hasFile('banner')) {
             $file = $request->file('banner');
             $bannerPath = $file->store('assets/banner/', 'public');
-        } else {
-            $bannerPath = $existingBanner;
         }
 
         
-        // Get the existing banner path from the database
-        $existingthum_image = DB::table('pages')->where('page_name', $request->page)->value('thum_image');
-        // Check if a new banner is uploaded
+
         if ($request->hasFile('thum_image')) {
             $file = $request->file('thum_image');
             $thum_imagePath = $file->store('assets/gallery/thum_images', 'public');
-        } else {
-            $thum_imagePath = $existingthum_image;
         }
 
-
-        // Initialize image_description array
         $image_description = [];
 
-        // Retrieve existing image_description from the database
-        $existing_image_description = DB::table('pages')->where('page_name', $request->page)->value('image_description');
-        if ($existing_image_description !== null && !empty($existing_image_description)) {
-            $existing_image_description = json_decode($existing_image_description, true);
-        } else {
-            $existing_image_description = [];
+        $image_description_img = [];
+        if($request->has('image_description')){
+            foreach ($request->file('image_description') as $index => $file) {
+                $ImagePath = $file->store('assets/image_description/', 'public');
+                $image_description_img[$index] = $ImagePath;
+            }
         }
 
         // Process image_description texts and files
         foreach ($request->image_description_text as $index => $text) {
-            $fileUploaded = $request->hasFile('image_description.' . $index);
-            $existingImage = isset($existing_image_description[$index]['image']) ? $existing_image_description[$index]['image'] : null;
-
-            // Skip the row if text is empty or if both new and existing images are not available
-            if (empty($text) || (!$fileUploaded && empty($existingImage))) {
-                continue;
-            }
 
             $image_description_text_image = [
                 'text' => $text,
-                'image' => $existingImage,
+                'image' => $image_description_img[$index],
             ];
-
-            // Check if a new file is uploaded for the current index
-            if ($fileUploaded) {
-                $file = $request->file('image_description.' . $index);
-                $image_descriptionPath = $file->store('assets/image_description/', 'public');
-                $image_description_text_image['image'] = $image_descriptionPath;
-            }
 
             $image_description[] = $image_description_text_image;
         }
@@ -167,7 +143,7 @@ class GalleryController extends Controller
         $images = array_filter($images, function($value) { return !is_null($value); });
 
 
-        // Initialize images array
+
         $videos = [];
             
         // Process new and old videos
@@ -195,7 +171,6 @@ class GalleryController extends Controller
             }
         }
 
-        // Remove null values from the array
         $videos = array_filter($videos, function($value) { return !is_null($value); });
 
     
