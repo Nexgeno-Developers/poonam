@@ -79,6 +79,13 @@
                             </a>
                         </li>
 
+                        <li class="side-nav-item">
+                            <a href="{{ route('backend.gallery.index') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                <i class="ri-bar-chart-2-line"></i> 
+                                <span> Gallery Page </span>
+                            </a>
+                        </li>
+
 
                         <li class="side-nav-item">
                             <a href="{{ route('backend.newsandmedia.page') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">

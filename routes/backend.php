@@ -15,6 +15,7 @@ use App\Http\Controllers\backend\BusinessController;
 use App\Http\Controllers\backend\ProductsController;
 
 use App\Http\Controllers\backend\ServiceController;
+use App\Http\Controllers\backend\GalleryController;
 
 use App\Http\Controllers\backend\TrumbowygController;
 
@@ -100,6 +101,17 @@ Route::group(['prefix' => 'service'], function () {
     Route::post('/update', [ServiceController::class, 'update'])->name('service.update');
     Route::post('/delete/{id}', [ServiceController::class, 'delete'])->name('service.delete');
     // Route::get('/status/{id}/{status}', [ServiceController::class, 'status'])->name('service.status');
+});
+
+//Gallery
+Route::group(['prefix' => 'gallery'], function () {
+    Route::get('/index', [GalleryController::class, 'index'])->name('backend.gallery.index');
+    Route::get('/add', [GalleryController::class, 'add'])->name('gallery.add');
+    Route::get('/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::post('/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/update', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::post('/delete/{id}', [GalleryController::class, 'delete'])->name('gallery.delete');
+    // Route::get('/status/{id}/{status}', [GalleryController::class, 'status'])->name('gallery.status');
 });
 
 

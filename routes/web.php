@@ -30,9 +30,19 @@ Route::get('/products', [IndexController::class, 'products'])->name('products');
 Route::get('/projects', [IndexController::class, 'projects'])->name('projects');
 
 $slug = DB::table('services')->pluck('slug')->toArray();
+if (!empty($slug)) {
 Route::get('/service/{slug}', [IndexController::class, 'service_detail'])
     ->where('slug', implode('|', $slug ))
     ->name('service.detail');
+}
+
+$gallery_slug = DB::table('gallery')->pluck('slug')->toArray();
+// Define gallery route only if there are gallery slugs
+if (!empty($gallery_slug)) {
+    Route::get('/gallery/{gallery_slug}', [IndexController::class, 'gallery_detail'])
+        ->where('gallery_slug', implode('|', $gallery_slug))
+        ->name('gallery.detail');
+}
 
 Route::get('/404', [IndexController::class, 'not_found'])->name('error_page');
 Route::get('/thank-you', [IndexController::class, 'thank_you'])->name('thank_you');

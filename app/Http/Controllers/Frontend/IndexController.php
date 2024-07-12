@@ -114,6 +114,19 @@ class IndexController extends Controller
 
         return view('frontend.pages.services.services_detail', compact('service_detail','service_image','gallery_image','slug','page_name','banner','title','short_description'));
     }
+    
+    public function gallery_detail($slug){
+        // var_dump($slug);
+        $gallery_detail = DB::table('gallery')->where('slug', $slug)->where('status', 1)->get()->first();
+        $page_name = $gallery_detail->page_name;
+        $banner = $gallery_detail->banner;
+        $thum_image = $gallery_detail->thum_image;
+        $title = $gallery_detail->title;
+        $image_description = json_decode($gallery_detail->image_description, true);
+        $image = json_decode($gallery_detail->image, true);
+
+        return view('frontend.pages.gallery.gallery_detail', compact('gallery_detail','page_name','banner','slug','thum_image','title','image_description','image'));
+    }
 
 //--------------=============================== Pages ================================------------------------------
 
