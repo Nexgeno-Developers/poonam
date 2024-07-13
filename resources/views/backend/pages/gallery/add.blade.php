@@ -35,6 +35,12 @@
                 <input type="text" class="form-control" name="title" value="" required>
             </div>
         </div>
+        <div class="col-sm-12">
+            <div class="form-group mb-3">
+                <label>Short Description <span class="red">*</span></label>
+                <input type="text" class="form-control" name="short_description" value="" required>
+            </div>
+        </div>
 
         <div class="row gallery-image-row">
             <div class="col-md-9">
@@ -75,9 +81,8 @@
 
             <div class="col-md-9">
                 <div class="form-group mb-3 ">
-                    <label>Videos <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
-                            190*64)</span></label>
-                    <input class="form-control" type="file" id="gallery_videos" name="gallery_videos[]" required>
+                    <label>Video Url<span class="red">*</span> </label>
+                    <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]"  required />
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">

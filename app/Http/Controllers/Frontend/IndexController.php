@@ -122,10 +122,12 @@ class IndexController extends Controller
         $banner = $gallery_detail->banner;
         $thum_image = $gallery_detail->thum_image;
         $title = $gallery_detail->title;
+        $short_description = $gallery_detail->short_description;
         $image_description = json_decode($gallery_detail->image_description, true);
-        $image = json_decode($gallery_detail->image, true);
+        $images = json_decode($gallery_detail->images, true);
+        $videos = json_decode($gallery_detail->videos, true);
 
-        return view('frontend.pages.gallery.gallery_detail', compact('gallery_detail','page_name','banner','slug','thum_image','title','image_description','image'));
+        return view('frontend.pages.gallery.gallery_detail', compact('gallery_detail','page_name','banner','slug','thum_image','title','short_description','image_description','images','videos'));
     }
 
 //--------------=============================== Pages ================================------------------------------

@@ -30,6 +30,7 @@ class GalleryController extends Controller
             'page_name' => 'required',
             'banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'thum_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'short_description' => 'required',
             'title' => 'required',
             'image_description.*' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'images' => 'required',
@@ -55,6 +56,7 @@ class GalleryController extends Controller
             'slug.unique' => 'The slug must be unique.',
     
             'title.required' => 'The title is required.',
+            'short_description.required' => 'The Short Description is required.',
             
             'gallery_videos.required' => 'The Video is required.',
 
@@ -144,34 +146,37 @@ class GalleryController extends Controller
 
 
 
-        $videos = [];
+        // Get all video URLs from the request
+        $videos_urls = $request->input('gallery_videos');
+
+        // $videos = [];
             
-        // Process new and old videos
-        $oldVideos = $request->input('gallery_videos', []);
-        $newVideos = $request->file('gallery_videos', []);
+        // // Process new and old videos
+        // $oldVideos = $request->input('gallery_videos', []);
+        // $newVideos = $request->file('gallery_videos', []);
 
-        // Iterate over old videos and keep them in the videos array
-        foreach ($oldVideos as $index => $oldVideoPath) {
-            if (!empty($newVideos[$index])) {
-                // If a new image is uploaded for this index, store it
-                $file = $newImages[$index];
-                $videoPath = $file->store('assets/videos', 'public');
-                $videos[] = $videoPath;
-            } else {
-                // If no new image is uploaded, keep the old image
-                $videos[] = $oldVideoPath;
-            }
-        }
+        // // Iterate over old videos and keep them in the videos array
+        // foreach ($oldVideos as $index => $oldVideoPath) {
+        //     if (!empty($newVideos[$index])) {
+        //         // If a new image is uploaded for this index, store it
+        //         $file = $newImages[$index];
+        //         $videoPath = $file->store('assets/videos', 'public');
+        //         $videos[] = $videoPath;
+        //     } else {
+        //         // If no new image is uploaded, keep the old image
+        //         $videos[] = $oldVideoPath;
+        //     }
+        // }
 
-        // Add any new videos that were added after the last old image index
-        foreach ($newVideos as $index => $file) {
-            if ($index >= count($oldImages)) {
-                $videoPath = $file->store('assets/videos', 'public');
-                $videos[] = $videoPath;
-            }
-        }
+        // // Add any new videos that were added after the last old image index
+        // foreach ($newVideos as $index => $file) {
+        //     if ($index >= count($oldImages)) {
+        //         $videoPath = $file->store('assets/videos', 'public');
+        //         $videos[] = $videoPath;
+        //     }
+        // }
 
-        $videos = array_filter($videos, function($value) { return !is_null($value); });
+        // $videos = array_filter($videos, function($value) { return !is_null($value); });
 
     
         DB::table('gallery')->insert([
@@ -180,9 +185,11 @@ class GalleryController extends Controller
             'banner' => $bannerPath,
             'thum_image' => $thum_imagePath,
             'title' => $request->input('title'),
+            'short_description' => $request->input('short_description'),
+            'videos' => json_encode($videos_urls),
             'image_description' => json_encode($image_description), // Store as JSON
             'images' => json_encode(array_values($images)),
-            'videos' => json_encode(array_values($videos)),
+            // 'videos' => json_encode(array_values($videos)),
         ]);
     
         $response = [
@@ -239,9 +246,10 @@ class GalleryController extends Controller
             'banner' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'thum_image' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'title' => 'required',
+            'short_description' => 'required',
             'image_description.*' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'images' => 'nullable',
-            'gallery_videos' => 'nullable',
+            'gallery_videos' => 'required',
            
         ], [
             'banner.required' => 'The banner image is required.',
@@ -262,6 +270,8 @@ class GalleryController extends Controller
             'slug.required' => 'The slug is required.',
     
             'title.required' => 'The title is required.',
+
+            'short_description.required' => 'The Short Description is required.',
             
             'gallery_videos.required' => 'The Video is required.',
 
@@ -347,43 +357,47 @@ class GalleryController extends Controller
 
 
         /*--------------------------- video --------------------------------------- */
+        // Get all video URLs from the request
+        $videos_urls = $request->input('gallery_videos');
 
-        $video = [];
 
-        $newvideo = [];
-        if($request->has('gallery_videos')){
-            foreach ($request->file('gallery_videos') as $index => $file) {
-                $VideoPath = $file->store('assets/video', 'public');
-                $newvideo[$index] = $VideoPath;
-            }
-        }
 
-        $number_video = $request->input('number_video');
-        foreach ($number_video as $key => $row) {
+        // $video = [];
 
-            if (isset($newvideo[$key])) {
-                $video[$key] = $newvideo[$key];
-            } else {
+        // $newvideo = [];
+        // if($request->has('gallery_videos')){
+        //     foreach ($request->file('gallery_videos') as $index => $file) {
+        //         $VideoPath = $file->store('assets/video', 'public');
+        //         $newvideo[$index] = $VideoPath;
+        //     }
+        // }
 
-                $old = "old_video$key";
-                if($request->has($old)){
+        // $number_video = $request->input('number_video');
+        // foreach ($number_video as $key => $row) {
 
-                    if($next1 == true){
-                        $video[$key] = $old_data_video[$key] ?? null;
-                    } else {
-                        $privous1 = $key + 1;
-                        $video[$key] = $old_data_video[$privous1] ?? null;
-                    }
+        //     if (isset($newvideo[$key])) {
+        //         $video[$key] = $newvideo[$key];
+        //     } else {
+
+        //         $old = "old_video$key";
+        //         if($request->has($old)){
+
+        //             if($next1 == true){
+        //                 $video[$key] = $old_data_video[$key] ?? null;
+        //             } else {
+        //                 $privous1 = $key + 1;
+        //                 $video[$key] = $old_data_video[$privous1] ?? null;
+        //             }
                     
-                } else {
-                    $next1 = false;
-                    $privous1 = $key + 1;
-                    $video[$key] = $old_data_video[$privous1] ?? null;
-                }
-            }
+        //         } else {
+        //             $next1 = false;
+        //             $privous1 = $key + 1;
+        //             $video[$key] = $old_data_video[$privous1] ?? null;
+        //         }
+        //     }
 
 
-        }
+        // }
 
         /*--------------------------- img_description --------------------------------------- */
 
@@ -442,9 +456,11 @@ class GalleryController extends Controller
             'banner' => $bannerPath,
             'thum_image' => $thum_imagePath,
             'title' => $request->input('title'),
+            'videos' => json_encode($videos_urls),
+            'short_description' => $request->input('short_description'),
             'image_description' => json_encode($image_description_data),
             'images' => json_encode(array_values($Images)),
-            'videos' => json_encode(array_values($video)),
+            // 'videos' => json_encode(array_values($video)),
         ]);
         
         if($result){
