@@ -42,7 +42,7 @@
                 <td>
                     <a href="javascript:void(0);" class="action-icon" onclick="largeModal('{{ url(route('service.edit',['id' => $row->id])) }}', 'Edit Service')"> <i class="mdi mdi-square-edit-outline" title="Edit"></i></a>
 
-                    {{-- <a href="javascript:void(0);" class="action-icon" onclick="confirmModal('{{ url(route('service.delete', $row->id)) }}', responseHandler)"><i class="mdi mdi-delete" title="Delete"></i></a> --}}
+                    <a href="javascript:void(0);" class="action-icon" onclick="confirmModal('{{ url(route('service.delete', $row->id)) }}', responseHandler)"><i class="mdi mdi-delete" title="Delete"></i></a>
                 </td>
             </tr>
             @endforeach

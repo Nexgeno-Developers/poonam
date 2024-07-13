@@ -104,21 +104,28 @@ class ServiceController extends Controller
     }  
     
     public function delete($id) {
-        
-        $service = DB::table('services')->where('id', $id);
-        if (!$service) {
+        $count = DB::table('services')->count();
+        if($count > 1 ){
+            $service = DB::table('services')->where('id', $id);
+            if (!$service) {
+                $response = [
+                    'status' => false,
+                    'notification' => 'Record not found.!',
+                ];
+                return response()->json($response);
+            }
+            $service->delete();
+
+            $response = [
+                'status' => true,
+                'notification' => 'Service Deleted successfully!',
+            ];
+        } else {
             $response = [
                 'status' => false,
-                'notification' => 'Record not found.!',
+                'notification' => 'You wont delete all data of the Service!',
             ];
-            return response()->json($response);
         }
-        $service->delete();
-
-        $response = [
-            'status' => true,
-            'notification' => 'Service Deleted successfully!',
-        ];
 
         return response()->json($response);
     } 
