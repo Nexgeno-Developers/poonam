@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-12">
                 <div class="about_signature">
-                    <img class="w-100" src="image/signature.png" />
+                    <img class="w-100" src="{{ asset('/assets/frontend/image/signature.png')}}" />
                 </div>
             </div>
             <div class="col-md-12">

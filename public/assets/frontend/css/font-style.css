@@ -4,7 +4,7 @@
   font-family: 'UniviaPro';
   font-weight:100;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-ThinItalic.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-ThinItalic.woff2) format('woff2');
 }
 
 /* cyrillic */
@@ -12,7 +12,7 @@
   font-family: 'UniviaPro';
   font-weight:200;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-UltraLight.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-UltraLight.woff2) format('woff2');
 }
 
 
@@ -21,7 +21,7 @@
   font-family: 'UniviaPro';
   font-weight:300;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Light.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Light.woff2) format('woff2');
 }
 
 /* cyrillic */
@@ -29,7 +29,7 @@
   font-family: 'UniviaPro';
   font-weight:400;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Book.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Book.woff2) format('woff2');
 }
 
 /* cyrillic */
@@ -37,7 +37,7 @@
   font-family: 'UniviaPro';
   font-weight:500;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Regular.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Regular.woff2) format('woff2');
 }
 
 /* cyrillic */
@@ -45,7 +45,7 @@
   font-family: 'UniviaPro';
   font-weight:600;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Medium.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Medium.woff2) format('woff2');
 }
 
 
@@ -55,7 +55,7 @@
   font-family: 'UniviaPro';
   font-weight:700;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Bold.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Bold.woff2) format('woff2');
 }
 
 
@@ -64,7 +64,7 @@
   font-family: 'UniviaPro';
   font-weight:800;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Black.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Black.woff2) format('woff2');
 }
 
 /* cyrillic */
@@ -72,28 +72,28 @@
   font-family: 'UniviaPro';
   font-weight:800;
   font-display: swap;
-  src: url(/html/Font/UniviaPro-Ultra.woff2) format('woff2');
+  src: url(/assets/frontend/Font/UniviaPro-Ultra.woff2) format('woff2');
 }
 
 /*-- Amsterdam font--*/
 
 @font-face {
   font-family: "Amsterdam Four_ttf";
-  src: url(/html/Font/07cb29fdcb073fff840edc6de2067b50.eot) format('embedded-opentype');
+  src: url(/assets/frontend/Font/07cb29fdcb073fff840edc6de2067b50.eot) format('embedded-opentype');
 }
 @font-face {
  font-family: "Amsterdam Four_ttf";
-  src: url(/html/Font/07cb29fdcb073fff840edc6de2067b50.woff2) format('woff2');
+  src: url(/assets/frontend/Font/07cb29fdcb073fff840edc6de2067b50.woff2) format('woff2');
 }
 @font-face {
   font-family: "Amsterdam Four_ttf";
-  src: url(/html/Font/07cb29fdcb073fff840edc6de2067b50.woff) format('woff');
+  src: url(/assets/frontend/Font/07cb29fdcb073fff840edc6de2067b50.woff) format('woff');
 }
 
 
 @font-face {
   font-family: "Amsterdam Four_ttf";
-  src: url(/html/Font/07cb29fdcb073fff840edc6de2067b50.ttf) format('truetype');
+  src: url(/assets/frontend/Font/07cb29fdcb073fff840edc6de2067b50.ttf) format('truetype');
 }
 
 
@@ -101,13 +101,13 @@
 
 @font-face {
   font-family: "Peachy Flightoe";
-  src: url(/html/Font/Peachy-Flightone-Script-BF65b9cf3d0ad4f.woff) format('woff');
+  src: url(/assets/frontend/Font/Peachy-Flightone-Script-BF65b9cf3d0ad4f.woff) format('woff');
 }
 
 
 @font-face {
   font-family: "Peachy Flightoe";
-  src: url(/html/Font/Peachy-Flightoe-BF65b9cf3d064e5.woff) format('woff');
+  src: url(/assets/frontend/Font/Peachy-Flightoe-BF65b9cf3d064e5.woff) format('woff');
 }
 
 
@@ -115,12 +115,12 @@
 
 @font-face {
   font-family: "TrajanPro-Regular";
-  src: url(/html/Font/c07d5c6528b6cc0eac08afd7a3199657.woff2) format('woff2');
+  src: url(/assets/frontend/Font/c07d5c6528b6cc0eac08afd7a3199657.woff2) format('woff2');
 }
 
 
 @font-face {
   font-family: "TrajanPro-Regular";
-  src: url(/html/Font/c07d5c6528b6cc0eac08afd7a3199657.woff) format('woff');
+  src: url(/assets/frontend/Font/c07d5c6528b6cc0eac08afd7a3199657.woff) format('woff');
 }
 
