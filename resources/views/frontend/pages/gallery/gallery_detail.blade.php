@@ -86,18 +86,6 @@
                                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
                             @endforeach
-
-
-                            <div class="swiper-slide overflow d-flex-centered">
-                                <img src="image/Video_1.jpg" />
-                            </div>
-                            <div class="swiper-slide overflow d-flex-centered">
-                                <img src="image/Video_1.jpg" />
-                            </div>
-                            <div class="swiper-slide overflow d-flex-centered">
-                                <img src="image/Video_1.jpg" />
-                            </div>
-
                         </div>
                     </div>
 
