@@ -202,21 +202,30 @@ class GalleryController extends Controller
     }  
     
     public function delete($id) {
-        
-        $service = DB::table('gallery')->where('id', $id);
-        if (!$service) {
+
+        $count = DB::table('gallery')->count();
+        if($count > 1 ){
+            $service = DB::table('gallery')->where('id', $id);
+            if (!$service) {
+                $response = [
+                    'status' => false,
+                    'notification' => 'Record not found.!',
+                ];
+                return response()->json($response);
+            }
+            $service->delete();
+
+            $response = [
+                'status' => true,
+                'notification' => 'Gallery Deleted successfully!',
+            ];
+        } else {
             $response = [
                 'status' => false,
-                'notification' => 'Record not found.!',
+                'notification' => 'You wont delete all data of the gallery!',
             ];
-            return response()->json($response);
         }
-        $service->delete();
 
-        $response = [
-            'status' => true,
-            'notification' => 'Gallery Deleted successfully!',
-        ];
 
         return response()->json($response);
     } 
