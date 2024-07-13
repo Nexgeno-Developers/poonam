@@ -734,16 +734,16 @@ const galleryimages = document.querySelectorAll('.main_section_gallery_detail .t
 galleryimages.forEach((image, index) => {
     ScrollTrigger.create({
         trigger: image,
-        start: "top 70%", // Change start position if needed
+        start: "top bottom",
         end: "center center",
-        markers: false,
+        markers: true,
         onEnter: () => {
             gsap.to(image, {
                 opacity: 1,
                 y: 0,
-                duration: 0.4,
+                duration: 0.2,
                 ease: "power2.out",
-                delay: index * 0.1 // Delay each image by 0.2 seconds
+                delay: index * 0.02 // Delay each image by 0.2 seconds
             });
         }
     });
