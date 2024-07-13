@@ -1,8 +1,12 @@
+
 body {
     background: #dcdddf;
     overflow-x: hidden;
     font-family: "UniviaPro" !important;
 }
+body::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
 section {
     position: relative;
 }
@@ -181,7 +185,7 @@ img.service-images {
 
 /* services section css open */
 .services_bg {
-    background-image: url(/assets/frontend/image/services_img1.jpg);
+    background-image: url(/html/image/services_img1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -211,7 +215,7 @@ wordtune-read-extension {
 }
 
 .border_2:before {
-    background-image: url(/assets/frontend/image/border-top.png);
+    background-image: url(/html/image/border-top.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -226,7 +230,7 @@ wordtune-read-extension {
 }
 
 .border_3:after {
-    background-image: url(/assets/frontend/image/border-bottom.png);
+    background-image: url(/html/image/border-bottom.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -241,7 +245,7 @@ wordtune-read-extension {
 }
 
 .border_1:after {
-background-image: url(/assets/frontend/image/border-bottom.png);
+background-image: url(/html/image/border-bottom.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -442,7 +446,7 @@ footer p {
 }
 
 .border_bottom1 {
-    background-image: url(/assets/frontend/image/about-border.png);
+    background-image: url(/html/image/about-border.png);
     background-position: center;
     background-size: cover;
     height: 90px;
@@ -497,7 +501,7 @@ hr {
 }
 
 .about_img_vission:after {
-    background-image: url(/assets/frontend/image/starrating1.png);
+    background-image: url(/html/image/starrating1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -513,7 +517,7 @@ hr {
 
 
 .about_img_vission:before {
-    background-image: url(/assets/frontend/image/starrating2.png);
+    background-image: url(/html/image/starrating2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -552,7 +556,7 @@ hr {
 /** Gallery Page CSS open **/
 
 .our_work_bg {
-    background-image: url(/assets/frontend/image/gallery_BG.jpg);
+    background-image: url(/html/image/gallery_BG.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -648,7 +652,7 @@ hr {
 /* gallery dt page css*/
 
 .border_4:before {
-    background-image: url(/assets/frontend/image/about-border.png);
+    background-image: url(/html/image/about-border.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -725,7 +729,7 @@ textarea {
 }
 
 .contact_us_page form {
-    padding: 27px 40px 28px 80px;
+    padding: 8px 40px 8px 80px;
 }
 
 .contact_form_color_white {
@@ -819,7 +823,7 @@ ul.sub-menu.opened::after {
     }
     
     .the-button {
-        font-size: 14px;
+        font-size: 16px;
         letter-spacing: 0.25em;
     }
     
@@ -921,7 +925,7 @@ ul.sub-menu.opened::after {
 
 @media only screen and (max-width: 640px) {
     .the-button {
-        font-size: 10px;
+        font-size: 16px;
         letter-spacing: 0.10em;
     }
 }
@@ -1162,7 +1166,7 @@ ul.sub-menu.opened::after {
 }
 
 .home_intro_Bg:before {
-    background-image: url(https://poonamshah.webtesting.pw/assets/frontend/image/border-bottom.png);
+    background-image: url(https://poonamshah.webtesting.pw/html/image/border-bottom.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -61,9 +61,12 @@ class IndexController extends Controller
     }
 
     public function gallery(){
+        // var_dump($slug);
+        $gallery = DB::table('gallery')->where('status', 1)->get();
 
-        return view('frontend.pages.gallery.gallery');
+        return view('frontend.pages.gallery.gallery', compact('gallery'));
     }
+
     public function projects() {
 
         $projectDetails = DB::table('pages')->where('page_name', 'project')->first();

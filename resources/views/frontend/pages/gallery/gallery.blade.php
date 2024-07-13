@@ -7,7 +7,9 @@
 @section('page.type', 'website')
 
 @section('page.content')
-
+@php
+var_dump($gallery);
+@endphp
 <section class="gallery_banner inner_header border_1">
   <img src="image/gallery_banner.jpg" class="w-100" />
   <div class="container">
@@ -153,73 +155,5 @@
         overflow:hidden;
     }
 </style>
-<?php include 'footer.php'; ?>
-<script>
-    /*
-     gsap.fromTo("#gallery1 .gallery_img img", { scaleX: 0 }, {
-       scaleX: 1,
-       duration: 1,
-       ease: "power2.inOut",
-       scrollTrigger: {
-         trigger: "#gallery1",
-         start: "top 80%",
-         end: "bottom 20%",
-         toggleActions: "play none none reverse"
-       }
-     });
-
-       gsap.fromTo("#gallery1 .gallery_content", 
-         {
-           opacity: 0,
-           x:-200,
-           y:-200
-         }, 
-         {
-           opacity: 1,
-           x:0,
-           y:0,
-           duration: 0.5,
-           delay: 0.5,
-           scrollTrigger: {
-             trigger: "#gallery1",
-             start: "top 70%",
-             end: "bottom 20%",
-             toggleActions: "play none none reverse"
-           }
-         });
-
-
-     gsap.fromTo("#gallery2 .gallery_img img", { clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" }, {
-       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-       duration: 1,
-       ease: "power2.inOut",
-       scrollTrigger: {
-         trigger: "#gallery2",
-         start: "top 80%",
-         end: "bottom 20%",
-         toggleActions: "play none none reverse"
-       }
-     });
-       gsap.fromTo("#gallery2 .gallery_content", 
-         {
-           opacity: 0,
-           x:200,
-           y:200
-         }, 
-         {
-           opacity: 1,
-           x:0,
-           y:0,
-           duration: 0.8,
-           delay: 0.6,
-           scrollTrigger: {
-             trigger: "#gallery1",
-             start: "top 70%",
-             end: "bottom 20%",
-             toggleActions: "play none none reverse"
-           }
-         });
-         */
-</script>
 
 @endsection
