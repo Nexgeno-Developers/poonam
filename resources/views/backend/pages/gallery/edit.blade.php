@@ -49,6 +49,12 @@
                 <input type="text" class="form-control" name="title" value="{{ $gallery->title }}" required>
             </div>
         </div>
+        <div class="col-sm-12">
+            <div class="form-group mb-3">
+                <label>Short Description <span class="red">*</span></label>
+                <input type="text" class="form-control" name="short_description" value="{{ $gallery->short_description }}" required>
+            </div>
+        </div>
 
     {{--------------------------------------  other contain -----------------------------------------------------------}} 
     <br>
@@ -214,11 +220,14 @@
 
                                     <div class="col-sm-9">
                                         <div class="form-group mb-3 ">
-                                            <label>Videos <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                            <input class="form-control" type="file" id="images" name="gallery_videos[]" accept=".jpg,.jpeg,.png,.webp">
+                                            <label>Videos <span class="red">*</span></label>
+                                            <input class="form-control" type="text" id="gallery_videos" value="{{$row}}" name="gallery_videos[]" />
                                         </div>
                                     </div>
-
+                                    <div class="mt-2">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $row }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+{{--
                                     <div class="form-group mb-3 mt-3 mx-2 col-md-2">
                                             <div style="width: 100px;">
                                                 <video width="320" height="240" controls>
@@ -229,6 +238,7 @@
                                     </div>
 
                                     <input type="hidden" name="number_video[]" value="1">
+--}}
 
                                 </div>
 
@@ -245,8 +255,8 @@
 
                         <div class="col-sm-9">
                             <div class="form-group mb-3 ">
-                                <label>Videos <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                <input class="form-control" type="file" id="images" name="gallery_videos[]" required>
+                                <label>Videos <span class="red">*</span></label>
+                                <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]" required>
                             </div>
                         </div>
 

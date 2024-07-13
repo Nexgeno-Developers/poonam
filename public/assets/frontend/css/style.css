@@ -1,8 +1,12 @@
+
 body {
     background: #dcdddf;
     overflow-x: hidden;
     font-family: "UniviaPro" !important;
 }
+body::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
 section {
     position: relative;
 }
@@ -645,6 +649,54 @@ hr {
     bottom: 0px;
 }
 
+
+div.masonry_gallery{
+    column-width: 300px;
+    column-gap: 5px;
+    padding: 5px;
+  }
+  
+  div.masonry_gallery .masonry_gallery_div{
+    width: 100%; 
+    margin: 5px;
+    overflow: hidden;
+  }
+  
+  .masonry_gallery_div img {
+      width: 100%;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+      color: #fff !important; /* Change this to the color you want */
+      z-index: 10; /* Ensure they are on top */
+      position: relative;
+  }
+  
+  .swiper-slide iframe {
+      width: 100%;
+  }
+  
+  .swiper-slide {
+      position: relative;
+  }
+  
+  button.btn.gallery_yt_video {
+      width: 50px;
+      height: auto;
+      opacity: 0.5;
+      position: absolute;
+      top: 7vw;
+      left: 16vw;
+      z-index: 9;
+  }
+  
+  i.fa-regular.fa-circle-play {
+      color: #fff;
+      font-size: 6em;
+  }
+  
+
 /* gallery dt page css*/
 
 .border_4:before {
@@ -725,7 +777,7 @@ textarea {
 }
 
 .contact_us_page form {
-    padding: 27px 40px 28px 80px;
+    padding: 8px 40px 8px 80px;
 }
 
 .contact_form_color_white {
@@ -819,7 +871,7 @@ ul.sub-menu.opened::after {
     }
     
     .the-button {
-        font-size: 14px;
+        font-size: 16px;
         letter-spacing: 0.25em;
     }
     
@@ -921,7 +973,7 @@ ul.sub-menu.opened::after {
 
 @media only screen and (max-width: 640px) {
     .the-button {
-        font-size: 10px;
+        font-size: 16px;
         letter-spacing: 0.10em;
     }
 }
@@ -1162,7 +1214,7 @@ ul.sub-menu.opened::after {
 }
 
 .home_intro_Bg:before {
-    background-image: url(https://poonamshah.webtesting.pw/assets/frontend/image/border-bottom.png);
+    background-image: url(/assets/frontend/image/border-bottom.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

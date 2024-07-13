@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Poonam Shah">
 <meta property="og:description" content="Poonam Shah">
-<meta property="og:image" content="{{ asset('assets/frontend/image/Logo_1.png') }}">
+<meta property="og:image" content="/assets/image/logo_1.png">
 <meta property="og:image:width" content="500">
 <meta property="og:image:height" content="500">
 <meta property="og:image:type" content="image/png" />
@@ -29,7 +29,7 @@
 <!----------------- og tag ------------------->
 
 <meta name="theme-color" content="#ffffff" />
-<link rel="icon" type="image/png" href="image/Logo_1.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/assets/image/logo_1.png" sizes="16x16">
 <!----------------- canonical ------------------->
 
 <link rel="canonical" href="{{ url()->current() }}">
