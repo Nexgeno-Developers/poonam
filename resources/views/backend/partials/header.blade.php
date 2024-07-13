@@ -5,24 +5,24 @@
                     <div class="d-flex align-items-center gap-lg-2 gap-1">
 
                         <!-- Topbar Brand Logo -->
-                        <div class="logo-topbar">
+                        <div class="logo-topbar p-2">
                             <!-- Logo light -->
                             <a href="#" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('/assets/frontend/images/Logo1.png') }}" alt="logo" style="width:200px; height:50px;" >
+                                    <img src="/assets/image/logo_1.png" alt="logo" style="width:80px; height:80px;" >
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="{{ asset('/assets/frontend/images/Logo1.png') }}" alt="small logo" style="width:200px; height:50px;" >
+                                    <img src="/assets/image/logo_1.png" alt="small logo" style="width:80px; height:80px;" >
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
                             <a href="#" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="/assets/images/logo-dark.png" alt="dark logo" style="width:200px; height:50px;" >
+                                    <img src="/assets/image/footer_logo.png" alt="dark logo" style="width:200px; height:50px;" >
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="/assets/images/logo-dark-sm.png" alt="small logo"  style="width:200px; height:50px;" > 
+                                    <img src="/assets/image/footer_logo.png" alt="small logo"  style="width:200px; height:50px;" > 
                                 </span>
                             </a>
                         </div>

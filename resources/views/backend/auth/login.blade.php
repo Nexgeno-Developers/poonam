@@ -32,11 +32,11 @@
 
                 <!-- Logo -->
                 <div class="auth-brand text-center text-lg-start">
-                    <a href="/" class="logo-dark"> 
-                        <span><img src="{{ asset('/assets/frontend/images/Logo1.png') }}" alt="dark logo"></span>
+                    <a href="/" class="text-center logo-dark"> 
+                        <span><img src="/assets/image/footer_logo.png" alt="dark logo" style="width:120px; height:120px;"></span>
                     </a>
                     <a href="/" class="logo-light">
-                        <span><img src="{{ asset('/assets/frontend/images/Logo1.png') }}" alt="logo" style="width:200px; height:50px;" ></span>
+                        <span><img src="/assets/frontend/image/footer_logo.png" alt="logo" style="width:80px; height:50px;" ></span>
                     </a>
                 </div>
 
