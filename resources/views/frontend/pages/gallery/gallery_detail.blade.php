@@ -52,18 +52,11 @@
             </div>
             <div class="col-md-12">
                 <div class="row">
+                    <div class="masonry_gallery">
                     @foreach ($images as $index => $image)
-                        <div class="col-md-4">
-                            <div class="gallery_dt_inner">
-                                <div class="gallery_dt_img the_gallery_img">
-                                    <a href="{{ asset('storage/' . $image) }}" data-fancybox="images"
-                                        data-caption="Image{{$index + 1}}">
-                                        <img src="{{ asset('storage/' . $image) }}" alt="Gallery Image" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="masonry_gallery_div gallery_dt_img the_gallery_img"><a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index + 1}}"><img src="{{ asset('storage/' . $image) }}" /></a></div>
                     @endforeach
+                </div>
 
                     <div class="animheadertext-2 col-md-12">
                         <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4 mt-5">VIDEOS
@@ -79,11 +72,11 @@
                         <div class="swiper-wrapper">
                             @foreach($videos as $video)
                                 <div class="swiper-slide overflow d-flex-centered">
-                                    <iframe width="853" height="480" src="https://www.youtube.com/embed/{{$video}}"
-                                        title="How To Add Page Transitions To NextJS 14 (including Exit Animations)"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    
+                                        <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" />
+                                        <button type="button" class="btn gallery_yt_video" data-youtube-url="https://www.youtube.com/embed/{{$video}}" >
+                                            <i class="fa-regular fa-circle-play"></i>
+                                        </button>
                                 </div>
                             @endforeach
                         </div>
@@ -97,4 +90,26 @@
 </section>
 
 
+
 @endsection
+
+@section('page.scripts')
+<script>
+  $(document).ready(function(){
+    $('.gallery_yt_video').click(function(){
+      var url = $(this).attr('data-youtube-url');
+      $('#videoIframe').attr('src', url);
+      $('#videoModal').modal('show');
+    });
+
+    $('.close').click(function(){
+      $('#videoModal').modal('hide');
+    });
+
+    $('#videoModal').on('hide.bs.modal', function () {
+      $('#videoIframe').attr('src', '');
+    });
+  });
+</script>
+@endsection
+

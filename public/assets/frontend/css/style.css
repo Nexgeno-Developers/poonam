@@ -649,6 +649,54 @@ hr {
     bottom: 0px;
 }
 
+
+div.masonry_gallery{
+    column-width: 300px;
+    column-gap: 5px;
+    padding: 5px;
+  }
+  
+  div.masonry_gallery .masonry_gallery_div{
+    width: 100%; 
+    margin: 5px;
+    overflow: hidden;
+  }
+  
+  .masonry_gallery_div img {
+      width: 100%;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+      color: #fff !important; /* Change this to the color you want */
+      z-index: 10; /* Ensure they are on top */
+      position: relative;
+  }
+  
+  .swiper-slide iframe {
+      width: 100%;
+  }
+  
+  .swiper-slide {
+      position: relative;
+  }
+  
+  button.btn.gallery_yt_video {
+      width: 50px;
+      height: auto;
+      opacity: 0.5;
+      position: absolute;
+      top: 7vw;
+      left: 16vw;
+      z-index: 9;
+  }
+  
+  i.fa-regular.fa-circle-play {
+      color: #fff;
+      font-size: 6em;
+  }
+  
+
 /* gallery dt page css*/
 
 .border_4:before {
