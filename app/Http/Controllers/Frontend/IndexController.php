@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +47,56 @@ class IndexController extends Controller
         $contactS = json_decode($contactDetails->contact_section);
 
         return view('frontend.pages.contactus.contactus', compact('contactDetails','banner','contactS'));
+    }
+
+
+    public function contact_Save(Request $request)
+    {
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:500',
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validated->errors()->all()
+            ], 200);
+        }
+
+        $data = [
+            'sender' => ['name' => 'Poonam Shah', 'email' => 'rashid.makent@gmail.com'],
+            'to' => [['email' => 'umair.makent@gmail.com', 'name' => 'Poonam Shah']],
+            'subject' => 'New Contact Form Submission',
+            'htmlContent' => "
+                <h2>Contact Form Submission</h2>
+                <p><b>Name:</b> {$request->name}</p>
+                <p><b>Email:</b> {$request->email}</p>
+                <p><b>Subject:</b> {$request->subject}</p>
+                <p><b>Message:</b> {$request->message}</p>
+            ",
+        ];
+
+        $apiKey = env('BREVO_API_KEY');
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'api-key' => $apiKey,
+        ])->post('https://api.brevo.com/v3/smtp/email', $data);
+
+        if ($response->successful()) {
+            return response()->json([
+                'status' => true,
+                'notification' => 'Thank you for contacting Poonam Shah! Your query has been received and our concern team will reach out to you within 24hr.',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'notification' => 'Error submitting form. Please try again later.',
+            ]);
+        }
     }
 
     public function services(){
