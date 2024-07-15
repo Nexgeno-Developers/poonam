@@ -49,15 +49,16 @@
                 <h3 class="amsterdam_font color_white mt-3">Contact Us</h3>
             </div>
             <div class="gsap-fade-slide-left background_grey">
-                <form action="#" method="post">
+                <form id="add_contact_us_form" action="{{url(route('contact.save'))}}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
                     <input type="text" id="name" placeholder="Name" name="name" required>
                     <input type="email" id="email" placeholder="Email" name="email" required>
                     <input type="text" id="subject" placeholder="Subject" name="subject" required>
                     <textarea class="mb-4" id="message" placeholder="Message" name="message" rows="2"
                         required></textarea>
-                    <div class="homeboxanimate-btn-bracket the-button">
-                        <button type="submit" class="homeboxanimate-btn-text color_white">Submit</button>
-                    </div>
+                    <button type="submit">Submit</button>
+
                 </form>
             </div>
         </div>
@@ -83,4 +84,40 @@
 
     </div>
 </section>
+@endsection
+
+@section('page.scripts')
+<!-- Include Toastr CSS and JS in your HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#add_contact_us_form').submit(function (e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var formData = new FormData(form[0]);
+
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    toastr.success(response.notification, 'Success');
+
+                    // Clear form fields
+                    form[0].reset();
+                },
+                error: function (xhr, status, error) {
+                    toastr.error(xhr.responseJSON.notification, 'Error');
+                }
+            });
+        });
+    });
+</script>
+
 @endsection
