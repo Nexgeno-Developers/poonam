@@ -67,8 +67,8 @@ class IndexController extends Controller
         }
 
         $data = [
-            'sender' => ['name' => 'Poonam Shah', 'email' => 'rashid.makent@gmail.com'],
-            'to' => [['email' => 'umair.makent@gmail.com', 'name' => 'Poonam Shah']],
+            'sender' => ['name' => env('MAIL_FROM_NAME'), 'email' => env('MAIL_FROM_ADDRESS')],
+            'to' => [['email' => 'umair.makent@gmail.com', 'name' => env('MAIL_FROM_NAME')]],
             'subject' => 'New Contact Form Submission',
             'htmlContent' => "
                 <h2>Contact Form Submission</h2>
