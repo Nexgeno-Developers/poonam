@@ -46,14 +46,7 @@
 
     var swiper = new Swiper('.gallery_swiper', {
         loop: true,
-        autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
+        autoplay: false,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -73,6 +66,7 @@
             },
         },
     });
+
 
 
     $(document).ready(function(){
