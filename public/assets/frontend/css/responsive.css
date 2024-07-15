@@ -285,6 +285,30 @@
         padding-left: 0px;
     }
 
+    /* gallery details page   */
+
+    button.btn.gallery_yt_video {
+        top: 32%;
+        left: 41%;
+    }
+    
+    .swiper-button-next:after {
+        font-size: 32px !important;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+
+    .swiper-button-prev:after {
+        font-size: 32px !important;
+        margin-bottom: 20px;
+        margin-right: 10px;
+    }
+
+    i.fa-regular.fa-circle-play {
+        color: #fff;
+        font-size: 3em;
+    }
+
     /*contact us page*/
 
     .contact_us_page form {

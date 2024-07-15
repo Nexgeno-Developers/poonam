@@ -190,7 +190,7 @@
                     <div class="col-md-12 padd0">
                       <div class="homeboxanimate services_box services_bg_gray">
                         <div class="animheadertext-2 mb-3 mb-xxl-4">
-                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[1]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[2]['secondPart'] }}</span></h3>
+                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[1]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[1]['secondPart'] }}</span></h3>
                         </div>
                         <div class="anim-para-text mb-3">
                             <p class="homeboxanimate-para">
@@ -198,7 +198,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a class="homeboxanimate-btn-text">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -229,7 +229,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a class="homeboxanimate-btn-text">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -302,7 +302,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a class="homeboxanimate-btn-text">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -328,7 +328,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a class="homeboxanimate-btn-text">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
                     </div>
                   </div>
                 </div>

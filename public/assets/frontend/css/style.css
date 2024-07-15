@@ -680,14 +680,19 @@ div.masonry_gallery{
   .swiper-slide {
       position: relative;
   }
+
+  .gallery_swiper .swiper-slide img {
+    width: 100%;
+    object-fit: contain;
+}
   
   button.btn.gallery_yt_video {
       width: 50px;
       height: auto;
       opacity: 0.5;
       position: absolute;
-      top: 7vw;
-      left: 16vw;
+      top: 30%;
+      left: 40%;
       z-index: 9;
   }
   
@@ -695,7 +700,47 @@ div.masonry_gallery{
       color: #fff;
       font-size: 6em;
   }
-  
+
+
+  #videoModal .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px auto;
+}
+
+.modal-body {
+    padding: 0 1rem 0rem !important;
+}
+
+.modal-content {
+    border-radius: 6px !important;
+    padding: 0em !important;
+    background: transparent;
+}
+
+.modal-header {
+    padding: 10px 21px !important;
+    border: 0;
+}
+
+.modal-title {
+    margin-top: 10px;
+}
+
+.modal-header .close {
+    padding: 5px 10px ;
+    border: 0px;
+    background: transparent;
+    color: #fff;
+}
+
+button.close span {
+    font-size: 4em;
+    line-height: 10px;
+}
+
 
 /* gallery dt page css*/
 
@@ -819,8 +864,10 @@ ul.sub-menu.opened::after {
     border-radius: 0;
 }
 
-.the-button a {
+.contact_form button, .the-button a {
     text-decoration: none;
+    position: relative;
+    z-index: 999 !important;
 }
 
 @media  (min-width: 1420px) and (max-width: 1919px) {
@@ -836,6 +883,11 @@ ul.sub-menu.opened::after {
     
     .contact_form .amsterdam_font {
         font-size: 6vh;
+    }
+    
+    button.btn.gallery_yt_video {
+        top: 34%;
+        left: 42%;
     }
 }
 
@@ -924,6 +976,11 @@ ul.sub-menu.opened::after {
     
     .slider-fullscreen-projects__footer_content {
         bottom: 180px;
+    }
+
+    button.btn.gallery_yt_video {
+        top: 34%;
+        left: 42%;
     }
 
     /*.swiper-wrapper {
@@ -1018,6 +1075,7 @@ ul.sub-menu.opened::after {
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
 }
+
 
 @media all and (min-width: 2220px) {
     .the-button::before,
