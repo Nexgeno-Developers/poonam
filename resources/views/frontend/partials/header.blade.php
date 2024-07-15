@@ -158,7 +158,7 @@
           <div class="row justify-content-between align-items-center">
             <!-- logo -->
             <div class="col-auto header__col header__col-left">
-                <a class="logo" href="index2.php">
+                <a class="logo" href="{{ route('index') }}">
                 <div class="logo__wrapper-img">
                   <!-- primary logo version (for light backgrounds)-->
                   <img class="logo__img-primary" src="{{ asset('/assets/frontend/image/Logo.svg')}}" alt="Logo" height="70">
