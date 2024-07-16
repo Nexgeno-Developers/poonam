@@ -22,8 +22,8 @@
 
 
 <div class="col-12">
-    <div class="card widget-inline">
-        <div class="card-body p-0">
+    <div class="widget-inline">
+        <div class="p-0">
 
             <!-----==================== home banner ==========----------------------->
 
@@ -248,11 +248,12 @@
                         </div>
                         @endforeach
                         @endif
-                </div>
+                
                 <div class="col-sm-1 mt-2" style="float: right;">
                     <div class="form-group d-grid mb-3 text-end">
                         <button type="submit" class="btn btn-block btn-primary">Save</button>
                     </div>
+                </div>
                 </div>
                 </form>
 

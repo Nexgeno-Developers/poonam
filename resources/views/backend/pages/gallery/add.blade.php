@@ -53,7 +53,7 @@
                         <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
                                 190*64)</span></label>
                         <input class="form-control" type="file" id="image_description[]" name="image_description[]"
-                            accept=".jpg,.jpeg,.png,.webp">
+                            accept=".jpg,.jpeg,.png,.webp" required>
                     </div>
 
                 </div>
@@ -69,7 +69,7 @@
                     <label>Images <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
                             190*64)</span></label>
                     <input class="form-control" type="file" id="images[]" name="images[]"
-                        accept=".jpg,.jpeg,.png,.webp">
+                        accept=".jpg,.jpeg,.png,.webp" required>
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">

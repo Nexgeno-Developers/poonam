@@ -34,6 +34,7 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="row">
+          @if (!empty($gallery))
           @foreach ($gallery as $item)
             <div class="col-md-6">
             <div class="gallery_box_inner" id="gallery{{ $item->id }}">
@@ -48,6 +49,7 @@
             </div>
             </div>
           @endforeach
+          @endif
         </div>
       </div>
     </div>

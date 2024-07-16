@@ -11,7 +11,7 @@
           
 <section class="section section-masthead d-none" data-arts-os-animation="animated"
     data-background-color="var(--color-dark-1)"></section>
-
+    @if (!empty($banners))
           <!-- section PROJECTS SLIDER FULLSCREEN -->
           <section class="section section-fullheight section-projects section-projects-slider bg-dark-1 overflow" data-arts-theme-text="light" data-arts-os-animation="animated">
             <div class="section-fullheight__inner section-fullheight__inner_mobile text-center">
@@ -20,6 +20,7 @@
                 <div class="slider-fullscreen-projects__content swiper-container pointer-events-none js-slider-fullscreen-projects__content"
                         style="height:325px;">
                   <div class="swiper-wrapper">
+
                   @foreach($banners as $banner1)
                     @php
                         $bannerHeading = $banner1['text'];
@@ -42,6 +43,7 @@
                         </div>
                     </div>
                     @endforeach 
+                   
 
                   </div>
                 </div>
@@ -54,6 +56,7 @@
                   data-transition-displacement-img="{{ asset('/assets/frontend/image/bg-displacement-7.jpg') }}" data-speed="1200"
                   data-autoplay-enabled="true" data-autoplay-delay="6000">
                   <div class="swiper-wrapper">
+               
                     @foreach($banners as $banner)
                         <div class="swiper-slide overflow">
                         <div class="slider__images-slide-inner js-transition-img overflow" data-swiper-parallax="90%">
@@ -62,6 +65,7 @@
                         </div>
                         </div>
                     @endforeach
+                 
                    
                   </div>
                   <!-- overlay -->
@@ -104,7 +108,7 @@
               </div>
             </div>
           </section>
-
+    @endif 
           <!-- - section PROJECTS SLIDER FULLSCREEN -->
           <section class="introduction_part home_intro_Bg pb-md-4 pb-0">     <!--remove class "pt-small" -->
             <div class="container">
@@ -116,14 +120,14 @@
                       <div class="w-100"></div>
                       <div class="w-100"></div>
                             <div class="animheadertext-2">
-                                <h2 class="js-split-words2 trajanPro_regular font50">{{ $introduction->title }}</h2>
-                                <h5 class="js-split-words2 pb-2 trajanPro_regular font26">{{ $introduction->subtitle }}</h5>
+                                <h2 class="js-split-words2 trajanPro_regular font50">{{ isset($introduction->title) ? $introduction->title : '' }}</h2>
+                                <h5 class="js-split-words2 pb-2 trajanPro_regular font26">{{ isset($introduction->subtitle) ? $introduction->subtitle : '' }}</h5>
                             </div>
                       <div class="w-100"></div>
                         <div class="anim-para-text">
                             <div class="fw-container fw-container-floattext">
                                 <div class="js-split-p-letter anim-text__desc">
-                                    {!! $introduction->content !!} 
+                                  {!! isset($introduction->content) ? $introduction->content : '' !!}
                                 </div>
                             </div>
                         </div>
@@ -135,9 +139,8 @@
           </section>
 
 @php
-    $galleryItems = []; // Initialize an empty array to store processed gallery items
-
-    $galleryCount = count($gallery_section1); // Get the total count of gallery items
+  $galleryItems = []; // Initialize an empty array to store processed gallery items
+  $galleryCount = !empty($gallery_section1) ? count($gallery_section1) : 0; // Get the total count of gallery items or set it to 0 if empty
 @endphp
 
 @if($galleryCount > 0)
@@ -152,11 +155,11 @@
 
             // Construct the item to store
             $item = [
-                'firstPart' => $firstPart,
-                'secondPart' => $secondPart,
-                'description' => $gallery->description,
-                'image' => $gallery->image ? asset($gallery->image) : null,
-                'alt' => $gallery->title
+                'firstPart' => $firstPart ? $firstPart : null,
+                'secondPart' => $secondPart ? $secondPart : null,
+                'description' => $gallery->description ? $gallery->description : null,
+                'image' => $gallery->image ? asset('storage/' . $gallery->image) : null,
+                'alt' => $gallery->title ? $gallery->title : null
             ];
 
             // Add the item to the array
@@ -165,6 +168,7 @@
     @endfor
 @endif
 
+@if(!empty($galleryItems))
           <section class="section services_section border_2 section-grid"
             data-arts-os-animation="data-arts-os-animation">
             <div class="container">
@@ -179,7 +183,7 @@
                         </div>
                         <div class="mb-3">
                             <p class="homeboxanimate-para color_white">
-                                {{$gallery_section1[0]->description}}
+                              {{$galleryItems[0]['description']}} 
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button white">
@@ -194,11 +198,11 @@
                         </div>
                         <div class="anim-para-text mb-3">
                             <p class="homeboxanimate-para">
-                                {{$gallery_section1[1]->description}}
+                              {{$galleryItems[1]['description']}} 
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -209,7 +213,7 @@
                   <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                       <div class="figure-member__avatar home_section_img">
-                        <img class="img_height1 w-100" src="{{ asset('storage/' .$gallery_section1[0]->image) }}" alt="" />
+                        <img class="img_height1 w-100" src="{{ $galleryItems[0]['image'] }}" alt="" />
                       </div>
                     </div>
                   </div>
@@ -225,11 +229,11 @@
                         </div>
                         <div class="anim-para-text mb-3">
                             <p class="homeboxanimate-para">
-                                {{$gallery_section1[2]->description}}
+                              {{ $galleryItems[2]['description'] }}
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -241,7 +245,7 @@
                         </div>
                         <div class="anim-para-text mb-3">
                           <p class="homeboxanimate-para color_white">
-                            {{$gallery_section1[3]->description}} 
+                            {{$galleryItems[3]['description']}}  
                           </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button white">
@@ -256,7 +260,7 @@
                   <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                       <div class="figure-member__avatar home_section_img">
-                        <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[1]->image) }}" />
+                        <img class="img_height w-100" src="{{ $galleryItems[1]['image'] }}" />
                       </div>
                     </div>
                   </div>
@@ -271,7 +275,7 @@
                     </div>
                     <div class="anim-para-text mb-3">
                       <p class="homeboxanimate-para color_white">
-                        {{$gallery_section1[4]->description}}  
+                        {{$galleryItems[4]['description']}}  
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button white">
@@ -284,7 +288,7 @@
                   <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                       <div class="figure-member__avatar home_section_img">
-                        <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[2]->image) }}" />
+                        <img class="img_height w-100" src="{{ $galleryItems[2]['image'] }}" />
                       </div>
                     </div>
                   </div>
@@ -298,11 +302,11 @@
                     </div>
                     <div class="anim-para-text mb-3">
                       <p class="homeboxanimate-para">
-                        {{$gallery_section1[5]->description}}
+                        {{ $galleryItems[5]['description'] }}
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -311,7 +315,7 @@
                   <div class="home_section_container">
                     <div class="figure-member figure-member_has-social">
                       <div class="figure-member__avatar home_section_img">
-                        <img class="img_height w-100" src="{{ asset('storage/' .$gallery_section1[3]->image) }}" />
+                        <img class="img_height w-100" src="{{ $galleryItems[3]['image'] }}" />
                       </div>
                     </div>
                   </div>
@@ -324,27 +328,28 @@
                     </div>
                     <div class="anim-para-text mb-3">
                       <p class="homeboxanimate-para">
-                        {{$gallery_section1[6]->description}}
+                        {{ $galleryItems[6]['description'] }}
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
+@endif
 
-
+@if(!empty($gallery_section2))
           <section class="bottom_services border_3">
             <div class="container">
               <div class="row">
               @foreach($gallery_section2 as $gallery_section_data)
                 @php
-                    $bannerHeading = $gallery_section_data->title;
-                    $bannerDescription = $gallery_section_data->description;
-                    $bannerImage = $gallery_section_data->image;
+                    $bannerHeading = $gallery_section_data->title ? $gallery_section_data->title : null;
+                    $bannerDescription = $gallery_section_data->description ? $gallery_section_data->description : null;
+                    $bannerImage = $gallery_section_data->image ? asset('storage/'.$gallery_section_data->image) : null;
                     $bannerTextParts = explode('|', $bannerHeading);
                     
                     $bannerFirstText = $bannerTextParts[0] ?? '';
@@ -352,7 +357,7 @@
                 @endphp
                 <div class="col-md-6 col-sm-6 padd0">
                   <div class="box homeboxanimate">
-                    <img src="{{ asset('storage/'.$bannerImage)}}">
+                    <img src="{{ $bannerImage }}">
                     <div class="box-content">
                       <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{$bannerFirstText}}<span class="amsterdam_font">{{$bannerSecondText}}</span>
                       </h3>
@@ -366,7 +371,7 @@
               </div>
             </div>
           </section>
-
+@endif
 <canvas id="js-webgl"></canvas>
     <!-- PhotoSwipe -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" data-arts-theme-text="light">
@@ -443,7 +448,7 @@
       <!-- slider wrapper -->
     </div>
     <!-- - PhotoSwipe -->
-
+@if (!empty($banners))
     <!-- List Hover Shaders -->
     <script id="list-hover-vs" type="x-shader/x-vertex">
       uniform vec2 uOffset;
@@ -549,5 +554,5 @@
       
     </script>
     <!-- - Slider Textures Shaders -->
-
+@endif
 @endsection

@@ -215,6 +215,7 @@
                       $services = DB::table('services')->where('status', 1)->get();
                       
                     @endphp
+                    @if($services->isNotEmpty())
                     <li menuname="Services-menu" class="menu-item-has-children">
                         
                         <a class="h2 hover-right-arrow" href="#" data-pjax-link="overlayMenu">
@@ -232,6 +233,7 @@
                         </ul>
 
                     </li>
+                    @endif
                     <li menuname="Gallery-menu" ><a  class="h2" href="{{ route('gallery') }}" data-pjax-link="overlayMenu">
                         <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Gallery</div></a>
                     </li>
