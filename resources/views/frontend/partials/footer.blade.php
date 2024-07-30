@@ -13,8 +13,15 @@
             </div>
 
              <div class="d-flex flex-md-row flex-column col-md-4 footer_left text-md-start text-center px-md-0 px-2">
-                <a href="tel:+{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+{{ $contacts['phone_1'] }}</a>&nbsp;|&nbsp; 
-                <a href="mailto:{{ $contacts['email'] ?? '' }}" class="text-decoration-none text-dark">{{ $contacts['email'] ?? '' }}</a>
+                <ul class="list-group list-group-horizontal-md list-unstyled">
+                    <li class="list-group-item">
+                        <a href="tel:+{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+{{ $contacts['phone_1'] }}</a> 
+                    </li>
+                    <li class="d-md-inline d-none">|</li>
+                    <li class="list-group-item">
+                        <a href="mailto:{{ $contacts['email'] ?? '' }}" class="text-decoration-none text-dark">{{ $contacts['email'] ?? '' }}</a>
+                    </li>
+                </ul>
             </div>
 
             <div class="col-md-4 footer_center text-center py-2">

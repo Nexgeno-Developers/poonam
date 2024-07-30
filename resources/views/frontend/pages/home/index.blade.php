@@ -198,7 +198,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -229,7 +229,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -302,7 +302,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -328,7 +328,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-light">Read More</a>
+                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>

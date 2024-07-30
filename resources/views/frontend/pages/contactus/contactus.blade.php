@@ -57,7 +57,9 @@
                     <input type="text" id="subject" placeholder="Subject" name="subject" required>
                     <textarea class="mb-4" id="message" placeholder="Message" name="message" rows="2"
                         required></textarea>
-                    <button type="submit">Submit</button>
+                    <div class="homeboxanimate-btn-bracket the-button">
+                        <button type="submit" class="homeboxanimate-btn-text">Submit</button>
+                    </div>
 
                 </form>
             </div>
@@ -76,7 +78,7 @@
             <div class="">
                 @if (!empty($contactS->map_url))
                     <iframe class="gsap-fade-slide-right" src="{{$contactS->map_url}}" width="100%" height=""
-                        style="border:0; height:88vh;" allowfullscreen="" loading="lazy"
+                        style="border:0; height:90vh;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 @endif
             </div>
