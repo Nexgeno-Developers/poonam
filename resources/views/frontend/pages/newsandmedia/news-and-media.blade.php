@@ -9,7 +9,9 @@
 @section('page.content')
 
 <section class="inner_header">
+    @if (!empty($banner))    
     <img src="{{ asset('storage/'.$banner) }}" class="w-100" />
+    @endif
     <div class="container">
         <div class="header_title">
             <h3 class="heading_inner_text peachy_flightoe_font font50">NEWS & MEDIA</h3>
@@ -25,6 +27,7 @@
         <div class="row justify-content-center mb-md-4">
             <div class="col-md-12">
                 <div class="row">
+                    @if (!empty($image_section))
                     @foreach ($image_section as $index => $image)
                         <div class="{{ $index < 2 ? 'col-md-6 col-12' : 'col-md-4 col-12' }}">
                             <div class="gallery_dt_inner">
@@ -36,6 +39,7 @@
                             </div>
                         </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>

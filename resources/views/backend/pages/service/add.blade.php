@@ -22,7 +22,7 @@
         <div class="col-sm-8">
             <div class="form-group mb-3">
                 <label>Service Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp">
+                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp" required>
             </div>
         </div>
         <div class="col-sm-12">

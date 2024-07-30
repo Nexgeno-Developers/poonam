@@ -20,9 +20,9 @@
 
 <section class="gallery_details_section main_section_gallery_detail our_work_bg border_4 border_3 mt_70">
     <div class="animheadertext-2 anim-para-text container text-center w-md-75 w-100 mb-md-5">
-        <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4">{{$title}}</h3>
+        <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4">{{ isset($title) ? $title : ''}}</h3>
         <p class="js-split-p-letter color_white">
-            {{$short_description}}
+            {{isset($short_description) ? $short_description : ''}}
         </p>
     </div>
     <div class="container">
@@ -57,7 +57,7 @@
                         <div class="masonry_gallery_div gallery_dt_img the_gallery_img"><a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index + 1}}"><img src="{{ asset('storage/' . $image) }}" /></a></div>
                     @endforeach
                 </div>
-
+                @if(!empty($videos))
                     <div class="animheadertext-2 col-md-12">
                         <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4 mt-5">VIDEOS
                         </h3>
@@ -83,7 +83,7 @@
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                     </div>
-
+                @endif
 
                 </div>
             </div>

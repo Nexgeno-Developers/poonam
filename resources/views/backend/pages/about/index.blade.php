@@ -100,14 +100,15 @@
                                         <input class="form-control" type="file" name="journey_image"
                                             @if(empty($journey_section->journey_image)) required @endif>
                                     </div>
+
+                                    @if(!empty($journey_section->journey_image))
                                     <div class="col col-sm-2">
-                                        @if(!empty($journey_section->journey_image))
                                         <img width="100" src="{{ asset('storage/' . $journey_section->journey_image) }}"
                                             alt="Journey Image" class="img-thumbnail mt-2">
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label>Journey description <span class="red">*</span></label>
                                             <textarea class="trumbowyg form-control" name="journey_description" rows="5"
@@ -118,7 +119,7 @@
                                                     </textarea>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label>Journey Heading <span class="red">*</span></label>
                                             <input class="form-control" name="journey_heading"
@@ -177,14 +178,14 @@
                                         <input class="form-control" type="file" name="about_image"
                                             @if(empty($about_section->about_image)) required @endif>
                                     </div>
+                                    @if(!empty($about_section->about_image))
                                     <div class="col col-sm-2">
-                                        @if(!empty($about_section->about_image))
                                         <img width="100" src="{{ asset('storage/' . $about_section->about_image) }}"
                                             alt="about Image" class="img-thumbnail mt-2">
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label>About description <span class="red">*</span></label>
                                             <textarea class="trumbowyg form-control" name="about_description" rows="5" required>
@@ -244,14 +245,14 @@
                                         <input class="form-control" type="file" name="vision_image"
                                             @if(empty($vision_section->vision_image)) required @endif>
                                     </div>
+                                    @if(!empty($vision_section->vision_image))
                                     <div class="col col-sm-2">
-                                        @if(!empty($vision_section->vision_image))
                                         <img width="100" src="{{ asset('storage/' . $vision_section->vision_image) }}"
                                             alt="vision Image" class="img-thumbnail mt-2">
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label>Vision description <span class="red">*</span></label>
                                             <textarea class="trumbowyg form-control" name="vision_description" rows="5" required>
@@ -316,14 +317,14 @@
                                         <input class="form-control" type="file" name="design_image"
                                             @if(empty($design_section->design_image)) required @endif>
                                     </div>
+                                    @if(!empty($design_section->design_image))
                                     <div class="col col-sm-2">
-                                        @if(!empty($design_section->design_image))
                                         <img width="100" src="{{ asset('storage/' . $design_section->design_image) }}"
                                             alt="design Image" class="img-thumbnail mt-2">
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group mb-3">
                                             <label>Design Description <span class="red">*</span></label>
                                             <textarea class="trumbowyg form-control" name="design_description" rows="5" required>
