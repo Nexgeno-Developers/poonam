@@ -406,6 +406,12 @@ span.fontsize_big {
     width: 120px;
 }
 
+.footer_left ul li {
+    background-color: transparent;
+    border: 0;
+    padding-top: 0px;
+}
+
 footer p {
     font-size:15px;
 }
@@ -768,7 +774,7 @@ button.close span {
 }
 
 .contact_us_page .gallery_dt_img {
-    height: 84%;
+    height: 86%;
     margin-bottom: 0px !important;
 }
 
@@ -989,7 +995,7 @@ ul.sub-menu.opened::after {
     }*/   
 
     .contact_form div {
-        height: 44vh;
+        height: 45vh;
         font-size: 24px;
         gap: 50px;
     }
@@ -1008,7 +1014,7 @@ ul.sub-menu.opened::after {
     
     .contact_us_page input::placeholder, textarea::placeholder {
         font-size: 18px;
-        color: #030303;
+        color: #484a4b;
     }
     
     .parallax-image {
@@ -1026,6 +1032,66 @@ ul.sub-menu.opened::after {
         font-size: 17px !important;
     }
 
+}
+
+@media only screen and (min-width: 1083px) and (max-width: 1230px) {
+    .contact_form_color_white:not(h3) {
+        font-size: 14px ;
+    }
+
+    a.contact_form_color_white i {
+        margin: 0px 5px 8px 0px !important;
+    }
+
+    .amsterdam_font {
+        font-size: 36px;
+        top: 0px;
+    }
+
+    .contact_us_page input, textarea {
+        padding: 8px 10px;
+    }
+
+    .contact_us_page input::placeholder, textarea::placeholder {
+        font-size: 14px;
+        color: #484a4b;
+    }
+
+    form .homeboxanimate-btn-bracket {
+        margin: 10px auto;
+    }
+}
+
+@media only screen and (min-width:990px) and (max-width: 1082px) {
+    .contact_form_color_white:not(h3) {
+        font-size: 13px !important;
+    }
+
+    a.contact_form_color_white i {
+        margin: 0px 5px 8px 0px !important;
+    }
+
+    .amsterdam_font {
+        font-size: 34px;
+        top: 0px;
+    }
+
+    .contact_us_page input, textarea {
+        padding: 5px 10px;
+    }
+
+    .contact_us_page input::placeholder, textarea::placeholder {
+        font-size: 13px;
+        color: #484a4b;
+    }
+
+    form .homeboxanimate-btn-bracket {
+        margin: 10px auto;
+    }
+
+    form .the-button button {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (max-width: 640px) {

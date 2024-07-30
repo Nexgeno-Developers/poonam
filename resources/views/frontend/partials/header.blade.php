@@ -1,24 +1,24 @@
  
 <!-- PAGE PRELOADER -->
-      <div class="preloader text-center bg-dark-2" id="js-preloader" data-arts-theme-text="light">
-        <div class="preloader__content">
+      <!-- <div class="preloader text-center bg-dark-2" id="js-preloader" data-arts-theme-text="light">
+        <div class="preloader__content"> -->
           <!-- header -->
-          <div class="preloader__header mt-auto">
+          <!-- <div class="preloader__header mt-auto">
             <div class="preloader__heading h2">
                 <img class="logo__img-primary" src="{{ asset('assets/frontend/image/Logo.svg')}}" alt="Poonam shah logo" height="150"></div>
-          </div>
+          </div> -->
           <!-- - header -->
           <!-- counter -->
-          <div class="preloader__counter h5"><span
+          <!-- <div class="preloader__counter h5"><span
               class="preloader__counter-number preloader__counter-current">0</span><span
               class="preloader__counter-divider">&nbsp;&nbsp;/&nbsp;&nbsp;</span><span
-              class="preloader__counter-number preloader__counter-total">100</span></div>
+              class="preloader__counter-number preloader__counter-total">100</span></div> -->
           <!-- - counter -->
           <!-- circle holder -->
-          <div class="preloader__circle"></div>
+          <!-- <div class="preloader__circle"></div> -->
           <!-- - circle holder -->
-        </div>
-      </div>
+        <!-- </div>
+      </div> -->
       <!-- - PAGE PRELOADER -->
       <!-- Loading Spinner -->
       <svg class="spinner d-lg-none" id="js-spinner" width="65px" height="65px" viewBox="0 0 66 66"
