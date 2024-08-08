@@ -40,7 +40,7 @@ document.querySelector('.hover-right-arrow').addEventListener('click', function(
   document.querySelector('.about-menu').classList.add('new-class');
 });
 
-//zuber code
+//zuber code 
 
 /*
 $(document).ready(function(){
