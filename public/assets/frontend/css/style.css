@@ -43,13 +43,20 @@ section {
 }
 .header__wrapper-menu{
     position:relative;
-    overflow:hidden;
+    /* overflow:hidden; */
+}
+::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
 }
 .header__wrapper-menu ul li a {
     text-decoration: none;
     color: #fff !important;
     font-family: "Peachy Flightoe";
     font-size: 38px;
+}
+
+.about-menu.new-class {
+    display: none;
 }
 .w-50{
    width:50%; 
@@ -663,8 +670,8 @@ div.masonry_gallery{
   }
   
   div.masonry_gallery .masonry_gallery_div{
-    width: 100%; 
-    margin: 5px;
+    width: 95%; 
+    margin: 24px;
     overflow: hidden;
   }
   
@@ -849,7 +856,7 @@ form .the-button button {
 form .the-button {
     width: 30% !important;
 }
-
+/* 
 ul.sub-menu.opened::after {
    content: "";
     position: absolute;
@@ -858,7 +865,7 @@ ul.sub-menu.opened::after {
     width: 79px;
     left: 164px;
     top: 86px;
-}
+} */
 
 /*_____________________________umair____________________*/
 

@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="row justify-content-center">
+                <div class="row justify-content-start">
                     @foreach ($image_description as $item)
                         <div class="col-md-4 py-4">
                             <div class="gallery_dt_inner">

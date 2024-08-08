@@ -221,7 +221,7 @@
                         <a class="h2 hover-right-arrow" href="#" data-pjax-link="overlayMenu">
                         <div class="d-flex gap-3">
                             <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Services</div>
-                            <img id="About-menu" src="{{ asset('/assets/frontend/image/right-arrow-cursor.svg')}}" alt="about">
+                            <img id="About-menu" src="{{ asset('/assets/frontend/image/right-arrow-cursor.svg')}}" alt="about" class="about-menu">
                         </div>
                         </a>
                         <ul class="sub-menu">
