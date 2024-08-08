@@ -13,35 +13,6 @@ $(document).ready(function(){
 });
 
 
-// remove menu arrow when sub menu opened 
-
-//zuber code
-function toggleSubMenu(event) {
-  event.preventDefault(); // Prevent the default action
-
-  
-  const subMenu = menuItem.querySelector('.sub-menu');
-  const arrowImage = menuItem.querySelector('#About-menu');
-
-  // Toggle the 'opened' class on the sub-menu
-  subMenu.classList.toggle('opened');
-
-  // Check if the sub-menu has the 'opened' class and toggle 'd-none' on the arrow image
-  if (subMenu.classList.contains('opened')) {
-      arrowImage.classList.add('d-none');
-      arrowImage.classList.remove('d-block');
-  } else {
-      arrowImage.classList.remove('d-none');
-      arrowImage.classList.add('d-block');
-  }
-}
-
-document.querySelector('.hover-right-arrow').addEventListener('click', function() {
-  document.querySelector('.about-menu').classList.add('new-class');
-});
-
-//zuber code 
-
 /*
 $(document).ready(function(){
     // Function to animate CSS properties with GSAP

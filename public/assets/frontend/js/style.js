@@ -14,6 +14,19 @@ $(document).ready(function(){
 
 
 
+// remove menu arrow when sub menu opened 
+
+//zuber code
+
+document.querySelector('.hover-right-arrow').addEventListener('click', function() {
+  document.querySelector('.about-menu').classList.add('new-class');
+});
+
+document.querySelector('.arrow-left').addEventListener('click', function() {
+  document.querySelector('.about-menu').classList.remove('new-class');
+});
+//zuber code 
+
 
 /*
 $(document).ready(function(){
