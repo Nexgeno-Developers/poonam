@@ -70,13 +70,16 @@
                                             </div>
                                             <div class="col-md-1">
                                                 @if($loop->first)
-                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-add-circle-fill add-btn"></i>
+                                                <button type="button" class="btn btn-outline-success btn-sm add-btn">Add</button>
+                                                <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                                    class="ri-add-circle-fill add-btn"></i> -->
                                                 @else
-                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                                <button type="button" class="btn btn-outline-success btn-sm add-btn">Add</button>
+                                                <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>
+                                                <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>
                                                 <i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-delete-bin-5-fill remove-btn"></i>
+                                                    class="ri-delete-bin-5-fill remove-btn"></i> -->
                                                 @endif
                                             </div>
                                         </div>
@@ -362,7 +365,8 @@
                 } else {
                     $(this).find('.add-btn').show();
                     if (!$(this).find('.remove-btn').length) {
-                        $(this).find('.add-btn').after('<i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-5-fill remove-btn"></i>');
+                        $(this).find('.add-btn').after('<button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>');
+                        // $(this).find('.add-btn').after('<i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-5-fill remove-btn"></i>');
                     }
                 }
             });

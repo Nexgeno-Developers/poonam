@@ -86,7 +86,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-1"> @if($d == 0) <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;" class="ri-add-circle-fill" id="add_replace_key"></i> @else <i style="font-size: 25px; color: red; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-2-fill" onclick="remove_replace_key($(this));"></i> @endif </div>
+                                <div class="col-md-1"> @if($d == 0) <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button> @else <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button> @endif </div>
                             </div>
                         </div>
                         </br>
@@ -106,7 +106,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-1"><i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;" class="ri-add-circle-fill" id="add_replace_key"></i></div>
+                        <div class="col-md-1"><button type="button" class="btn btn-outline-success btn-sm add-btn" id="add_replace_key">Add +</button></div>
                         </div>
                         </br>
                     </div> @php } @endphp </div>
@@ -154,7 +154,7 @@ $("#add_replace_key").on("click", function() {
 
                             </div>
                         </div>
-                        <div class="col-md-1"><i style="font-size: 25px; color: red; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-2-fill" onclick="remove_replace_key($(this));"></i></div>
+                        <div class="col-md-1"><button type="button" class="btn btn-outline-danger btn-sm remove-btn" onclick="remove_replace_key($(this));">Remove</button></div>
                     </div>
                     </br>
                 </div>

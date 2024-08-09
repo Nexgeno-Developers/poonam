@@ -95,7 +95,7 @@
                             @foreach($image_section as $index => $image)
                                 <div class="form-group" id="form-group-{{ $index }}">
                                     <div class="row">
-                                        <div class="col-md-11">
+                                        <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col col-sm-6">
                                                     <label>Image <span class="red">*</span></label>
@@ -109,15 +109,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-1">
-                                            @if($loop->first)
-                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-add-circle-fill add-btn"></i>
-                                            @else
-                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                        <div class="col-md-2">
+                                            @if($loop->first) <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button> @else
+                                            <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>    
+                                            <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>
                                                 <i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-delete-bin-5-fill remove-btn"></i>
+                                                    class="ri-delete-bin-5-fill remove-btn"></i> -->
                                             @endif
                                         </div>
                                     </div>
@@ -139,8 +138,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                class="ri-add-circle-fill add-btn"></i>
+                                        <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button>
                                         </div>
                                     </div>
                                     <br>
@@ -194,7 +192,8 @@ $(document).ready(function () {
             } else {
                 $(this).find('.add-btn').show();
                 if (!$(this).find('.remove-btn').length) {
-                    $(this).find('.add-btn').after('<i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-5-fill remove-btn"></i>');
+                    $(this).find('.add-btn').after('<button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>');
+                    // $(this).find('.add-btn').after('<i style="font-size: 25px; color: #b00; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-5-fill remove-btn"></i>');
                 }
             }
         });
