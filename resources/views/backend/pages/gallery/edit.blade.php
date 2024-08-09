@@ -17,20 +17,22 @@
         </div>
         <div class="col-sm-8">
             <div class="form-group mb-3">
-                <label>Banner Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                <label>Banner Image</label>
                 <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp">
             </div>
         </div>
-        
+
+        @if (!empty($gallery->banner))
         <div class="form-group mb-3 mx-2 col-md-2">
             <div style="width: 100px;">
                 <img src="{{ asset('storage/' . $gallery->banner) }}" class="img-thumbnail">
             </div> 
         </div>
+        @endif
 
         <div class="col-sm-8">
             <div class="form-group mb-3">
-                <label>Thumbnail Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                <label>Thumbnail Image</label>
                 <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp">
             </div>
         </div>
@@ -45,14 +47,14 @@
 
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Title <span class="red">*</span></label>
-                <input type="text" class="form-control" name="title" value="{{ $gallery->title }}" required>
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="{{ $gallery->title }}">
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Short Description <span class="red">*</span></label>
-                <input type="text" class="form-control" name="short_description" value="{{ $gallery->short_description }}" required>
+                <label>Short Description</label>
+                <input type="text" class="form-control" name="short_description" value="{{ $gallery->short_description }}">
             </div>
         </div>
 
@@ -75,13 +77,13 @@
                                     <div class="row">
 
                                         <div class="col-sm-12 form-group mb-3">
-                                            <label>Title <span class="red">*</span></label>
-                                            <input type="text" class="form-control" name="image_description_text[]" value="{{ $row->text }}" required>
+                                            <label>Title</label>
+                                            <input type="text" class="form-control" name="image_description_text[]" value="{{ $row->text }}" >
                                         </div>
 
                                         <div class="col-sm-9">
                                             <div class="form-group mb-3 ">
-                                                <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                                                <label>Image</label>
                                                 <input class="form-control" type="file" id="image_description" name="image_description[]" accept=".jpg,.jpeg,.png,.webp">
                                             </div>
                                         </div>
@@ -109,13 +111,13 @@
                             <div class="row">
 
                                 <div class="col-sm-12 form-group mb-3">
-                                    <label>Title <span class="red">*</span></label>
-                                    <input type="text" class="form-control" name="image_description_text[]" value="" required>
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" name="image_description_text[]" value="">
                                 </div>
 
                                 <div class="col-sm-9">
                                     <div class="form-group mb-3 ">
-                                        <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                                        <label>Image</label>
                                         <input class="form-control" type="file" id="image_description" name="image_description[]" accept=".jpg,.jpeg,.png,.webp">
                                     </div>
                                 </div>
@@ -153,7 +155,7 @@
 
                                         <div class="col-sm-9">
                                             <div class="form-group mb-3 ">
-                                                <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                                                <label>Image</label>
                                                 <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
                                             </div>
                                         </div>
@@ -182,7 +184,7 @@
 
                             <div class="col-sm-9">
                                 <div class="form-group mb-3 ">
-                                    <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                                    <label>Image</label>
                                     <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
                                 </div>
                             </div>
@@ -220,7 +222,7 @@
 
                                     <div class="col-sm-9">
                                         <div class="form-group mb-3 ">
-                                            <label>Videos <span class="red">*</span></label>
+                                            <label>Videos</label>
                                             <input class="form-control" type="text" id="gallery_videos" value="{{$row}}" name="gallery_videos[]" />
                                         </div>
                                     </div>
@@ -255,8 +257,8 @@
 
                         <div class="col-sm-9">
                             <div class="form-group mb-3 ">
-                                <label>Videos <span class="red">*</span></label>
-                                <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]" required>
+                                <label>Videos</label>
+                                <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]">
                             </div>
                         </div>
 
@@ -305,14 +307,14 @@ $("#add_replace_key").on("click", function() {
 
                                 
                                 <div class="col-sm-12 form-group mb-3">
-                                    <label>Title <span class="red">*</span></label>
-                                    <input type="text" class="form-control" name="image_description_text[]" value="" required>
+                                    <label>Title</label>
+                                    <input type="text" class="form-control" name="image_description_text[]" value="">
                                 </div>
 
                                 <div class="col-sm-9">
                                     <div class="form-group mb-3 ">
-                                        <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                        <input class="form-control" type="file" id="image_description" name="image_description[]" accept=".jpg,.jpeg,.png,.webp" required>
+                                        <label>Image</label>
+                                        <input class="form-control" type="file" id="image_description" name="image_description[]" accept=".jpg,.jpeg,.png,.webp">
                                     </div>
                                 </div>
                                 <input type="hidden" name="number_img_description[]" value="1">
@@ -343,8 +345,8 @@ $("#add_replace_key").on("click", function() {
                                     
                                     <div class="col-sm-9">
                                         <div class="form-group mb-3 ">
-                                            <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                            <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp" required>
+                                            <label>Image</label>
+                                            <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
                                         </div>
                                     </div>
 
@@ -376,8 +378,8 @@ $("#add_replace_key").on("click", function() {
                                     
                                     <div class="col-sm-9">
                                         <div class="form-group mb-3 ">
-                                            <label>Videos <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                            <input class="form-control" type="file" id="images" name="gallery_videos[]" required>
+                                            <label>Videos</label>
+                                            <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]">
                                         </div>
                                     </div>
 

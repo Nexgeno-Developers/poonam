@@ -28,6 +28,133 @@ class GalleryController extends Controller
         $validator = Validator::make($request->all(), [
             'slug' => 'required|unique:gallery,slug',
             'page_name' => 'required',
+           
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
+        }
+    
+        if(!empty($request->input('slug'))){            
+            $slug = customSlug($request->input('slug'));
+        }
+        
+    
+
+
+        if ($request->hasFile('banner')) {
+            $file = $request->file('banner');
+            $bannerPath = $file->store('assets/banner/', 'public');
+        }
+
+        
+
+        if ($request->hasFile('thum_image')) {
+            $file = $request->file('thum_image');
+            $thum_imagePath = $file->store('assets/gallery/thum_images', 'public');
+        }
+
+
+
+        $image_description = [];
+
+        $image_description_img = [];     
+        if(!empty($request->input('image_description'))){       
+            if($request->has('image_description')){
+                foreach ($request->file('image_description') as $index => $file) {
+                    $ImagePath = $file->store('assets/image_description/', 'public');
+                    $image_description_img[$index] = $ImagePath;
+                }
+            }
+    
+            // Process image_description texts and files
+            foreach ($request->image_description_text as $index => $text) {
+    
+                $image_description_text_image = [
+                    'text' => $text,
+                    'image' => $image_description_img[$index],
+                ];
+    
+                $image_description[] = $image_description_text_image;
+            }
+        }
+
+       
+        // Initialize images array
+        $images = [];
+        if(!empty($request->input('images', []))){
+                    
+                // Process new and old images
+                $oldImages = $request->input('images', []);
+                $newImages = $request->file('images', []);
+
+                // Iterate over old images and keep them in the images array
+                foreach ($oldImages as $index => $oldImagePath) {
+                    if (!empty($newImages[$index])) {
+                        // If a new image is uploaded for this index, store it
+                        $file = $newImages[$index];
+                        $imagePath = $file->store('assets/gallery/images', 'public');
+                        $images[] = $imagePath;
+                    } else {
+                        // If no new image is uploaded, keep the old image
+                        $images[] = $oldImagePath;
+                    }
+                }
+
+                // Add any new images that were added after the last old image index
+                foreach ($newImages as $index => $file) {
+                    if ($index >= count($oldImages)) {
+                        $imagePath = $file->store('assets/gallery/images', 'public');
+                        $images[] = $imagePath;
+                    }
+                }
+
+                // Remove null values from the array
+                $images = array_filter($images, function($value) { return !is_null($value); });
+
+        }
+
+        // Get all video URLs from the request
+        $videos_urls = $request->input('gallery_videos', []);
+
+        // Remove null values from the array
+        $filtered_videos_urls = array_filter($videos_urls, function($value) {
+            return !is_null($value);
+        });
+
+        // Encode only if the array is not empty
+        $videos_json = !empty($filtered_videos_urls) ? json_encode($filtered_videos_urls) : null;
+    
+        DB::table('gallery')->insert([
+            'slug' => $slug,
+            'page_name' => $request->input('page_name'),
+            'banner' => $bannerPath ?? null,
+            'thum_image' => $thum_imagePath ?? null,
+            'title' => $request->input('title') ?? null,
+            'short_description' => !empty($request->input('short_description')) ? $request->input('short_description') : null,
+            'videos' => $videos_json,
+            'image_description' => !empty($image_description) ? json_encode($image_description) : null,
+            'images' => !empty($images) ? json_encode(array_values($images)) : null,
+        ]);
+        
+    
+        $response = [
+            'status' => true,
+            'notification' => 'Service added successfully!',
+        ];
+    
+        return response()->json($response);
+    }
+
+   /* public function create(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'slug' => 'required|unique:gallery,slug',
+            'page_name' => 'required',
             'banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'thum_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'short_description' => 'required',
@@ -198,7 +325,7 @@ class GalleryController extends Controller
         ];
     
         return response()->json($response);
-    }
+    }*/
 
     public function edit($id) {
         $gallery = DB::table('gallery')->where('id',$id)->get()->first();
@@ -239,6 +366,133 @@ class GalleryController extends Controller
     
     
     public function update(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'slug' => 'required',
+            'page_name' => 'required',           
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'notification' => $validator->errors()->all()
+            ], 200);
+        }
+    
+        $id = $request->input('id');
+        $old_data = DB::table('gallery')->where('id', $id)->first();
+    
+        $slug = customSlug($request->input('slug'));
+    
+        // Initialize variables to avoid "undefined variable" warnings
+        $old_data_Images = [];
+        $old_data_video = [];
+        $old_data_img_description = [];
+    
+        if ($old_data !== null) {
+            $old_data_Images = json_decode($old_data->images, true) ?: [];
+            $old_data_video = json_decode($old_data->videos, true) ?: [];
+            $old_data_img_description = json_decode($old_data->image_description, true) ?: [];
+        }
+        
+        $bannerPath = $request->hasFile('banner') ? 
+            $request->file('banner')->store('assets/banner', 'public') : 
+            $old_data->banner;
+    
+        $thum_imagePath = $request->hasFile('thum_image') ? 
+            $request->file('thum_image')->store('assets/thum_images', 'public') : 
+            $old_data->thum_image;
+    
+        /*--------------------------- Image --------------------------------------- */
+    
+        $Images = [];
+        if ($request->has('images')) {
+            foreach ($request->file('images') as $index => $file) {
+                $Images[$index] = $file->store('assets/gallery/images', 'public');
+            }
+        }
+    
+        $number_img = $request->input('number_img', []);
+        foreach ($number_img as $key => $row) {
+            $old = "old_image$key";
+            if ($request->has($old)) {
+                $Images[$key] = $old_data_Images[$key] ?? null;
+            } else {
+                $Images[$key] = $old_data_Images[$key + 1] ?? null;
+            }
+        }
+    
+        $Images = array_filter($Images, fn($value) => !is_null($value));
+    
+        /*--------------------------- Video --------------------------------------- */
+    
+        $videos_urls = $request->input('gallery_videos', []);
+        $videos_urls = array_filter($videos_urls, fn($value) => !is_null($value));
+        $videos_json = !empty($videos_urls) ? json_encode($videos_urls) : null;
+    
+        /*--------------------------- Image Description --------------------------------------- */
+    
+        $image_description = [];
+        if ($request->has('image_description')) {
+            foreach ($request->file('image_description') as $index => $file) {
+                $image_description[$index] = $file->store('assets/image_description', 'public');
+            }
+        }
+    
+        $number_img_description = $request->input('number_img_description', []);
+        foreach ($number_img_description as $key => $row) {
+            $old = "old_image_description$key";
+            if ($request->has($old)) {
+                $image_description[$key] = $old_data_img_description[$key]['image'] ?? null;
+            } else {
+                $image_description[$key] = $old_data_img_description[$key + 1]['image'] ?? null;
+            }
+        }
+    
+        $image_description = array_filter($image_description, fn($value) => !is_null($value));
+        $text = $request->input('image_description_text', []);
+        $image_description_data = [];
+    
+        for ($i = 0; $i < count($text); $i++) {
+            $image_description_data[$i] = [
+                'text' => $text[$i] ?? null,
+                'image' => $image_description[$i] ?? null,
+            ];
+        }
+    
+        // Filter out entries where both text and image are null
+        $filtered_description_data = array_filter($image_description_data, function($item) {
+            return $item['text'] !== null || $item['image'] !== null;
+        });
+    
+        $result = DB::table('gallery')->where('id', $id)->update([
+            'slug' => $slug,
+            'page_name' => $request->input('page_name'),
+            'banner' => $bannerPath,
+            'thum_image' => $thum_imagePath,
+            'title' => $request->input('title') ?? null,
+            'videos' => $videos_json,
+            'short_description' => $request->input('short_description') ?? null,
+            'image_description' => !empty($filtered_description_data) ? json_encode($filtered_description_data) : null,
+            'images' => !empty($Images) ? json_encode(array_values($Images)) : null,
+        ]);
+        
+        if ($result) {
+            return response()->json([
+                'status' => true,
+                'notification' => 'Gallery updated successfully!',
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'notification' => 'Something went wrong!',
+            ]);
+        }
+    }
+    
+    
+    
+    /*public function update(Request $request) {
 
         $validator = Validator::make($request->all(), [
             'slug' => 'required',
@@ -315,9 +569,9 @@ class GalleryController extends Controller
         } else {
             $thum_imagePath = $old_data->thum_image;
         }
-
+*/
         /*--------------------------- Image --------------------------------------- */
-
+/*
         $Images = [];
 
         $newImage = [];
@@ -355,8 +609,9 @@ class GalleryController extends Controller
 
         }
 
-
+*/
         /*--------------------------- video --------------------------------------- */
+/*
         // Get all video URLs from the request
         $videos_urls = $request->input('gallery_videos');
 
@@ -398,9 +653,9 @@ class GalleryController extends Controller
 
 
         // }
-
+*/
         /*--------------------------- img_description --------------------------------------- */
-
+/*
         $image_description = [];
 
         $newimage_description_img = [];
@@ -477,7 +732,7 @@ class GalleryController extends Controller
 
         return response()->json($response);
     }
-
+*/
 
 
 
@@ -487,15 +742,15 @@ class GalleryController extends Controller
    
 
 
+    /*
+    public function status($id, $status) { 
+        $award = Award::find($id);
+        $award->status = $status;
+        $award->save();
     
-    // public function status($id, $status) { 
-    //     $award = Award::find($id);
-    //     $award->status = $status;
-    //     $award->save();
-    
-    //     return redirect(route('award.index'))->with('success', 'Status Change successfully!');
-    // }  
-    
+        return redirect(route('award.index'))->with('success', 'Status Change successfully!');
+    }  
+    */
 
 
 

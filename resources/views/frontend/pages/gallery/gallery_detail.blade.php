@@ -27,16 +27,21 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
+            @if (!empty($image_description))
             <div class="col-md-12">
                 <div class="row justify-content-start">
                     @foreach ($image_description as $item)
+                    
                         <div class="col-md-4 py-4">
                             <div class="gallery_dt_inner">
                                 <div class="gallery_dt_img the_gallery_img">
+                                    @if (!is_null($item['image']))
                                     <a href="{{ asset('storage/' . $item['image']) }}" data-fancybox="images"
                                         data-caption="{{ $item['text'] }}">
                                         <img src="{{ asset('storage/' . $item['image']) }}" alt="Gallery Image">
                                     </a>
+                                    @endif
+                                    @if (!is_null($item['text']))
                                     <div class="box homeboxanimate mt-4">
                                         <div class="box-content">
                                             <p class="homeboxanimate-para color_white">
@@ -44,19 +49,24 @@
                                             </p>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     @endforeach 
                 </div>
             </div>
+            @endif
+            
             <div class="col-md-12">
+                @if (!empty($images))
                 <div class="row">
                     <div class="masonry_gallery">
                     @foreach ($images as $index => $image)
                         <div class="masonry_gallery_div gallery_dt_img the_gallery_img"><a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index + 1}}"><img src="{{ asset('storage/' . $image) }}" /></a></div>
                     @endforeach
                 </div>
+                @endif
                 @if(!empty($videos))
                     <div class="animheadertext-2 col-md-12">
                         <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4 mt-5">VIDEOS
@@ -87,6 +97,8 @@
 
                 </div>
             </div>
+            
+            
         </div>
     </div>
 </section>

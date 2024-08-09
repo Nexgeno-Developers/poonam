@@ -15,30 +15,27 @@
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Banner Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
-                        190*64)</span></label>
-                <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp"
-                    required>
+                <label>Banner Image</label>
+                <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp">
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Thumbnail Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
-                        190*64)</span></label>
+                <label>Thumbnail Image</label>
                 <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp"
-                    required>
+                   >
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Title <span class="red">*</span></label>
-                <input type="text" class="form-control" name="title" value="" required>
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="">
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Short Description <span class="red">*</span></label>
-                <input type="text" class="form-control" name="short_description" value="" required>
+                <label>Short Description</label>
+                <input type="text" class="form-control" name="short_description" value="">
             </div>
         </div>
 
@@ -46,14 +43,13 @@
             <div class="col-md-9">
                 <div class="form-group row mb-3 ">
                     <div class="col-6 form-group mb-3">
-                        <label>Title <span class="red">*</span></label>
-                        <input type="text" class="form-control" name="image_description_text[]" value="" required>
+                        <label>Title</label>
+                        <input type="text" class="form-control" name="image_description_text[]" value="">
                     </div>
                     <div class="col-6 form-group mb-3">
-                        <label>Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
-                                190*64)</span></label>
+                        <label>Image </label>
                         <input class="form-control" type="file" id="image_description[]" name="image_description[]"
-                            accept=".jpg,.jpeg,.png,.webp" required>
+                            accept=".jpg,.jpeg,.png,.webp">
                     </div>
 
                 </div>
@@ -66,10 +62,9 @@
         <div class="row gallery-image-row2">
             <div class="col-sm-8">
                 <div class="form-group mb-3">
-                    <label>Images <span class="red">*</span> <span class="font-size11">(Max file size 1MB -
-                            190*64)</span></label>
+                    <label>Images</label>
                     <input class="form-control" type="file" id="images[]" name="images[]"
-                        accept=".jpg,.jpeg,.png,.webp" required>
+                        accept=".jpg,.jpeg,.png,.webp">
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
@@ -81,8 +76,8 @@
 
             <div class="col-md-9">
                 <div class="form-group mb-3 ">
-                    <label>Video Url<span class="red">*</span> </label>
-                    <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]"  required />
+                    <label>Video Url </label>
+                    <input class="form-control" type="text" id="gallery_videos" name="gallery_videos[]"  />
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
@@ -122,7 +117,7 @@
             if ($('.gallery-image-row').length > 1) {
                 $(this).closest('.gallery-image-row').remove(); // Remove the closest row
             } else {
-                alert('At least one row is required.'); // Alert if only one row is left
+                alert('At least one row is.'); // Alert if only one row is left
             }
         });
 
@@ -144,7 +139,7 @@
             if ($('.gallery-image-row2').length > 1) {
                 $(this).closest('.gallery-image-row2').remove(); // Remove the closest row
             } else {
-                alert('At least one row is required.'); // Alert if only one row is left
+                alert('At least one row is.'); // Alert if only one row is left
             }
         });
 
@@ -166,7 +161,7 @@
             if ($('.gallery-video-row').length > 1) {
                 $(this).closest('.gallery-video-row').remove(); // Remove the closest row
             } else {
-                alert('At least one row is required.'); // Alert if only one row is left
+                alert('At least one row is.'); // Alert if only one row is left
             }
         });
 
