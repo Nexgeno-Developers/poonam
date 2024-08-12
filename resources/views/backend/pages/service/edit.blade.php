@@ -5,33 +5,34 @@
         <input type="hidden" name="id" value="{{ $service->id }}">
         <div class="col-sm-6">
             <div class="form-group mb-3">
-                <label>Page Name <span class="red">*</span></label>
+                <label>Page Name<span class="red">*</span></label>
                 <input type="text" class="form-control" name="page_name" value="{{ $service->page_name }}" required>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group mb-3">
-                <label>Slug (URL) <span class="red">*</span></label>
+                <label>Slug (URL)<span class="red">*</span></label>
                 <input type="text" class="form-control" name="slug" value="{{ $service->slug }}" required>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="form-group mb-3">
-                <label>Banner Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                <label>Banner Image</label>
                 <input class="form-control" type="file" id="banner" name="banner" accept=".jpg,.jpeg,.png,.webp">
             </div>
         </div>
-        
+        @if (!empty($service->banner))        
         <div class="form-group mb-3 mx-2 col-md-2">
             <div style="width: 100px;">
                 <img src="{{ asset('storage/' . $service->banner) }}" class="img-thumbnail">
             </div> 
         </div>
-
+        @endif
+        
         <div class="col-sm-8">
             <div class="form-group mb-3">
-                <label>Service Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp">
+                <label>Service Image</label>
+                <input class="form-control" type="file" id="service_image" name="service_image" accept=".jpg,.jpeg,.png,.webp" @if (empty($service->service_image)) required @endif>
             </div>
         </div>
 
@@ -45,14 +46,14 @@
 
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Title <span class="red">*</span></label>
-                <input type="text" class="form-control" name="title" value="{{ $service->title }}" required>
+                <label>Title</label>
+                <input type="text" class="form-control" name="title" value="{{ $service->title }}" >
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Short Description<span class="red">*</span></label>
-                <textarea  class="form-control" rows="5" name="short_description" required>{{ $service->short_description }}</textarea>
+                <label>Short Description</label>
+                <textarea  class="form-control" rows="5" name="short_description" >{{ $service->short_description }}</textarea>
             </div>
         </div>
 
@@ -69,7 +70,7 @@
                                     <div class="row">
                                         <div class="col-sm-9">
                                             <div class="form-group mb-3 ">
-                                                <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
+                                                <label>Gallery Image</label>
                                                 <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp">
                                             </div>
                                         </div>
@@ -98,8 +99,8 @@
 
                                 <div class="col-sm-12 gallery-image-row-empty">
                                     <div class="form-group mb-3 ">
-                                        <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                        <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" required>
+                                        <label>Gallery Image</label>
+                                        <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" >
                                     </div>
                                     <input type="hidden" name="number_img[]" value="1">
                                 </div>
@@ -146,8 +147,8 @@ $("#add_replace_key").on("click", function() {
                                 
                                 <div class="col-sm-12 gallery-image-row-empty">
                                     <div class="form-group mb-3 ">
-                                        <label>Gallery Image <span class="red">*</span> <span class="font-size11">(Max file size 1MB - 190*64)</span></label>
-                                        <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" required>
+                                        <label>Gallery Image</label>
+                                        <input class="form-control" type="file" id="gallery_image" name="gallery_image[]" accept=".jpg,.jpeg,.png,.webp" >
                                     </div>
                                     <input type="hidden" name="number_img[]" value="1">
                                 </div>

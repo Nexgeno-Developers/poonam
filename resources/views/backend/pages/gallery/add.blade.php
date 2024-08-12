@@ -21,15 +21,14 @@
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Thumbnail Image</label>
-                <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp"
-                   >
+                <label>Thumbnail Image <span class="red">*</span></label>
+                <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp" required>
             </div>
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Title</label>
-                <input type="text" class="form-control" name="title" value="">
+                <label>Title <span class="red">*</span></label>
+                <input type="text" class="form-control" name="title" value="" required>
             </div>
         </div>
         <div class="col-sm-12">
@@ -55,7 +54,7 @@
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
-                <button type="button" class="btn btn-success add-row my-2">Add More +</button>
+                <button type="button" class="btn btn-outline-success add-row my-2">Add More +</button>
             </div>
         </div>
 
@@ -68,7 +67,7 @@
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
-                <button type="button" class="btn btn-success add-row2 my-2">Add More +</button>
+                <button type="button" class="btn btn-outline-success add-row2 my-2">Add More +</button>
             </div>
         </div>
 
@@ -81,7 +80,7 @@
                 </div>
             </div>
             <div class="add-row-col-3-div col-md-3 d-flex gap-3 mb-2">
-                <button type="button" class="btn btn-success add-row3 my-2">Add More +</button>
+                <button type="button" class="btn btn-outline-success add-row3 my-2">Add More +</button>
             </div>
 
         </div>
@@ -108,7 +107,7 @@
             newRow.find('input').val('');
             newRow.find('.add-row-col-3-div').remove();
             newRow.find('.add-row').remove();
-            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-success add-row my-2">Add More +</button><button type="button" class="btn btn-danger remove-row my-2">Remove</button></div>');
+            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-outline-success add-row my-2">Add More +</button><button type="button" class="btn btn-outline-danger remove-row my-2">Remove</button></div>');
             $('.gallery-image-row').last().after(newRow);
         });
 
@@ -130,7 +129,7 @@
             newRow.find('input').val('');
             newRow.find('.add-row-col-3-div').remove();
             newRow.find('.add-row2').remove();
-            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-success add-row2 my-2">Add More +</button><button type="button" class="btn btn-danger remove-row2 my-2">Remove</button></div>');
+            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-outline-success add-row2 my-2">Add More +</button><button type="button" class="btn btn-outline-danger remove-row2 my-2">Remove</button></div>');
             $('.gallery-image-row2').last().after(newRow);
         });
 
@@ -152,7 +151,7 @@
             newRow.find('input').val('');
             newRow.find('.add-row-col-3-div').remove();
             newRow.find('.add-row3').remove();
-            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-success add-row3 my-2">Add More +</button><button type="button" class="btn btn-danger remove-row3 my-2">Remove</button></div>');
+            newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-outline-success add-row3 my-2">Add More +</button><button type="button" class="btn btn-outline-danger remove-row3 my-2">Remove</button></div>');
             $('.gallery-video-row').last().after(newRow);
         });
 

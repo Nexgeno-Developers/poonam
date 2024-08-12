@@ -380,114 +380,223 @@ class GalleryController extends Controller
         }
     
         $id = $request->input('id');
-        $old_data = DB::table('gallery')->where('id', $id)->first();
-    
+        $old_data = DB::table('gallery')->where('id', $id)->get()->first();
+
         $slug = customSlug($request->input('slug'));
+
+        if($old_data !== null && !empty($old_data)){
+            $old_data_Images = json_decode($old_data->images, true);
+            $old_data_video = json_decode($old_data->videos, true);
+            $old_data_img_description = json_decode($old_data->image_description, true);
+            $next = true;
+            $next1 = true;
+            $next2 = true;
+        }
     
-        // Initialize variables to avoid "undefined variable" warnings
-        $old_data_Images = [];
-        $old_data_video = [];
-        $old_data_img_description = [];
-    
-        if ($old_data !== null) {
-            $old_data_Images = json_decode($old_data->images, true) ?: [];
-            $old_data_video = json_decode($old_data->videos, true) ?: [];
-            $old_data_img_description = json_decode($old_data->image_description, true) ?: [];
+        if ($request->hasFile('banner')) {
+            $bannerPath = $request->file('banner')->store('assets/banner', 'public');
+        } else {
+            $bannerPath = $old_data->banner;
         }
         
-        $bannerPath = $request->hasFile('banner') ? 
-            $request->file('banner')->store('assets/banner', 'public') : 
-            $old_data->banner;
-    
-        $thum_imagePath = $request->hasFile('thum_image') ? 
-            $request->file('thum_image')->store('assets/thum_images', 'public') : 
-            $old_data->thum_image;
-    
+        if ($request->hasFile('thum_image')) {
+            $thum_imagePath = $request->file('thum_image')->store('assets/thum_images', 'public');
+        } else {
+            $thum_imagePath = $old_data->thum_image;
+        }
+
         /*--------------------------- Image --------------------------------------- */
-    
+
+        // Initialize arrays
         $Images = [];
+        $newImage = [];
+
+        // Handle new images
         if ($request->has('images')) {
             foreach ($request->file('images') as $index => $file) {
-                $Images[$index] = $file->store('assets/gallery/images', 'public');
+                $imagePath = $file->store('assets/gallery/images', 'public');
+                $newImage[$index] = $imagePath;
             }
         }
-    
+
+        // Retrieve existing images if no new images are provided
         $number_img = $request->input('number_img', []);
+
+        // Ensure $old_data_Images is initialized as an empty array if it is null
+        $old_data_Images = $old_data_Images ?? [];
+
+        // Process each image based on index
         foreach ($number_img as $key => $row) {
-            $old = "old_image$key";
-            if ($request->has($old)) {
-                $Images[$key] = $old_data_Images[$key] ?? null;
+            if (isset($newImage[$key])) {
+                // Use new image if available
+                $Images[$key] = $newImage[$key];
             } else {
-                $Images[$key] = $old_data_Images[$key + 1] ?? null;
+                // Use existing image or skip if not available
+                $oldKey = "old_image$key";
+                if ($request->has($oldKey)) {
+                    // Ensure key exists in $old_data_Images, otherwise skip
+                    $Images[$key] = $old_data_Images[$key] ?? null;
+                } else {
+                    // Use the previous image if available, otherwise skip
+                    $previous = $key + 1;
+                    $Images[$key] = $old_data_Images[$previous] ?? null;
+                }
             }
         }
-    
-        $Images = array_filter($Images, fn($value) => !is_null($value));
-    
-        /*--------------------------- Video --------------------------------------- */
-    
+
+        // Remove any null values from the $Images array
+        $Images = array_filter($Images, function($value) {
+            return $value !== null;
+        });
+
+        // Ensure that $Images is an empty array if it is empty
+        $Images = !empty($Images) ? $Images : [];
+
+        // Continue with your database update or further processing
+
+
+        /*--------------------------- video --------------------------------------- */
+
+        // Get all video URLs from the request
         $videos_urls = $request->input('gallery_videos', []);
-        $videos_urls = array_filter($videos_urls, fn($value) => !is_null($value));
-        $videos_json = !empty($videos_urls) ? json_encode($videos_urls) : null;
-    
-        /*--------------------------- Image Description --------------------------------------- */
-    
+
+        // Ensure the video URLs array is properly initialized
+        // Remove any null or empty values from the URLs array
+        $videos_urls = array_filter($videos_urls, function($value) {
+            return !empty($value);
+        });
+
+        // Ensure that $videos_urls is an empty array if no valid URLs are available
+        $videos_urls = !empty($videos_urls) ? $videos_urls : [];
+
+        // $video = [];
+
+        // $newvideo = [];
+        // if($request->has('gallery_videos')){
+        //     foreach ($request->file('gallery_videos') as $index => $file) {
+        //         $VideoPath = $file->store('assets/video', 'public');
+        //         $newvideo[$index] = $VideoPath;
+        //     }
+        // }
+
+        // $number_video = $request->input('number_video');
+        // foreach ($number_video as $key => $row) {
+
+        //     if (isset($newvideo[$key])) {
+        //         $video[$key] = $newvideo[$key];
+        //     } else {
+
+        //         $old = "old_video$key";
+        //         if($request->has($old)){
+
+        //             if($next1 == true){
+        //                 $video[$key] = $old_data_video[$key] ?? null;
+        //             } else {
+        //                 $privous1 = $key + 1;
+        //                 $video[$key] = $old_data_video[$privous1] ?? null;
+        //             }
+                    
+        //         } else {
+        //             $next1 = false;
+        //             $privous1 = $key + 1;
+        //             $video[$key] = $old_data_video[$privous1] ?? null;
+        //         }
+        //     }
+
+
+        // }
+
+        /*--------------------------- img_description --------------------------------------- */
+
+        // Initialize arrays
         $image_description = [];
+        $newimage_description_img = [];
+
+        // Handle new image descriptions
         if ($request->has('image_description')) {
             foreach ($request->file('image_description') as $index => $file) {
-                $image_description[$index] = $file->store('assets/image_description', 'public');
+                $imagePath = $file->store('assets/image_description', 'public');
+                $newimage_description_img[$index] = $imagePath;
             }
         }
-    
+
+        // Retrieve existing image descriptions if no new images are provided
         $number_img_description = $request->input('number_img_description', []);
         foreach ($number_img_description as $key => $row) {
-            $old = "old_image_description$key";
-            if ($request->has($old)) {
-                $image_description[$key] = $old_data_img_description[$key]['image'] ?? null;
+            if (isset($newimage_description_img[$key])) {
+                $image_description[$key] = $newimage_description_img[$key];
             } else {
-                $image_description[$key] = $old_data_img_description[$key + 1]['image'] ?? null;
+                $oldKey = "old_image_description$key";
+                if ($request->has($oldKey)) {
+                    $image_description[$key] = $old_data_img_description[$key]['image'] ?? null;
+                } else {
+                    $next2 = false;
+                    $privous2 = $key + 1;
+                    $image_description[$key] = $old_data_img_description[$privous2]['image'] ?? null;
+                }
             }
         }
-    
-        $image_description = array_filter($image_description, fn($value) => !is_null($value));
+
+        // Prepare image description data
         $text = $request->input('image_description_text', []);
         $image_description_data = [];
-    
+
         for ($i = 0; $i < count($text); $i++) {
-            $image_description_data[$i] = [
-                'text' => $text[$i] ?? null,
-                'image' => $image_description[$i] ?? null,
-            ];
+            if (isset($text[$i]) || isset($image_description[$i])) {
+                $image_description_data[$i] = [
+                    'text' => $text[$i] ?? null,
+                    'image' => $image_description[$i] ?? null,
+                ];
+            }
         }
-    
-        // Filter out entries where both text and image are null
-        $filtered_description_data = array_filter($image_description_data, function($item) {
-            return $item['text'] !== null || $item['image'] !== null;
+
+        // Filter out rows where both 'text' and 'image' are null
+        $image_description_data = array_filter($image_description_data, function($item) {
+            return !is_null($item['text']) || !is_null($item['image']);
         });
-    
-        $result = DB::table('gallery')->where('id', $id)->update([
-            'slug' => $slug,
-            'page_name' => $request->input('page_name'),
-            'banner' => $bannerPath,
-            'thum_image' => $thum_imagePath,
-            'title' => $request->input('title') ?? null,
-            'videos' => $videos_json,
-            'short_description' => $request->input('short_description') ?? null,
-            'image_description' => !empty($filtered_description_data) ? json_encode($filtered_description_data) : null,
-            'images' => !empty($Images) ? json_encode(array_values($Images)) : null,
-        ]);
+
         
-        if ($result) {
-            return response()->json([
-                'status' => true,
-                'notification' => 'Gallery updated successfully!',
+        try {
+            // Perform the database update
+            
+            $result = DB::table('gallery')->where('id', $id)->update([
+                'slug' => $slug,
+                'page_name' => $request->input('page_name'),
+                'banner' => $bannerPath ?? null,
+                'thum_image' => $thum_imagePath ?? null,
+                'title' => $request->input('title') ?? null,
+                'videos' => json_encode($videos_urls) ?? null,
+                'short_description' => $request->input('short_description') ?? null,
+                'image_description' => json_encode($image_description_data),
+                'images' => json_encode($Images),
+                //'images' => json_encode(array_values($Images)) ?? null,
+                // 'videos' => json_encode(array_values($video)),
             ]);
-        } else {
-            return response()->json([
+        
+            if ($result) {
+                $response = [
+                    'status' => true,
+                    'notification' => 'Gallery updated successfully!',
+                ];
+            } else {
+                $response = [
+                    'status' => false,
+                    'notification' => 'No changes were made.',
+                ];
+            }
+        } catch (\Exception $e) {
+            // Retrieve and log the last SQL error
+            $error = DB::getPdo()->errorInfo();
+            $response = [
                 'status' => false,
-                'notification' => 'Something went wrong!',
-            ]);
+                'notification' => 'Something went wrong! SQL Error: ' . $error[2],
+            ];
+            // Optionally, log the error for debugging purposes
+            \Log::error('SQL Error: ' . $error[2]);
         }
+        
+        return response()->json($response);
+        
     }
     
     

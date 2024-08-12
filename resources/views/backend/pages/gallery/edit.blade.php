@@ -32,8 +32,8 @@
 
         <div class="col-sm-8">
             <div class="form-group mb-3">
-                <label>Thumbnail Image</label>
-                <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp">
+                <label>Thumbnail Image <span class="red">*</span></label>
+                <input class="form-control" type="file" id="thum_image" name="thum_image" accept=".jpg,.jpeg,.png,.webp" @if (empty($gallery->thum_image)) required @endif>
             </div>
         </div>
 
@@ -47,7 +47,7 @@
 
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Title</label>
+                <label>Title <span class="red">*</span></label>
                 <input type="text" class="form-control" name="title" value="{{ $gallery->title }}">
             </div>
         </div>
