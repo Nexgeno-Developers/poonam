@@ -5,14 +5,14 @@
                     <div class="d-flex align-items-center gap-lg-2 gap-1">
 
                         <!-- Topbar Brand Logo -->
-                        <div class="logo-topbar p-2">
+                        <div class="logo-topbar p-2 py-1">
                             <!-- Logo light -->
                             <a href="#" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="/assets/image/logo_1.png" alt="logo" style="width:80px; height:80px;" >
+                                    <img src="/assets/image/logo_1.png" alt="logo" style="width:60px; height:60px;" >
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="/assets/image/logo_1.png" alt="small logo" style="width:80px; height:80px;" >
+                                    <img src="/assets/image/logo_1.png" alt="small logo" style="width:60px; height:60px;" >
                                 </span>
                             </a>
 

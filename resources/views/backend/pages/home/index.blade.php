@@ -68,13 +68,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-md-1 ps-0">
                                                 @if($loop->first)
                                                 <button type="button" class="btn btn-outline-success btn-sm add-btn">Add</button>
                                                 <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i> -->
                                                 @else
-                                                <button type="button" class="btn btn-outline-success btn-sm add-btn">Add</button>
+                                                <button type="button" class="btn btn-outline-success btn-sm add-btn mb-1">Add</button>
                                                 <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>
                                                 <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>
@@ -311,14 +311,14 @@
                     <textarea class="form-control" name="gallery2_description[]" rows="3"
                         placeholder="Gallery Description {{$key + 1}}" required>{{ $section->description }}</textarea>
                 </div>
-                <div class="col col-sm-6">
+                <div class="col col-sm-6 mt-1">
                     <label for="gallery2_image_{{$key + 1}}">Gallery Image {{$key + 1}} <span
                             class="red">*</span></label>
                     <input type="file" class="form-control" name="gallery2_image[]" @if(empty($section->image)) required
                     @endif>
 
                 </div>
-                <div class="col col-sm-6">
+                <div class="col col-sm-6 mt-2">
                     @if(!empty($section->image))
                     <img width="100" src="{{ asset('storage/' . $section->image) }}" alt="Banner Image"
                         class="img-thumbnail mt-2">

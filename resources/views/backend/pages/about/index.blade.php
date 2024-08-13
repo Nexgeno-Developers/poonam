@@ -55,8 +55,8 @@
                         </div>
 
 
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
+                        <div class="col-sm-1 mt-4" style="float: right;">
+                            <div class="form-group d-grid mb-1 text-end">
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>

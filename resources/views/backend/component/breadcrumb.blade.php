@@ -2,7 +2,7 @@
 <!---------------------- Header (Page header) ---------------->
 
     <div class="col-12">
-        <div class="page-title-box">
+        <div class="page-title-box ms-3">
             {{--
             <div class="page-title-right">
                 <form class="d-flex">
@@ -21,7 +21,7 @@
                 </form>
             </div>
             --}}
-            <h4 class="page-title"> @yield('page.name') </h4>
+            <h4 class="page-title ms-1"> @yield('page.name') </h4>
 
         </div>
     </div>

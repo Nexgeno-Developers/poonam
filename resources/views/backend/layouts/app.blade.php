@@ -44,7 +44,7 @@
                         </div>
 
                         <!-------Page contain---------->
-                        <div class="row">
+                        <div class="row justify-content-center">
                             @yield('page.content')
                         </div> <!-- end row -->
 

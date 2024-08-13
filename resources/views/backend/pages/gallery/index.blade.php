@@ -3,7 +3,7 @@
 @section('page.name', 'gallery')
 
 @section('page.content')
-<div class="card">
+<div class="card col-11">
    <div class="card-body">
       <div class="row mb-2">
          <div class="col-sm-5">
