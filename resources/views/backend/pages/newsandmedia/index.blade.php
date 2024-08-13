@@ -103,7 +103,7 @@
                                                         name="newsandmedia_image[]">
                                                         @if(!empty($image))
                                                         <input class="form-control" type="hidden" id="image-{{ $index }}" value="{{ $image }}" name="newsandmedia_old_image[]">
-                                                        <img width="100%" src="{{ asset('storage/' .$image) }}"
+                                                        <img width="70%" src="{{ asset('storage/' .$image) }}"
                                                             alt="Image Preview" class="img-thumbnail mt-2">
                                                     @endif
                                                 </div>
