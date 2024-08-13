@@ -45,7 +45,7 @@
                     <!--- Sidemenu -->
                     <ul class="side-nav">
 
-                        <li class="side-nav-title">Navigation</li>
+                        <li class="side-nav-title ms-1">Navigation</li>
 
                         {{-- <li class="side-nav-item"> <!--menuitem-active-->
                             <a href="{{ route('backend.dashboard') }}" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">

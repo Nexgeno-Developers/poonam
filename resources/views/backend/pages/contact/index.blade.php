@@ -3,7 +3,7 @@
 @section('page.name', 'Contact Page')
 
 @section('page.content')
-<div class="col-12">
+<div class="col-11 px-0">
     <div class="card widget-inline">
         <div class="card-body p-0">
 
@@ -39,17 +39,17 @@
                                     required @endif>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 mt-2">
                                 @if (!empty($banner))
-                                    <div style="width: 150px;">
+                                    <div style="width: 200px;">
                                         <img src="{{ asset('storage/' . $banner) }}" class="img-thumbnail">
                                     </div>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
+                        <div class="col-sm-1 mt-4" style="float: right;">
+                            <div class="form-group d-grid mb-1 text-end">
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>
@@ -166,8 +166,8 @@
 
                         </div>
 
-                        <div class="col-sm-1" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
+                        <div class="col-sm-1 mt-4" style="float: right;">
+                            <div class="form-group d-grid mb-0 text-end">
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>

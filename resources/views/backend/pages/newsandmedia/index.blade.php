@@ -20,14 +20,14 @@
     $image_section = json_decode($details->image_section);
 @endphp
 
-<div class="col-12">
+<div class="col-11 px-0">
     <div class="card widget-inline">
         <div class="card-body p-0">
 
 
             <!-----==================== newsandmedia banner ==========----------------------->
 
-            <div class="card m-3">
+            <div class="card m-2">
                 <div class="card-body">
                     <div class="col-md-12">
                         <h4 class="header-title"><b>Banner Section</b></h4>
@@ -60,8 +60,8 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-1 mt-2" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
+                        <div class="col-sm-1 mt-4" style="float: right;">
+                            <div class="form-group d-grid mb-0 text-end">
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             <!-- Ensure $image_section is initialized as an array -->
                             @foreach($image_section as $index => $image)
                                 <div class="form-group" id="form-group-{{ $index }}">
-                                    <div class="row">
+                                    <div class="row align-items-center">
                                         <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col col-sm-6">
@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             @if($loop->first) <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button> @else
-                                            <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button>
+                                            <button type="button" class="btn btn-outline-success btn-sm add-btn mb-2">Add +</button>
                                             <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>    
                                             <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>
@@ -147,7 +147,7 @@
                         </div>
 
                         <div class="col-sm-1" style="float: right;">
-                            <div class="form-group d-grid mb-3 text-end">
+                            <div class="form-group d-grid mb-0 text-end">
                                 <button type="submit" class="btn btn-block btn-primary">Save</button>
                             </div>
                         </div>
