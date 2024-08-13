@@ -94,7 +94,7 @@
                             <!-- Ensure $image_section is initialized as an array -->
                             @foreach($image_section as $index => $image)
                                 <div class="form-group" id="form-group-{{ $index }}">
-                                    <div class="row align-items-center">
+                                    <div class="row align-items-center pb-3">
                                         <div class="col-md-10">
                                             <div class="row">
                                                 <div class="col col-sm-6">
@@ -103,7 +103,7 @@
                                                         name="newsandmedia_image[]">
                                                         @if(!empty($image))
                                                         <input class="form-control" type="hidden" id="image-{{ $index }}" value="{{ $image }}" name="newsandmedia_old_image[]">
-                                                        <img width="100" src="{{ asset('storage/' .$image) }}"
+                                                        <img width="100%" src="{{ asset('storage/' .$image) }}"
                                                             alt="Image Preview" class="img-thumbnail mt-2">
                                                     @endif
                                                 </div>
