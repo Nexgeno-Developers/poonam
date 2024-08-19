@@ -83,7 +83,9 @@
                             @foreach($videos as $video)
                                 <div class="swiper-slide overflow d-flex-centered">
                                     
-                                        <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" />
+                                <img src="https://img.youtube.com/vi/{{ $video }}/hqdefault.jpg" alt="Thumbnail" />
+
+                                        <!-- <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" /> -->
                                         <button type="button" class="btn gallery_yt_video" data-youtube-url="https://www.youtube.com/embed/{{$video}}" >
                                             <i class="fa-regular fa-circle-play"></i>
                                         </button>
