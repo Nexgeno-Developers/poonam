@@ -671,7 +671,7 @@ div.masonry_gallery{
   
   div.masonry_gallery .masonry_gallery_div{
     width: 95%; 
-    margin: 24px;
+    /* margin: 24px; */
     overflow: hidden;
   }
   
