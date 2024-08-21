@@ -3071,7 +3071,7 @@ div.wpcf7-validation-errors {
     margin: auto 0
 }
 
-.header__wrapper-overlay-menu {
+.header__wrapper-overlay-menu { 
     display: flex;
     flex-wrap: wrap;
     position: fixed;
