@@ -157,9 +157,10 @@
             $item = [
                 'firstPart' => $firstPart ? $firstPart : null,
                 'secondPart' => $secondPart ? $secondPart : null,
-                'description' => $gallery->description ? $gallery->description : null,
-                'image' => $gallery->image ? asset('storage/' . $gallery->image) : null,
-                'alt' => $gallery->title ? $gallery->title : null
+                'description' => isset($gallery->description) ? $gallery->description : null,
+                'image' => isset($gallery->image) ? asset('storage/' . $gallery->image) : null,
+                'alt' => isset($gallery->title) ? $gallery->title : null,
+                'url' => isset($gallery->url) ? $gallery->url : null // Check if url is set
             ];
 
             // Add the item to the array
@@ -167,6 +168,7 @@
         @endphp
     @endfor
 @endif
+
 
 @if(!empty($galleryItems))
           <section class="section services_section border_2 section-grid"
@@ -187,7 +189,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button white">
-                          <a href="#" class="homeboxanimate-btn-text color_white">Read More</a>
+                          <a href="{{ $galleryItems[0]['url'] }}" class="homeboxanimate-btn-text color_white">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -202,7 +204,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
+                          <a href="{{$galleryItems[1]['url']}}" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -233,7 +235,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button">
-                          <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
+                          <a href="{{ $galleryItems[2]['url'] }}" class="homeboxanimate-btn-text text-dark">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -249,7 +251,7 @@
                           </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button white">
-                          <a href="#" class="homeboxanimate-btn-text color_white">Read More</a>
+                          <a href="{{$galleryItems[3]['url']}}" class="homeboxanimate-btn-text color_white">Read More</a>
                         </div>
                       </div>
                     </div>
@@ -279,7 +281,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button white">
-                      <a href="#" class="homeboxanimate-btn-text color_white">Read More</a>
+                      <a href="{{$galleryItems[4]['url']}}" class="homeboxanimate-btn-text color_white">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -306,7 +308,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
+                      <a href="{{ $galleryItems[5]['url'] }}" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -332,7 +334,7 @@
                       </p>
                     </div>
                     <div class="homeboxanimate-btn-bracket the-button">
-                      <a href="" class="homeboxanimate-btn-text text-dark">Read More</a>
+                      <a href="{{ $galleryItems[6]['url'] }}" class="homeboxanimate-btn-text text-dark">Read More</a>
                     </div>
                   </div>
                 </div>

@@ -164,6 +164,7 @@ class HomeController extends Controller
     
             $gallerySection1[] = [
                 'title' => $request->gallery_title[$i],
+                'url' => $request->gallery_url[$i],
                 'description' => $request->gallery_description[$i],
                 'image' => $imagePath,
             ];

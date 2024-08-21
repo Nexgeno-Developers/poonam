@@ -42,9 +42,9 @@
                                     </a>
                                     @endif
                                     @if (!is_null($item['text']))
-                                    <div class="box homeboxanimate mt-4">
+                                    <div class="box mt-4">
                                         <div class="box-content">
-                                            <p class="homeboxanimate-para color_white">
+                                            <p class="the_gallery_img_para color_white">
                                                 {{ $item['text'] }}
                                             </p>
                                         </div>
@@ -59,48 +59,45 @@
             @endif
             
             <div class="col-md-12">
-                @if (!empty($images))
                 <div class="row">
-                    <div class="masonry_gallery">
-                    @foreach ($images as $index => $image)
-                        <div class="masonry_gallery_div gallery_dt_img the_gallery_img"><a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index + 1}}"><img src="{{ asset('storage/' . $image) }}" /></a></div>
-                    @endforeach
-                </div>
-                @endif
-                @if(!empty($videos))
-                    <div class="animheadertext-2 col-md-12">
-                        <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4 mt-5">VIDEOS
-                        </h3>
-                    </div>
-
-                    <div class="slider-fullscreen-projects__images swiper-container gallery_swiper js-slider-fullscreen-projects__images
-                        position-relative overflow-hidden" data-speed="1200" data-slides-per-view="4"
-                        data-slides-per-view-tablet="1" data-slides-per-view-mobile="1" data-mousewheel-enabled="false"
-                        data-direction="horizontal" data-drag-mouse="true" data-drag-cursor="true"
-                        data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
-                        data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
-                        <div class="swiper-wrapper">
-                            @foreach($videos as $video)
-                                <div class="swiper-slide overflow d-flex-centered">
-                                    
-                                <img src="https://img.youtube.com/vi/{{ $video }}/hqdefault.jpg" alt="Thumbnail" />
-
-                                        <!-- <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" /> -->
-                                        <button type="button" class="btn gallery_yt_video" data-youtube-url="https://www.youtube.com/embed/{{$video}}" >
-                                            <i class="fa-regular fa-circle-play"></i>
-                                        </button>
-                                </div>
-                            @endforeach
+                    @if (!empty($images))
+                        <div class="masonry_gallery">
+                        @foreach ($images as $index => $image)
+                            <div class="masonry_gallery_div gallery_dt_img the_gallery_img"><a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index + 1}}"><img src="{{ asset('storage/' . $image) }}" /></a></div>
+                        @endforeach
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                @endif
+                    @endif
+                    @if(!empty($videos))
+                        <div class="animheadertext-2 col-md-12">
+                            <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-4 mt-5">VIDEOS
+                            </h3>
+                        </div>
 
+                        <div class="slider-fullscreen-projects__images swiper-container gallery_swiper js-slider-fullscreen-projects__images
+                            position-relative overflow-hidden" data-speed="1200" data-slides-per-view="4"
+                            data-slides-per-view-tablet="1" data-slides-per-view-mobile="1" data-mousewheel-enabled="false"
+                            data-direction="horizontal" data-drag-mouse="true" data-drag-cursor="true"
+                            data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
+                            data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
+                            <div class="swiper-wrapper">
+                                @foreach($videos as $video)
+                                    <div class="swiper-slide overflow d-flex-centered">
+                                        
+                                    <img src="https://img.youtube.com/vi/{{ $video }}/hqdefault.jpg" alt="Thumbnail" />
+
+                                            <!-- <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" /> -->
+                                            <button type="button" class="btn gallery_yt_video" data-youtube-url="https://www.youtube.com/embed/{{$video}}" >
+                                                <i class="fa-regular fa-circle-play"></i>
+                                            </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    @endif
                 </div>
-            </div>
-            
-            
+            </div>            
         </div>
     </div>
 </section>
