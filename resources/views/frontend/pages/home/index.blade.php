@@ -157,10 +157,10 @@
             $item = [
                 'firstPart' => $firstPart ? $firstPart : null,
                 'secondPart' => $secondPart ? $secondPart : null,
-                'description' => $gallery->description ? $gallery->description : null,
-                'image' => $gallery->image ? asset('storage/' . $gallery->image) : null,
-                'alt' => $gallery->title ? $gallery->title : null,
-                'url' => $gallery->url ? $gallery->url : null
+                'description' => isset($gallery->description) ? $gallery->description : null,
+                'image' => isset($gallery->image) ? asset('storage/' . $gallery->image) : null,
+                'alt' => isset($gallery->title) ? $gallery->title : null,
+                'url' => isset($gallery->url) ? $gallery->url : null // Check if url is set
             ];
 
             // Add the item to the array
@@ -168,6 +168,7 @@
         @endphp
     @endfor
 @endif
+
 
 @if(!empty($galleryItems))
           <section class="section services_section border_2 section-grid"
