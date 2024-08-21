@@ -100,10 +100,11 @@
         </p>
     </div>
     @endif
+    @if(!empty($gallery_image))
     <div class="container pb-md-5 pb-0 mb-3">
         <div class="row justify-content-center">
             <div class="col-md-12">
-            @if(!empty($gallery_image))
+            
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
                 overflow-hidden" data-speed="1200" data-slides-per-view="4" data-slides-per-view-tablet="1"
                     data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
@@ -123,10 +124,11 @@
                         @endforeach                        
                     </div>
                 </div>
-            @endif
+            
             </div>
         </div>
     </div>
+    @endif
 </section>
 
 

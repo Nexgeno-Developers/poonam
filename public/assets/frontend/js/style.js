@@ -60,7 +60,7 @@ $(document).ready(function(){
 
 
 // About Page
-
+if (document.querySelector('.design_den')) {
     // Create a timeline
   var tl3 = gsap.timeline();
 
@@ -90,7 +90,7 @@ $(document).ready(function(){
     duration:0.4,
     ease: "back.in(1)",
   });
-  
+}
    function createParallax(classname, triggerclass) {
         const layers = document.querySelectorAll(classname);
 
@@ -742,7 +742,7 @@ const imageAnimationProps = {
 
 
 // Gallery Deatil Page
-const galleryimages = document.querySelectorAll('.main_section_gallery_detail .the_gallery_img');
+/*const galleryimages = document.querySelectorAll('.main_section_gallery_detail .the_gallery_img');
 
 galleryimages.forEach((image, index) => {
     ScrollTrigger.create({
@@ -764,6 +764,55 @@ galleryimages.forEach((image, index) => {
     // Set initial state
     gsap.set(image, { opacity: 0, y: 100 }); // Initially, images are transparent and below
 });
+*/
+function animategalleryBoxes() {
+  const triggerElements = document.querySelectorAll('.main_section_gallery_detail .the_gallery_img');
+  
+  triggerElements.forEach((triggerElement, index) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: "top 90%",    // Animation starts when the top of the element is 80% from the top of the viewport
+        end: "top center", // Animation ends when the center of the element is at the center of the viewport
+        markers: false,      // Set to true if you want to see the start and end markers for debugging
+        //scrub: 1,         // Smooth scrubbing, takes into account the scroll speed
+      }
+    });
+
+    // Animate the image itself
+    tl.fromTo(triggerElement, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power4.out",
+      delay: index * 0.1 // Delay each image based on its index
+    });
+
+    // Animate paragraph text
+    const paraElements = triggerElement.querySelectorAll('.the_gallery_img_para');
+    paraElements.forEach(element => {
+      const splitText = new SplitText(element, { type: 'chars', charsClass: 'js-split-letter' });
+      tl.from(splitText.chars, {
+        opacity: 0,
+        scale: 0.5,
+        ease: 'back.out',
+        duration: 0.5,
+        stagger: 0.015
+      }, '-=0.6'); // Adjust timing overlap if needed
+    });
+  });
+}
+
+// Call the function to initialize the animation
+animategalleryBoxes();
+
+
+
+
+
 
 // function animateImageleftOnScroll(className, triggerClass) {
 //     const triggers = document.querySelectorAll(triggerClass);

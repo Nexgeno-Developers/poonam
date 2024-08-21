@@ -194,19 +194,25 @@
                             @if (empty($gallery_section1))
                             @for ($i = 0; $i < 7; $i++)
                                 <div class="row mb-3">                            
-                                    <div class="col col-sm-4">
+                                    <div class="col col-sm-3">
                                         <label for="gallery_title{{$i+1}}">Gallery Title {{$i+1}} <span
                                                 class="red">*</span></label>
                                         <input type="text" class="form-control" name="gallery_title[]"
                                             placeholder="Gallery Title {{$i+1}}" required>
                                     </div>
-                                    <div class="col col-sm-4">
+                                    <div class="col col-sm-3">
                                         <label for="gallery_description{{$i+1}}">Gallery Description {{$i+1}} <span
                                                 class="red">*</span></label>
                                         <textarea class="form-control" name="gallery_description[]" rows="3"
                                             placeholder="Gallery Description {{$i+1}}" required></textarea>
                                     </div>
-                                    <div class="col col-sm-4">
+                                    <div class="col col-sm-3">
+                                        <label for="gallery_url{{$i+1}}">Gallery Description {{$i+1}} <span
+                                                class="red">*</span></label>
+                                        <textarea class="form-control" name="gallery_url[]" rows="3"
+                                            placeholder="Gallery URL {{$i+1}}" required></textarea>
+                                    </div>
+                                    <div class="col col-sm-3">
                                         @if ($i < 4) <label for="gallery_image{{$i+1}}">Gallery Image {{$i+1}} <span
                                                 class="red">*</span></label>
                                             <input type="file" class="form-control" id="gallery_image{{$i+1}}"
@@ -218,18 +224,24 @@
                         @else
                         @foreach ($gallery_section1 as $key => $section)
                         <div class="row mb-3"> 
-                            <div class="col col-sm-6">
+                            <div class="col col-sm-4">
                                 <label for="gallery_title{{$key + 1}}">Gallery Title {{$key + 1}} <span
                                         class="red">*</span></label>
                                 <input type="text" class="form-control" name="gallery_title[]"
                                     placeholder="Gallery Title {{$key + 1}}" value="{{ $section->title }}" required>
                             </div>
-                            <div class="col col-sm-6">
+                            <div class="col col-sm-4">
                                 <label for="gallery_description{{$key + 1}}">Gallery Description {{$key + 1}} <span
                                         class="red">*</span></label>
                                 <textarea class="form-control" name="gallery_description[]" rows="3"
                                     placeholder="Gallery Description {{$key + 1}}"
                                     required>{{ $section->description }}</textarea>
+                            </div>
+                            <div class="col col-sm-4">
+                                <label for="gallery_url{{$key + 1}}">Gallery URL {{$key + 1}} <span
+                                        class="red">*</span></label>
+                                <input type="text" class="form-control" name="gallery_url[]"
+                                placeholder="Gallery URL {{$key + 1}}" value="{{ $section->url }}" required>
                             </div>
                         </div>
                         @endforeach
