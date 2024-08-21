@@ -219,29 +219,37 @@
                     <li menuname="Services-menu" class="menu-item-has-children">
                         
                         <a class="h2 hover-right-arrow" href="#" data-pjax-link="overlayMenu">
-                        <div class="d-flex gap-3">
-                            <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Services</div>
-                            <img id="About-menu" src="{{ asset('/assets/frontend/image/right-arrow-cursor.svg')}}" alt="about" class="about-menu">
-                        </div>
+                          <div class="d-flex gap-3">
+                              <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Services</div>
+                              <img id="About-menu" src="{{ asset('/assets/frontend/image/right-arrow-cursor.svg')}}" alt="about" class="about-menu">
+                          </div>
                         </a>
                         <ul class="sub-menu">
                           @foreach($services as $row)
-                          <li><a class="h3" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}" data-pjax-link="overlayMenu">
-                            <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">{{$row->title}}</div></a>
+                          <li>
+                            <a class="h3" href="{{ url(route('service.detail', ['slug' => $row->slug] )) }}" data-pjax-link="overlayMenu">
+                              <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">{{$row->title}}</div>
+                            </a>
                           </li>
                           @endforeach                            
                         </ul>
 
                     </li>
                     @endif
-                    <li menuname="Gallery-menu" ><a  class="h2" href="{{ route('gallery') }}" data-pjax-link="overlayMenu">
-                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Gallery</div></a>
+                    <li menuname="Gallery-menu" >
+                      <a  class="h2" href="{{ route('gallery') }}" data-pjax-link="overlayMenu">
+                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Gallery</div>
+                      </a>
                     </li>
-                    <li menuname="NewsMedia-menu" ><a  class="h2" href="{{ route('news-media') }}" data-pjax-link="overlayMenu">
-                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">News & Media</div></a>
+                    <li menuname="NewsMedia-menu" >
+                      <a  class="h2" href="{{ route('news-media') }}" data-pjax-link="overlayMenu">
+                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">News & Media</div>
+                      </a>
                     </li>
-                    <li menuname="Contactus-menu"><a  class="h2" href="{{ route('contact') }}" data-pjax-link="overlayMenu">
-                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Contact us</div></a>
+                    <li menuname="Contactus-menu">
+                      <a  class="h2" href="{{ route('contact') }}" data-pjax-link="overlayMenu">
+                        <div class="menu-overlay__item-wrapper split-text js-split-text" data-split-text-type="lines">Contact us</div>
+                      </a>
                     </li>
 
                 </ul>
