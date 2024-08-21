@@ -87,7 +87,10 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-1"> @if($d == 0) <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button> @else <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button> @endif </div>
+                                <div class="col-md-1"> 
+                                    <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button> 
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button> 
+                                </div>
                             </div>
                         </div>
                         </br>

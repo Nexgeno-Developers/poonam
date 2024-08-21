@@ -277,39 +277,36 @@ class ServiceController extends Controller
         $galleryImages = [];
 
         $newImage = [];
-        if($request->has('gallery_image')){
+        if ($request->has('gallery_image')) {
             foreach ($request->file('gallery_image') as $index => $file) {
                 $ImagePath = $file->store('assets/gallery_image', 'public');
                 $newImage[$index] = $ImagePath;
             }
         }
 
-        $number_img = $request->input('number_img');
-        foreach ($number_img as $key => $row) {
+        // Retrieve number_img input and ensure it's an array
+        $number_img = $request->input('number_img', []); // Default to an empty array if not set
 
+        foreach ($number_img as $key => $row) {
             if (isset($newImage[$key])) {
                 $galleryImages[$key] = $newImage[$key];
             } else {
-
                 $old = "old_image$key";
-                if($request->has($old)){
-
-                    if($next == true){
+                if ($request->has($old)) {
+                    if ($next == true) {
                         $galleryImages[$key] = $old_data_galleryImages[$key] ?? null;
                     } else {
                         $privous = $key + 1;
                         $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
                     }
-                    
                 } else {
                     $next = false;
                     $privous = $key + 1;
                     $galleryImages[$key] = $old_data_galleryImages[$privous] ?? null;
                 }
             }
-
-
         }
+
         // Ensure proper null handling if no images are available
         $galleryImages = array_filter($galleryImages) ? $galleryImages : null;
 
@@ -320,8 +317,9 @@ class ServiceController extends Controller
             'page_name' => $request->input('page_name'),
             'title' => $request->input('title') ?? null,
             'short_description' => $request->input('short_description') ?? null,
-            'gallery_image' => !empty($galleryImages) ? json_encode($galleryImages) : null, 
+            'gallery_image' => !empty($galleryImages) ? json_encode($galleryImages) : null,
         ]);
+
 
         // $result = DB::table('services')->where('id', $id)->update([
         //     'banner' => $bannerPath,
@@ -341,7 +339,8 @@ class ServiceController extends Controller
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Somthing Went Wrong!',
+                'notification' => 'No changes were made.',
+                // 'notification' => 'Somthing Went Wrong!',
             ];
         }
 
