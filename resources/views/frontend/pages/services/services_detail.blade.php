@@ -103,6 +103,7 @@
     @if(!empty($gallery_image))
     <div class="container pb-md-5 pb-0 mb-3">
         <div class="row justify-content-center">
+<<<<<<< HEAD
             <div class="col-md-12">
 <<<<<<< HEAD
                 @if(!empty($gallery_image))
@@ -128,6 +129,9 @@
                 @endif
 =======
             
+=======
+            <div class="col-md-12">            
+>>>>>>> d7d5dec034ff1992e49e002e363cb1f29b5eca00
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
                 overflow-hidden" data-speed="1200" data-slides-per-view="4" data-slides-per-view-tablet="1"
                     data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
@@ -147,8 +151,11 @@
                         @endforeach                        
                     </div>
                 </div>
+<<<<<<< HEAD
             
 >>>>>>> 41bcb17e5e4694c0e68893a0f03d2100e07ab39c
+=======
+>>>>>>> d7d5dec034ff1992e49e002e363cb1f29b5eca00
             </div>
         </div>
     </div>

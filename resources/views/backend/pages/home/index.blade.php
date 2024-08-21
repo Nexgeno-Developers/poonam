@@ -228,21 +228,22 @@
                                 <label for="gallery_title{{$key + 1}}">Gallery Title {{$key + 1}} <span
                                         class="red">*</span></label>
                                 <input type="text" class="form-control" name="gallery_title[]"
-                                    placeholder="Gallery Title {{$key + 1}}" value="{{ $section->title }}" required>
+                                    placeholder="Gallery Title {{$key + 1}}" value="{{ isset($section->title) ? $section->title : '' }}" required>
                             </div>
                             <div class="col col-sm-4">
                                 <label for="gallery_description{{$key + 1}}">Gallery Description {{$key + 1}} <span
                                         class="red">*</span></label>
                                 <textarea class="form-control" name="gallery_description[]" rows="3"
                                     placeholder="Gallery Description {{$key + 1}}"
-                                    required>{{ $section->description }}</textarea>
+                                    required>{{ isset($section->description) ? $section->description : '' }}</textarea>
                             </div>
                             <div class="col col-sm-4">
-                                <label for="gallery_url{{$key + 1}}">Gallery URL {{$key + 1}} <span
-                                        class="red">*</span></label>
+                                <label for="gallery_url{{$key + 1}}">Gallery URL {{$key + 1}} <span class="red">*</span></label>
                                 <input type="text" class="form-control" name="gallery_url[]"
-                                placeholder="Gallery URL {{$key + 1}}" value="{{ $section->url }}" required>
+                                    placeholder="Gallery URL {{$key + 1}}" 
+                                    value="{{ isset($section->url) ? $section->url : '' }}" required>
                             </div>
+
                         </div>
                         @endforeach
                         @foreach ($gallery_section1 as $key => $section)
