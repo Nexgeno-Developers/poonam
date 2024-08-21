@@ -102,36 +102,8 @@
     @endif
     @if(!empty($gallery_image))
     <div class="container pb-md-5 pb-0 mb-3">
-        <div class="row justify-content-center">
-<<<<<<< HEAD
-            <div class="col-md-12">
-<<<<<<< HEAD
-                @if(!empty($gallery_image))
-                    <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
-                    overflow-hidden" data-speed="1200" data-slides-per-view-tablet="1"
-                        data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
-                        data-drag-mouse="true" data-drag-cursor="true"
-                        data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
-                        data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
-                        <div class="swiper-wrapper">
-                            @foreach ($gallery_image as $index => $image)
-                                <div class="swiper-slide overflow d-flex-centered">
-                                    @if(!empty($image))
-                                    <a href="{{ asset('storage/' . $image)}}" data-fancybox="images"
-                                        data-caption="Image {{$index + 1}}">
-                                        <img class="service-images" src="{{ asset('storage/' . $image)}}">
-                                    </a>
-                                    @endif
-                                </div>
-                            @endforeach                        
-                        </div>
-                    </div>
-                @endif
-=======
-            
-=======
-            <div class="col-md-12">            
->>>>>>> d7d5dec034ff1992e49e002e363cb1f29b5eca00
+        <div class="row justify-content-center">                
+            <div class="col-md-12">       
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
                 overflow-hidden" data-speed="1200" data-slides-per-view="4" data-slides-per-view-tablet="1"
                     data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
@@ -151,11 +123,6 @@
                         @endforeach                        
                     </div>
                 </div>
-<<<<<<< HEAD
-            
->>>>>>> 41bcb17e5e4694c0e68893a0f03d2100e07ab39c
-=======
->>>>>>> d7d5dec034ff1992e49e002e363cb1f29b5eca00
             </div>
         </div>
     </div>
