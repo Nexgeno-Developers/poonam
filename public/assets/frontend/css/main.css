@@ -3984,7 +3984,7 @@ div.wpcf7-validation-errors {
     flex-direction: column;
     justify-content: flex-start;
     position: absolute;
-    top:10vh;
+    top: 3vh;
     bottom: 0;
     left: 0;
     height: 100%;
@@ -12170,4 +12170,16 @@ select {
 .widget_text .textwidget>p {
     margin-top: 0;
     margin-bottom: 0
+}
+
+@media screen and (min-width:1800px) {
+    .menu-overlay .sub-menu { 
+        top: -10vh;
+    }
+
+    .section-fullheight__inner_mobile{
+        min-height: calc(var(--fix-bar-vh, 1vh)* 96);
+    }
+
+
 }

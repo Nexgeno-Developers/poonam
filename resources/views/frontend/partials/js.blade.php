@@ -15,7 +15,7 @@
 
 <script>
         var swiper = new Swiper('.services_swiper', {
-            loop: true,
+            loop: false,
             autoplay: {
                 delay: 2000,
                 disableOnInteraction: false,
