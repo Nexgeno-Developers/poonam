@@ -988,7 +988,7 @@ ul.sub-menu.opened::after {
     }
     
     .slider-fullscreen-projects__footer_content {
-        bottom: 180px;
+        bottom: 100px;
     }
 
     button.btn.gallery_yt_video {
