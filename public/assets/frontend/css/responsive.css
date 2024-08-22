@@ -120,9 +120,14 @@
     }
     
     .scroll-content {
-    display: block; /* Ensure it's visible */
-    transform: translate3d(0px, 0px, 0px); /* Reset transform for mobile */
-  }
+        display: block; /* Ensure it's visible */
+        transform: translate3d(0px, 0px, 0px); /* Reset transform for mobile */
+    }
+
+    .home_intro_Bg:before {
+        position: absolute;
+        top: -68px;
+    }
 
     h3.pour_to_product {
         font-size: 30px;
@@ -331,13 +336,21 @@
         bottom: 45px;
     }
 
+    .border_1:after {
+        bottom: 86px;
+    }
+
     .vases_banner .header_title,
     .gallery_details_banner .header_title {
         margin-left: 85px;
     }
 
+    .section-fullheight__inner_mobile {
+        min-height: calc(var(--fix-bar-vh, 1vh)* 90);
+    }
+
     .slider__images-slide-inner_circle {
-        margin-top: 19vh;
+        margin-top: 20vh;
         max-width: 80vw;
         max-height: 80vw;
     }
@@ -380,7 +393,7 @@
     }
     
     .slider__images-slide-inner_circle {
-        margin-top: 29vh;
+        margin-top: 22vh;
     }
     
     img.about-menu {
