@@ -173,10 +173,9 @@
                                                 <div style="width: 100px;">
                                                     <img src="{{ asset('storage/' . $row) }}" class="img-thumbnail">
                                                 </div> 
-                                                <input type="hidden" name="old_image{{ $e }}" value="{{ $row }}">  
+                                                <input type="hidden" name="old_images[]" value="{{ $row }}">  
                                         </div>
-
-                                        <input type="hidden" name="number_img[]" value="1">
+                                                <input type="hidden" name="images_number[]" value="{{ $index }}">  
 
                                     </div>
 
@@ -203,10 +202,8 @@
                                     <label>Image</label>
                                     <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
                                 </div>
-                            </div>
-
-                            <input type="hidden" name="number_img[]" value="1">
-
+                            </div>                            
+                            <input type="hidden" name="images_number[]" value="0">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -359,39 +356,62 @@ $("#add_replace_key").on("click", function() {
 
 });
 
+function remove_images_key(_this) {
+    // Remove the selected image key
+    _this.closest(".images_key").remove();
+    // Reindex the remaining image keys
+    reindexImages();
+}
 
-    function remove_images_key(_this) {
-        _this.closest(".images_key").remove();
-    }
-
-    $("#add_images_key").on("click", function() {
-        var new_images_key = `
-                    <div class="images_key form-group">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <div class="row">
-
-                                    
-                                    <div class="col-sm-9">
-                                        <div class="form-group mb-3 ">
-                                            <label>Image</label>
-                                            <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
-                                        </div>
-                                    </div>
-
-                                    <input type="hidden" name="number_img[]" value="1">
-
-                                </div>
-                            </div>
-                            <div class="col-md-1"><button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button></div>
-                        </div>
-                        </br>
-                    </div>
-                `;
-
-        $("#images_key_add_more").append(new_images_key);
-
+$("#add_images_key").on("click", function() {
+    // Find the maximum existing index to avoid index conflicts
+    let maxIndex = 0;
+    $("#images_key_add_more .images_key input[name='images_number[]']").each(function() {
+        let index = parseInt($(this).val(), 10);
+        if (index > maxIndex) {
+            maxIndex = index;
+        }
     });
+
+    // Increment the index for the new image
+    let newIndex = maxIndex + 1;
+
+    var new_images_key = `
+        <div class="images_key form-group">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group mb-3">
+                                <label>Image</label>
+                                <input class="form-control" type="file" id="images" name="images[]" accept=".jpg,.jpeg,.png,.webp">
+                            </div>
+                        </div>
+                        <input type="hidden" name="images_number[]" value="${newIndex}">  
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button>
+                </div>
+            </div>
+            </br>
+        </div>
+    `;
+
+    $("#images_key_add_more").append(new_images_key);
+});
+
+function reindexImages() {
+    let index = 0; // Start indexing from 1 or 0 based on your requirement
+
+    $("#images_key_add_more .images_key").each(function() {
+        // Update the index for old and new images
+        $(this).find("input[name='images_number[]']").val(index);
+        index++;
+    });
+}
+
+
 
     function remove_video_key(_this) {
         _this.closest(".video_key").remove();

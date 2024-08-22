@@ -360,6 +360,9 @@ class GalleryController extends Controller
         }
 
         /*--------------------------- Image --------------------------------------- */
+        $oldImages = $request->input('old_images', []);
+
+        $oldImageNumbers = $request->input('images_number', []);
 
         $Images = [];
 
@@ -371,41 +374,68 @@ class GalleryController extends Controller
             }
         }
 
-        $number_img = $request->input('number_img');
-        foreach ($number_img as $key => $row) {
 
-            if (isset($newImage[$key])) {
-                $Images[$key] = $newImage[$key];
+        foreach ($oldImageNumbers as $row) {
+
+            if (isset($newImage[$row])) {
+                $Images[$row] = $newImage[$row];
             } else {
 
-                $old = "old_image$key";
-                if($request->has($old)){
-
-                    if($next == true){
-                        $Images[$key] = $old_data_Images[$key] ?? null;
-                    } else {
-                        $privous = $key + 1;
-                        $Images[$key] = $old_data_Images[$privous] ?? null;
-                    }
-                    
+                if(isset($oldImages[$row])){
+                    // echo'no1';
+                    $Images[$row] = $oldImages[$row] ?? null;
                 } else {
-                    $next = false;
-                    $privous = $key + 1;
-                    $Images[$key] = $old_data_Images[$privous] ?? null;
+                    // echo'no2';
+                    $Images[$row] = null;
                 }
             }
 
-
         }
 
-        // Remove any null values from the $Images array
-        $Images = array_filter($Images, function($value) {
-            return $value !== null;
-        });
+        // var_dump($oldImages);
+        // var_dump($newImage);
+        // var_dump($Images);
+        // exit();
 
-        // Ensure that $Images is an empty array if it is empty
-        $Images = !empty($Images) ? $Images : [];
+           // Retrieve old images and their numbers
+    // $oldImages = $request->input('old_images', []);
+    // $oldImageNumbers = $request->input('images_number', []);
 
+    // // Initialize an array to store the final list of images
+    // $finalImages = [];
+
+    // // Process new uploaded images
+    // if ($request->hasFile('images')) {
+    //     foreach ($request->file('images') as $index => $file) {
+    //         if ($file->isValid()) {
+    //             // Store the new image
+    //             $newImagePath = $file->store('assets/gallery/images', 'public');
+    //             // Use the temporary index for ordering, or use count for new images
+    //             $newImageIndex = $request->input('images_number')[$index] ?? count($finalImages);
+    //             // Place the new image at the correct index
+    //             $finalImages[$newImageIndex] = $newImagePath;
+    //         }
+    //     }
+    // }
+
+    // // Add old images that are not replaced by new uploads
+    // foreach ($oldImageNumbers as $index => $oldImageNumber) {
+    //     // Ensure that the old image is kept if it hasn't been replaced
+    //     if (!isset($finalImages[$oldImageNumber]) && isset($oldImages[$index])) {
+    //         $finalImages[$oldImageNumber] = $oldImages[$index];
+    //     }
+    // }
+
+    // // Remove any null values from the finalImages array
+    // $finalImages = array_filter($finalImages, function($value) {
+    //     return $value !== null;
+    // });
+
+    // // Sort finalImages by index to preserve the order
+    // ksort($finalImages);
+
+    // // Ensure that $Images is an empty array if it is empty
+    // $Images = !empty($finalImages) ? $finalImages : [];
 
         /*--------------------------- video --------------------------------------- */
 
