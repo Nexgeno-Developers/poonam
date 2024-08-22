@@ -31,11 +31,11 @@
     }
     
     .header__wrapper-menu ul li {
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
     }
     
-    img#About-menu {
+    img.about-menu {
         width: 26px;
     }
 
@@ -309,6 +309,11 @@
         font-size: 3em;
     }
 
+    div.masonry_gallery .masonry_gallery_div {
+        width: 96%;
+        margin: 25px auto;
+    }
+
     /*contact us page*/
 
     .contact_us_page form {
@@ -332,7 +337,7 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 25vh;
+        margin-top: 19vh;
         max-width: 80vw;
         max-height: 80vw;
     }
@@ -378,7 +383,7 @@
         margin-top: 29vh;
     }
     
-    img#About-menu {
+    img.about-menu {
         width: 18px;
     }
 }
