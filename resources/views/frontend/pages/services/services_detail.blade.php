@@ -33,7 +33,7 @@
                     <div class="col-lg-6">
                         <div class="swiper-container js-slider-fullscreen-projects__content">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide vases" data-category="albums">
+                                <div class="vases" data-category="albums">
                                     <a class="d-inline-block js-page-indicator-trigger js-album" href="#">
                                         @if(!empty($title))
                                             <h2 class="text-dark peachy_flightoe_font h1 slider__heading block-counter js-split-text" data-split-text-type="lines, words, chars" data-split-text-set="chars">
@@ -67,7 +67,7 @@
             <!-- - slider FOOTER -->
             <!-- slider IMAGES -->
             @if(!empty($service_image))
-            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
+            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images position-relative"
                 data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
                 data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
                 data-drag-mouse="false" data-drag-cursor="false"
