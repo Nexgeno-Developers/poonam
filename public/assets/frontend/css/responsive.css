@@ -120,9 +120,14 @@
     }
     
     .scroll-content {
-    display: block; /* Ensure it's visible */
-    transform: translate3d(0px, 0px, 0px); /* Reset transform for mobile */
-  }
+        display: block; /* Ensure it's visible */
+        transform: translate3d(0px, 0px, 0px); /* Reset transform for mobile */
+    }
+
+    .home_intro_Bg:before {
+        position: absolute;
+        top: -88px;
+    }
 
     h3.pour_to_product {
         font-size: 30px;
