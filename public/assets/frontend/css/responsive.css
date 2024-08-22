@@ -337,7 +337,8 @@
     }
 
     .border_1:after {
-        bottom: 86px;
+        bottom: 66px;
+        height: 39px;
     }
 
     .vases_banner .header_title,
@@ -346,13 +347,22 @@
     }
 
     .section-fullheight__inner_mobile {
-        min-height: calc(var(--fix-bar-vh, 1vh)* 90);
+        min-height: calc(var(--fix-bar-vh, 1vh)* 100);
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 20vh;
+        margin-top: 16vh;
         max-width: 80vw;
         max-height: 80vw;
+    }
+
+    .section__circle, .slider__circle {
+        top: 45%;
+    }
+
+    .section__circle, .slider__circle {
+        width: calc(90vw + var(--gutter-horizontal)* 2);
+        height: calc(90vw + var(--gutter-horizontal)* 2);
     }
 }
 
