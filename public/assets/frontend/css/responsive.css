@@ -351,7 +351,7 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 13vh;
+        margin-top: 0vh;
         max-width: 80vw;
         max-height: 80vw;
     }
@@ -371,6 +371,15 @@
 
     .introduction_part.home_intro_Bg section {
         top: 30px;
+    }
+
+    .section-projects-slider .swiper-slide {
+        position: relative;
+        top: -30px;
+    }
+
+    .slider-fullscreen-projects__footer_content .swiper-wrapper { 
+        justify-content: center;
     }
 }
 
