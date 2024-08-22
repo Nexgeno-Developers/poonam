@@ -23,131 +23,85 @@ class GalleryController extends Controller
     }  
     
     public function create(Request $request)
-    {
+{
+    // Validate input fields
+    $validator = Validator::make($request->all(), [
+        'slug' => 'required|unique:gallery,slug',
+        'page_name' => 'required',
+        'thum_image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        $validator = Validator::make($request->all(), [
-            'slug' => 'required|unique:gallery,slug',
-            'page_name' => 'required',
-           
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'notification' => $validator->errors()->all()
-            ], 200);
-        }
-    
-        if(!empty($request->input('slug'))){            
-            $slug = customSlug($request->input('slug'));
-        }
-        
-    
-
-
-        if ($request->hasFile('banner')) {
-            $file = $request->file('banner');
-            $bannerPath = $file->store('assets/banner/', 'public');
-        }
-
-        
-
-        if ($request->hasFile('thum_image')) {
-            $file = $request->file('thum_image');
-            $thum_imagePath = $file->store('assets/gallery/thum_images', 'public');
-        }
-
-
-
-        $image_description = [];
-
-        $image_description_img = [];     
-        if(!empty($request->input('image_description'))){       
-            if($request->has('image_description')){
-                foreach ($request->file('image_description') as $index => $file) {
-                    $ImagePath = $file->store('assets/image_description/', 'public');
-                    $image_description_img[$index] = $ImagePath;
-                }
-            }
-    
-            // Process image_description texts and files
-            foreach ($request->image_description_text as $index => $text) {
-    
-                $image_description_text_image = [
-                    'text' => $text,
-                    'image' => $image_description_img[$index],
-                ];
-    
-                $image_description[] = $image_description_text_image;
-            }
-        }
-
-       
-        // Initialize images array
-        $images = [];
-        if(!empty($request->input('images', []))){
-                    
-                // Process new and old images
-                $oldImages = $request->input('images', []);
-                $newImages = $request->file('images', []);
-
-                // Iterate over old images and keep them in the images array
-                foreach ($oldImages as $index => $oldImagePath) {
-                    if (!empty($newImages[$index])) {
-                        // If a new image is uploaded for this index, store it
-                        $file = $newImages[$index];
-                        $imagePath = $file->store('assets/gallery/images', 'public');
-                        $images[] = $imagePath;
-                    } else {
-                        // If no new image is uploaded, keep the old image
-                        $images[] = $oldImagePath;
-                    }
-                }
-
-                // Add any new images that were added after the last old image index
-                foreach ($newImages as $index => $file) {
-                    if ($index >= count($oldImages)) {
-                        $imagePath = $file->store('assets/gallery/images', 'public');
-                        $images[] = $imagePath;
-                    }
-                }
-
-                // Remove null values from the array
-                $images = array_filter($images, function($value) { return !is_null($value); });
-
-        }
-
-        // Get all video URLs from the request
-        $videos_urls = $request->input('gallery_videos', []);
-
-        // Remove null values from the array
-        $filtered_videos_urls = array_filter($videos_urls, function($value) {
-            return !is_null($value);
-        });
-
-        // Encode only if the array is not empty
-        $videos_json = !empty($filtered_videos_urls) ? json_encode($filtered_videos_urls) : null;
-    
-        DB::table('gallery')->insert([
-            'slug' => $slug,
-            'page_name' => $request->input('page_name'),
-            'banner' => $bannerPath ?? null,
-            'thum_image' => $thum_imagePath ?? null,
-            'title' => $request->input('title') ?? null,
-            'short_description' => !empty($request->input('short_description')) ? $request->input('short_description') : null,
-            'videos' => $videos_json,
-            'image_description' => !empty($image_description) ? json_encode($image_description) : null,
-            'images' => !empty($images) ? json_encode(array_values($images)) : null,
-        ]);
-        
-    
-        $response = [
-            'status' => true,
-            'notification' => 'Service added successfully!',
-        ];
-    
-        return response()->json($response);
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => false,
+            'notification' => $validator->errors()->all()
+        ], 200);
     }
+
+    // Generate slug
+    $slug = $request->filled('slug') ? customSlug($request->input('slug')) : null;
+
+    // Handle banner image upload
+    $bannerPath = $request->hasFile('banner') 
+        ? $request->file('banner')->store('assets/banner', 'public') 
+        : null;
+
+    // Handle thumbnail image upload
+    $thum_imagePath = $request->hasFile('thum_image') 
+        ? $request->file('thum_image')->store('assets/gallery/thum_images', 'public') 
+        : null;
+
+    // Process image description (text and images)
+    $image_description = [];
+    if ($request->has('image_description')) {
+        $image_description_imgs = [];
+        
+        foreach ($request->file('image_description', []) as $index => $file) {
+            $imagePath = $file->store('assets/image_description', 'public');
+            $image_description_imgs[$index] = $imagePath;
+        }
+        
+        foreach ($request->input('image_description_text', []) as $index => $text) {
+            $image_description[] = [
+                'text' => $text,
+                'image' => $image_description_imgs[$index] ?? null,
+            ];
+        }
+    }
+
+    // Process gallery images
+    $images = [];
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images', []) as $file) {
+            $images[] = $file->store('assets/gallery/images', 'public');
+        }
+    }
+
+    // Process video URLs
+    $videos_urls = array_filter($request->input('gallery_videos', []), function ($value) {
+        return !is_null($value);
+    });
+
+    // Insert into the database
+    DB::table('gallery')->insert([
+        'slug' => $slug,
+        'page_name' => $request->input('page_name'),
+        'banner' => $bannerPath,
+        'thum_image' => $thum_imagePath,
+        'title' => $request->input('title'),
+        'short_description' => $request->input('short_description') ?? null,
+        'videos' => !empty($videos_urls) ? json_encode($videos_urls) : null,
+        'image_description' => !empty($image_description) ? json_encode($image_description) : null,
+        'images' => !empty($images) ? json_encode($images) : null,
+    ]);
+
+    // Return response
+    return response()->json([
+        'status' => true,
+        'notification' => 'Gallery added successfully!',
+    ]);
+}
+
 
    /* public function create(Request $request)
     {

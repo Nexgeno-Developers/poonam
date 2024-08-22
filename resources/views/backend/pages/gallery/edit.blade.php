@@ -154,7 +154,7 @@
 
             <div class="form-group mb-3">
                 <div id="images_key_add_more" style=""> @php $e = 0;
-                if(!empty($images)) { foreach ($images as $row) { @endphp
+                if(!empty($images)) { foreach ($images as $index => $row) { @endphp
                     <div class="images_key">
                         <div class="form-group">
                             <div class="row">
@@ -176,7 +176,7 @@
                                                 <input type="hidden" name="old_image{{ $e }}" value="{{ $row }}">  
                                         </div>
 
-                                        <input type="hidden" name="number_img[]" value="1">
+                                        <input type="hidden" name="number_img[]" value="{{$index}}">
 
                                     </div>
 
