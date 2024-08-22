@@ -176,7 +176,7 @@
                                                 <input type="hidden" name="old_image{{ $e }}" value="{{ $row }}">  
                                         </div>
 
-                                        <input type="hidden" name="number_img[]" value="{{$index}}">
+                                        <input type="hidden" name="number_img[]" value="1">
 
                                     </div>
 

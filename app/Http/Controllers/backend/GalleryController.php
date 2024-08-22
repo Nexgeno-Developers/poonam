@@ -361,41 +361,41 @@ class GalleryController extends Controller
 
         /*--------------------------- Image --------------------------------------- */
 
-        // Initialize arrays
         $Images = [];
-        $newImage = [];
 
-        // Handle new images
-        if ($request->has('images')) {
+        $newImage = [];
+        if($request->has('images')){
             foreach ($request->file('images') as $index => $file) {
-                $imagePath = $file->store('assets/gallery/images', 'public');
-                $newImage[$index] = $imagePath;
+                $ImagePath = $file->store('assets/gallery/images', 'public');
+                $newImage[$index] = $ImagePath;
             }
         }
 
-        // Retrieve existing images if no new images are provided
-        $number_img = $request->input('number_img', []);
-
-        // Ensure $old_data_Images is initialized as an empty array if it is null
-        $old_data_Images = $old_data_Images ?? [];
-
-        // Process each image based on index
+        $number_img = $request->input('number_img');
         foreach ($number_img as $key => $row) {
+
             if (isset($newImage[$key])) {
-                // Use new image if available
                 $Images[$key] = $newImage[$key];
             } else {
-                // Use existing image or skip if not available
-                $oldKey = "old_image$key";
-                if ($request->has($oldKey)) {
-                    // Ensure key exists in $old_data_Images, otherwise skip
-                    $Images[$key] = $old_data_Images[$key] ?? null;
+
+                $old = "old_image$key";
+                if($request->has($old)){
+
+                    if($next == true){
+                        $Images[$key] = $old_data_Images[$key] ?? null;
+                    } else {
+                        $privous = $key + 1;
+                        $Images[$key] = $old_data_Images[$privous] ?? null;
+                    }
+                    
                 } else {
-                    // Use the previous image if available, otherwise skip
-                    $previous = $key + 1;
-                    $Images[$key] = $old_data_Images[$previous] ?? null;
+                    $next = false;
+                    $privous = $key + 1;
+                    $Images[$key] = $old_data_Images[$privous] ?? null;
                 }
             }
+
+
         }
 
         // Remove any null values from the $Images array
@@ -405,8 +405,6 @@ class GalleryController extends Controller
 
         // Ensure that $Images is an empty array if it is empty
         $Images = !empty($Images) ? $Images : [];
-
-        // Continue with your database update or further processing
 
 
         /*--------------------------- video --------------------------------------- */
