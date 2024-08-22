@@ -368,6 +368,10 @@
     .slider-fullscreen-projects__footer_content {
         bottom: 80px !important;
     }
+
+    .introduction_part.home_intro_Bg section {
+        top: 30px;
+    }
 }
 
 @media sreen and (max-width: 350px) {
