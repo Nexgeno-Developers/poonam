@@ -100,9 +100,13 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-1"> 
+                                <div class="col-md-1">
+                                @if($d == 0) 
                                  <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button>
+                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button>
+                                @else 
                                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button></div>
+                                @endif 
                             </div>
                         </div>
                         </br>
@@ -150,7 +154,7 @@
 
             <div class="form-group mb-3">
                 <div id="images_key_add_more" style=""> @php $e = 0;
-                if(!empty($images)) { foreach ($images as $row) { @endphp
+                if(!empty($images)) { foreach ($images as $index => $row) { @endphp
                     <div class="images_key">
                         <div class="form-group">
                             <div class="row">
@@ -172,14 +176,18 @@
                                                 <input type="hidden" name="old_image{{ $e }}" value="{{ $row }}">  
                                         </div>
 
-                                        <input type="hidden" name="number_img[]" value="1">
+                                        <input type="hidden" name="number_img[]" value="{{$index}}">
 
                                     </div>
 
                                 </div>
                                 <div class="col-md-1">
+                                @if($e == 0) 
                                     <button type="button" class="btn btn-outline-success btn-sm" id="add_images_key">Add +</button> 
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button>
+                                @else    
                                     <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button> 
+                                @endif    
                                 </div>
                             </div>
                         </div>
@@ -257,8 +265,12 @@
 
                             </div>
                             <div class="col-md-1"> 
+                            @if($e == 0) 
                                 <button type="button" class="btn btn-outline-success btn-sm" id="add_video_key">Add +</button> 
+                                <button type="button" class="btn btn-outline-danger btn-sm remove-btn" onclick="remove_video_key($(this));">Remove</button>
+                            @else    
                                 <button type="button" class="btn btn-outline-danger btn-sm remove-btn" onclick="remove_video_key($(this));">Remove</button> 
+                            @endif    
                             </div>
                         </div>
                     </div>
