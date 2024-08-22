@@ -5,7 +5,7 @@ $(document).ready(function(){
         // $(".header__wrapper-menu ul li").addClass("hover-element");
     });
     
-    $(".header__wrapper-menu ul li").mouseenter(function(){
+    $(".header__wrapper-menu ul li[menuname]").mouseenter(function(){
         var activeLinkId = $(this).attr("menuname");
         $(".link-img img").removeClass("active");
         $(".link-img img#" + activeLinkId).addClass("active");

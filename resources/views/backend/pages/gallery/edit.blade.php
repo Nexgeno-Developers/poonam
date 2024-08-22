@@ -100,9 +100,13 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-1"> 
+                                <div class="col-md-1">
+                                @if($d == 0) 
                                  <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button>
+                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button>
+                                @else 
                                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button></div>
+                                @endif 
                             </div>
                         </div>
                         </br>
@@ -178,8 +182,12 @@
 
                                 </div>
                                 <div class="col-md-1">
+                                @if($e == 0) 
                                     <button type="button" class="btn btn-outline-success btn-sm" id="add_images_key">Add +</button> 
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button>
+                                @else    
                                     <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_images_key($(this));">Remove</button> 
+                                @endif    
                                 </div>
                             </div>
                         </div>
@@ -257,8 +265,12 @@
 
                             </div>
                             <div class="col-md-1"> 
+                            @if($e == 0) 
                                 <button type="button" class="btn btn-outline-success btn-sm" id="add_video_key">Add +</button> 
+                                <button type="button" class="btn btn-outline-danger btn-sm remove-btn" onclick="remove_video_key($(this));">Remove</button>
+                            @else    
                                 <button type="button" class="btn btn-outline-danger btn-sm remove-btn" onclick="remove_video_key($(this));">Remove</button> 
+                            @endif    
                             </div>
                         </div>
                     </div>
