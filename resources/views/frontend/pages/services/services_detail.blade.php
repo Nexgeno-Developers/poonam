@@ -21,7 +21,7 @@
 <section class="section section-masthead d-none" data-background-color="var(--color-light-3)"></section>
 <!-- - section MASTHEAD -->
 <!-- section ALBUMS SLIDER COVERS -->
-<section class="section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
+<section class="section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow second_section"
     data-arts-os-animation>
     <div class="grey-bg section-fullheight__inner section-fullheight__inner_mobile">
         <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
