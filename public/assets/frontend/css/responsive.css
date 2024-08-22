@@ -351,18 +351,22 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 16vh;
+        margin-top: 13vh;
         max-width: 80vw;
         max-height: 80vw;
     }
 
     .section__circle, .slider__circle {
-        top: 45%;
+        top: 40%;
     }
 
     .section__circle, .slider__circle {
         width: calc(90vw + var(--gutter-horizontal)* 2);
         height: calc(90vw + var(--gutter-horizontal)* 2);
+    }
+
+    .slider-fullscreen-projects__footer_content {
+        bottom: 80px !important;
     }
 }
 
