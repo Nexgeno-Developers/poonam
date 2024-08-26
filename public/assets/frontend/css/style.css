@@ -398,6 +398,9 @@ span.fontsize_big {
     .footer1_li li {
         float: left;
     }
+    .footer2_a {
+        display: -webkit-inline-box;
+    }
 }
 
 .footer_center svg {
