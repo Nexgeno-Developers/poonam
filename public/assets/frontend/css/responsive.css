@@ -152,7 +152,9 @@
     .footer_logo img {
         width: 80px;
     }
-
+    .footer1_li li {
+        text-align: center;
+    }
     /*about us page*/
 
     .about_us_banner,

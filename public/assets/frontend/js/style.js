@@ -294,7 +294,7 @@ function animateParaOnScroll(className, triggerClass) {
             const elementsInTrigger = trigger.querySelectorAll(className);
 
             elementsInTrigger.forEach(element => {
-                const splitText = new SplitText(element, { type: 'chars', charsClass: `js-split-letter` });
+                const splitText = new SplitText(element, { type: 'words, chars', charsClass: `js-split-letter` });
 
                 gsap.from(splitText.chars,
                     {

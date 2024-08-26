@@ -394,6 +394,11 @@ span.fontsize_big {
 }
 
 /*--footer css open--*/
+@media screen and (min-width: 767px) {
+    .footer1_li li {
+        float: left;
+    }
+}
 
 .footer_center svg {
     height: 25px;

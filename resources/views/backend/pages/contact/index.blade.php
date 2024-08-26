@@ -99,8 +99,8 @@
                             </div> 
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
-                                    <label>Phone 1<span class="red">*</span></label>
-                                    <input type="number" class="form-control" placeholder="Insert Phone 1" name="phone_1"
+                                    <label>Phone 1<span class="red">*</span><span class="font-size11">(Don't include +91)</span></label>
+                                    <input type="number" class="form-control" placeholder="Insert Phone no. (Don't include +91)" name="phone_1"
                                         value="{{ isset($Contacts->phone_1) ? $Contacts->phone_1 : '' }}" required>
                                 </div>
                             </div>

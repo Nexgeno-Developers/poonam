@@ -26,7 +26,10 @@
             <div class="col-md-6">
                 <div class="about_content pe-md-4 pe-0 anim-para-text animheadertext-2">
                     <h3 class="js-split-words2 peachy_flightoe_font font50">{{ isset($journey_section->journey_text) ? $journey_section->journey_text : '' }}</h3>
+                    <div class="text-justify js-split-p-letter">
                         {!! isset($journey_section->journey_description) ? $journey_section->journey_description : '' !!}
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -69,7 +72,9 @@
             <div class="col-md-6">
                 <div class="about_content pt-5">
                     <div class="anim-para-text">
-                        {!! isset($about_section->about_description) ? $about_section->about_description : '' !!}                       
+                        <div class="text-justify js-split-p-letter">
+                            {!! isset($about_section->about_description) ? $about_section->about_description : '' !!}                       
+                        </div>
                     </div>
                     <div class="animheadertext-2">
                         <h4 class="js-split-words2 font30 trajanPro_regular"><b>{{ isset($about_section->about_heading) ? $about_section->about_heading : '' }}</b></h4>
@@ -91,7 +96,7 @@
             <div class="col-md-7">
                 <div class="anim-para-text about_content pt-5">
 
-                    <div class="anim-para-text">
+                    <div class="text-white js-split-p-letter">                    
                         {!! isset($vision_section->vision_description) ? $vision_section->vision_description : '' !!}
                     </div>
 
@@ -121,11 +126,12 @@
 @php
 $designHeading = $design_section->design_heading;
 $designImage = isset($design_section->design_image) ? asset('storage/'.$design_section->design_image) : null ;
-$designTextParts = explode('|', $designHeading);
+$designTextParts = explode('|', $designHeading, 3);
 
 $designfirstText = $designTextParts[0] ?? '';
 $designsecondText = $designTextParts[1] ?? '';
-$designthirdText = $designTextParts[2] ?? '';
+$designthirdText = isset($designTextParts[2]) ? str_replace('|', ' ', $designTextParts[2]) : '';
+//$designthirdText = $designTextParts[2] ?? '';
 
 @endphp
 
@@ -143,13 +149,10 @@ $designthirdText = $designTextParts[2] ?? '';
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="about_content pt-5">
-
-                    <div class="anim-para-text">
-                        {!! isset($design_section->design_description) ? $design_section->design_description : '' !!}
-                    </div>
-
-
+                <div class="anim-para-text about_content pt-5">                    
+                        <div class="text-justify js-split-p-letter">                            
+                            {!! isset($design_section->design_description) ? $design_section->design_description : '' !!}
+                        </div>
                 </div>
             </div>
         </div>

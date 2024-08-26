@@ -352,10 +352,11 @@
                     $bannerHeading = $gallery_section_data->title ? $gallery_section_data->title : null;
                     $bannerDescription = $gallery_section_data->description ? $gallery_section_data->description : null;
                     $bannerImage = $gallery_section_data->image ? asset('storage/'.$gallery_section_data->image) : null;
-                    $bannerTextParts = explode('|', $bannerHeading);
+                    $bannerTextParts = explode('|', $bannerHeading, 2);
                     
                     $bannerFirstText = $bannerTextParts[0] ?? '';
-                    $bannerSecondText = $bannerTextParts[1] ?? '';
+                    $bannerSecondText = isset($bannerTextParts[1]) ? str_replace('|', ' ', $bannerTextParts[1]) : '';
+                    //$bannerSecondText = $bannerTextParts[1] ?? '';
                 @endphp
                 <div class="col-md-6 col-sm-6 padd0">
                   <div class="box homeboxanimate">

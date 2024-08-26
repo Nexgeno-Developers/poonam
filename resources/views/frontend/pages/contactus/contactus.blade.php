@@ -28,12 +28,12 @@
                     <h3 class="trajanPro_regular contact_form_color_white">GET IN TOUCH</h3>
 
                     @if (!empty($contactS->address_1))
-                        <a href="" class="contact_form_color_white"><i class="fa fa-map"></i> {{ $contactS->address_1 }}
+                        <a href="#" class="contact_form_color_white"><i class="fa fa-map"></i> {{ $contactS->address_1 }}
                         </a> <br>
                     @endif
                     @if (!empty($contactS->phone_1))
                         <a href="tel:+{{ $contactS->phone_1 }}" class="contact_form_color_white"><i class="fa fa-phone"></i>
-                            +{{ $contactS->phone_1 }}</a> <br>
+                            +91 {{ $contactS->phone_1 }}</a> <br>
                     @endif
                     @if (!empty($contactS->email))
                         <a href="mailto:{{ $contactS->email }}" class="contact_form_color_white"><i

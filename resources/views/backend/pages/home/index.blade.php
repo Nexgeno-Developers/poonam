@@ -159,7 +159,7 @@
                         </div>
                         <input type="hidden" name="page" value="home">
 
-                        <label for="intro">Intro Description<span class="red">*</span></label>
+                        <label for="intro">Intro Description<span class="red">*</span><span class="font-size11">(Paste text into Notepad before adding it to the textarea.)</span></label>
                         <textarea class="trumbowyg form-control" name="intro" rows="5"
                             required>{{ isset($details->introduction) ? json_decode($details->introduction)->content : '' }}</textarea>
 
@@ -197,8 +197,7 @@
                                     <div class="col col-sm-3">
                                         <label for="gallery_title{{$i+1}}">Gallery Title {{$i+1}} <span
                                                 class="red">*</span></label>
-                                        <input type="text" class="form-control" name="gallery_title[]"
-                                            placeholder="Gallery Title {{$i+1}}" required>
+                                        <input type="text" class="form-control" name="gallery_title[]" placeholder="Enter Text like RASIN|Bar" required>
                                     </div>
                                     <div class="col col-sm-3">
                                         <label for="gallery_description{{$i+1}}">Gallery Description {{$i+1}} <span
@@ -207,10 +206,9 @@
                                             placeholder="Gallery Description {{$i+1}}" required></textarea>
                                     </div>
                                     <div class="col col-sm-3">
-                                        <label for="gallery_url{{$i+1}}">Gallery Description {{$i+1}} <span
-                                                class="red">*</span></label>
-                                        <textarea class="form-control" name="gallery_url[]" rows="3"
-                                            placeholder="Gallery URL {{$i+1}}" required></textarea>
+                                        <label for="gallery_url{{$i+1}}">Gallery URL {{$i+1}} <span
+                                                class="red">*</span><span class="font-size11">(Enter URl without domain name like "gallery/rasin-bar")</span></label>
+                                        <input type="text" class="form-control" name="gallery_url[]" placeholder="Gallery URL" required></input>
                                     </div>
                                     <div class="col col-sm-3">
                                         @if ($i < 4) <label for="gallery_image{{$i+1}}">Gallery Image {{$i+1}} <span
@@ -227,8 +225,7 @@
                             <div class="col col-sm-4">
                                 <label for="gallery_title{{$key + 1}}">Gallery Title {{$key + 1}} <span
                                         class="red">*</span></label>
-                                <input type="text" class="form-control" name="gallery_title[]"
-                                    placeholder="Gallery Title {{$key + 1}}" value="{{ isset($section->title) ? $section->title : '' }}" required>
+                                <input type="text" class="form-control" name="gallery_title[]" placeholder="Enter Text like RASIN|Bar" value="{{ isset($section->title) ? $section->title : '' }}" required>
                             </div>
                             <div class="col col-sm-4">
                                 <label for="gallery_description{{$key + 1}}">Gallery Description {{$key + 1}} <span
@@ -238,9 +235,9 @@
                                     required>{{ isset($section->description) ? $section->description : '' }}</textarea>
                             </div>
                             <div class="col col-sm-4">
-                                <label for="gallery_url{{$key + 1}}">Gallery URL {{$key + 1}} <span class="red">*</span></label>
+                                <label for="gallery_url{{$key + 1}}">Gallery URL {{$key + 1}} <span class="red">*</span><span class="font-size11">(Enter URl without domain name like "gallery/rasin-bar")</span></label>
                                 <input type="text" class="form-control" name="gallery_url[]"
-                                    placeholder="Gallery URL {{$key + 1}}" 
+                                    placeholder="Enter Gallery URL" 
                                     value="{{ isset($section->url) ? $section->url : '' }}" required>
                             </div>
 
@@ -294,8 +291,7 @@
                     @for ($i = 1; $i <= 2; $i++) <div class="row mb-3">
                         <div class="col col-sm-6">
                             <label for="gallery2_title_{{$i}}">Gallery Title {{$i}} <span class="red">*</span></label>
-                            <input type="text" class="form-control" name="gallery2_title[]"
-                                placeholder="Gallery Title {{$i}}" required>
+                            <input type="text" class="form-control" name="gallery2_title[]" placeholder="Enter Text like Wardrobe|Panels" required>
                         </div>
                         <div class="col col-sm-6">
                             <label for="gallery2_description_{{$i}}">Gallery Description {{$i}} <span
@@ -315,8 +311,7 @@
                 <div class="col col-sm-6">
                     <label for="gallery2_title_{{$key + 1}}">Gallery Title {{$key + 1}} <span
                             class="red">*</span></label>
-                    <input type="text" class="form-control" name="gallery2_title[]"
-                        placeholder="Gallery Title {{$key + 1}}" value="{{ $section->title }}" required>
+                    <input type="text" class="form-control" name="gallery2_title[]" placeholder="Enter Text like Wardrobe|Panels" value="{{ $section->title }}" required>
                 </div>
                 <div class="col col-sm-6">
                     <label for="gallery2_description_{{$key + 1}}">Gallery Description {{$key + 1}} <span

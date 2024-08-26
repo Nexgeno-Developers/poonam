@@ -21,7 +21,7 @@
 <section class="section section-masthead d-none" data-background-color="var(--color-light-3)"></section>
 <!-- - section MASTHEAD -->
 <!-- section ALBUMS SLIDER COVERS -->
-<section class="section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow second_section"
+<section class="section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
     data-arts-os-animation>
     <div class="grey-bg section-fullheight__inner section-fullheight__inner_mobile">
         <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
@@ -33,14 +33,13 @@
                     <div class="col-lg-6">
                         <div class="swiper-container js-slider-fullscreen-projects__content">
                             <div class="swiper-wrapper">
-                                <div class="vases" data-category="albums">
-                                    <a class="d-inline-block js-page-indicator-trigger js-album" href="#">
+                                <div class="swiper-slide vases" data-category="albums"><a
+                                        class="d-inline-block js-page-indicator-trigger js-album" href="#">
                                         @if(!empty($title))
                                             <h2 class="text-dark peachy_flightoe_font h1 slider__heading block-counter js-split-text" data-split-text-type="lines, words, chars" data-split-text-set="chars">
                                             <span>{{$title}}</span><!--<span class="block-counter__counter">1</span>-->
                                             </h2>
                                         @endif
-                                    
                                         @if(!empty($service_image))
                                             <!-- album photos -->
                                             <div class="js-album__items d-none"><img src="#" data-album-src="{{ asset('storage/' . $service_image)}}" width="1920" height="1920" data-title="" alt="" /></div>
@@ -66,8 +65,7 @@
             </div>
             <!-- - slider FOOTER -->
             <!-- slider IMAGES -->
-            @if(!empty($service_image))
-            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images position-relative"
+            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
                 data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
                 data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
                 data-drag-mouse="false" data-drag-cursor="false"
@@ -75,22 +73,25 @@
                 data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide overflow d-flex-centered">
-                        <div class="slider__images-slide-inner slider__images-slide-inner_circle border-radius-100 js-transition-img">
+                        <div
+                            class="slider__images-slide-inner slider__images-slide-inner_circle border-radius-100 js-transition-img">
                             <div class="w-100 h-100" data-swiper-parallax-zoom="0%" data-swiper-parallax="0%">
-                                <div class="slider__zoom-container w-100 h-100">
+
+                                <div class="slider__zoom-container w-100 h-100 overflow">
                                     <div class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el"
                                         data-background="{{ asset('storage/' . $service_image)}}"></div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="slider__circle"></div>
             </div>
-            @endif
         </div>
     </div>
 </section>
+
 
 <section class="gallery_details_section services_gallery our_work_bg border_4 border_3 mt_70 mb-md-5 mb-2">
     @if(!empty($short_description))

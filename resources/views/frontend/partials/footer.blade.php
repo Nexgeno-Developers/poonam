@@ -12,16 +12,23 @@
                 </div>
             </div>
 
-             <div class="d-flex flex-md-row flex-column col-md-4 footer_left text-md-start text-center px-md-0 px-2">
-                @if(isset($contacts['phone_1']))
-                    <a href="tel:+{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+{{ $contacts['phone_1'] }}</a>&nbsp;|&nbsp;
-                @endif
-                @if(isset($contacts['email']))
-                    <a href="mailto:{{ $contacts['email'] }}" class="text-decoration-none text-dark">{{ $contacts['email'] }}</a>
-                @endif
-            </div>
+         
 
-            <div class="col-md-4 footer_center text-center py-2">
+
+                <ul class="col-md-5 footer_left list-unstyled footer1_li">
+                    <li>
+                    @if(isset($contacts['phone_1']))
+                    <a href="tel:+91{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+91 {{ $contacts['phone_1'] }}</a>&nbsp;|&nbsp;
+                @endif
+                    </li>
+
+                    <li>@if(isset($contacts['email']))
+                    <a href="mailto:{{ $contacts['email'] }}" class="text-decoration-none text-dark">{{ $contacts['email'] }}</a>
+                @endif</li>
+                </ul>
+            
+
+            <div class="col-md-3 d-md-inline-flex footer_center text-center py-2">
                 @if(isset($contacts['fb_url']))
                     <a href="{{ $contacts['fb_url'] }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
                 @endif

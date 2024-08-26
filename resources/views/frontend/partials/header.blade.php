@@ -161,9 +161,9 @@
                 <a class="logo" href="{{ route('index') }}">
                 <div class="logo__wrapper-img">
                   <!-- primary logo version (for light backgrounds)-->
-                  <img class="logo__img-primary" src="{{ asset('/assets/frontend/image/Logo.svg')}}" alt="Logo" height="70">
+                  <img class="logo__img-primary" src="{{ asset('/assets/frontend/image/Logo.svg')}}" alt="Logo" height="90">
                   <!-- secondary logo version (for dark backgrounds)-->
-                  <img class="logo__img-secondary" src="{{ asset('/assets/frontend/image/Logo.svg')}}" alt="Logo" height="70">
+                  <img class="logo__img-secondary" src="{{ asset('/assets/frontend/image/Logo.svg')}}" alt="Logo" height="90">
                 </div>
                 </a>
             </div>
