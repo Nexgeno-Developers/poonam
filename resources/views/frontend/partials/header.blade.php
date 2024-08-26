@@ -255,7 +255,7 @@
                 </ul>
                 <!--<div class="hover-element"></div>-->
               </div>
-            <div class="link-img">
+            <div class="link-img d-none d-md-block">
                 <img class="active" loading="lazy" id="Home-menu" src="{{ asset('/assets/frontend/image/menu/home.png')}}" alt="home">
                 <img loading="lazy" id="About-menu" src="{{ asset('/assets/frontend/image/menu/about.png')}}" alt="about">
                 <img loading="lazy" id="Services-menu" src="{{ asset('/assets/frontend/image/menu/service-1.png')}}" alt="service-1">
