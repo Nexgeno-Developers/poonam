@@ -95,7 +95,6 @@ section {
 }
 .swiper-wrapper {
     height: auto !important;
-    justify-content: center;
 }
 .slider__arrow_left, .slider__arrow_right {
     top: 45% !important;
@@ -693,7 +692,6 @@ div.masonry_gallery{
   
   .swiper-slide {
       position: relative;
-      top: -100px
   }
 
   .gallery_swiper .swiper-slide img {
@@ -991,11 +989,6 @@ ul.sub-menu.opened::after {
     
     .slider-fullscreen-projects__footer_content {
         bottom: 130px;
-    }
-
-    .slider-fullscreen-projects__footer_content .swiper-wrapper {
-        height: auto !important;
-        justify-content: center;
     }
 
     button.btn.gallery_yt_video {
