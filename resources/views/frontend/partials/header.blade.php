@@ -257,11 +257,11 @@
               </div>
             <div class="link-img d-none d-md-block">
                 <img class="active" loading="lazy" id="Home-menu" src="{{ asset('/assets/frontend/image/menu/home.png')}}" alt="home">
-                <img loading="lazy" id="About-menu" src="{{ asset('/assets/frontend/image/menu/about.png')}}" alt="about">
+                <img loading="lazy" id="About-menu" src="{{ asset('/assets/frontend/image/menu/about-us-banner.png')}}" alt="about">
                 <img loading="lazy" id="Services-menu" src="{{ asset('/assets/frontend/image/menu/service-1.png')}}" alt="service-1">
-                <img loading="lazy" id="Gallery-menu" src="{{ asset('/assets/frontend/image/menu/gallery.png')}}" alt="gallery">
+                <img loading="lazy" id="Gallery-menu" src="{{ asset('/assets/frontend/image/menu/our-works-banner.png')}}" alt="gallery">
                 <img loading="lazy" id="NewsMedia-menu" src="{{ asset('/assets/frontend/image/menu/newsandmedia.png')}}" alt="newsandmedia">
-                <img loading="lazy" id="Contactus-menu" src="{{ asset('/assets/frontend/image/menu/contact.png')}}" alt="contact">
+                <img loading="lazy" id="Contactus-menu" src="{{ asset('/assets/frontend/image/menu/contact-us-banner.png')}}" alt="contact">
             </div>
         </div>
         <!-- - fullscreen overlay container -->
