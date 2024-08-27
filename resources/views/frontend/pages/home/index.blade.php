@@ -110,13 +110,13 @@
           </section>
     @endif 
           <!-- - section PROJECTS SLIDER FULLSCREEN -->
-          <section class="introduction_part home_intro_Bg pb-md-4 pb-0 position-relative">     <!--remove class "pt-small" -->
+          <section class="introduction_part home_intro_Bg pb-md-0 pb-0 position-relative">     <!--remove class "pt-small" -->
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-sm-12 col-lg-12">
                   <section class="section section-content clearfix text-center"
                     data-arts-os-animation="data-arts-os-animation">
-                    <div class="section-content__inner">
+                    <div class="section-content__inner home_intro_heading">
                       <div class="w-100"></div>
                       <div class="w-100"></div>
                             <div class="animheadertext-2">

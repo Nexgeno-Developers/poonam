@@ -107,7 +107,7 @@
             <div class="col-md-12">       
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
                 overflow-hidden" data-speed="1200" data-slides-per-view="4" data-slides-per-view-tablet="1"
-                    data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
+                    data-slides-per-view-mobile="1.1" data-mousewheel-enabled="false" data-direction="horizontal"
                     data-drag-mouse="true" data-drag-cursor="true"
                     data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
                     data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
