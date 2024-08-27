@@ -171,6 +171,7 @@
 
     .about_us_banner,
     .gallery_banner,
+    .news_media_banner,
     .contact_us_banner,
     .vases_banner,
     .gallery_details_banner {
@@ -179,6 +180,7 @@
     }
 
     .about_us_banner img,
+    .news_media_banner img,
     .gallery_banner img,
     .contact_us_banner img,
     .vases_banner img,
@@ -410,6 +412,10 @@
     .section__circle, .slider__circle {
         width: 330px !important;
         height: 330px !important;
+    }
+
+    .news_media_img_seciton .gallery_dt_img {
+        transform: translate(0px, 10px) !important;
     }
 }
 
