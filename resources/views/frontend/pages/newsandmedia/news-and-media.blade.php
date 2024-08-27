@@ -8,7 +8,7 @@
 
 @section('page.content')
 
-<section class="inner_header">
+<section class="inner_header news_media_banner">
     @if (!empty($banner))    
     <img src="{{ asset('storage/'.$banner) }}" class="w-100" />
     @endif
@@ -19,7 +19,7 @@
     </div>
 </section>
 
-<section class="gallery_details_section our_work_bg border_4 border_3 mt_70">
+<section class="gallery_details_section news_media_img_seciton our_work_bg border_4 border_3 mt_70">
     <div class="container mb-md-5">
         <p class="color_white"><a class="color_white text-decoration-none" href="{{ route('index') }}">Home</a> >
             News & Media
