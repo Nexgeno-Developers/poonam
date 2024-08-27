@@ -32,7 +32,7 @@
                 <div class="row justify-content-start">
                     @foreach ($image_description as $item)
                     
-                        <div class="col-md-4 py-4">
+                        <div class="col-md-4 py-1">
                             <div class="gallery_dt_inner">
                                 <div class="gallery_dt_img the_gallery_img">
                                     @if (!is_null($item['image']))
@@ -42,7 +42,7 @@
                                     </a>
                                     @endif
                                     @if (!is_null($item['text']))
-                                    <div class="box mt-4">
+                                    <div class="box mt-1">
                                         <div class="box-content">
                                             <p class="the_gallery_img_para color_white">
                                                 {{ $item['text'] }}
