@@ -370,7 +370,11 @@
     }
 
     .gallery_details_section.border_3:after {
-        bottom: -50px;
+        bottom: 0px;
+    }
+
+    .gallery_details_section {
+        padding: 0px 0px 0px 0px;
     }
 
     /*services vases page*/
