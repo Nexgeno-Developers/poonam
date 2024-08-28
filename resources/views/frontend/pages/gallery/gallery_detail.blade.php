@@ -87,8 +87,9 @@
 
                                             <!-- <img src="{{ asset('assets/frontend/image/Video_1.jpg')}}" /> -->
                                             <button type="button" class="btn gallery_yt_video" data-youtube-url="https://www.youtube.com/embed/{{$video}}" >
-                                                <i class="fa-regular fa-circle-play"></i>
+                                                
                                             </button>
+                                            <i class="fa-regular fa-circle-play"></i>
                                     </div>
                                 @endforeach
                             </div>
