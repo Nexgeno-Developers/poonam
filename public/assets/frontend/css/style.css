@@ -670,6 +670,21 @@ hr {
     bottom: 0px;
 }
 
+.back_links a {
+    color: #fff;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 0px 4px;
+}
+
+.back_links, .back_links p {
+    color: #fff;
+
+}
+
+.back_links p {
+    padding-left: 4px;
+}
 
 div.masonry_gallery{
     column-width: 330px;
@@ -890,6 +905,7 @@ ul.sub-menu.opened::after {
     padding: 3px 10px 0px;
     text-align: center;
     border-radius: 0;
+    float: left;
 }
 
 .contact_form button, .the-button a {
@@ -1125,12 +1141,12 @@ ul.sub-menu.opened::after {
 
 .the-button:hover:before,
 .the-button.white:hover:before {
-    width: 100%;
+    width: 97%;
 }
 
 .the-button:hover:after,
 .the-button.white:hover:after {
-    width: 100%;
+    width: 97%;
 }
 
 .the-button::before {
@@ -1139,7 +1155,7 @@ ul.sub-menu.opened::after {
     width: 15px;
     height: 38px;
     top: -2px;
-    left: -6px;
+    left: 2px;
     border: 1px solid #000;
     border-right: none;
     -webkit-transition: all 0.5s linear;
@@ -1154,7 +1170,7 @@ ul.sub-menu.opened::after {
     width: 15px;
     height: 38px;
     top: -2px;
-    left: -6px;
+    left: 2px;
     border: 1px solid #fff;
     border-right: none;
     -webkit-transition: all 0.5s linear;
@@ -1190,7 +1206,7 @@ ul.sub-menu.opened::after {
     width: 15px;
     height: 38px;
     top: -2px;
-    right: -6px;
+    right: 2px;
     border: 1px solid #000;
     border-left: none;
     -webkit-transition: all 0.5s linear;
@@ -1205,7 +1221,7 @@ ul.sub-menu.opened::after {
     width: 15px;
     height: 38px;
     top: -2px;
-    right: -6px;
+    right: 2px;
     border: 1px solid #fff;
     border-left: none;
     -webkit-transition: all 0.5s linear;
