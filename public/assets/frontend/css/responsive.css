@@ -379,6 +379,10 @@
         padding: 0px 0px 0px 0px;
     }
 
+    .contact_us_page .gallery_dt_img img {
+        height: auto;
+    }
+
     /*services vases page*/
 
     .border_4:before {
@@ -404,7 +408,7 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 3em;
+        margin-top: 8.6em;
         max-width: 270px;
         max-height: 270px;
     }
