@@ -401,14 +401,14 @@
     .vases_banner .header_title,
     .gallery_details_banner .header_title {
         margin-left: 85px;
-    }
+    } 
 
     .section-fullheight__inner_mobile {
         min-height: calc(var(--fix-bar-vh, 1vh)* 81);
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 8.6em;
+        margin-top: 3.4em;
         max-width: 270px;
         max-height: 270px;
     }
