@@ -22,9 +22,9 @@
     <div class="animheadertext-2 anim-para-text container text-center w-md-75 w-100 mb-md-5">
         <h3 class="js-split-words2 peachy_flightoe_font font50 text-center color_white mb-md-0 mb-3">{{ isset($title) ? $title : ''}}</h3>
         <div class="d-flex back_links">
-            <a href="#">Home</a> >
-            <a href="#">Gallery</a> >
-            <p>Home Interior</p>
+            <a href="{{ route('index') }}">Home</a> >
+            <a href="{{ route('gallery') }}">Gallery</a> >
+            <p>{{ isset($title) ? $title : '' }}</p>
         </div>
         <p class="js-split-p-letter color_white">
             {{isset($short_description) ? $short_description : ''}}
