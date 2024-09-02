@@ -408,8 +408,8 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 5em;
-        max-width: 270px;
+        margin-top: 8em;
+        max-width: 270px; 
         max-height: 270px;
     }
 
