@@ -3103,14 +3103,15 @@ div.wpcf7-validation-errors {
 .header__overlay-menu-back {
     display: inline-block;
     position: absolute;
-    top: 0;
+    top: -60px;
     bottom: 0;
     margin: auto 0;
     left: -2px;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    pointer-events: initial
+    pointer-events: initial;
+    height: 20px;
 }
 
 .header-curtain {
