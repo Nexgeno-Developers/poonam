@@ -690,6 +690,9 @@ div.masonry_gallery{
     column-width: 330px;
     column-gap: 5px;
     padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
   }
   
   div.masonry_gallery .masonry_gallery_div{
