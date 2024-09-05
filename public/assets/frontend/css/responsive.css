@@ -1,7 +1,7 @@
 @media screen and (min-width: 768px) and (max-width: 991) {
 
-    .masonry-container {
-        grid-template-columns: repeat(2, 1fr); /* Show 2 images per row on smaller screens */
+    .masonry_gallery {
+        grid-template-columns: repeat(2, 1fr) !important; /* Show 2 images per row on smaller screens */
     }
 
 }
@@ -370,7 +370,7 @@
     }
 
     .masonry_gallery {
-        grid-template-columns: 1fr; /*  Show 1 image per row on mobile */
+        grid-template-columns: 1fr !important; /*  Show 1 image per row on mobile */
     }
 
     /*contact us page*/
