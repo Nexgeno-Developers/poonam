@@ -406,7 +406,7 @@ function animateHomeBoxes() {
         // Animate paragraph
         const paraElements = triggerElement.querySelectorAll('.homeboxanimate-para');
         paraElements.forEach(element => {
-            const splitText = new SplitText(element, { type: 'chars', charsClass: 'js-split-letter' });
+            const splitText = new SplitText(element, { type: 'words, chars', charsClass: 'js-split-letter' });
             tl.from(splitText.chars,
                 {
                     opacity: 0,
@@ -435,7 +435,7 @@ function animateHomeBoxes() {
             // Animate button text split within this button div
             const btnTextElements = buttonDiv.querySelectorAll('.homeboxanimate-btn-text');
             btnTextElements.forEach(element => {
-                const splitText = new SplitText(element, { type: 'chars', charsClass: 'js-split-letter-btn' });
+                const splitText = new SplitText(element, { type: 'words, chars', charsClass: 'js-split-letter-btn' });
                 tl.from(splitText.chars, {
                     delay: 0.6, // Delay for 0.6 seconds
                     opacity: 0,
@@ -794,7 +794,7 @@ function animategalleryBoxes() {
     // Animate paragraph text
     const paraElements = triggerElement.querySelectorAll('.the_gallery_img_para');
     paraElements.forEach(element => {
-      const splitText = new SplitText(element, { type: 'chars', charsClass: 'js-split-letter' });
+      const splitText = new SplitText(element, { type: 'words,chars', charsClass: 'js-split-letter' });
       tl.from(splitText.chars, {
         opacity: 0,
         scale: 0.5,
