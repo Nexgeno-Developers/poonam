@@ -361,35 +361,36 @@ class GalleryController extends Controller
 
         /*--------------------------- Image --------------------------------------- */
         $oldImages = $request->input('old_images', []);
-
         $oldImageNumbers = $request->input('images_number', []);
-
         $Images = [];
-
         $newImage = [];
-        if($request->has('images')){
+        
+        // Handle new images upload
+        if ($request->has('images')) {
             foreach ($request->file('images') as $index => $file) {
                 $ImagePath = $file->store('assets/gallery/images', 'public');
                 $newImage[$index] = $ImagePath;
             }
         }
-
-
+        
+        // Process old and new images
         foreach ($oldImageNumbers as $row) {
-
+            // If both new image and old image are empty, skip this entry
+            if (empty($newImage[$row]) && empty($oldImages[$row])) {
+                continue; // Skip this iteration
+            }
+        
+            // Check if new image exists, otherwise fallback to old image
             if (isset($newImage[$row])) {
                 $Images[$row] = $newImage[$row];
             } else {
-
-                if(isset($oldImages[$row])){
-                    // echo'no1';
-                    $Images[$row] = $oldImages[$row] ?? null;
-                } else {
-                    // echo'no2';
-                    $Images[$row] = null;
-                }
+                $Images[$row] = $oldImages[$row] ?? null;
             }
-
+        }
+        
+        // If no images are found, store an empty array
+        if (empty($Images)) {
+            $Images = []; // Store empty array if no images exist
         }
 
         // var_dump($oldImages);
