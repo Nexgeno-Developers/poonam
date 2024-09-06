@@ -62,6 +62,49 @@
                 </div>
             </div>
             @endif
+
+            <div class="col-md-12 pb-md-3 pb-2">
+                <div class="row">                   
+                    <div class="col-md-4 col-12">
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img src="/assets/frontend/image/flip_1.jpg" alt="Front Image" class="flip-image">
+                                </div>
+                                <div class="flip-box-back">                                    
+                                    <p>Massive ethereal marbled epoxy piece with gold highlights and crystal clusters, commissioned by a client to be used as a headboard in a bedroom [size 7’ x 6’]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img src="/assets/frontend/image/flip_2.jpg" alt="Front Image" class="flip-image">
+                                </div>
+                                <div class="flip-box-back">                                    
+                                    <p>Textured wall accent with sweeping lines and crystals to give the look of an earthy yet glamourous landscape [size 7’ x 4’]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img src="/assets/frontend/image/flip_3.jpg" alt="Front Image" class="flip-image">
+                                </div>
+                                <div class="flip-box-back">                                    
+                                    <p>One-of-a-kind wall art with sparkling crystals and linear accents [size 7.5’x 3’]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="col-md-12">
                 <div class="row">
