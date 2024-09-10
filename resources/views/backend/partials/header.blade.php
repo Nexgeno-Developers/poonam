@@ -7,7 +7,7 @@
                         <!-- Topbar Brand Logo -->
                         <div class="logo-topbar p-2 py-1">
                             <!-- Logo light -->
-                            <a href="#" class="logo-light">
+                            <a href="#" class="logo-light" target="_blank">
                                 <span class="logo-lg">
                                     <img src="/assets/image/logo_1.png" alt="logo" style="width:60px; height:60px;" >
                                 </span>

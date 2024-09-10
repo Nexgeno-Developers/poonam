@@ -23,3 +23,15 @@
 .auth-brand img {
     width: 70%;
 }
+
+.modal-body .replace_key .col-md-1 .btn-outline-success, .btn-outline-success {
+    margin-bottom: 5px;
+}
+
+.col-12 .btn-outline-success {
+    margin: 0px 5px 8px 15px !important;
+}
+
+.leftside-menu {
+    margin-top: 15px;
+}
