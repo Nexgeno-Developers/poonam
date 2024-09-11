@@ -26,7 +26,7 @@
                                 </span>
                             </a>
                         </div>
-
+{{--
                         <!-- Sidebar Menu Toggle Button -->
                         <button class="button-toggle-menu">
                             <i class="mdi mdi-menu"></i>
@@ -40,7 +40,7 @@
                                 <span></span>
                             </div>
                         </button>
-
+--}}
                         <!-- Topbar Search Form -->
                 {{--    
                      <div class="app-search dropdown d-none d-lg-block">
@@ -347,7 +347,7 @@
                         <li class="d-sm-inline-block">
                             <a href="{{ url(route('clear-cache')) }}" class="btn btn-success">Clear Cache</a>
                         </li>
-
+{{--
                         <li class="d-none d-sm-inline-block">
                             <div class="nav-link" id="light-dark-mode" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Theme Mode" data-bs-original-title="Theme Mode">
                                 <i class="ri-moon-line font-22"></i>
@@ -361,7 +361,7 @@
                                 <i class="ri-fullscreen-line font-22"></i>
                             </a>
                         </li>
-
+--}}
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 {{-- <span class="account-user-avatar">
