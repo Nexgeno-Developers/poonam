@@ -58,9 +58,15 @@
         </div>
 
         <div class="col-sm-12">
-
             <div class="form-group mb-3">
-                <div id="replace_key_add_more" style=""> @php $d = 0;
+                <div id="replace_key_add_more" style=""> 
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="w-auto float-end btn btn-outline-success btn-sm" id="add_replace_key">Add +</button> 
+                    </div>
+                </div>
+                        
+                @php $d = 0;
                 if(!empty($galleryImages_data)) { foreach ($galleryImages_data as $row) { @endphp
                     <div class="replace_key">
                         <div class="form-group">
@@ -87,8 +93,7 @@
                                     </div>
 
                                 </div>
-                                <div class="col-md-1"> 
-                                    <button type="button" class="btn btn-outline-success btn-sm" id="add_replace_key">Add +</button> 
+                                <div class="col-md-1">                                    
                                     <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button> 
                                 </div>
                             </div>

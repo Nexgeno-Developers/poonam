@@ -97,15 +97,17 @@
                                     <div class="row align-items-center pb-3">
                                         <div class="col-md-10">
                                             <div class="row">
-                                                <div class="col col-sm-6">
+                                                <div class="col col-sm-8">
                                                     <label>Image <span class="red">*</span></label>
                                                     <input class="form-control" type="file" id="image-{{ $index }}"
-                                                        name="newsandmedia_image[]">
-                                                        @if(!empty($image))
+                                                        name="newsandmedia_image[]">                                                       
+                                                </div>
+                                                <div class="col col-sm-4">
+                                                    @if(!empty($image))
                                                         <input class="form-control" type="hidden" id="image-{{ $index }}" value="{{ $image }}" name="newsandmedia_old_image[]">
-                                                        <img width="70%" src="{{ asset('storage/' .$image) }}"
+                                                        <img  src="{{ asset('storage/' .$image) }}"
                                                             alt="Image Preview" class="img-thumbnail mt-2">
-                                                    @endif
+                                                    @endif                                                    
                                                 </div>
                                             </div>
                                         </div>

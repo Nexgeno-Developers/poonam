@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function contact_banner(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'banner' => 'required',
+            'banner' => 'nullable|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -50,7 +50,7 @@ class ContactController extends Controller
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Somthing Went Wrong!',
+                'notification' => 'No Changes Made',
             ];
         }
 
@@ -124,7 +124,8 @@ class ContactController extends Controller
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Something went wrong!',
+                // 'notification' => 'Something went wrong!',
+                'notification' => 'No Changes Made',
             ];
         }
     

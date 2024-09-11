@@ -19,7 +19,7 @@ class NewsmediaController extends Controller
 
        
         $validator = Validator::make($request->all(), [
-            'banner' => 'nullable|image',
+            'banner' => 'nullable|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -53,7 +53,7 @@ class NewsmediaController extends Controller
         } else {
             $response = [
                 'status' => false,
-                'notification' => 'Somthing Went Wrong!',
+                'notification' => 'No Changes Made',
             ];
         }
 
@@ -113,7 +113,7 @@ class NewsmediaController extends Controller
     
         $response = $result
             ? ['status' => true, 'notification' => 'News media images saved successfully!']
-            : ['status' => false, 'notification' => 'Something went wrong!'];
+            : ['status' => false, 'notification' => 'No Changes Made'];
     
         return response()->json($response);
     }
