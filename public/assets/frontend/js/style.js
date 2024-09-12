@@ -765,6 +765,33 @@ galleryimages.forEach((image, index) => {
     gsap.set(image, { opacity: 0, y: 100 }); // Initially, images are transparent and below
 });
 */
+// Function to apply fade-up animation with stagger
+function applyFadeUpAnimation() {
+  gsap.utils.toArray('.animate-fadeup').forEach((element, index) => {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: 'top bottom',  
+        end: 'center center',
+        toggleActions: 'play none none none',
+        marker:false
+      }
+    })
+    .fromTo(element, 
+      { opacity: 0, marginTop: '30%' }, 
+      { 
+        opacity: 1, 
+        marginTop: 0,
+        duration: 0.5, 
+        ease: 'power4.out'
+      }, index * 0.1); // Adjust stagger based on index
+  });
+}
+
+// Call the function to initialize animations
+applyFadeUpAnimation();
+
+
 function animategalleryBoxes() {
   const triggerElements = document.querySelectorAll('.main_section_gallery_detail .the_gallery_img');
   

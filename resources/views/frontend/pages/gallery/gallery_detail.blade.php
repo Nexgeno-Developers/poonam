@@ -32,6 +32,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
+            {{--
             @if (!empty($image_description))
             <div class="col-md-12">
                 <div class="row justify-content-start">
@@ -58,6 +59,30 @@
                                 </div>
                             </div>
                         </div>
+                    @endforeach 
+                </div>
+            </div>
+            @endif
+            --}}
+            @if (!empty($image_description))
+            <div class="col-md-12 pb-md-3 pb-2">
+                <div class="row">              
+                    @foreach ($image_description as $item)
+                    <div class="col-md-4 col-12">
+                        <div class="flip-box">
+                            <div class="flip-box-inner animate-fadeup">
+                                <div class="flip-box-front">
+                                    <img src="{{ asset('storage/' . $item['image']) }}" alt="Front Gallery Image" class="flip-image">
+                                </div>
+                                @if (!is_null($item['text']))
+                                <div class="flip-box-back">                                    
+                                    <p class="the_gallery_img_para color_white">{{ $item['text'] }}</p>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                     @endforeach 
                 </div>
             </div>
