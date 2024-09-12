@@ -115,7 +115,9 @@
 
                             </div>
                         </div>
-                        <div class="col-md-1"><button type="button" class="btn btn-outline-success btn-sm add-btn" id="add_replace_key">Add +</button></div>
+                        {{--<div class="col-md-1">
+                            <button type="button" class="btn btn-outline-success btn-sm add-btn" id="add_replace_key">Add +</button>
+                        </div>--}}
                         </div>
                         </br>
                     </div> @php } @endphp </div>

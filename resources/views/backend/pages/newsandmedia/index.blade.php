@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             @if($loop->first) <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button> @else
-                                            <button type="button" class="btn btn-outline-success btn-sm add-btn mb-2">Add +</button>
+                                            <!-- <button type="button" class="btn btn-outline-success btn-sm add-btn mb-2">Add +</button> -->
                                             <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>    
                                             <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>

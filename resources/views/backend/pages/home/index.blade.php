@@ -74,7 +74,7 @@
                                                 <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i> -->
                                                 @else
-                                                <button type="button" class="btn btn-outline-success btn-sm add-btn mb-1">Add</button>
+                                                <!-- <button type="button" class="btn btn-outline-success btn-sm add-btn mb-1">Add</button> -->
                                                 <button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>
                                                 <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
                                                     class="ri-add-circle-fill add-btn"></i>
@@ -106,8 +106,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
-                                                <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
-                                                    class="ri-add-circle-fill add-btn"></i>
+                                            <button type="button" class="btn btn-outline-success btn-sm add-btn">Add +</button>
+                                                <!-- <i style="font-size: 25px; color: #0b0; cursor: pointer; margin-left: 10px;"
+                                                    class="ri-add-circle-fill add-btn"></i> -->
                                             </div>
                                         </div>
                                         </br>
@@ -385,6 +386,8 @@
             let clonedFormGroup = $(this).closest('.form-group').clone();
             clonedFormGroup.attr('id', 'form-group-' + formFieldIndex);
             clonedFormGroup.find('img').remove();
+            clonedFormGroup.find('.add-btn').after('<button type="button" class="btn btn-outline-danger btn-sm remove-btn">Remove</button>');
+            clonedFormGroup.find('.add-btn').remove();
             clonedFormGroup.find('input').each(function () {
                 $(this).val('');
             });
@@ -463,33 +466,33 @@
         _this.closest(".replace_key").remove();
     }
 
-    $("#add_replace_key").on("click", function () {
+    // $("#add_replace_key").on("click", function () {
 
-        var new_replace_key = `
-        <div class="replace_key form-group">
-            <div class="row">
-                <div class="col-md-11">
-                    <div class="row">
+    //     var new_replace_key = `
+    //     <div class="replace_key form-group">
+    //         <div class="row">
+    //             <div class="col-md-11">
+    //                 <div class="row">
     
-                        <div class="col col-sm-6">
-                            <input class="form-control" name="icon_name[]" placeholder="Enter Icon Name here..." required> 
-                        </div>
-                        <div class="col col-sm-6">
-                        <!--<input class="form-control" style="margin-bottom: 5px;" type="file" id="image" name="icon[]" required>-->
-                            <textarea class="form-control" placeholder="Enter SVG Code Here" style="margin-bottom: 5px;" name="icon[]" rows="5" required></textarea>
-                        </div>
+    //                     <div class="col col-sm-6">
+    //                         <input class="form-control" name="icon_name[]" placeholder="Enter Icon Name here..." required> 
+    //                     </div>
+    //                     <div class="col col-sm-6">
+    //                     <!--<input class="form-control" style="margin-bottom: 5px;" type="file" id="image" name="icon[]" required>-->
+    //                         <textarea class="form-control" placeholder="Enter SVG Code Here" style="margin-bottom: 5px;" name="icon[]" rows="5" required></textarea>
+    //                     </div>
     
     
-                    </div>
-                </div>
-                <div class="col-md-1"><i style="font-size: 25px; color: red; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-2-fill" onclick="remove_replace_key($(this));"></i></div>
-            </div>
-            </br>
-        </div>
-    `;
+    //                 </div>
+    //             </div>
+    //             <div class="col-md-1"><i style="font-size: 25px; color: red; cursor: pointer; margin-left: 10px;" class="ri-delete-bin-2-fill" onclick="remove_replace_key($(this));"></i></div>
+    //         </div>
+    //         </br>
+    //     </div>
+    // `;
 
-        $("#home_banner_key_add_more").append(new_replace_key);
-    });
+    //     $("#home_banner_key_add_more").append(new_replace_key);
+    // });
 </script>
 
 @endsection

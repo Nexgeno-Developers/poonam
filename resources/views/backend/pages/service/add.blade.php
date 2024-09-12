@@ -75,7 +75,8 @@ $(document).ready(function () {
         newRow.find('input').val('');
         newRow.find('.add-row-col-3-div').remove(); 
         newRow.find('.add-row').remove(); 
-        newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-outline-success add-row my-2">Add More +</button><button type="button" class="btn btn-outline-danger remove-row my-2">Remove</button></div>');
+        // <button type="button" class="btn btn-outline-success add-row my-2">Add More +</button>
+        newRow.append('<div class="col-md-3 d-flex gap-3 mb-2"><button type="button" class="btn btn-outline-danger remove-row my-2">Remove</button></div>');
         $('.gallery-image-row').last().after(newRow);
     });
 
