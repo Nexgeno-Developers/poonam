@@ -74,11 +74,11 @@
                                 <div class="flip-box-front">
                                     <img src="{{ asset('storage/' . $item['image']) }}" alt="Front Gallery Image" class="flip-image">
                                 </div>
-                                @if (!is_null($item['text']))
                                 <div class="flip-box-back">                                    
+                                    @if (!is_null($item['text']))
                                     <p class="the_gallery_img_para color_white">{{ $item['text'] }}</p>
+                                    @endif
                                 </div>
-                                @endif
                             </div>
                         </div>
                     </div>
