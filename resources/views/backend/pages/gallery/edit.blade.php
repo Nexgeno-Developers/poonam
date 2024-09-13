@@ -105,11 +105,12 @@
                                 </div>
                                 <div class="col-md-1">
                                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button>
+                                </div>
                                 {{-- 
                                 @if($d == 0)                                  
                                  <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button>
                                 @else 
-                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button></div>
+                                 <button type="button" class="btn btn-outline-danger btn-sm" onclick="remove_replace_key($(this));">Remove</button>
                                 @endif 
                                 --}}
                             </div>
