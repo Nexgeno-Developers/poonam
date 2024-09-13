@@ -387,11 +387,14 @@ class GalleryController extends Controller
                 $Images[$row] = $oldImages[$row] ?? null;
             }
         }
+
+        // Re-index the array and ensure it's a simple JSON array
+        $Images = array_values($Images);
         
         // If no images are found, store an empty array
-        if (empty($Images)) {
-            $Images = []; // Store empty array if no images exist
-        }
+        // if (empty($Images)) {
+        //     $Images = []; // Store empty array if no images exist
+        // }
 
         // var_dump($oldImages);
         // var_dump($newImage);
