@@ -744,10 +744,10 @@ div.masonry_gallery{
   }
   
   div.masonry_gallery .masonry_gallery_div{
-    width: 100%;
-    
+    width: 100%; 
     /* margin: 24px; */
     overflow: hidden;
+    margin-top: 2px;
   }
   
   .masonry_gallery_div img {
