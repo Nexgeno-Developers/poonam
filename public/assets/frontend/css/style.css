@@ -689,7 +689,7 @@ hr {
 .flip-box {
   background-color: transparent;
   width: 100%;
-  height: 400px;
+  height: auto;
   perspective: 1000px; /* Perspective for the 3D flip */
   margin: 20px auto;
 }
@@ -697,7 +697,7 @@ hr {
 .flip-box-inner {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   text-align: center;
   transition: transform 0.8s; /* Animation duration */
   transform-style: preserve-3d;
@@ -708,9 +708,9 @@ hr {
 }
 
 .flip-box-front, .flip-box-back {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   backface-visibility: hidden; /* Hides the back when front is visible */
 }
 
@@ -721,7 +721,7 @@ hr {
 
 .flip-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -734,6 +734,9 @@ hr {
   justify-content: center;
   flex-direction: column;
   padding: 10px;
+  position: absolute;
+  top: 1px;
+  height: 100%;
 }
 
 div.masonry_gallery{
