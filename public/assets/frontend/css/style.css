@@ -691,7 +691,7 @@ hr {
   width: 100%;
   height: auto;
   perspective: 1000px; /* Perspective for the 3D flip */
-  margin: 20px auto;
+  margin: 12px auto;
 }
 
 .flip-box-inner {
