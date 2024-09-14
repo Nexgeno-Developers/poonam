@@ -20,10 +20,18 @@
 </section>
 
 <section class="gallery_details_section news_media_img_seciton our_work_bg border_4 border_3 mt_70">
-    <div class="container mb-md-5">
+    <div class="container mb-md-5">        
         <p class="color_white"><a class="color_white text-decoration-none" href="{{ route('index') }}">Home</a> >
             News & Media
         </p>
+        <div class="animheadertext-2 anim-para-text container text-center w-md-75 w-100 mb-md-5">
+            <p class="js-split-p-letter color_white">
+                {{--{{isset($short_description) ? $short_description : ''}}--}}
+                From magazine features to runway shows, Poonam’s creations have been celebrated for their colour, 
+                vibrancy, and versatility. Whether the pieces are exclusive one-of-a-kind showstoppers, 
+                or high-volume gifts and presentations, the quality and uniqueness of the product shines through.
+            </p>
+        </div>
         <div class="row justify-content-center mb-md-4">
             <div class="col-md-12">
                 <div class="row">
