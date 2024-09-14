@@ -5869,7 +5869,9 @@ body.elementor-editor-active [data-arts-os-animation] {
 .slider__heading {
     display: inline-block;
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+    position: relative;
+    top: 1.4em;
 }
 
 .slider__arrow_absolute {
@@ -6429,7 +6431,8 @@ body.elementor-editor-active [data-arts-os-animation] {
     z-index: 60;
     color: #fff;
     margin-left: calc(var(--gutter-horizontal)*2);
-    margin-right: calc(var(--gutter-horizontal)*2)
+    margin-right: calc(var(--gutter-horizontal)*2);
+    height: 28vw !important;
 }
 
 .slider-fullscreen-projects__content_reduced-sides {
