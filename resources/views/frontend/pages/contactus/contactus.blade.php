@@ -46,7 +46,7 @@
                     @endif
 
                 </div>
-                <h3 class="amsterdam_font color_white mt-3">Contact Us</h3>
+                <h3 class="amsterdam_font color_white mt-3">Drop us a Line</h3>
             </div>
             <div class="gsap-fade-slide-left background_grey">
                 <form id="add_contact_us_form" action="{{url(route('contact.save'))}}" method="post"

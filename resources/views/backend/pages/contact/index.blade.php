@@ -127,8 +127,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
-                                    <label>Twitter URL<span class="red">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Insert Twitter URL" name="twitter_url"
+                                    <label>YouTube URL<span class="red">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Insert YouTube URL" name="twitter_url"
                                         value="{{ isset($Contacts->twitter_url) ? $Contacts->twitter_url : '' }}" required>
                                 </div>
                             </div>
