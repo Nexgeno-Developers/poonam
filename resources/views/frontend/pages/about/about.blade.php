@@ -111,7 +111,7 @@
                 <div class="about_img_vission position-relative parallax-container"
                     onmousemove="parallaxEffect(event)" onmouseleave="resetTilt()">
                     <img class="parallax-image" src="{{ asset('storage/'.$vision_section->vision_image) }}" />
-                    <h4 class="amsterdam_font vission_title">Vission</h4>
+                    <h4 class="amsterdam_font vission_title">Vision</h4>
                 </div>
                 @endif
             </div>
