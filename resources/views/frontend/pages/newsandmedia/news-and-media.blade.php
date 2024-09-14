@@ -37,7 +37,7 @@
                 <div class="row">
                     @if (!empty($image_section))
                     @foreach ($image_section as $index => $image)
-                        <div class="{{ $index < 2 ? 'col-md-6 col-12' : 'col-md-4 col-12' }}">
+                        <div class="{{ $index < 2 ? 'col-md-4 col-12' : 'col-md-4 col-12' }}">
                             <div class="gallery_dt_inner">
                                 <div class="gallery_dt_img">
                                     <a href="{{ asset('storage/' . $image) }}" data-fancybox="images" data-caption="Image{{$index+1}}">
