@@ -979,7 +979,7 @@ animatehomeImageOnScroll('.home_section_img', '.home_section_container');
 // new
 
 document.addEventListener("DOMContentLoaded", function() {
-  const images = document.querySelectorAll('.masonry_gallery_div img');
+  const images = document.querySelectorAll('.gallery_details_section .masonry_gallery_div');
 
   // Create an IntersectionObserver instance
   const observer = new IntersectionObserver((entries, observer) => {
