@@ -59,7 +59,8 @@
         <div class="col-sm-12">
             <div class="form-group mb-3">
                 <label>Short Description 2</label>
-                <textarea  class="form-control" rows="5" name="short_description2">{{ $service->short_description2 }}</textarea>
+                <textarea  class="form-control" rows="5" name="short_description2">{{ isset($service->short_description2) ? $service->short_description2 : '' }}
+                </textarea>
             </div>
         </div>
 
