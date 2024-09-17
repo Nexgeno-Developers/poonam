@@ -4882,8 +4882,8 @@ div.wpcf7-validation-errors {
 }
 
 [data-arts-os-animation]:not([data-arts-os-animation=animated]) {
-    opacity: 0;
-    visibility: hidden
+    opacity: 1;
+    visibility: visible
 }
 
 body.elementor-editor-active [data-arts-os-animation] {

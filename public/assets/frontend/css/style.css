@@ -757,6 +757,13 @@ div.masonry_gallery{
   .masonry_gallery_div img {
       width: 100%;
   }
+
+  .masonry_gallery_div img {
+    opacity: 0;
+    transform: translate(0px, 100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
   
   .swiper-button-next,
   .swiper-button-prev {
@@ -1292,9 +1299,15 @@ ul.sub-menu.opened::after {
     .the-button::after,
     .the-button.white::after {
         width: 20px;
-        height: 47px;
-        top: -5px;
+        height: 42px;
+        top: 1px;
     }
+
+    .the-button::before, .the-button.white::before  { 
+        height: 42px;
+        top: 1px;
+    }
+
 }
 
 @media only screen and (max-width: 640px) {
