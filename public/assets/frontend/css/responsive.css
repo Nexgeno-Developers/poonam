@@ -441,6 +441,12 @@
         max-height: 270px;
     }
 
+    .short_description {
+        position: absolute;
+        bottom: 35px;
+        width: 100%;
+    }
+
     .short_description { 
         bottom: 80px;
     }
