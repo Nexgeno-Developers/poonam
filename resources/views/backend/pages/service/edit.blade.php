@@ -52,8 +52,14 @@
         </div>
         <div class="col-sm-12">
             <div class="form-group mb-3">
-                <label>Short Description</label>
-                <textarea  class="form-control" rows="5" name="short_description" >{{ $service->short_description }}</textarea>
+                <label>Short Description 1</label>
+                <textarea  class="form-control" rows="5" name="short_description">{{ $service->short_description }}</textarea>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group mb-3">
+                <label>Short Description 2</label>
+                <textarea  class="form-control" rows="5" name="short_description2">{{ $service->short_description2 }}</textarea>
             </div>
         </div>
 

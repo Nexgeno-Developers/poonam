@@ -75,6 +75,7 @@ class ServiceController extends Controller
             'service_image' => $service_imagePath,
             'title' => $request->input('title') ?? null,
             'short_description' => $request->input('short_description') ?? null,
+            'short_description2' => $request->input('short_description2') ?? null,
             'gallery_image' => !empty($galleryImages) ? json_encode($galleryImages) : null, // Store as JSON or null
         ]);
 
@@ -317,6 +318,7 @@ class ServiceController extends Controller
             'page_name' => $request->input('page_name'),
             'title' => $request->input('title') ?? null,
             'short_description' => $request->input('short_description') ?? null,
+            'short_description2' => $request->input('short_description2') ?? null,
             'gallery_image' => !empty($galleryImages) ? json_encode($galleryImages) : null,
         ]);
 

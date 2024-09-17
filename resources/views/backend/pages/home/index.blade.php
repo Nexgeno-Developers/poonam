@@ -305,7 +305,7 @@
                             <input type="file" class="form-control" name="gallery2_image[]" required>
                         </div>
                         <div class="col col-sm-6">
-                            <label for="gallery2_url{{$i}}">Gallery URL(read-more) {{$i}} <span class="red">*</span></label>
+                            <label for="gallery2_url{{$i}}">Gallery URL(read-more) {{$i}} <span class="red">*</span><span class="font-size11">(Enter URl without domain name like "gallery/rasin-bar")</span></label>
                             <input type="file" class="form-control" name="gallery2_url[]" required>
                         </div>
             </div>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="col col-sm-6">
                     <label for="gallery2_url_{{$key + 1}}">Gallery URL(read-more) {{$key + 1}} <span
-                            class="red">*</span></label>
+                            class="red">*</span><span class="font-size11">(Enter URl without domain name like "gallery/rasin-bar")</span></label>
                     <input type="text" class="form-control" name="gallery2_url[]" value="{{ $section->url }}" required>
                 </div>
             </div>

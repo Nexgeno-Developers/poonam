@@ -164,10 +164,11 @@ class IndexController extends Controller
         $service_image = $service_detail->service_image;
         $title = $service_detail->title;
         $short_description = $service_detail->short_description;
+        $short_description2 = $service_detail->short_description2;
 
         $gallery_image = json_decode($service_detail->gallery_image, true);
 
-        return view('frontend.pages.services.services_detail', compact('service_detail','service_image','gallery_image','slug','page_name','banner','title','short_description'));
+        return view('frontend.pages.services.services_detail', compact('service_detail','service_image','gallery_image','slug','page_name','banner','title','short_description','short_description2'));
     }
     
     public function gallery_detail($slug){
