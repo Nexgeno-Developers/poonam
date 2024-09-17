@@ -17,14 +17,21 @@
 
                 <ul class="col-md-5 footer_left list-unstyled footer1_li">
                     <li>
-                    @if(isset($contacts['phone_1']))
-                    <a href="tel:+91{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+91 {{ $contacts['phone_1'] }}</a>&nbsp;|&nbsp;
-                @endif
+                        @if(isset($contacts['phone_1']))
+                            <a href="tel:+91{{ $contacts['phone_1'] }}" class="text-decoration-none text-dark">+91 {{ $contacts['phone_1'] }}</a>&nbsp;|&nbsp;
+                        @endif
                     </li>
 
-                    <li>@if(isset($contacts['email']))
-                    <a href="mailto:{{ $contacts['email'] }}" class="text-decoration-none text-dark">{{ $contacts['email'] }}</a>
-                @endif</li>
+                    <li>
+                        @if(isset($contacts['email1']))
+                        <a href="mailto:{{ $contacts['email1'] }}" class="text-decoration-none text-dark">{{ $contacts['email1'] }}</a>
+                        @endif
+                    </li>
+                    <li>
+                        @if(isset($contacts['email2']))
+                        <a href="mailto:{{ $contacts['email2'] }}" class="text-decoration-none text-dark">{{ $contacts['email2'] }}</a>
+                        @endif
+                    </li>
                 </ul>
             
 

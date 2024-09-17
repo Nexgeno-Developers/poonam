@@ -36,9 +36,13 @@
                         <a href="tel:+{{ $contactS->phone_1 }}" class="contact_form_color_white"><i class="fa fa-phone"></i>
                             +91 {{ $contactS->phone_1 }}</a> <br>
                     @endif
-                    @if (!empty($contactS->email))
-                        <a href="mailto:{{ $contactS->email }}" class="contact_form_color_white"><i
-                                class="fa fa-envelope"></i> {{ $contactS->email }}</a> <br>
+                    @if (!empty($contactS->email1))
+                        <a href="mailto:{{ $contactS->email1 }}" class="contact_form_color_white"><i
+                                class="fa fa-envelope"></i> {{ $contactS->email1 }}</a> <br>
+                    @endif
+                    @if (!empty($contactS->email2))
+                        <a href="mailto:{{ $contactS->email2 }}" class="contact_form_color_white"><i
+                                class="fa fa-envelope"></i> {{ $contactS->email2 }}</a> <br>
                     @endif
                     @if (!empty($contactS->inst_url))
                         <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white"><i
