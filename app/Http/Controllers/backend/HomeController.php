@@ -195,6 +195,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'gallery2_title.*' => 'required',
+            'gallery2_url.*' => 'required',
             'gallery2_description.*' => 'required',
             'gallery2_image.*' => 'image|max:8000', // Adjust max file size as needed
         ]);
@@ -225,6 +226,7 @@ class HomeController extends Controller
                 'title' => $request->gallery2_title[$i],
                 'description' => $request->gallery2_description[$i],
                 'image' => $imagePath,
+                'url' => $request->gallery2_url[$i],
             ];
         }
 

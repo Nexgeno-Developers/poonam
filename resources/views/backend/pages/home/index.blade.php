@@ -225,8 +225,8 @@
                         <div class="row mb-3"> 
                             <div class="col col-sm-4">
                                 <label for="gallery_title{{$key + 1}}">Gallery Title {{$key + 1}} <span
-                                        class="red">*</span></label>
-                                <input type="text" class="form-control" name="gallery_title[]" placeholder="Enter Text like RASIN|Bar" value="{{ isset($section->title) ? $section->title : '' }}" required>
+                                        class="red">*</span><span class="font-size11">(For diffrent font style Wrap word in star* like *word*)</span></label>
+                                <input type="text" class="form-control" name="gallery_title[]" placeholder="Enter Text like RASIN *Bar*" value="{{ isset($section->title) ? $section->title : '' }}" required>
                             </div>
                             <div class="col col-sm-4">
                                 <label for="gallery_description{{$key + 1}}">Gallery Description {{$key + 1}} <span
@@ -291,8 +291,8 @@
                     @if (empty($gallery_section2))
                     @for ($i = 1; $i <= 2; $i++) <div class="row mb-3">
                         <div class="col col-sm-6">
-                            <label for="gallery2_title_{{$i}}">Gallery Title {{$i}} <span class="red">*</span></label>
-                            <input type="text" class="form-control" name="gallery2_title[]" placeholder="Enter Text like Wardrobe|Panels" required>
+                            <label for="gallery2_title_{{$i}}">Gallery Title {{$i}} <span class="red">*</span><span class="font-size11">(For diffrent font style Wrap word in "*" like *word*)</span></label>
+                            <input type="text" class="form-control" name="gallery2_title[]" placeholder="Enter Text like Wardrobe *Panels*" required>
                         </div>
                         <div class="col col-sm-6">
                             <label for="gallery2_description_{{$i}}">Gallery Description {{$i}} <span
@@ -303,6 +303,10 @@
                         <div class="col col-sm-6">
                             <label for="gallery2_image_{{$i}}">Gallery Image {{$i}} <span class="red">*</span></label>
                             <input type="file" class="form-control" name="gallery2_image[]" required>
+                        </div>
+                        <div class="col col-sm-6">
+                            <label for="gallery2_url{{$i}}">Gallery URL(read-more) {{$i}} <span class="red">*</span></label>
+                            <input type="file" class="form-control" name="gallery2_url[]" required>
                         </div>
             </div>
             @endfor
@@ -333,7 +337,11 @@
                         class="img-thumbnail mt-2">
                     @endif
                 </div>
-
+                <div class="col col-sm-6">
+                    <label for="gallery2_url_{{$key + 1}}">Gallery URL(read-more) {{$key + 1}} <span
+                            class="red">*</span></label>
+                    <input type="text" class="form-control" name="gallery2_url[]" value="{{ $section->url }}" required>
+                </div>
             </div>
             @endforeach
             @endif

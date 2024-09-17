@@ -61,7 +61,7 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(), [
             'address_1' => 'required',
             'wa_url' => 'required',
-            'email' => 'required',
+            'email1' => 'required',
             'phone_1' => 'required',
             'fb_url' => 'required',
             'linkedin_url' => 'required',
@@ -101,7 +101,8 @@ class ContactController extends Controller
     
         $contacts = [
             'address_1' => $request->address_1,
-            'email' => $request->email,
+            'email1' => $request->email1,
+            'email2' => $request->email2,
             'wa_url' => $request->wa_url,
             'phone_1' => $request->phone_1,
             'fb_url' => $request->fb_url,

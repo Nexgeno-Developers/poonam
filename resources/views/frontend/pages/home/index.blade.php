@@ -149,14 +149,18 @@
             $gallery = $gallery_section1[$i]; // Access each item in the array
 
             // Access object properties correctly
-            $titleParts = explode('|', $gallery->title);
-            $firstPart = $titleParts[0] ?? '';
-            $secondPart = isset($titleParts[1]) ? $titleParts[1] : null;
+            //$titleParts = explode('|', $gallery->title);
+            //$firstPart = $titleParts[0] ?? '';
+            //$secondPart = isset($titleParts[1]) ? $titleParts[1] : null;
+            
+            // Use regular expression to find words wrapped with *
+            $title = preg_replace('/\*(.*?)\*/', '<span class="amsterdam_font">$1</span>', $gallery->title);
 
             // Construct the item to store
             $item = [
-                'firstPart' => $firstPart ? $firstPart : null,
-                'secondPart' => $secondPart ? $secondPart : null,
+                'text' => $title, 
+                //'firstPart' => $firstPart ? $firstPart : null,
+                //'secondPart' => $secondPart ? $secondPart : null,
                 'description' => isset($gallery->description) ? $gallery->description : null,
                 'image' => isset($gallery->image) ? asset('storage/' . $gallery->image) : null,
                 'alt' => isset($gallery->title) ? $gallery->title : null,
@@ -180,8 +184,10 @@
                     <div class="col-md-12 padd0">
                       <div class="homeboxanimate services_box services_bg">
                         <div class="mb-3 mb-xxl-4">
-                          <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[0]['firstPart'] }} <span
-                              class="amsterdam_font">{{ $galleryItems[0]['secondPart'] }}</span></h3>
+                          {{-- 
+                          <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[0]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[0]['secondPart'] }}</span></h3>
+                          --}}
+                          <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{!! $galleryItems[0]['text'] !!}</h3>
                         </div>
                         <div class="mb-3">
                             <p class="homeboxanimate-para color_white">
@@ -196,7 +202,7 @@
                     <div class="col-md-12 padd0">
                       <div class="homeboxanimate services_box services_bg_gray">
                         <div class="animheadertext-2 mb-3 mb-xxl-4">
-                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[1]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[1]['secondPart'] }}</span></h3>
+                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{!! $galleryItems[1]['text'] !!}</h3>
                         </div>
                         <div class="anim-para-text mb-3">
                             <p class="homeboxanimate-para">
@@ -227,7 +233,7 @@
                       <div class="homeboxanimate services_box services_bg_gray">
                         <div class="animheadertext-2 mb-3 mb-xxl-4" 
                           >
-                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50 pour_to_product"> <span class="amsterdam_font">{{ $galleryItems[2]['firstPart'] }}</span> {{ $galleryItems[2]['secondPart'] }}  </h3>
+                          <h3 class="homeboxanimate-heading peachy_flightoe_font font50 pour_to_product"> {!! $galleryItems[2]['text'] !!}</h3>
                         </div>
                         <div class="anim-para-text mb-3">
                             <p class="homeboxanimate-para">
@@ -242,8 +248,7 @@
                     <div class="col-md-12 padd0">
                       <div class="homeboxanimate services_box services_bg">
                         <div class="animheadertext-2 mb-3 mb-xxl-4">
-                          <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[3]['firstPart'] }} <span
-                              class="amsterdam_font">{{ $galleryItems[3]['secondPart'] }}</span></h3>
+                          <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{!! $galleryItems[3]['text'] !!}</h3>
                         </div>
                         <div class="anim-para-text mb-3">
                           <p class="homeboxanimate-para color_white">
@@ -272,7 +277,7 @@
                 <div class="col-md-4 padd0">
                   <div class="homeboxanimate services_box services_bg">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                      <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{{ $galleryItems[4]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[4]['secondPart'] }}</span>
+                      <h3 class="homeboxanimate-heading color_white peachy_flightoe_font font50">{!! $galleryItems[4]['text'] !!}</span>
                       </h3>
                     </div>
                     <div class="anim-para-text mb-3">
@@ -300,7 +305,7 @@
                 <div class="col-md-4 padd0">
                   <div class="homeboxanimate services_box services_bg_gray">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50"> <span class="amsterdam_font">{{ $galleryItems[5]['firstPart'] }} </span></h3>
+                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{!! $galleryItems[5]['text'] !!}</h3>
                     </div>
                     <div class="anim-para-text mb-3">
                       <p class="homeboxanimate-para">
@@ -326,7 +331,7 @@
                 <div class="col-md-4 padd0">
                   <div class="homeboxanimate services_box services_bg_gray">
                     <div class="animheadertext-2 mb-3 mb-xxl-4">
-                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{ $galleryItems[6]['firstPart'] }} <span class="amsterdam_font">{{ $galleryItems[6]['secondPart'] }} </span></h3>
+                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{!! $galleryItems[6]['text'] !!}</h3>
                     </div>
                     <div class="anim-para-text mb-3">
                       <p class="homeboxanimate-para">
@@ -349,21 +354,27 @@
               <div class="row">
               @foreach($gallery_section2 as $gallery_section_data)
                 @php
-                    $bannerHeading = $gallery_section_data->title ? $gallery_section_data->title : null;
+                    //$bannerHeading = $gallery_section_data->title ? $gallery_section_data->title : null;
+
+                    // Replace words wrapped in * with <span class="amsterdam_font"></span>
+                    $bannerHeading = $gallery_section_data->title ? preg_replace('/\*(.*?)\*/', '<span class="amsterdam_font">$1</span>', $gallery_section_data->title) : null;
+        
                     $bannerDescription = $gallery_section_data->description ? $gallery_section_data->description : null;
                     $bannerImage = $gallery_section_data->image ? asset('storage/'.$gallery_section_data->image) : null;
-                    $bannerTextParts = explode('|', $bannerHeading, 2);
+                    //$bannerTextParts = explode('|', $bannerHeading, 2);
                     
-                    $bannerFirstText = $bannerTextParts[0] ?? '';
-                    $bannerSecondText = isset($bannerTextParts[1]) ? str_replace('|', ' ', $bannerTextParts[1]) : '';
+                    //$bannerFirstText = $bannerTextParts[0] ?? '';
+                    //$bannerSecondText = isset($bannerTextParts[1]) ? str_replace('|', ' ', $bannerTextParts[1]) : '';
                     //$bannerSecondText = $bannerTextParts[1] ?? '';
                 @endphp
                 <div class="col-md-6 col-sm-6 padd0">
                   <div class="box homeboxanimate">
                     <img src="{{ $bannerImage }}">
                     <div class="box-content">
-                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{$bannerFirstText}}<span class="amsterdam_font">{{$bannerSecondText}}</span>
-                      </h3>
+                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{!! $bannerHeading !!}</h3>
+                      {{--
+                      <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{$bannerFirstText}}<span class="amsterdam_font">{{$bannerSecondText}}</span></h3>
+                      --}}
                       <p class="homeboxanimate-para">
                         {{$bannerDescription}}
                       </p>

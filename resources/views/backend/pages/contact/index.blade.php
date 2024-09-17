@@ -92,9 +92,16 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
-                                    <label>Email<span class="red">*</span></label>
-                                    <input type="email" class="form-control" placeholder="Insert Email" name="email"
-                                        value="{{ isset($Contacts->email) ? $Contacts->email : '' }}" required>
+                                    <label>Email 1<span class="red">*</span></label>
+                                    <input type="email" class="form-control" placeholder="Insert Email" name="email1"
+                                        value="{{ isset($Contacts->email1) ? $Contacts->email1 : '' }}" required>
+                                </div>
+                            </div> 
+                            <div class="col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>Email 2</label>
+                                    <input type="email" class="form-control" placeholder="Insert Email" name="email2"
+                                        value="{{ isset($Contacts->email2) ? $Contacts->email2 : '' }}" >
                                 </div>
                             </div> 
                             <div class="col-sm-6">
