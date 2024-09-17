@@ -362,6 +362,15 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 5px !important;
 }
 
+.short_description {
+    position: absolute;
+    bottom: 30px;
+}
+
+.short_description p {
+    color: #000;
+}
+
 .slider_para {
     position: absolute;
     bottom: 100px;
