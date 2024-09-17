@@ -364,7 +364,8 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 
 .short_description {
     position: absolute;
-    bottom: 30px;
+    bottom: 35px;
+    width: 40%;
 }
 
 .short_description p {
@@ -886,7 +887,7 @@ button.close span {
     bottom: 60px;
     display: block;
     left: 0;
-    z-index: 1;
+    z-index: 99;
 }
 
 .gallery_dt_img img {
