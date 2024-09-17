@@ -758,7 +758,7 @@ div.masonry_gallery{
       width: 100%;
   }
 
-  .masonry_gallery_div img {
+  .gallery_details_section .masonry_gallery_div {
     opacity: 0;
     transform: translate(0px, 100px);
     transition: opacity 0.5s ease, transform 0.5s ease;
