@@ -48,7 +48,7 @@
     }
 
     .homeboxanimate-btn-bracket {
-        margin: 20px 10px;
+        margin: 2px 10px;
     }
     
     .parallax-layer2, .parallax-layer3 {
@@ -66,6 +66,17 @@
     .slider-fullscreen-projects__content {
         display: flex;
         align-items: center;
+        height: 140px !important;
+    }
+
+    .services_inner_page .slider-fullscreen-projects__images .swiper-wrapper {
+        position: absolute;
+        top: 0px !important;
+    }
+
+    
+    .home_page.section-fullheight .swiper-slide {
+        top: -3.5em;
     }
 
     .destined_to_desing .peachy_flightoe_font.font_70 {
@@ -378,6 +389,10 @@
     .contact_us_page form {
         padding: 8px 10px 8px 10px;
         height: 20em;
+    }
+
+    a.contact_form_color_white i {
+        margin: 5px 5px 15px 0px !important;
     }
     
     .gallery_details_section  .border_3:after {
