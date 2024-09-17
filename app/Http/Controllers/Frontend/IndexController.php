@@ -164,7 +164,8 @@ class IndexController extends Controller
         $service_image = $service_detail->service_image;
         $title = $service_detail->title;
         $short_description = $service_detail->short_description;
-        $short_description2 = $service_detail->short_description2;
+        $short_description2 = isset($service_detail->short_description2) ? $service_detail->short_description2 : null;
+
 
         $gallery_image = json_decode($service_detail->gallery_image, true);
 
