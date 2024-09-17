@@ -69,6 +69,11 @@
         height: 140px !important;
     }
 
+    .services_inner_page .slider-fullscreen-projects__images .swiper-wrapper {
+        position: absolute;
+        top: 0px !important;
+    }
+
     
     .home_page.section-fullheight .swiper-slide {
         top: -3.5em;
