@@ -367,6 +367,9 @@
                       <p class="homeboxanimate-para">
                         {{$bannerDescription}}
                       </p>
+                      <div class="homeboxanimate-btn-bracket the-button white float-none mt-md-5 mt-3">
+                          <a href="{{ $galleryItems[0]['url'] }}" class="homeboxanimate-btn-text color_white">Read More</a>
+                        </div>
                     </div>
                   </div>
                 </div>

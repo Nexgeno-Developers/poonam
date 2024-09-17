@@ -975,11 +975,31 @@ animatehomeImageOnScroll('.home_section_img', '.home_section_container');
 
 // zuber gsap code for smooth scroll
 /* Created by OSUblake: https://greensock.com/forums/topic/17300-smooth-page-scroll/ */
-
-
-
-
-
+ 
 // new
+
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('.masonry_gallery_div img');
+
+  // Create an IntersectionObserver instance
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Apply the styles to make the images visible
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translate(0px, 0px)';
+        // Once the image is visible, stop observing it
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1, // Trigger when 10% of the image is in view
+  });
+
+  // Observe each image
+  images.forEach(image => {
+    observer.observe(image);
+  });
+});
 
 
