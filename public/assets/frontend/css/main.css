@@ -5863,8 +5863,8 @@ body.elementor-editor-active [data-arts-os-animation] {
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    width: calc(100vw - var(--gutter-horizontal)*4);
-    height: calc(100vw - var(--gutter-horizontal)*4);
+    width: calc(100vw - var(--gutter-horizontal)*7);
+    height: calc(100vw - var(--gutter-horizontal)*7);
     border: 1px solid rgba(128, 128, 128, .3);
     border-radius: 100%;
     z-index: 1;
