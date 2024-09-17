@@ -102,7 +102,7 @@
             </div>
         </div>
         <!-- - slider FOOTER -->
-        <div class="animheadertext-2 anim-para-text container text-center w-100 w-md-75 mb-md-5">
+        <div class="short_description animheadertext-2 anim-para-text container text-center w-100 w-md-75 mb-md-5">
             <p class="js-split-p-letter color_white">
                 {{$short_description2}}
             </p>
