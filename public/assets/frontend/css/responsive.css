@@ -385,6 +385,10 @@
         padding: 8px 10px 8px 10px;
         height: 20em;
     }
+
+    a.contact_form_color_white i {
+        margin: 5px 5px 15px 0px !important;
+    }
     
     .gallery_details_section  .border_3:after {
         position: absolute;
