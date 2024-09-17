@@ -4914,12 +4914,17 @@ body.elementor-editor-active [data-arts-os-animation] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 100vh
 }
 
 .section-fullheight__inner_mobile {
     min-height: calc(var(--fix-bar-vh, 1vh)*100)
+}
+
+.services_inner_page .section-fullheight__inner_mobile {
+    min-height: calc(var(--fix-bar-vh, 1vh)* 110);
 }
 
 .section_z-100 {
