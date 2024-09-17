@@ -1030,6 +1030,10 @@ ul.sub-menu.opened::after {
     p:not(.contact_form_color_white) {
         font-size: 17px !important;
     }
+
+    .short_description { 
+        bottom: 130px;
+    }
     
     span p.font_30 {
         font-size: 60px !important;
