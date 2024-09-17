@@ -24,9 +24,8 @@
 <section class="services_inner_page section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
     data-arts-os-animation>
     <div class="grey-bg section-fullheight__inner section-fullheight__inner_mobile">
-        <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
-            <!-- slider IMAGES -->
-            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
+        <!-- slider IMAGES -->
+        <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
                 data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
                 data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
                 data-drag-mouse="false" data-drag-cursor="false"
@@ -89,7 +88,9 @@
                 </div>
             </div>
             <!-- - slider FOOTER -->
-        </div>
+            <div class="slider_para">
+                <p class="para">hello wolrd i am developer and designer also </p>
+            </div>
     </div>
 </section>
 

@@ -362,6 +362,12 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 5px !important;
 }
 
+.slider_para {
+    position: absolute;
+    bottom: 100px;
+    margin: 0 auto; 
+}
+
 .services_gallery .gallery_dt_img {
     margin-bottom: 5px;
 }
@@ -613,7 +619,7 @@ hr {
 
 .gallery_content {
     position: relative;
-    top: -20px;
+    top: -25px;
 }
 
 .gallery_content a {
