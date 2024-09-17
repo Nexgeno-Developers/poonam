@@ -358,7 +358,7 @@
 
                     // Replace words wrapped in * with <span class="amsterdam_font"></span>
                     $bannerHeading = $gallery_section_data->title ? preg_replace('/\*(.*?)\*/', '<span class="amsterdam_font">$1</span>', $gallery_section_data->title) : null;
-                    $bannerUrl = $gallery_section_data->url ? $gallery_section_data->url : null;
+                    $bannerUrl = isset($gallery_section_data->url) ? $gallery_section_data->url : null;
                     $bannerDescription = $gallery_section_data->description ? $gallery_section_data->description : null;
                     $bannerImage = $gallery_section_data->image ? asset('storage/'.$gallery_section_data->image) : null;
                     //$bannerTextParts = explode('|', $bannerHeading, 2);
