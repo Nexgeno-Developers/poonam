@@ -5914,8 +5914,8 @@ body.elementor-editor-active [data-arts-os-animation] {
 
 .swiper-lazy {
     max-width: 100%;
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     transition: all .2s cubic-bezier(.785, .135, .15, .86)
 }
 
