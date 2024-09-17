@@ -24,7 +24,7 @@
 <section class="services_inner_page section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
     data-arts-os-animation>
     <div class="grey-bg section-fullheight__inner section-fullheight__inner_mobile">
-        <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
+        <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider d-flex justify-content-center">
             <!-- slider IMAGES -->
             <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
                 data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
