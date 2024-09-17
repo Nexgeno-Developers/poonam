@@ -353,6 +353,15 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     display: block;
 }
 
+.services_inner_page .slider-fullscreen-projects__images .swiper-wrapper {
+    position: absolute;
+    top: 80px !important;
+}
+
+.services_inner_page .slider-fullscreen-projects__footer_content {
+    top: 5px !important;
+}
+
 .services_gallery .gallery_dt_img {
     margin-bottom: 5px;
 }

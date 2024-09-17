@@ -13,7 +13,7 @@
     data-background-color="var(--color-dark-1)"></section>
     @if (!empty($banners))
           <!-- section PROJECTS SLIDER FULLSCREEN -->
-          <section class="section section-fullheight section-projects section-projects-slider bg-dark-1 overflow" data-arts-theme-text="light" data-arts-os-animation="animated">
+          <section class="home_page section section-fullheight section-projects section-projects-slider bg-dark-1 overflow" data-arts-theme-text="light" data-arts-os-animation="animated">
             <div class="section-fullheight__inner section-fullheight__inner_mobile text-center">
               <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
                 <!-- slider CONTENT -->
