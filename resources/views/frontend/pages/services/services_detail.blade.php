@@ -90,7 +90,7 @@
                 <div class="col-lg-3 text-center text-lg-right">
                     <div class="slider-categories js-slider__categories text-center text-lg-right mb-0">
                         @if(!empty($short_description))
-                            <div class="animheadertext-2 anim-para-text container text-center w-100 w-md-75 mb-md-5">
+                            <div class="animheadertext-2 anim-para-text container text-center mb-md-5">
                                 <p class="js-split-p-letter color_white">
                                     {{$short_description}}
                                 </p>
