@@ -21,10 +21,35 @@
 <section class="section section-masthead d-none" data-background-color="var(--color-light-3)"></section>
 <!-- - section MASTHEAD -->
 <!-- section ALBUMS SLIDER COVERS -->
-<section class="section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
+<section class="services_inner_page section section-fullheight section-projects section-projects-slider bg-light-3 text-center overflow"
     data-arts-os-animation>
     <div class="grey-bg section-fullheight__inner section-fullheight__inner_mobile">
         <div class="slider slider-fullscreen-projects js-slider-fullscreen-projects js-slider">
+            <!-- slider IMAGES -->
+            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
+                data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
+                data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
+                data-drag-mouse="false" data-drag-cursor="false"
+                data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
+                data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide overflow d-flex-centered">
+                        <div
+                            class="slider__images-slide-inner slider__images-slide-inner_circle border-radius-100 js-transition-img">
+                            <div class="w-100 h-100" data-swiper-parallax-zoom="0%" data-swiper-parallax="0%">
+
+                                <div class="slider__zoom-container w-100 h-100 overflow">
+                                    <div class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el"
+                                        data-background="{{ asset('storage/' . $service_image)}}"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__circle"></div>
+            </div>
+            <!-- slider IMAGES -->            
             <!-- slider FOOTER -->
             <div class="container-fluid slider-fullscreen-projects__footer slider-fullscreen-projects__footer_content">
                 <div class="row justify-content-between align-items-end">
@@ -64,30 +89,6 @@
                 </div>
             </div>
             <!-- - slider FOOTER -->
-            <!-- slider IMAGES -->
-            <div class="slider-fullscreen-projects__images swiper-container js-slider-fullscreen-projects__images"
-                data-speed="1200" data-slides-per-view="1" data-slides-per-view-tablet="1"
-                data-slides-per-view-mobile="1" data-mousewheel-enabled="false" data-direction="horizontal"
-                data-drag-mouse="false" data-drag-cursor="false"
-                data-drag-class="slider-fullscreen-projects__images_scale-down" data-touch-ratio="3"
-                data-autoplay-enabled="true" data-autoplay-delay="6000" data-counter-style="roman">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide overflow d-flex-centered">
-                        <div
-                            class="slider__images-slide-inner slider__images-slide-inner_circle border-radius-100 js-transition-img">
-                            <div class="w-100 h-100" data-swiper-parallax-zoom="0%" data-swiper-parallax="0%">
-
-                                <div class="slider__zoom-container w-100 h-100 overflow">
-                                    <div class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el"
-                                        data-background="{{ asset('storage/' . $service_image)}}"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider__circle"></div>
-            </div>
         </div>
     </div>
 </section>
