@@ -69,11 +69,11 @@ if (document.querySelector('.design_den')) {
     scrollTrigger: {
       trigger: '.design_den',
       start: 'top 100%',
-      end: 'center 70%',
+      end: 'center 90%',
       markers: false,
       scrub: 0.6
     },
-    x: -300,
+    x: -320,
     duration:0.4,
     ease: "back.in(1)",
   });
@@ -82,11 +82,11 @@ if (document.querySelector('.design_den')) {
     scrollTrigger: {
       trigger: '.design_den',
       start: 'top 100%',
-      end: 'center 70%',
+      end: 'center 90%',
       markers: false,
       scrub: 0.6
     },
-    x: 300,
+    x: 320,
     duration:0.4,
     ease: "back.in(1)",
   });

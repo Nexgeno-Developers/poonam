@@ -322,7 +322,7 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     color: #fff;
     margin: 0 auto;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 25px;
     right: 25px;
     z-index: 2;
@@ -963,7 +963,7 @@ textarea {
 }
 
 a.contact_form_color_white i {
-    margin: 0px 5px 20px 0px !important;
+    margin: 5px 5px 15px 0px !important;
 }
 
 form .the-button button {
@@ -1003,6 +1003,12 @@ ul.sub-menu.opened::after {
     z-index: 999 !important;
 }
 
+@media (min-width: 1400px) {
+    .short_description { 
+        bottom: 135px; 
+    }
+}
+
 @media  (min-width: 1420px) and (max-width: 1919px) {
 
     .contact_form div{
@@ -1021,6 +1027,10 @@ ul.sub-menu.opened::after {
     button.btn.gallery_yt_video {
         top: 34%;
         left: 42%;
+    }
+
+    .services_inner_page .section-fullheight__inner_mobile {
+        min-height: calc(var(--fix-bar-vh, 1vh)* 100);
     }
 }
 
@@ -1055,9 +1065,14 @@ ul.sub-menu.opened::after {
     }
     
     .logo__wrapper-img img {
-        width: 70px;
+        width: 110px;
         height: auto;
     }
+
+    .header__burger { 
+        width: 65px;
+        height: 50px;
+    }    
     
     .the-button {
         font-size: 16px;

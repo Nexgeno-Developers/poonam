@@ -28,7 +28,7 @@
                     <h3 class="trajanPro_regular contact_form_color_white">GET IN TOUCH</h3>
 
                     @if (!empty($contactS->address_1))
-                        <a href="#" class="contact_form_color_white d-flex align-items-top gap-2 mb-md-0 mb-2">
+                        <a href="#" class="contact_form_color_white d-flex align-items-start gap-2 my-md-2 mb-2">
                             <i class="fa fa-map"></i><span> {{ $contactS->address_1 }}</span>
                         </a>
                     @endif
