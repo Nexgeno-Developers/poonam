@@ -43,8 +43,13 @@
               </div>
               <div class="gallery_content">
               <h5 class="peachy_flightoe_font">{{ $item->title }}</h5>
+              @if( $item->title == "GIFTING AND SERVICES")
+              <a href="{{'/service/tablespace'}}">View Gallery <i
+                class="fa-solid fa-arrow-right"></i></a>
+              @else
               <a href="{{ url('gallery/' . $item->slug) }}">View Gallery <i
                 class="fa-solid fa-arrow-right"></i></a>
+              @endif
               </div>
             </div>
             </div>
