@@ -28,7 +28,7 @@
                     <h3 class="trajanPro_regular contact_form_color_white">GET IN TOUCH</h3>
 
                     @if (!empty($contactS->address_1))
-                        <a href="#" class="contact_form_color_white d-flex align-items-start gap-2 my-md-2 mb-2">
+                        <a href="#" class="contact_form_color_white d-flex align-items-start gap-2 my-md-2 mb-2" target="_blank">
                             <i class="fa fa-map"></i><span> {{ $contactS->address_1 }}</span>
                         </a>
                     @endif
@@ -45,7 +45,7 @@
                                 class="fa fa-envelope"></i> {{ $contactS->email2 }}</a> <br>
                     @endif
                     @if (!empty($contactS->inst_url))
-                        <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white"><i
+                        <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white" target="_blank"><i
                                 class="fa fa-instagram"></i> poonam.shah_art </a> <br>
 
                     @endif
