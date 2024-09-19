@@ -178,7 +178,7 @@ h2.h1.slider__heading {
     overflow: hidden;
     text-overflow: ellipsis;
     height: 5em;
-    line-height: 1.2em;
+    /* line-height: 1.2em; */
 }
 
 img.service-images {   
