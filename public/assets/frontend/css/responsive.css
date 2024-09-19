@@ -450,6 +450,11 @@
         top: 10em;
     }
 
+    .slider-fullscreen-projects__images[data-drag-class] {
+        overflow: visible;
+        height: 70vh;
+    }
+
     .vases_banner.border_1:after {
         bottom: 68px;
     }
