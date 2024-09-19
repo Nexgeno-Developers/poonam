@@ -286,6 +286,14 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 10%;
 }
 
+.vases_banner {
+    height: 19vw;
+}
+
+.vases_banner.border_1:after {
+    bottom: 79px;
+}
+
 /*--services bottom css open--*/
 .services_section .container {
     max-width: 2200px;
@@ -359,7 +367,7 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 }
 
 .services_inner_page .slider-fullscreen-projects__footer_content {
-    top: 5px !important;
+    top: 20px !important;
 }
 
 .short_description {
@@ -954,7 +962,7 @@ textarea {
 
 .contact_us_page form {
     padding: 8px 40px 8px 80px;
-    height: 19.7em;
+    height: 18.3em;
 }
 
 .contact_form_color_white {
@@ -974,6 +982,7 @@ form .the-button button {
 
 form .the-button {
     width: 30% !important;
+    top: -8px;
 }
 /* 
 ul.sub-menu.opened::after {
@@ -1006,6 +1015,18 @@ ul.sub-menu.opened::after {
 @media (min-width: 1400px) {
     .short_description { 
         bottom: 135px; 
+    }
+
+    .vases_banner {
+        height: 20vw;
+    }
+
+    .services_inner_page .slider-fullscreen-projects__images .swiper-wrapper { 
+        top: 110px !important;
+    }
+
+    .services_inner_page .slider-fullscreen-projects__footer_content {
+        top: 40px !important;
     }
 }
 

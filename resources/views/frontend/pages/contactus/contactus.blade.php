@@ -20,11 +20,11 @@
     </div>
 </section>
 <section class="gallery_details_section our_work_bg border_4 border_3 mt_70 contact_us_page">
-    <div class="container-fluid d-flex justify-content-center gap-md-0 gap-5 flex-md-row flex-column px-md-0">
+    <div class="container-fluid d-flex justify-content-center gap-md-0 gap-4 flex-md-row flex-column px-md-0">
         <div class="col-md-4 col-12 contact_form">
             <div class="gsap-fade-up d-flex flex-column alignt-item-center justify-content-center px-md-5 px-xl-4"
                 style="position:relative; z-index:99; padding-right:30px !important">
-                <div>
+                <div class="contact_us_details mb-md-2 pb-2">
                     <h3 class="trajanPro_regular contact_form_color_white">GET IN TOUCH</h3>
 
                     @if (!empty($contactS->address_1))
@@ -46,7 +46,7 @@
                     @endif
                     @if (!empty($contactS->inst_url))
                         <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white"><i
-                                class="fa fa-instagram"></i> poonam.shah.art </a> <br>
+                                class="fa fa-instagram"></i> poonam.shah_art </a> <br>
 
                     @endif
 
@@ -60,7 +60,7 @@
                     <input type="text" id="name" placeholder="Name" name="name" required>
                     <input type="email" id="email" placeholder="Email" name="email" required>
                     <input type="text" id="subject" placeholder="Subject" name="subject" required>
-                    <textarea class="mb-4" id="message" placeholder="Message" name="message" rows="2"
+                    <textarea class="mb-3" id="message" placeholder="Message" name="message" rows="2"
                         required></textarea>
                     <div class="homeboxanimate-btn-bracket the-button">
                         <button type="submit" class="homeboxanimate-btn-text">Submit</button>
@@ -82,7 +82,7 @@
         <div class="col-md-4 col-12">
             <div class="">
                 @if (!empty($contactS->map_url))
-                    <iframe class="gsap-fade-slide-right" src="{{$contactS->map_url}}" width="100%" height=""
+                    <iframe class="gsap-fade-slide-right contact_map" src="{{$contactS->map_url}}" width="100%" height=""
                         style="border:0; height:90vh;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 @endif

@@ -375,7 +375,7 @@
                       {{--
                       <h3 class="homeboxanimate-heading peachy_flightoe_font font50">{{$bannerFirstText}}<span class="amsterdam_font">{{$bannerSecondText}}</span></h3>
                       --}}
-                      <p class="homeboxanimate-para">
+                      <p class="homeboxanimate-para h-auto">
                         {{$bannerDescription}}
                       </p>
                       <div class="homeboxanimate-btn-bracket the-button white float-none mt-md-5 mt-3">
