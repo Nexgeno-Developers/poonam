@@ -1067,6 +1067,14 @@ ul.sub-menu.opened::after {
     .services_inner_page .section-fullheight__inner_mobile {
         min-height: calc(var(--fix-bar-vh, 1vh)* 100);
     }
+
+    .float_right {
+        margin-right: 80px;
+    }
+
+    .design_heading {
+        margin-left: 40px;
+    }
 }
 
 
