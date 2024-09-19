@@ -146,16 +146,16 @@
             </div>
             <div class="all_pages_name_listing pt-md-4 pt-3">
                 <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item text-dark">Vases</li>
-                    <li class="list-group-item text-dark">Tea Light Holders</li>
-                    <li class="list-group-item text-dark">Wedding and Floral Preservation</li>
-                    <li class="list-group-item text-dark">Name Plates</li>
-                    <li class="list-group-item text-dark">Wall Clocks</li>
-                    <li class="list-group-item text-dark">Serving Trays and Platters</li>
-                    <li class="list-group-item text-dark">Tablespace</li>
-                    <li class="list-group-item text-dark">Drinkware</li>
-                    <li class="list-group-item text-dark">Workshops</li>
-                    <li class="list-group-item text-dark">Corporate</li>
+                    <li class="list-group-item "><a href="service/vases" class="" target="_blank">Vases</a></li>
+                    <li class="list-group-item "><a href="service/tea-light-holders" class="" target="_blank">Tea Light Holders</a></li>
+                    <li class="list-group-item "><a href="service/personalized-gifting" class="" target="_blank">Wedding and Floral Preservation</a></li>
+                    <li class="list-group-item "><a href="service/name-plates" class="" target="_blank">Name Plates</a></li>
+                    <li class="list-group-item "><a href="service/wall-clocks" class="" target="_blank">Wall Clocks</a></li>
+                    <li class="list-group-item "><a href="service/serving-trays-and-platters" class="" target="_blank">Serving Trays and Platters</a></li>
+                    <li class="list-group-item "><a href="service/tablespace" class="" target="_blank">Tablespace</a></li>
+                    <li class="list-group-item "><a href="service/drinkware" class="" target="_blank">Drinkware</a></li>
+                    <li class="list-group-item "><a href="service/workshops" class="" target="_blank">Workshops</a></li>
+                    <li class="list-group-item "><a href="service/corporate-gifting" class="" target="_blank">Corporate</a></li>
                 </ul>
             </div>
         </div>

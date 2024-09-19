@@ -191,6 +191,14 @@
           </div>
         </div>
         <!-- - top bar -->
+
+        
+    <div class="whatsappdesktop">
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=9819052489&text=Hi%2C+I+am+contacting+you+through+your+website+from+poonamshahart.com">
+            <i aria-hidden="true" class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+    
         
         <!-- fullscreen overlay container -->
         <div class="header__wrapper-overlay-menu container-fluid container-fluid_paddings">

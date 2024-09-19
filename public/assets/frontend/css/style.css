@@ -370,16 +370,24 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 20px !important;
 }
 
-.all_pages_name_listing .list-group-item {
+.all_pages_name_listing .list-group-item{
     padding: 0px 10px 0px 0px;
-    background-color: transparent;
+    background-color: transparent !important;
     border: 0px;
     border-right: 1px solid #fff;
     white-space: nowrap;
     display: inline-block;
-    margin: 0px 10px 5px 0px;
+    margin: 0px 10px 5px 0px; 
+    border-radius: 0 !important; 
+}
+
+.all_pages_name_listing .list-group-item:nth-last-child(1){    
+    border-right: 0px;
+}
+
+.all_pages_name_listing .list-group-item a{
+    text-decoration: none;
     color: #fff !important;
-    border-radius: 0 !important;
 }
 
 .all_pages_name_listing ul {
@@ -463,6 +471,34 @@ span.fontsize_big {
     }
     .footer2_a {
         display: -webkit-inline-box;
+    }
+}
+
+.whatsappdesktop {
+    position: fixed !important;
+    bottom: 55px;
+    z-index: 9;
+    left: 20px
+}
+
+.whatsappdesktop i {
+    background: #07d353;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    line-height: 49px;
+    text-align: center;
+    font-size: 29px
+}
+
+@media(max-width:767px) {
+    .whatsappdesktop{
+        display:none;
+    }
+    .social_media .text_content {
+        text-align: center;
+        padding: 25px 0px 0px 0px !important;
     }
 }
 
