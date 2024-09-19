@@ -370,6 +370,20 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 20px !important;
 }
 
+
+.big_border_circle::before {
+    content: "";
+    display: block;
+    width: 60vw;
+    height: 60vw;
+    /* background: aliceblue; */
+    position: absolute;
+    top: -100px;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+
 .short_description {
     position: absolute;
     bottom: 35px;
