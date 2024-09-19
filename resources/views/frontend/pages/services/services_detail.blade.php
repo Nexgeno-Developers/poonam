@@ -121,7 +121,7 @@
     </div>
     @endif
     @if(!empty($gallery_image))
-    <div class="container pb-md-5 pb-0 mb-3">
+    <div class="container pb-md-0 pb-0 mb-3">
         <div class="row justify-content-center">                
             <div class="col-md-12">       
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
