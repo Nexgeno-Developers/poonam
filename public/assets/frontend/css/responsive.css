@@ -446,8 +446,8 @@
 
     .big_border_circle::before { 
         width: 320px;
-        height: 320px; 
-        top: 115px;
+        height: 320px;  
+        top: 10em;
     }
 
     .vases_banner.border_1:after {
