@@ -1175,6 +1175,14 @@ ul.sub-menu.opened::after {
         top: 150px;
     }*/   
 
+    .float_right {
+        margin-right: 80px;
+    }
+
+    .design_heading {
+        margin-left: 40px;
+    }
+
     .contact_form div {
         height: 45vh;
         font-size: 24px;
