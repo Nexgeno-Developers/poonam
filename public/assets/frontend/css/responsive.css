@@ -447,12 +447,12 @@
     .big_border_circle::before { 
         width: 320px;
         height: 320px;  
-        top: 10em;
+        top: 13em;
     }
 
     .slider-fullscreen-projects__images[data-drag-class] {
         overflow: visible;
-        height: 70vh;
+        height: 50vh;
     }
 
     .vases_banner.border_1:after {
