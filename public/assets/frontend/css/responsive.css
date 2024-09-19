@@ -450,7 +450,7 @@
         top: 13em;
     }
 
-    .slider-fullscreen-projects__images[data-drag-class] {
+    .services_inner_page.section  {
         overflow: visible;
         height: 50vh;
     }
