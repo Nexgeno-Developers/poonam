@@ -370,6 +370,22 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 20px !important;
 }
 
+.all_pages_name_listing .list-group-item {
+    padding: 0px 10px 0px 0px;
+    background-color: transparent;
+    border: 0px;
+    border-right: 1px solid #fff;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0px 10px 5px 0px;
+    color: #fff !important;
+    border-radius: 0 !important;
+}
+
+.all_pages_name_listing ul {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .big_border_circle::before {
     content: "";
@@ -645,13 +661,13 @@ hr {
 
 .gallery_content h5 {
     color: #fff;
-    font-size: 40px;
+    font-size: 34px;
     margin-bottom: 0px;
 }
 
 .gallery_content {
     position: relative;
-    top: -25px;
+    top: -10px;
 }
 
 .gallery_content a {
@@ -986,6 +1002,10 @@ textarea {
 
 a.contact_form_color_white i {
     margin: 5px 5px 15px 0px !important;
+}
+
+.contact_form h3.amsterdam_font { 
+    font-size: 36px;
 }
 
 form .the-button button {

@@ -144,6 +144,20 @@
                     </div>
                 </div>
             </div>
+            <div class="all_pages_name_listing pt-md-4 pt-3">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item text-dark">Vases</li>
+                    <li class="list-group-item text-dark">Tea Light Holders</li>
+                    <li class="list-group-item text-dark">Wedding and Floral Preservation</li>
+                    <li class="list-group-item text-dark">Name Plates</li>
+                    <li class="list-group-item text-dark">Wall Clocks</li>
+                    <li class="list-group-item text-dark">Serving Trays and Platters</li>
+                    <li class="list-group-item text-dark">Tablespace</li>
+                    <li class="list-group-item text-dark">Drinkware</li>
+                    <li class="list-group-item text-dark">Workshops</li>
+                    <li class="list-group-item text-dark">Corporate</li>
+                </ul>
+            </div>
         </div>
     </div>
     @endif
