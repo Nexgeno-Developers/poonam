@@ -145,9 +145,9 @@
     }
 
     .services_box {
-        padding: 60px 30px;
+        padding: 80px 30px;
         height: auto;
-        padding-top: 60px;
+        padding-top: 40px;
     }
     
     .scroll-content {
@@ -315,11 +315,14 @@
     .homeboxanimate-para, .js-split-p-letter {
         font-size: 14px;
         text-align: left;
-        height: 68px !important;
     }
 
     .homeboxanimate-para.h-auto {
         height: auto !important;
+    }
+
+    .homeboxanimate-para {
+        height: 68px !important;
     }
 
     /*gallery page*/
