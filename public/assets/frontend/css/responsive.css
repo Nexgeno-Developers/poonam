@@ -181,6 +181,11 @@
         padding: 0px 12px;
     }
 
+    .whatsappdesktop { 
+        bottom: 25px; 
+        left: 10px;
+    }
+
     .footer_logo img {
         width: 80px;
     }
