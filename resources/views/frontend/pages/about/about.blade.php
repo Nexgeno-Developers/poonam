@@ -70,7 +70,7 @@
             </div>
 
             <div class="col-md-6">
-                <div class="about_content pt-5">
+                <div class="about_content pt-md-5 pt-1">
                     <div class="anim-para-text">
                         <div class="text-justify js-split-p-letter">
                             {!! isset($about_section->about_description) ? $about_section->about_description : '' !!}                       

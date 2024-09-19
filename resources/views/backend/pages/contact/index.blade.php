@@ -115,42 +115,42 @@
                                 <div class="form-group mb-3">
                                     <label>Whatsapp URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert Whatsapp URL" name="wa_url"
-                                        value="{{ isset($Contacts->wa_url) ? $Contacts->wa_url : '' }}" required>
+                                        value="{{ isset($Contacts->wa_url) ? $Contacts->wa_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>Facebook URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert Facebook URL" name="fb_url"
-                                        value="{{ isset($Contacts->fb_url) ? $Contacts->fb_url : '' }}" required>
+                                        value="{{ isset($Contacts->fb_url) ? $Contacts->fb_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>LinkedIn URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert LinkedIn URL" name="linkedin_url"
-                                        value="{{ isset($Contacts->linkedin_url) ? $Contacts->linkedin_url : '' }}" required>
+                                        value="{{ isset($Contacts->linkedin_url) ? $Contacts->linkedin_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>YouTube URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert YouTube URL" name="twitter_url"
-                                        value="{{ isset($Contacts->twitter_url) ? $Contacts->twitter_url : '' }}" required>
+                                        value="{{ isset($Contacts->twitter_url) ? $Contacts->twitter_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>Instagram URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert Instagram URL" name="inst_url"
-                                        value="{{ isset($Contacts->inst_url) ? $Contacts->inst_url : '' }}" required>
+                                        value="{{ isset($Contacts->inst_url) ? $Contacts->inst_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group mb-3">
                                     <label>Map URL<span class="red">*</span></label>
                                     <input type="text" class="form-control" placeholder="Insert Map URL" name="map_url"
-                                        value="{{ isset($Contacts->map_url) ? $Contacts->map_url : '' }}" required>
+                                        value="{{ isset($Contacts->map_url) ? $Contacts->map_url : '' }}" target="_blank" required>
                                 </div>
                             </div>
                             <div class="row">

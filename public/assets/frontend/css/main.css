@@ -5858,7 +5858,7 @@ body.elementor-editor-active [data-arts-os-animation] {
 .section__circle,
 .slider__circle {
     position: absolute;
-    top: 42%;
+    top: 41%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
