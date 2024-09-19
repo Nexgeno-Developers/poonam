@@ -447,7 +447,7 @@
     .big_border_circle::before { 
         width: 320px;
         height: 320px;  
-        top: 0em;
+        top: 4em;
     }
 
     .slider-fullscreen-projects__images {
@@ -469,9 +469,13 @@
     }
 
     .slider__images-slide-inner_circle {
-        margin-top: 4vh;
+        margin-top: 14vh;
         max-width: 270px; 
         max-height: 270px;
+    }
+
+    .services_inner_page .section-fullheight__inner_mobile {
+        min-height: calc(var(--fix-bar-vh, 1vh)* 90);
     }
 
     .short_description {
