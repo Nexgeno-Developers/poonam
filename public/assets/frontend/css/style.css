@@ -411,7 +411,7 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 
 .short_description {
     position: relative;
-    top: 16em;
+    top: 16.5em;
     width: 40%;
 }
 
@@ -1091,6 +1091,12 @@ ul.sub-menu.opened::after {
     }
 }
 
+@media  (min-width: 1420px) and (max-width: 1690px) {
+    .short_description { 
+        bottom: 19em !important; 
+    }
+}
+
 @media  (min-width: 1420px) and (max-width: 1919px) {
 
     .contact_form div{
@@ -1099,7 +1105,7 @@ ul.sub-menu.opened::after {
     }
 
     .short_description { 
-        bottom: 16em; 
+        bottom: 20em; 
     }
     
     .home_intro_Bg:before {
