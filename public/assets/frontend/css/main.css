@@ -12192,8 +12192,8 @@ select {
 
     .section-fullheight__inner_mobile{
         min-height: calc(var(--fix-bar-vh, 1vh)* 87);
-    }
-
+    } 
+/* 
     .header__burger_opened .header__burger-line:nth-of-type(1),
     .header__burger_opened:hover .header__burger-line:nth-of-type(1) {
         transform: scaleX(1) rotate(45deg) translate(25px, 30px);
@@ -12202,7 +12202,7 @@ select {
     .header__burger_opened .header__burger-line:nth-of-type(3),
     .header__burger_opened:hover .header__burger-line:nth-of-type(3) {
         transform: scaleX(1) rotate(-45deg) translate(21px, -29px);
-    }
+    } */
 
 
 }
