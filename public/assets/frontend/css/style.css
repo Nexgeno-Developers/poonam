@@ -1093,13 +1093,13 @@ ul.sub-menu.opened::after {
 
 @media  (min-width: 1420px) and (max-width: 1691px) {
     .short_description { 
-        bottom: 19em !important; 
+        top: 19em !important; 
     }
 }
 
 @media  (min-width: 1691px) and (max-width: 1919px) {
     .short_description { 
-        bottom: 21em !important; 
+        top: 21em !important; 
     }
 }
 
@@ -1110,9 +1110,6 @@ ul.sub-menu.opened::after {
         gap: 50px;
     }
 
-    .short_description { 
-        bottom: 20em; 
-    }
     
     .home_intro_Bg:before {
         bottom: 67px !important;
