@@ -332,7 +332,7 @@
     }
 
     .homeboxanimate-para {
-        height: 64px !important;
+        height: 84px !important;
     }
 
     /*gallery page*/
@@ -432,6 +432,10 @@
 
     .gallery_details_section {
         padding: 0px 0px 0px 0px;
+    }
+
+    form .the-button { 
+        bottom: 16px; 
     }
 
     .contact_us_page .gallery_dt_img img {

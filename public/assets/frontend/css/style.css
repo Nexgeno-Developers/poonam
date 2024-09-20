@@ -177,11 +177,7 @@ h2.h1.slider__heading {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-<<<<<<< HEAD
-    height: 5em;
-=======
     height: 4.6em;
->>>>>>> 8b46c81df1d8a32b0d3e09a10b20b3e29bd8d929
     /* line-height: 1.2em; */
 }
 
@@ -1017,13 +1013,13 @@ textarea {
     cursor: pointer;
 }
 
-.contact_us_page input::placeholder {
+.contact_us_page input::placeholder, .contact_us_page textarea::placeholder {
     color: #484a4b;
 }
 
 .contact_us_page form {
     padding: 8px 40px 8px 80px;
-    height: 18.3em;
+    height: 17.3em;
 }
 
 .contact_form_color_white {
@@ -1031,7 +1027,7 @@ textarea {
     text-decoration: none;
 }
 
-a.contact_form_color_white i {
+.contact_form_color_white i {
     margin: 5px 5px 15px 0px !important;
 }
 
@@ -1047,7 +1043,8 @@ form .the-button button {
 
 form .the-button {
     width: 30% !important;
-    top: -8px;
+    bottom: 0px;
+    position: absolute;
 }
 /* 
 ul.sub-menu.opened::after {
@@ -1138,6 +1135,13 @@ ul.sub-menu.opened::after {
 
     .design_heading {
         margin-left: 40px;
+    }
+    .contact_form>div {
+        height: 45vh;
+        font-size: 20px;
+        gap: 73px;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -1257,17 +1261,23 @@ ul.sub-menu.opened::after {
 
     
     .contact_form div .homeboxanimate-btn-bracket button {
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .design_heading {
         margin-left: 40px;
     }
 
-    .contact_form div {
+    .contact_form>div {
         height: 45vh;
         font-size: 20px;
-        gap: 50px;
+        gap: 73px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact_us_page form { 
+        height: 18.3em;
     }
     
     form div {
@@ -1276,6 +1286,7 @@ ul.sub-menu.opened::after {
     
     form .the-button {
         padding: 0px 10px 0px;
+        position: relative;
     }
     
     .contact_form .amsterdam_font {
@@ -1322,7 +1333,7 @@ ul.sub-menu.opened::after {
         padding: 8px 10px;
     }
 
-    .contact_us_page input::placeholder, textarea::placeholder {
+    .contact_us_page input::placeholder, .contact_us_page textarea::placeholder {
         font-size: 14px;
         color: #484a4b;
     }

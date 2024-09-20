@@ -36,17 +36,24 @@
                         <a href="tel:+{{ $contactS->phone_1 }}" class="contact_form_color_white"><i class="fa fa-phone"></i>
                             +91 {{ $contactS->phone_1 }}</a> <br>
                     @endif
-                    @if (!empty($contactS->email1))
-                        <a href="mailto:{{ $contactS->email1 }}" class="contact_form_color_white"><i
-                                class="fa fa-envelope"></i> {{ $contactS->email1 }}</a> <br>
-                    @endif
-                    @if (!empty($contactS->email2))
-                        <a href="mailto:{{ $contactS->email2 }}" class="contact_form_color_white"><i
-                                class="fa fa-envelope"></i> {{ $contactS->email2 }}</a> <br>
-                    @endif
+                    <div class="d-flex gap-2 mb-2 h-auto">
+                        <div class="mail_icon contact_form_color_white"><i class="fa fa-envelope text-light"></i></div>
+                        <div class="mails">
+                            @if (!empty($contactS->email1))
+                                <a href="mailto:{{ $contactS->email1 }}" class="contact_form_color_white"> {{ $contactS->email1 }}</a> 
+                            @endif
+                            @if (!empty($contactS->email2))
+                                <span class="text-light">/</span> <br>
+                            @endif
+                            @if (!empty($contactS->email2))
+                                <a href="mailto:{{ $contactS->email2 }}" class="contact_form_color_white">
+                                        {{ $contactS->email2 }}</a> <br>
+                            @endif
+                        </div>
+                    </div>
                     @if (!empty($contactS->inst_url))
-                        <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white" target="_blank"><i
-                                class="fa fa-instagram"></i> poonam.shah_art </a> <br>
+                        <a href="{{ $contactS->inst_url ?? ''}}" class="contact_form_color_white d-flex gap-2" target="_blank"><i
+                                class="fa fa-instagram"></i> poonam.shah_art </a> 
 
                     @endif
 
