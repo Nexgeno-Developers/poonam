@@ -479,7 +479,7 @@ span.fontsize_big {
     position: fixed !important;
     bottom: 35px;
     z-index: 9;
-    left: 25px
+    right: 25px
 }
 
 .whatsappdesktop i {
