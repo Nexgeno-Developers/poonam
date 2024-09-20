@@ -1093,7 +1093,7 @@ ul.sub-menu.opened::after {
 
 @media  (min-width: 1420px) and (max-width: 1690px) {
     .short_description { 
-        bottom: 19em; 
+        bottom: 19em !important; 
     }
 }
 
