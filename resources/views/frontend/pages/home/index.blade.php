@@ -195,7 +195,7 @@
                             </p>
                         </div>
                         <div class="homeboxanimate-btn-bracket the-button white">
-                          <a href="{{ $galleryItems[0]['url'] }}" class="homeboxanimate-btn-text color_white">Read More</a>
+                          <a href="/service/tablespace" class="homeboxanimate-btn-text color_white">Read More</a>
                         </div>
                       </div>
                     </div>

@@ -393,6 +393,7 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 .all_pages_name_listing ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .big_border_circle::before {
@@ -409,8 +410,8 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 
 
 .short_description {
-    position: absolute;
-    bottom: 35px;
+    position: relative;
+    top: 16em;
     width: 40%;
 }
 
@@ -476,9 +477,9 @@ span.fontsize_big {
 
 .whatsappdesktop {
     position: fixed !important;
-    bottom: 55px;
+    bottom: 35px;
     z-index: 9;
-    left: 20px
+    left: 25px
 }
 
 .whatsappdesktop i {
@@ -1074,7 +1075,7 @@ ul.sub-menu.opened::after {
 
 @media (min-width: 1400px) {
     .short_description { 
-        bottom: 135px; 
+        bottom: 16em; 
     }
 
     .vases_banner {
@@ -1095,6 +1096,10 @@ ul.sub-menu.opened::after {
     .contact_form div{
         font-size: 20px;
         gap: 50px;
+    }
+
+    .short_description { 
+        bottom: 16em; 
     }
     
     .home_intro_Bg:before {
@@ -1131,7 +1136,7 @@ ul.sub-menu.opened::after {
     }
 
     .short_description { 
-        bottom: 130px;
+        top: 22em;
     }
     
     span p.font_30 {
@@ -1158,10 +1163,10 @@ ul.sub-menu.opened::after {
         height: auto;
     }
 
-    .header__burger { 
+    /* .header__burger { 
         width: 65px;
         height: 50px;
-    }    
+    }     */
     
     .the-button {
         font-size: 16px;
@@ -1233,13 +1238,22 @@ ul.sub-menu.opened::after {
         margin-right: 80px;
     }
 
+    h3.contact_form_color_white {
+        padding-bottom: 24px;
+    }
+
+    
+    .contact_form div .homeboxanimate-btn-bracket button {
+        margin-top: 5px;
+    }
+
     .design_heading {
         margin-left: 40px;
     }
 
     .contact_form div {
         height: 45vh;
-        font-size: 24px;
+        font-size: 20px;
         gap: 50px;
     }
     
