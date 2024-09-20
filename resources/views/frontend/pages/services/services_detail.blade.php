@@ -58,8 +58,7 @@
                 <div class="col-lg-6">
                     <div class="swiper-container js-slider-fullscreen-projects__content">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide vases" data-category="albums"><a
-                                    class="d-inline-block js-page-indicator-trigger js-album" href="#">
+                            <div class="swiper-slide vases" data-category="albums">
                                     @if(!empty($title))
                                         <h2 class="text-dark peachy_flightoe_font h1 slider__heading block-counter js-split-text" data-split-text-type="lines, words, chars" data-split-text-set="chars">
                                         <span>{{$title}}</span><!--<span class="block-counter__counter">1</span>-->
@@ -70,7 +69,7 @@
                                         <div class="js-album__items d-none"><img src="#" data-album-src="{{ asset('storage/' . $service_image)}}" width="1920" height="1920" data-title="" alt="" /></div>
                                         <!-- - album photos -->
                                     @endif
-                                </a></div>
+                                </div>
                         </div>
                     </div>
                 </div>
