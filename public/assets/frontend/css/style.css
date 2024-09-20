@@ -177,11 +177,15 @@ h2.h1.slider__heading {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+<<<<<<< HEAD
     height: 5em;
+=======
+    height: 4.6em;
+>>>>>>> 8b46c81df1d8a32b0d3e09a10b20b3e29bd8d929
     /* line-height: 1.2em; */
 }
 
-img.service-images {
+img.service-images {   
     width: 100%;
 }
 
@@ -370,6 +374,31 @@ background-image: url(/assets/frontend/image/border-bottom.png);
     top: 20px !important;
 }
 
+.all_pages_name_listing .list-group-item{
+    padding: 0px 10px 0px 0px;
+    background-color: transparent !important;
+    border: 0px;
+    border-right: 1px solid #fff;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0px 10px 5px 0px; 
+    border-radius: 0 !important; 
+}
+
+.all_pages_name_listing .list-group-item:nth-last-child(1){    
+    border-right: 0px;
+}
+
+.all_pages_name_listing .list-group-item a{
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.all_pages_name_listing ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .big_border_circle::before {
     content: "";
@@ -385,8 +414,8 @@ background-image: url(/assets/frontend/image/border-bottom.png);
 
 
 .short_description {
-    position: absolute;
-    bottom: 35px;
+    position: relative;
+    top: 16.5em;
     width: 40%;
 }
 
@@ -448,6 +477,24 @@ span.fontsize_big {
     .footer2_a {
         display: -webkit-inline-box;
     }
+}
+
+.whatsappdesktop {
+    position: fixed !important;
+    bottom: 35px;
+    z-index: 9;
+    right: 25px
+}
+
+.whatsappdesktop i {
+    background: #07d353;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    line-height: 49px;
+    text-align: center;
+    font-size: 29px
 }
 
 .footer_center svg {
@@ -645,13 +692,13 @@ hr {
 
 .gallery_content h5 {
     color: #fff;
-    font-size: 40px;
+    font-size: 34px;
     margin-bottom: 0px;
 }
 
 .gallery_content {
     position: relative;
-    top: -25px;
+    top: -10px;
 }
 
 .gallery_content a {
@@ -988,6 +1035,10 @@ a.contact_form_color_white i {
     margin: 5px 5px 15px 0px !important;
 }
 
+.contact_form h3.amsterdam_font { 
+    font-size: 36px;
+}
+
 form .the-button button {
     border: 0;
     background: transparent;
@@ -1028,7 +1079,7 @@ ul.sub-menu.opened::after {
 
 @media (min-width: 1400px) {
     .short_description { 
-        bottom: 135px; 
+        bottom: 16em; 
     }
 
     .vases_banner {
@@ -1044,12 +1095,25 @@ ul.sub-menu.opened::after {
     }
 }
 
+@media  (min-width: 1420px) and (max-width: 1691px) {
+    .short_description { 
+        top: 19em !important; 
+    }
+}
+
+@media  (min-width: 1691px) and (max-width: 1919px) {
+    .short_description { 
+        top: 21em !important; 
+    }
+}
+
 @media  (min-width: 1420px) and (max-width: 1919px) {
 
     .contact_form div{
         font-size: 20px;
         gap: 50px;
     }
+
     
     .home_intro_Bg:before {
         bottom: 67px !important;
@@ -1067,6 +1131,14 @@ ul.sub-menu.opened::after {
     .services_inner_page .section-fullheight__inner_mobile {
         min-height: calc(var(--fix-bar-vh, 1vh)* 100);
     }
+
+    .float_right {
+        margin-right: 80px;
+    }
+
+    .design_heading {
+        margin-left: 40px;
+    }
 }
 
 
@@ -1077,7 +1149,7 @@ ul.sub-menu.opened::after {
     }
 
     .short_description { 
-        bottom: 130px;
+        top: 22em;
     }
     
     span p.font_30 {
@@ -1104,10 +1176,10 @@ ul.sub-menu.opened::after {
         height: auto;
     }
 
-    .header__burger { 
+    /* .header__burger { 
         width: 65px;
         height: 50px;
-    }    
+    }     */
     
     .the-button {
         font-size: 16px;
@@ -1175,9 +1247,26 @@ ul.sub-menu.opened::after {
         top: 150px;
     }*/   
 
+    .float_right {
+        margin-right: 80px;
+    }
+
+    h3.contact_form_color_white {
+        padding-bottom: 24px;
+    }
+
+    
+    .contact_form div .homeboxanimate-btn-bracket button {
+        margin-top: 5px;
+    }
+
+    .design_heading {
+        margin-left: 40px;
+    }
+
     .contact_form div {
         height: 45vh;
-        font-size: 24px;
+        font-size: 20px;
         gap: 50px;
     }
     

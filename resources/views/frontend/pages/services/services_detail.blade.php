@@ -58,8 +58,7 @@
                 <div class="col-lg-6">
                     <div class="swiper-container js-slider-fullscreen-projects__content">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide vases" data-category="albums"><a
-                                    class="d-inline-block js-page-indicator-trigger js-album" href="#">
+                            <div class="swiper-slide vases" data-category="albums">
                                     @if(!empty($title))
                                         <h2 class="text-dark peachy_flightoe_font h1 slider__heading block-counter js-split-text" data-split-text-type="lines, words, chars" data-split-text-set="chars">
                                         <span>{{$title}}</span><!--<span class="block-counter__counter">1</span>-->
@@ -70,7 +69,7 @@
                                         <div class="js-album__items d-none"><img src="#" data-album-src="{{ asset('storage/' . $service_image)}}" width="1920" height="1920" data-title="" alt="" /></div>
                                         <!-- - album photos -->
                                     @endif
-                                </a></div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -121,7 +120,7 @@
     </div>
     @endif
     @if(!empty($gallery_image))
-    <div class="container pb-md-5 pb-0 mb-3">
+    <div class="container pb-md-0 pb-0 mb-3">
         <div class="row justify-content-center">                
             <div class="col-md-12">       
                 <div class="slider-fullscreen-projects__images swiper-container services_swiper js-slider-fullscreen-projects__images 
@@ -143,6 +142,20 @@
                         @endforeach                        
                     </div>
                 </div>
+            </div>
+            <div class="all_pages_name_listing pt-md-4 pt-3">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item "><a href="service/vases" class="" target="_blank">Vases</a></li>
+                    <li class="list-group-item "><a href="service/tea-light-holders" class="" target="_blank">Tea Light Holders</a></li>
+                    <li class="list-group-item "><a href="service/personalized-gifting" class="" target="_blank">Wedding and Floral Preservation</a></li>
+                    <li class="list-group-item "><a href="service/name-plates" class="" target="_blank">Name Plates</a></li>
+                    <li class="list-group-item "><a href="service/wall-clocks" class="" target="_blank">Wall Clocks</a></li>
+                    <li class="list-group-item "><a href="service/serving-trays-and-platters" class="" target="_blank">Serving Trays and Platters</a></li>
+                    <li class="list-group-item "><a href="service/tablespace" class="" target="_blank">Tablespace</a></li>
+                    <li class="list-group-item "><a href="service/drinkware" class="" target="_blank">Drinkware</a></li>
+                    <li class="list-group-item "><a href="service/workshops" class="" target="_blank">Workshops</a></li>
+                    <li class="list-group-item "><a href="service/corporate-gifting" class="" target="_blank">Corporate</a></li>
+                </ul>
             </div>
         </div>
     </div>
