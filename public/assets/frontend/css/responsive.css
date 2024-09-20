@@ -328,7 +328,7 @@
     }
 
     .homeboxanimate-para {
-        height: 68px !important;
+        height: 64px !important;
     }
 
     /*gallery page*/
@@ -489,9 +489,9 @@
         width: 100%;
     }
 
-    .short_description { 
+    /* .short_description { 
         bottom: 80px;
-    }
+    } */
 
     .section__circle, .slider__circle {
         width: 330px !important;
