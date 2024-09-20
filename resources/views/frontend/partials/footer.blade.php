@@ -55,7 +55,7 @@
 
              <div class="col-md-4 footer_right text-md-start text-center px-md-0 px-2 pb-2">
                 <p class="mb-0">Copyright@2024, Poonam Shah Art. All Right Reserved</p>
-                <p class="mb-0">Designed and developed by <a href="https://www.creaadesigns.com" class="text-decoration-none text-dark"> Creaa Designs</a></p>
+                <p class="mb-0">Designed and developed by <a href="https://www.creaadesigns.com" class="text-dark"> Creaa Designs</a></p>
             </div>
         </div>
     </div>
