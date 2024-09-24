@@ -6,10 +6,10 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- VENDOR SCRIPTS -->
-<script src="/assets/frontend/js/vendor.js?<?php echo time(); ?>"></script>
+<!-- <script src="/assets/frontend/js/vendor.js?<?php echo time(); ?>"></script> -->
 
 <!--Custom Js-->
-<!-- <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> -->
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> 
 <script src="/assets/frontend/js/components.js"></script>
 <script src="/assets/frontend/js/style.js"></script>
 
