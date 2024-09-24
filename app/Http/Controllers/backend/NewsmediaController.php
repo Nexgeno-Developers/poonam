@@ -64,7 +64,7 @@ class NewsmediaController extends Controller
     {
         // Validate request inputs
         $validator = Validator::make($request->all(), [
-            'newsandmedia_image.*' => 'nullable|file|max:80000|mimes:jpeg,png,jpg',
+            'newsandmedia_image.*' => 'nullable|file|max:80000|mimes:jpeg,png,jpg,webp',
         ]);
     
         if ($validator->fails()) {
