@@ -7,7 +7,6 @@
 
 <!-- VENDOR SCRIPTS -->
 <script src="/assets/frontend/js/vendor.js?<?php echo time(); ?>"></script>
-<script src="/assets/frontend/js/threejs.js?<?php echo time(); ?>"></script>
 
 <!--Custom Js-->
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> 
