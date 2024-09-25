@@ -21,8 +21,7 @@ class HomeController extends Controller
         // Validate request inputs
         $validator = Validator::make($request->all(), [
             'banner_text.*' => 'required',
-            'banner.*' => 'nullable|file|max:80000|mimes:jpeg,png,jpg,webp',
-
+            'banner.*' => 'nullable|file|max:80000|mimes:jpeg,png,jpg',
         ]);
 
         if ($validator->fails()) {
