@@ -9,10 +9,10 @@
                             <!-- Logo light -->
                             <a href="#" class="logo-light" target="_blank">
                                 <span class="logo-lg">
-                                    <img src="/assets/image/logo_1.png" alt="logo" style="width:60px; height:60px;" >
+                                    <img src="/assets/image/Logo_1.png" alt="logo" style="width:60px; height:60px;" >
                                 </span>
                                 <span class="logo-sm">
-                                    <img src="/assets/image/logo_1.png" alt="small logo" style="width:60px; height:60px;" >
+                                    <img src="/assets/image/Logo_1.png" alt="small logo" style="width:60px; height:60px;" >
                                 </span>
                             </a>
 

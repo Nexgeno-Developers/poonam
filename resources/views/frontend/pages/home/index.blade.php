@@ -110,7 +110,7 @@
           </section>
     @endif 
           <!-- - section PROJECTS SLIDER FULLSCREEN -->
-          <section class="introduction_part home_intro_Bg pb-md-0 pb-0 position-relative">     <!--remove class "pt-small" -->
+          <section class="home_intro_Bg">     <!--remove class "pt-small" -->
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-sm-12 col-lg-12">
