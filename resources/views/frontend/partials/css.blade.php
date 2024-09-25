@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="/assets/frontend/css/jquery.fancybox.min.css" />
   <!-- Template Main Stylesheet -->
   <link rel="stylesheet" type="text/css" href="/assets/frontend/css/font-style.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="/assets/frontend/css/main.css" /> -->
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/main.css" />
   <link rel="stylesheet" type="text/css" href="/assets/frontend/css/style.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="/assets/frontend/css/responsive.css" /> -->
+  <link rel="stylesheet" type="text/css" href="/assets/frontend/css/responsive.css" />
   <link rel="stylesheet" href="/assets/frontend/css/swiper-bundle.min.css">
