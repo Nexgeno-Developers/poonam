@@ -222,7 +222,7 @@ wordtune-read-extension {
 }
 
 .border_2:before {
-    background-image: url(/assets/frontend/image/border-top.png);
+    background-image: url(/assets/frontend/image/border-top.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -237,7 +237,7 @@ wordtune-read-extension {
 }
 
 .border_3:after {
-    background-image: url(/assets/frontend/image/border-bottom.png);
+    background-image: url(/assets/frontend/image/border-bottom.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -252,7 +252,7 @@ wordtune-read-extension {
 }
 
 .border_1:after {
-background-image: url(/assets/frontend/image/border-bottom.png);
+background-image: url(/assets/frontend/image/border-bottom.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1625,7 +1625,7 @@ ul.sub-menu.opened::after {
 }
 
 .home_intro_Bg:before {
-    background-image: url(/assets/frontend/image/border-bottom.png);
+    background-image: url(/assets/frontend/image/border-bottom.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
