@@ -112,7 +112,9 @@ class IndexController extends Controller
     }
     public function news_media() {
         
-        $news_mediaDetails = DB::table('pages')->where('page_name', 'newsandmedia')->first();
+        $news_mediaDetails = Cache::remember('news_media_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'newsandmedia')->first();
+        });
         $banner = $news_mediaDetails->banner_section;
         $image_section = json_decode($news_mediaDetails->image_section);
         
