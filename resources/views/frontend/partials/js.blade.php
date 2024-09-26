@@ -1,3 +1,5 @@
+
+
 <script src="/assets/frontend/js/popper.min.js"></script>
 <script src="/assets/frontend/js/bootstrap.min.js"></script>
 <script src="/assets/frontend/js/jquery.min.js"></script>
@@ -6,9 +8,7 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <!-- VENDOR SCRIPTS -->
-{{-- <script src="/assets/frontend/js/vendor.js?<?php echo time(); ?>"></script> --}}
-
-<script src="/assets/frontend/js/oldvendor.js?<?php echo time(); ?>"></script>
+<script src="/assets/frontend/js/vendor.js"></script>
 
 <!--Custom Js-->
 <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
