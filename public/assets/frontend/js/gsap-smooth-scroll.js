@@ -577,18 +577,22 @@ window.onload = function () {
       return textAnimations(e, '97%');
     });
 
+
 // service page
-var tl6 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".gallery_details_section", // Set the trigger element
-    start: "top center", // Start the animation when the top of the trigger element reaches the center of the viewport
-    end: "center center", // End the animation when the bottom of the trigger element reaches the center of the viewport
-    toggleActions: "play none none none", // Play the animation once when the trigger element enters the viewport
-    markers: false, // Add markers for debugging purposes
-    scrub: 0.5,
-    once: true
-  }
-});
+// Check if the element with the class 'gallery_details_section' exists
+if (document.querySelector('.gallery_details_section')) {
+  var tl6 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".gallery_details_section", // Set the trigger element
+      start: "top center", // Start the animation when the top of the trigger element reaches the center of the viewport
+      end: "center center", // End the animation when the bottom of the trigger element reaches the center of the viewport
+      toggleActions: "play none none none", // Play the animation once when the trigger element enters the viewport
+      markers: false, // Add markers for debugging purposes
+      scrub: 0.5,
+      once: true
+    }
+  });
+}
 
 // Select all elements with the class "service-images"
 var images = gsap.utils.toArray('.service-images');
