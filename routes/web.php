@@ -61,9 +61,6 @@ Route::get('/clear-cache', function () {
 
 Route::get('/collect-cache', function () {
     $exitCode = Artisan::call('view:cache');
-    $exitCode = Artisan::call('route:cache');
-    //$exitCode = Artisan::call('route:cache');
-    //$exitCode = Artisan::call('key:generate');
 });
 
 Route::get('/key-generate', function () {
