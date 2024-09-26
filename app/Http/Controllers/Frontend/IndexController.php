@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +18,9 @@ class IndexController extends Controller
 {
     public function index() {
         
-        $homeDetails = DB::table('pages')->where('page_name', 'home')->first();
+        $homeDetails = Cache::remember('home_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'home')->first();
+        });
         $banners = json_decode($homeDetails->banner_section, true);
         $introduction = json_decode($homeDetails->introduction);
         $gallery_section1 = json_decode($homeDetails->gallery_section);
@@ -27,7 +30,9 @@ class IndexController extends Controller
     }
     public function about_Us() {
         
-        $aboutDetails = DB::table('pages')->where('page_name', 'about')->first();
+        $aboutDetails = Cache::remember('about_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'about')->first();
+        });
 
         $banner = $aboutDetails->banner_section;
         $journey_section = json_decode($aboutDetails->journey_section);
@@ -41,7 +46,9 @@ class IndexController extends Controller
 //--------------=============================== Pages ================================------------------------------
 
     public function contact_Us(){
-        $contactDetails = DB::table('pages')->where('page_name', 'contact')->first();
+        $contactDetails = Cache::remember('contact_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'contact')->first();
+        });
 
         $banner = $contactDetails->banner_section;
         $contactS = json_decode($contactDetails->contact_section);
@@ -114,14 +121,18 @@ class IndexController extends Controller
 
     public function gallery(){
         // var_dump($slug);
-        $gallery = DB::table('gallery')->where('status', 1)->get();
+        $gallery = Cache::remember('gallery_items', 60, function() {
+            return DB::table('gallery')->where('status', 1)->get();
+        });
 
         return view('frontend.pages.gallery.gallery', compact('gallery'));
     }
 
     public function projects() {
 
-        $projectDetails = DB::table('pages')->where('page_name', 'project')->first();
+        $projectDetails = Cache::remember('project_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'project')->first();
+        });
     
         $projects = json_decode($projectDetails->projects, true);
 
@@ -131,7 +142,9 @@ class IndexController extends Controller
     }
     
     public function products(){
-        $productsDetails = DB::table('pages')->where('page_name', 'products')->first();
+        $productsDetails = Cache::remember('products_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'products')->first();
+        });
         $radio = json_decode($productsDetails->radio_comission, true);
         $oilnspill = json_decode($productsDetails->oil_spill, true);
         $aids_navigation = json_decode($productsDetails->aids_navigation, true);
@@ -141,7 +154,9 @@ class IndexController extends Controller
 
     public function our_Business(){
 
-        $businessDetails = DB::table('pages')->where('page_name', 'business')->first();
+        $businessDetails = Cache::remember('business_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'business')->first();
+        });
         $businessSteps = json_decode($businessDetails->steps, true);
 
         return view('frontend.pages.ourbusiness.our-business', compact('businessDetails','businessSteps'));
@@ -149,7 +164,9 @@ class IndexController extends Controller
 
     public function career(){
 
-        $careerDetails = DB::table('pages')->where('page_name', 'career')->first();
+        $careerDetails = Cache::remember('career_page_details', 60, function() {
+            return DB::table('pages')->where('page_name', 'career')->first();
+        });
         $introduction = json_decode($careerDetails->introduction, true);
         return view('frontend.pages.career.careers', compact('careerDetails','introduction'));
     }
@@ -158,7 +175,9 @@ class IndexController extends Controller
     
     public function service_detail($slug){
         // var_dump($slug);
-        $service_detail = DB::table('services')->where('slug', $slug)->where('status', 1)->get()->first();
+        $service_detail = Cache::remember('service_detail_' . $slug, 60, function() use ($slug) {
+            return DB::table('services')->where('slug', $slug)->where('status', 1)->first();
+        });
         $page_name = $service_detail->page_name;
         $banner = $service_detail->banner;
         $service_image = $service_detail->service_image;
@@ -174,7 +193,9 @@ class IndexController extends Controller
     
     public function gallery_detail($slug){
         // var_dump($slug);
-        $gallery_detail = DB::table('gallery')->where('slug', $slug)->where('status', 1)->get()->first();
+        $gallery_detail = Cache::remember('gallery_detail_' . $slug, 60, function() use ($slug) {
+            return DB::table('gallery')->where('slug', $slug)->where('status', 1)->first();
+        });
         $page_name = $gallery_detail->page_name;
         $banner = $gallery_detail->banner;
         $thum_image = $gallery_detail->thum_image;

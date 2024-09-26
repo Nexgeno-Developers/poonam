@@ -59,6 +59,13 @@ Route::get('/clear-cache', function () {
     //$exitCode = Artisan::call('key:generate');
 });
 
+Route::get('/collect-cache', function () {
+    $exitCode = Artisan::call('view:cache');
+    $exitCode = Artisan::call('route:cache');
+    //$exitCode = Artisan::call('route:cache');
+    //$exitCode = Artisan::call('key:generate');
+});
+
 Route::get('/key-generate', function () {
     Artisan::call('key:generate', ['--show' => true]);
     return 'Application key generated successfully!';
