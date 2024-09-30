@@ -39,10 +39,12 @@
                             <div class="w-100 h-100" data-swiper-parallax-zoom="0%" data-swiper-parallax="0%">
 
                                 <div class="slider__zoom-container w-100 h-100 overflow">
-                                    <div class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el"
-                                        data-background="{{ asset('storage/' . $service_image)}}"></div>
+                                    {{-- <div class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el"
+                                        data-background="{{ asset('storage/' . $service_image)}}"></div> --}}
+                                    <img src="{{ asset('storage/' . $service_image)}}" class="slider__bg swiper-lazy lazy-bg js-transition-img__transformed-el" />
                                 </div>
 
+                                
                             </div>
                         </div>
                     </div>
