@@ -267,7 +267,7 @@ function animateTextOnScroll(className, triggerClass) {
               {
                   opacity: 1,
                   y: '0%',
-                  duration: 0.4,
+                  duration: 0.1,
                   ease: 'ease.in',
                   scrollTrigger: {
                       trigger: trigger,
@@ -277,7 +277,7 @@ function animateTextOnScroll(className, triggerClass) {
                       toggleActions: "play none none none",
                       markers: false
                   },
-                  stagger: 0.12
+                  stagger: 0.012
               }
           );
       });

@@ -1,5 +1,5 @@
  
-<!-- PAGE PRELOADER -->
+{{-- <!-- PAGE PRELOADER -->
       <!-- <div class="preloader text-center bg-dark-2" id="js-preloader" data-arts-theme-text="light">
         <div class="preloader__content"> -->
           <!-- header -->
@@ -19,7 +19,7 @@
           <!-- - circle holder -->
         <!-- </div>
       </div> -->
-      <!-- - PAGE PRELOADER -->
+      <!-- - PAGE PRELOADER --> --}}
       <!-- Loading Spinner -->
       <svg class="spinner d-lg-none" id="js-spinner" width="65px" height="65px" viewBox="0 0 66 66"
         xmlns="http://www.w3.org/2000/svg">
